@@ -1,0 +1,201 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Data,,DBFND
+2,Information,1,DBFND
+3,Database,1|2,DBFND
+4,Metadata,1|3,DBFND
+5,Database Management System,3,DBFND
+6,DBMS,5,DBFND
+7,End User,3,DBFND
+8,Application Programmer,3|5,DBFND
+9,Database Administrator,5,DBFND
+10,Schema,3|4,DBFND
+11,Instance,10,DBFND
+12,Table,3,TBLST
+13,Row,12,TBLST
+14,Column,12,TBLST
+15,Record,13,TBLST
+16,Field,14,TBLST
+17,Attribute,14,TBLST
+18,Entity,17,TBLST
+19,Primary Key,12|14|17,KEYCT
+20,Foreign Key,19,KEYCT
+21,Composite Key,19,KEYCT
+22,Candidate Key,17|19,KEYCT
+23,Unique Constraint,14,KEYCT
+24,Not Null Constraint,14,KEYCT
+25,Check Constraint,14,KEYCT
+26,Referential Integrity,20,KEYCT
+27,Relational Model,12|13|14,RELMD
+28,Relation,27,RELMD
+29,Tuple,13|28,RELMD
+30,Domain,17,RELMD
+31,Cardinality,12,TBLST
+32,Degree,14|28,RELMD
+33,Relational Algebra,27,RELMD
+34,Selection Operation,33,RELMD
+35,Projection Operation,33,RELMD
+36,Union Operation,33,RELMD
+37,Intersection Operation,33,RELMD
+38,Difference Operation,33,RELMD
+39,Cartesian Product,33,RELMD
+40,Join Operation,33|39,RELMD
+41,SQL,5|27,SQLFN
+42,Structured Query Language,41,SQLFN
+43,DDL,41,SQLFN
+44,DML,41,SQLFN
+45,DCL,41,SQLFN
+46,TCL,41,SQLFN
+47,CREATE TABLE Statement,43|12,SQLFN
+48,ALTER TABLE Statement,43|47,SQLFN
+49,DROP TABLE Statement,43|47,SQLFN
+50,INSERT Statement,44|12,SQLFN
+51,UPDATE Statement,44|12,SQLFN
+52,DELETE Statement,44|12,SQLFN
+53,SELECT Statement,44|12,SQLQY
+54,WHERE Clause,53,SQLQY
+55,ORDER BY Clause,53,SQLQY
+56,LIMIT Clause,53,SQLQY
+57,DISTINCT Keyword,53,SQLQY
+58,AS Keyword,53,SQLQY
+59,Alias,58,SQLQY
+60,VARCHAR Data Type,47,SQLFN
+61,INT Data Type,47,SQLFN
+62,DECIMAL Data Type,47,SQLFN
+63,DATE Data Type,47,SQLFN
+64,DATETIME Data Type,47,SQLFN
+65,BOOLEAN Data Type,47,SQLFN
+66,TEXT Data Type,47,SQLFN
+67,BLOB Data Type,47,SQLFN
+68,Aggregate Function,53,SQLAG
+69,COUNT Function,68,SQLAG
+70,SUM Function,68,SQLAG
+71,AVG Function,68,SQLAG
+72,MIN Function,68,SQLAG
+73,MAX Function,68,SQLAG
+74,GROUP BY Clause,53|68,SQLAG
+75,HAVING Clause,74,SQLAG
+76,INNER JOIN,53|40,SQLJN
+77,LEFT JOIN,76,SQLJN
+78,RIGHT JOIN,76,SQLJN
+79,FULL OUTER JOIN,77|78,SQLJN
+80,CROSS JOIN,39|76,SQLJN
+81,Self Join,76,SQLJN
+82,Natural Join,76,SQLJN
+83,Equijoin,76,SQLJN
+84,Non-Equijoin,76,SQLJN
+85,Theta Join,76,SQLJN
+86,Subquery,53,SQLAD
+87,Correlated Subquery,86,SQLAD
+88,Nested Query,86,SQLAD
+89,IN Operator,54|86,SQLAD
+90,EXISTS Operator,54|86,SQLAD
+91,NOT IN Operator,89,SQLAD
+92,ALL Operator,54|86,SQLAD
+93,ANY Operator,54|86,SQLAD
+94,UNION Operator,53,SQLAD
+95,UNION ALL Operator,94,SQLAD
+96,INTERSECT Operator,53|37,SQLAD
+97,EXCEPT Operator,53|38,SQLAD
+98,View,53,SQLAD
+99,Materialized View,98,SQLAD
+100,Index,12|53,SQLAD
+101,Clustered Index,100,SQLAD
+102,Non-Clustered Index,100,SQLAD
+103,B-Tree Index,100,SQLAD
+104,Common Table Expression,53|98,SQLAD
+105,CTE,104,SQLAD
+106,Recursive CTE,105,SQLAD
+107,Window Function,53,SQLAD
+108,ROW_NUMBER Function,107,SQLAD
+109,RANK Function,107,SQLAD
+110,DENSE_RANK Function,107,SQLAD
+111,PARTITION BY Clause,107,SQLAD
+112,OVER Clause,107,SQLAD
+113,LAG Function,107,SQLAD
+114,LEAD Function,107,SQLAD
+115,JSON,1,JSNAP
+116,JavaScript Object Notation,115,JSNAP
+117,JSON Data Type,47|115,JSNAP
+118,JSON Object,115,JSNAP
+119,JSON Array,115,JSNAP
+120,JSON_EXTRACT Function,53|117,JSNAP
+121,JSON_VALUE Function,53|117,JSNAP
+122,JSON_QUERY Function,53|117,JSNAP
+123,REST API,115,JSNAP
+124,HTTP Method,123,JSNAP
+125,GET Request,124,JSNAP
+126,POST Request,124,JSNAP
+127,PUT Request,124,JSNAP
+128,DELETE Request,124,JSNAP
+129,API Endpoint,123,JSNAP
+130,API Authentication,123,JSNAP
+131,API Key,130,JSNAP
+132,Bearer Token,130,JSNAP
+133,HTTP Status Code,123,JSNAP
+134,Request Header,123,JSNAP
+135,Response Body,123,JSNAP
+136,Entity Relationship Diagram,18,DMDEL
+137,ER Diagram,136,DMDEL
+138,ERD,137,DMDEL
+139,Chen Notation,137,DMDEL
+140,Crow's Foot Notation,137,DMDEL
+141,Entity Type,18,DMDEL
+142,Weak Entity,141,DMDEL
+143,Strong Entity,141,DMDEL
+144,Relationship,18|141,DMDEL
+145,One-to-One Relationship,144,DMDEL
+146,One-to-Many Relationship,144,DMDEL
+147,Many-to-Many Relationship,146,DMDEL
+148,Associative Entity,147,DMDEL
+149,Bridge Table,148,DMDEL
+150,Junction Table,149,DMDEL
+151,Identifying Relationship,144,DMDEL
+152,Non-Identifying Relationship,144,DMDEL
+153,Functional Dependency,17,NORML
+154,Partial Dependency,153,NORML
+155,Transitive Dependency,153,NORML
+156,First Normal Form,27|153,NORML
+157,1NF,156,NORML
+158,Second Normal Form,156|154,NORML
+159,2NF,158,NORML
+160,Third Normal Form,158|155,NORML
+161,3NF,160,NORML
+162,Boyce-Codd Normal Form,160,NORML
+163,BCNF,162,NORML
+164,Normalization,156,NORML
+165,Denormalization,164,NORML
+166,Decomposition,164,NORML
+167,Lossless Join Property,166,NORML
+168,Dependency Preservation,166,NORML
+169,Anomaly,27,NORML
+170,Update Anomaly,169,NORML
+171,Insertion Anomaly,169,NORML
+172,Deletion Anomaly,169,NORML
+173,Data Warehouse,3,DWHOU
+174,OLTP,5|173,DWHOU
+175,OLAP,173,DWHOU
+176,Online Transaction Processing,174,DWHOU
+177,Online Analytical Processing,175,DWHOU
+178,Star Schema,173,DWHOU
+179,Snowflake Schema,178,DWHOU
+180,Fact Table,178,DWHOU
+181,Dimension Table,178,DWHOU
+182,Measure,180,DWHOU
+183,Grain,180,DWHOU
+184,Slowly Changing Dimension,181,DWHOU
+185,SCD Type 1,184,DWHOU
+186,SCD Type 2,184,DWHOU
+187,SCD Type 3,184,DWHOU
+188,ETL,173,ETLDI
+189,Extract Transform Load,188,ETLDI
+190,Data Quality,188,ETLDI
+191,Data Cleansing,190,ETLDI
+192,Knime,188,ETLDI
+193,NoSQL,3,NOSQL
+194,Document Database,193,NOSQL
+195,MongoDB,194,NOSQL
+196,Collection,195,NOSQL
+197,Document,195,NOSQL
+198,BSON,197|115,NOSQL
+199,CAP Theorem,193,NOSQL
+200,BASE Properties,193,NOSQL
