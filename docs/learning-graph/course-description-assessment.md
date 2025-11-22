@@ -2,13 +2,13 @@
 
 **Date**: 2025-11-22
 
-**Course**: Database Management - BADM 350
+**Course**: Database Management
 
 ## Quality Scoring Evaluation
 
 | Element | Points Possible | Points Awarded | Assessment |
 |---------|----------------|----------------|------------|
-| **Title** | 5 | 5 | ✓ Clear, descriptive title: "Database Management - BADM 350" |
+| **Title** | 5 | 5 | ✓ Clear, descriptive title: "Database Management" |
 | **Target Audience** | 5 | 5 | ✓ Specific audience: "College undergraduate students in Business Information Systems, MIS, Finance, Accounting, Marketing..." |
 | **Prerequisites** | 5 | 5 | ✓ Clearly stated with 4 specific items including "No prior programming or database experience required" |
 | **Main Topics Covered** | 10 | 10 | ✓ Comprehensive list of 10 major topics from Database Fundamentals through NoSQL |

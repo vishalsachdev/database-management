@@ -656,4 +656,4 @@ In [Chapter 4](04-advanced-sql.md), we'll learn advanced SQL techniques includin
 
 ---
 
-*Corresponds to Week 3 of BADM 350 - Chapter 7 of the textbook*
+*Corresponds to Week 3 of the course - Chapter 7 of the textbook*

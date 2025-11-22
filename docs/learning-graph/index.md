@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Database Management learning graph is a structured knowledge representation of all 200 key concepts in BADM 350, organized by prerequisite relationships and taxonomic categories.
+The Database Management learning graph is a structured knowledge representation of all 200 key concepts in the course, organized by prerequisite relationships and taxonomic categories.
 
 ## What is a Learning Graph?
 

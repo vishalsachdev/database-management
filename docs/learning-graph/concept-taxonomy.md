@@ -1,6 +1,6 @@
 # Database Management - Concept Taxonomy
 
-12 categorical groupings for organizing the 200 concepts in the BADM 350 learning graph.
+12 categorical groupings for organizing the 200 concepts in the Database Management learning graph.
 
 ## Taxonomy Categories
 

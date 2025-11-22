@@ -963,4 +963,4 @@ Congratulations! You've completed the Database Management course. You now have a
 
 ---
 
-*Corresponds to Week 9 of BADM 350 - Chapter 11 of the textbook*
+*Corresponds to Week 9 of the course - Chapter 11 of the textbook*

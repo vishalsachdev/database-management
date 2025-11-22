@@ -287,4 +287,4 @@ In [Chapter 2](02-tables-relational-algebra.md), we'll dive into how data is org
 
 ---
 
-*Corresponds to Week 1 of BADM 350 - Chapter 1 of the textbook*
+*Corresponds to Week 1 of the course - Chapter 1 of the textbook*

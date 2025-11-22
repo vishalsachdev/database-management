@@ -852,4 +852,4 @@ In [Chapter 7](07-normalization.md), we'll learn about normalization - a formal 
 
 ---
 
-*Corresponds to Week 6 of BADM 350 - Chapter 5 of the textbook*
+*Corresponds to Week 6 of the course - Chapter 5 of the textbook*

@@ -933,4 +933,4 @@ In [Chapter 9](09-nosql.md), we'll explore NoSQL databases - modern database sys
 
 ---
 
-*Corresponds to Week 8 of BADM 350 - Chapter 12 of the textbook*
+*Corresponds to Week 8 of the course - Chapter 12 of the textbook*

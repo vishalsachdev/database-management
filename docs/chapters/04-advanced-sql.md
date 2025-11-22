@@ -25,9 +25,9 @@ BAD_DESIGN - All in One Table
 +------------+-------------+--------+-------------+---------------+-------------+
 | Student_ID | Student_Name| Major  | Course_Code | Course_Title  | Grade       |
 +------------+-------------+--------+-------------+---------------+-------------+
-| 123456789  | Alice       | MIS    | BADM350     | Database Mgmt | A           |
-| 123456789  | Alice       | MIS    | BADM310     | MIS           | A-          |
-| 987654321  | Bob         | FIN    | BADM350     | Database Mgmt | B+          |
+| 123456789  | Alice       | MIS    | DB101       | Database Mgmt | A           |
+| 123456789  | Alice       | MIS    | MIS201      | MIS           | A-          |
+| 987654321  | Bob         | FIN    | DB101       | Database Mgmt | B+          |
 +------------+-------------+--------+-------------+---------------+-------------+
 ```
 
@@ -67,9 +67,9 @@ INNER JOIN table2 ON table1.key = table2.key;
 +---------------+------------+-------------+-------+
 | Enrollment_ID | Student_ID | Course_Code | Grade |
 +---------------+------------+-------------+-------+
-| E001          | 123456789  | BADM350     | A     |
-| E002          | 123456789  | BADM310     | A-    |
-| E003          | 987654321  | BADM350     | B+    |
+| E001          | 123456789  | DB101       | A     |
+| E002          | 123456789  | MIS201      | A-    |
+| E003          | 987654321  | DB101       | B+    |
 +---------------+------------+-------------+-------+
 ```
 
@@ -92,9 +92,9 @@ INNER JOIN enrollment e ON s.Student_ID = e.Student_ID;
 +------------+------------------+--------+-------------+-------+
 | Student_ID | Name             | Major  | Course_Code | Grade |
 +------------+------------------+--------+-------------+-------+
-| 123456789  | Alice Johnson    | MIS    | BADM350     | A     |
-| 123456789  | Alice Johnson    | MIS    | BADM310     | A-    |
-| 987654321  | Bob Smith        | FIN    | BADM350     | B+    |
+| 123456789  | Alice Johnson    | MIS    | DB101       | A     |
+| 123456789  | Alice Johnson    | MIS    | MIS201      | A-    |
+| 987654321  | Bob Smith        | FIN    | DB101       | B+    |
 +------------+------------------+--------+-------------+-------+
 ```
 
@@ -147,9 +147,9 @@ LEFT JOIN enrollment e ON s.Student_ID = e.Student_ID;
 +------------+------------------+-------------+-------+
 | Student_ID | Name             | Course_Code | Grade |
 +------------+------------------+-------------+-------+
-| 123456789  | Alice Johnson    | BADM350     | A     |
-| 123456789  | Alice Johnson    | BADM310     | A-    |
-| 987654321  | Bob Smith        | BADM350     | B+    |
+| 123456789  | Alice Johnson    | DB101       | A     |
+| 123456789  | Alice Johnson    | MIS201      | A-    |
+| 987654321  | Bob Smith        | DB101       | B+    |
 | 456789123  | Carol Martinez   | NULL        | NULL  |  ← Carol has no enrollments
 +------------+------------------+-------------+-------+
 ```
@@ -345,13 +345,13 @@ WHERE GPA > (
 ### Subquery with IN
 
 ```sql
--- Find students enrolled in BADM350
+-- Find students enrolled in DB101
 SELECT Student_ID, Name
 FROM student
 WHERE Student_ID IN (
     SELECT Student_ID
     FROM enrollment
-    WHERE Course_Code = 'BADM350'
+    WHERE Course_Code = 'DB101'
 );
 ```
 
@@ -763,4 +763,4 @@ In [Chapter 5](05-json-apis.md), we'll explore working with JSON data and APIs -
 
 ---
 
-*Corresponds to Week 4 of BADM 350 - Chapter 8 of the textbook*
+*Corresponds to Week 4 of the course - Chapter 8 of the textbook*

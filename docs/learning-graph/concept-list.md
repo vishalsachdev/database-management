@@ -1,6 +1,6 @@
 # Database Management - Concept List
 
-200 concepts for BADM 350 Database Management learning graph.
+200 concepts for Database Management learning graph.
 
 ## Concept Labels (1-200)
 

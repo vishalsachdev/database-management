@@ -1,10 +1,10 @@
 ---
-title: Database Management - BADM 350
+title: Database Management
 description: A comprehensive course on database management systems, SQL, NoSQL, data modeling, and enterprise data integration
 quality_score: 100
 ---
 
-# Database Management - BADM 350
+# Database Management
 
 ## Target Audience
 

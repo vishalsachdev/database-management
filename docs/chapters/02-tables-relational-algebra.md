@@ -370,8 +370,8 @@ COURSE
 +-------------+----------------------------+---------+
 | Course_Code | Course_Title               | Credits |  ← PK: Course_Code
 +-------------+----------------------------+---------+
-| BADM350     | Database Management        | 3       |
-| BADM310     | Management Information Sys | 3       |
+| DB101       | Database Management        | 3       |
+| MIS201      | Management Information Sys | 3       |
 | FIN221      | Corporate Finance          | 3       |
 +-------------+----------------------------+---------+
 
@@ -379,9 +379,9 @@ ENROLLMENT
 +---------------+------------+-------------+-------+
 | Enrollment_ID | Student_ID | Course_Code | Grade |  ← PK: Enrollment_ID
 +---------------+------------+-------------+-------+  ← FK: Student_ID → STUDENT
-| E001          | 123456789  | BADM350     | A     |  ← FK: Course_Code → COURSE
-| E002          | 123456789  | BADM310     | A-    |
-| E003          | 987654321  | BADM350     | B+    |
+| E001          | 123456789  | DB101       | A     |  ← FK: Course_Code → COURSE
+| E002          | 123456789  | MIS201      | A-    |
+| E003          | 987654321  | DB101       | B+    |
 | E004          | 456789123  | FIN221      | A     |
 +---------------+------------+-------------+-------+
 ```
@@ -398,11 +398,11 @@ ENROLLMENT
 π_{Student_ID, Course_Code}(ENROLLMENT)
 ```
 
-**Q3:** Find names of students enrolled in BADM350
+**Q3:** Find names of students enrolled in DB101
 ```
 π_{Name}(
   STUDENT ⋈_{STUDENT.Student_ID = ENROLLMENT.Student_ID}
-  (σ_{Course_Code = 'BADM350'}(ENROLLMENT))
+  (σ_{Course_Code = 'DB101'}(ENROLLMENT))
 )
 ```
 
@@ -462,4 +462,4 @@ In [Chapter 3](03-sql-fundamentals.md), we'll learn SQL - the practical language
 
 ---
 
-*Corresponds to Week 2 of BADM 350 - Chapter 3 of the textbook*
+*Corresponds to Week 2 of the course - Chapter 3 of the textbook*

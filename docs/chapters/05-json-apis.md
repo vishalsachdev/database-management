@@ -813,4 +813,4 @@ In [Chapter 6](06-database-design.md), we'll learn how to design effective datab
 
 ---
 
-*Corresponds to Week 5 of BADM 350 - Chapter 9 of the textbook*
+*Corresponds to Week 5 of the course - Chapter 9 of the textbook*
