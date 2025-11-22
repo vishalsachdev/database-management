@@ -9,6 +9,101 @@ edit_uri: 'blob/main/docs'
 nav:
   - Home: index.md
   - About: about.md
+
+  - Introduction to Databases:
+    - 01-introduction/index.md
+    - What is a Database?: 01-introduction/what-is-database.md
+    - Database Evolution: 01-introduction/database-evolution.md
+    - Types of Databases: 01-introduction/types-of-databases.md
+    - Database Management Systems: 01-introduction/dbms.md
+    - Why Use Databases?: 01-introduction/why-databases.md
+
+  - Relational Database Fundamentals:
+    - 02-relational-fundamentals/index.md
+    - The Relational Model: 02-relational-fundamentals/relational-model.md
+    - Tables and Relations: 02-relational-fundamentals/tables-relations.md
+    - Keys and Constraints: 02-relational-fundamentals/keys-constraints.md
+    - Relationships: 02-relational-fundamentals/relationships.md
+    - Referential Integrity: 02-relational-fundamentals/referential-integrity.md
+
+  - SQL Basics:
+    - 03-sql-basics/index.md
+    - Introduction to SQL: 03-sql-basics/intro-sql.md
+    - Data Definition Language (DDL): 03-sql-basics/ddl.md
+    - Data Manipulation Language (DML): 03-sql-basics/dml.md
+    - Basic Queries: 03-sql-basics/basic-queries.md
+    - Filtering and Sorting: 03-sql-basics/filtering-sorting.md
+    - Joins: 03-sql-basics/joins.md
+    - Aggregate Functions: 03-sql-basics/aggregate-functions.md
+
+  - Database Design:
+    - 04-database-design/index.md
+    - Database Design Process: 04-database-design/design-process.md
+    - Entity-Relationship Modeling: 04-database-design/er-modeling.md
+    - Normalization: 04-database-design/normalization.md
+    - Normal Forms: 04-database-design/normal-forms.md
+    - Denormalization: 04-database-design/denormalization.md
+    - Schema Design Best Practices: 04-database-design/best-practices.md
+
+  - Advanced SQL:
+    - 05-advanced-sql/index.md
+    - Subqueries: 05-advanced-sql/subqueries.md
+    - Views: 05-advanced-sql/views.md
+    - Indexes: 05-advanced-sql/indexes.md
+    - Stored Procedures: 05-advanced-sql/stored-procedures.md
+    - Triggers: 05-advanced-sql/triggers.md
+    - Common Table Expressions: 05-advanced-sql/cte.md
+    - Window Functions: 05-advanced-sql/window-functions.md
+
+  - Transaction Management:
+    - 06-transactions/index.md
+    - Introduction to Transactions: 06-transactions/intro-transactions.md
+    - ACID Properties: 06-transactions/acid-properties.md
+    - Concurrency Control: 06-transactions/concurrency-control.md
+    - Locking Mechanisms: 06-transactions/locking.md
+    - Isolation Levels: 06-transactions/isolation-levels.md
+    - Deadlocks: 06-transactions/deadlocks.md
+    - Recovery and Logging: 06-transactions/recovery.md
+
+  - NoSQL Databases:
+    - 07-nosql/index.md
+    - Introduction to NoSQL: 07-nosql/intro-nosql.md
+    - Document Stores: 07-nosql/document-stores.md
+    - Key-Value Stores: 07-nosql/key-value-stores.md
+    - Column-Family Stores: 07-nosql/column-family-stores.md
+    - Graph Databases: 07-nosql/graph-databases.md
+    - CAP Theorem: 07-nosql/cap-theorem.md
+    - When to Use NoSQL: 07-nosql/when-to-use.md
+
+  - Database Performance:
+    - 08-performance/index.md
+    - Query Optimization: 08-performance/query-optimization.md
+    - Index Strategies: 08-performance/index-strategies.md
+    - Query Execution Plans: 08-performance/execution-plans.md
+    - Performance Tuning: 08-performance/performance-tuning.md
+    - Caching Strategies: 08-performance/caching.md
+    - Partitioning and Sharding: 08-performance/partitioning-sharding.md
+
+  - Database Security:
+    - 09-security/index.md
+    - Security Fundamentals: 09-security/fundamentals.md
+    - Authentication: 09-security/authentication.md
+    - Authorization and Access Control: 09-security/authorization.md
+    - Encryption: 09-security/encryption.md
+    - SQL Injection Prevention: 09-security/sql-injection.md
+    - Auditing and Compliance: 09-security/auditing.md
+    - Backup and Recovery: 09-security/backup-recovery.md
+
+  - Modern Database Topics:
+    - 10-modern-topics/index.md
+    - Cloud Databases: 10-modern-topics/cloud-databases.md
+    - Distributed Databases: 10-modern-topics/distributed-databases.md
+    - Database as a Service (DBaaS): 10-modern-topics/dbaas.md
+    - Data Warehousing: 10-modern-topics/data-warehousing.md
+    - Big Data Technologies: 10-modern-topics/big-data.md
+    - NewSQL Databases: 10-modern-topics/newsql.md
+    - Time-Series Databases: 10-modern-topics/time-series.md
+
   - Glossary: glossary.md
   - References: references.md
   - License: license.md
