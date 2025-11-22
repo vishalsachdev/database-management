@@ -54,9 +54,9 @@ STUDENT_COURSE (Unnormalized)
 +------------+-------------+--------+-------------+------------------+----------+
 | Student_ID | Student_Name| Major  | Course_Code | Course_Title     | Grade    |
 +------------+-------------+--------+-------------+------------------+----------+
-| 123456789  | Alice       | MIS    | BADM350     | Database Mgmt    | A        |
-| 123456789  | Alice       | MIS    | BADM310     | MIS              | A-       |
-| 987654321  | Bob         | FIN    | BADM350     | Database Mgmt    | B+       |
+| 123456789  | Alice       | MIS    | DB101       | Database Mgmt    | A        |
+| 123456789  | Alice       | MIS    | MIS201      | MIS              | A-       |
+| 987654321  | Bob         | FIN    | DB101       | Database Mgmt    | B+       |
 | 987654321  | Bob         | FIN    | FIN221      | Corp Finance     | A        |
 +------------+-------------+--------+-------------+------------------+----------+
 ```
@@ -65,7 +65,7 @@ STUDENT_COURSE (Unnormalized)
 
 **Problem:** Can't add a course unless a student enrolls in it.
 
-**Example:** We want to add a new course BADM400 to our database, but we can't until a student enrolls in it.
+**Example:** We want to add a new course DB201 to our database, but we can't until a student enrolls in it.
 
 ### Update Anomaly
 
@@ -78,8 +78,8 @@ STUDENT_COURSE (Unnormalized)
 +------------+-------------+--------+-------------+------------------+----------+
 | Student_ID | Student_Name| Major  | Course_Code | Course_Title     | Grade    |
 +------------+-------------+--------+-------------+------------------+----------+
-| 123456789  | Alice       | ACCY   | BADM350     | Database Mgmt    | A        |
-| 123456789  | Alice       | MIS    | BADM310     | MIS              | A-       | ← Inconsistent!
+| 123456789  | Alice       | ACCY   | DB101     | Database Mgmt    | A        |
+| 123456789  | Alice       | MIS    | MIS201     | MIS              | A-       | ← Inconsistent!
 +------------+-------------+--------+-------------+------------------+----------+
 ```
 
@@ -190,8 +190,8 @@ STUDENT (Violates 1NF)
 +------------+-------------+--------+--------+--------+
 | Student_ID | Name        | Course1| Course2| Course3|
 +------------+-------------+--------+--------+--------+
-| 123456789  | Alice       | BADM350| BADM310| NULL   | ← Repeating groups!
-| 987654321  | Bob         | BADM350| FIN221 | ACCY201|
+| 123456789  | Alice       | DB101| MIS201| NULL   | ← Repeating groups!
+| 987654321  | Bob         | DB101| FIN221 | ACCY201|
 +------------+-------------+--------+--------+--------+
 ```
 
@@ -276,9 +276,9 @@ ENROLLMENT (In 1NF, but violates 2NF)
 +------------+-------------+-------------+------------------+----------+--------+
 | Student_ID | Course_Code | Student_Name| Course_Title     | Credits  | Grade  |
 +------------+-------------+-------------+------------------+----------+--------+
-| 123456789  | BADM350     | Alice       | Database Mgmt    | 3        | A      |
-| 123456789  | BADM310     | Alice       | MIS              | 3        | A-     |
-| 987654321  | BADM350     | Bob         | Database Mgmt    | 3        | B+     |
+| 123456789  | DB101     | Alice       | Database Mgmt    | 3        | A      |
+| 123456789  | MIS201     | Alice       | MIS              | 3        | A-     |
+| 987654321  | DB101     | Bob         | Database Mgmt    | 3        | B+     |
 +------------+-------------+-------------+------------------+----------+--------+
 ```
 
@@ -329,17 +329,17 @@ STUDENT                          COURSE
 +------------+-------------+     +-------------+------------------+--------+
 | Student_ID | Student_Name|     | Course_Code | Course_Title     | Credits|
 +------------+-------------+     +-------------+------------------+--------+
-| 123456789  | Alice       |     | BADM350     | Database Mgmt    | 3      |
-| 987654321  | Bob         |     | BADM310     | MIS              | 3      |
+| 123456789  | Alice       |     | DB101     | Database Mgmt    | 3      |
+| 987654321  | Bob         |     | MIS201     | MIS              | 3      |
 +------------+-------------+     +-------------+------------------+--------+
 
 ENROLLMENT
 +------------+-------------+-------+
 | Student_ID | Course_Code | Grade |
 +------------+-------------+-------+
-| 123456789  | BADM350     | A     |
-| 123456789  | BADM310     | A-    |
-| 987654321  | BADM350     | B+    |
+| 123456789  | DB101     | A     |
+| 123456789  | MIS201     | A-    |
+| 987654321  | DB101     | B+    |
 +------------+-------------+-------+
 ```
 
@@ -466,9 +466,9 @@ COURSE_INSTRUCTOR (In 3NF, violates BCNF)
 +-------------+----------------+----------+
 | Course_Code | Instructor_ID  | Room     |
 +-------------+----------------+----------+
-| BADM350     | 101            | BIF 100  |
-| BADM350     | 102            | BIF 101  |
-| BADM310     | 101            | BIF 100  |
+| DB101     | 101            | BIF 100  |
+| DB101     | 102            | BIF 101  |
+| MIS201     | 101            | BIF 100  |
 +-------------+----------------+----------+
 ```
 
@@ -773,4 +773,4 @@ In [Chapter 8](08-data-warehousing-etl.md), we'll explore data warehousing and E
 
 ---
 
-*Corresponds to Week 7 of BADM 350 - Chapter 6 of the textbook*
+*Corresponds to Week 7 of the course - Chapter 6 of the textbook*

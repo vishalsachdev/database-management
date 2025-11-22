@@ -1,0 +1,2133 @@
+{
+  "metadata": {
+    "title": "Database Management",
+    "description": "Learning graph for Database Management course covering SQL, NoSQL, data modeling, normalization, ETL, and data warehousing",
+    "creator": "Vishal Sachdev",
+    "date": "2025-11-22",
+    "version": "1.0",
+    "format": "Learning Graph JSON v1.0",
+    "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+    "license": "CC BY-NC-SA 4.0 DEED"
+  },
+  "groups": {
+    "DBFND": {
+      "classifierName": "Database Foundations",
+      "color": {
+        "color": "#FF6B6B",
+        "colorName": "Red",
+        "font": {
+          "color": "white"
+        }
+      }
+    },
+    "RELMD": {
+      "classifierName": "Relational Model",
+      "color": {
+        "color": "#4ECDC4",
+        "colorName": "Teal",
+        "font": {
+          "color": "black"
+        }
+      }
+    },
+    "TBLST": {
+      "classifierName": "Table Structure",
+      "color": {
+        "color": "#45B7D1",
+        "colorName": "Blue",
+        "font": {
+          "color": "black"
+        }
+      }
+    },
+    "KEYCT": {
+      "classifierName": "Keys and Constraints",
+      "color": {
+        "color": "#96CEB4",
+        "colorName": "Green",
+        "font": {
+          "color": "black"
+        }
+      }
+    },
+    "SQLFN": {
+      "classifierName": "SQL Fundamentals",
+      "color": {
+        "color": "#FFEAA7",
+        "colorName": "Yellow",
+        "font": {
+          "color": "black"
+        }
+      }
+    },
+    "SQLQY": {
+      "classifierName": "SQL Queries",
+      "color": {
+        "color": "#DDA15E",
+        "colorName": "Tan",
+        "font": {
+          "color": "black"
+        }
+      }
+    },
+    "SQLAG": {
+      "classifierName": "SQL Aggregation",
+      "color": {
+        "color": "#BC6C25",
+        "colorName": "Brown",
+        "font": {
+          "color": "white"
+        }
+      }
+    },
+    "SQLJN": {
+      "classifierName": "SQL Joins",
+      "color": {
+        "color": "#9B59B6",
+        "colorName": "Purple",
+        "font": {
+          "color": "white"
+        }
+      }
+    },
+    "SQLAD": {
+      "classifierName": "Advanced SQL",
+      "color": {
+        "color": "#E17055",
+        "colorName": "Orange",
+        "font": {
+          "color": "white"
+        }
+      }
+    },
+    "JSNAP": {
+      "classifierName": "JSON and APIs",
+      "color": {
+        "color": "#74B9FF",
+        "colorName": "Light Blue",
+        "font": {
+          "color": "black"
+        }
+      }
+    },
+    "DMDEL": {
+      "classifierName": "Data Modeling",
+      "color": {
+        "color": "#A29BFE",
+        "colorName": "Lavender",
+        "font": {
+          "color": "black"
+        }
+      }
+    },
+    "NORML": {
+      "classifierName": "Normalization",
+      "color": {
+        "color": "#FD79A8",
+        "colorName": "Pink",
+        "font": {
+          "color": "black"
+        }
+      }
+    },
+    "DWHOU": {
+      "classifierName": "Data Warehousing",
+      "color": {
+        "color": "#6C5CE7",
+        "colorName": "Indigo",
+        "font": {
+          "color": "white"
+        }
+      }
+    },
+    "ETLDI": {
+      "classifierName": "ETL and Data Integration",
+      "color": {
+        "color": "#00B894",
+        "colorName": "Mint Green",
+        "font": {
+          "color": "black"
+        }
+      }
+    },
+    "NOSQL": {
+      "classifierName": "NoSQL Databases",
+      "color": {
+        "color": "#00CEC9",
+        "colorName": "Cyan",
+        "font": {
+          "color": "black"
+        }
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Data",
+      "group": "DBFND",
+      "shape": "box"
+    },
+    {
+      "id": 2,
+      "label": "Information",
+      "group": "DBFND"
+    },
+    {
+      "id": 3,
+      "label": "Database",
+      "group": "DBFND"
+    },
+    {
+      "id": 4,
+      "label": "Metadata",
+      "group": "DBFND"
+    },
+    {
+      "id": 5,
+      "label": "Database Management System",
+      "group": "DBFND"
+    },
+    {
+      "id": 6,
+      "label": "DBMS",
+      "group": "DBFND"
+    },
+    {
+      "id": 7,
+      "label": "End User",
+      "group": "DBFND"
+    },
+    {
+      "id": 8,
+      "label": "Application Programmer",
+      "group": "DBFND"
+    },
+    {
+      "id": 9,
+      "label": "Database Administrator",
+      "group": "DBFND"
+    },
+    {
+      "id": 10,
+      "label": "Schema",
+      "group": "DBFND"
+    },
+    {
+      "id": 11,
+      "label": "Instance",
+      "group": "DBFND"
+    },
+    {
+      "id": 12,
+      "label": "Table",
+      "group": "TBLST"
+    },
+    {
+      "id": 13,
+      "label": "Row",
+      "group": "TBLST"
+    },
+    {
+      "id": 14,
+      "label": "Column",
+      "group": "TBLST"
+    },
+    {
+      "id": 15,
+      "label": "Record",
+      "group": "TBLST"
+    },
+    {
+      "id": 16,
+      "label": "Field",
+      "group": "TBLST"
+    },
+    {
+      "id": 17,
+      "label": "Attribute",
+      "group": "TBLST"
+    },
+    {
+      "id": 18,
+      "label": "Entity",
+      "group": "TBLST"
+    },
+    {
+      "id": 19,
+      "label": "Primary Key",
+      "group": "KEYCT"
+    },
+    {
+      "id": 20,
+      "label": "Foreign Key",
+      "group": "KEYCT"
+    },
+    {
+      "id": 21,
+      "label": "Composite Key",
+      "group": "KEYCT"
+    },
+    {
+      "id": 22,
+      "label": "Candidate Key",
+      "group": "KEYCT"
+    },
+    {
+      "id": 23,
+      "label": "Unique Constraint",
+      "group": "KEYCT"
+    },
+    {
+      "id": 24,
+      "label": "Not Null Constraint",
+      "group": "KEYCT"
+    },
+    {
+      "id": 25,
+      "label": "Check Constraint",
+      "group": "KEYCT"
+    },
+    {
+      "id": 26,
+      "label": "Referential Integrity",
+      "group": "KEYCT"
+    },
+    {
+      "id": 27,
+      "label": "Relational Model",
+      "group": "RELMD"
+    },
+    {
+      "id": 28,
+      "label": "Relation",
+      "group": "RELMD"
+    },
+    {
+      "id": 29,
+      "label": "Tuple",
+      "group": "RELMD"
+    },
+    {
+      "id": 30,
+      "label": "Domain",
+      "group": "RELMD"
+    },
+    {
+      "id": 31,
+      "label": "Cardinality",
+      "group": "TBLST"
+    },
+    {
+      "id": 32,
+      "label": "Degree",
+      "group": "RELMD"
+    },
+    {
+      "id": 33,
+      "label": "Relational Algebra",
+      "group": "RELMD"
+    },
+    {
+      "id": 34,
+      "label": "Selection Operation",
+      "group": "RELMD"
+    },
+    {
+      "id": 35,
+      "label": "Projection Operation",
+      "group": "RELMD"
+    },
+    {
+      "id": 36,
+      "label": "Union Operation",
+      "group": "RELMD"
+    },
+    {
+      "id": 37,
+      "label": "Intersection Operation",
+      "group": "RELMD"
+    },
+    {
+      "id": 38,
+      "label": "Difference Operation",
+      "group": "RELMD"
+    },
+    {
+      "id": 39,
+      "label": "Cartesian Product",
+      "group": "RELMD"
+    },
+    {
+      "id": 40,
+      "label": "Join Operation",
+      "group": "RELMD"
+    },
+    {
+      "id": 41,
+      "label": "SQL",
+      "group": "SQLFN"
+    },
+    {
+      "id": 42,
+      "label": "Structured Query Language",
+      "group": "SQLFN"
+    },
+    {
+      "id": 43,
+      "label": "DDL",
+      "group": "SQLFN"
+    },
+    {
+      "id": 44,
+      "label": "DML",
+      "group": "SQLFN"
+    },
+    {
+      "id": 45,
+      "label": "DCL",
+      "group": "SQLFN"
+    },
+    {
+      "id": 46,
+      "label": "TCL",
+      "group": "SQLFN"
+    },
+    {
+      "id": 47,
+      "label": "CREATE TABLE Statement",
+      "group": "SQLFN"
+    },
+    {
+      "id": 48,
+      "label": "ALTER TABLE Statement",
+      "group": "SQLFN"
+    },
+    {
+      "id": 49,
+      "label": "DROP TABLE Statement",
+      "group": "SQLFN"
+    },
+    {
+      "id": 50,
+      "label": "INSERT Statement",
+      "group": "SQLFN"
+    },
+    {
+      "id": 51,
+      "label": "UPDATE Statement",
+      "group": "SQLFN"
+    },
+    {
+      "id": 52,
+      "label": "DELETE Statement",
+      "group": "SQLFN"
+    },
+    {
+      "id": 53,
+      "label": "SELECT Statement",
+      "group": "SQLQY"
+    },
+    {
+      "id": 54,
+      "label": "WHERE Clause",
+      "group": "SQLQY"
+    },
+    {
+      "id": 55,
+      "label": "ORDER BY Clause",
+      "group": "SQLQY"
+    },
+    {
+      "id": 56,
+      "label": "LIMIT Clause",
+      "group": "SQLQY"
+    },
+    {
+      "id": 57,
+      "label": "DISTINCT Keyword",
+      "group": "SQLQY"
+    },
+    {
+      "id": 58,
+      "label": "AS Keyword",
+      "group": "SQLQY"
+    },
+    {
+      "id": 59,
+      "label": "Alias",
+      "group": "SQLQY"
+    },
+    {
+      "id": 60,
+      "label": "VARCHAR Data Type",
+      "group": "SQLFN"
+    },
+    {
+      "id": 61,
+      "label": "INT Data Type",
+      "group": "SQLFN"
+    },
+    {
+      "id": 62,
+      "label": "DECIMAL Data Type",
+      "group": "SQLFN"
+    },
+    {
+      "id": 63,
+      "label": "DATE Data Type",
+      "group": "SQLFN"
+    },
+    {
+      "id": 64,
+      "label": "DATETIME Data Type",
+      "group": "SQLFN"
+    },
+    {
+      "id": 65,
+      "label": "BOOLEAN Data Type",
+      "group": "SQLFN"
+    },
+    {
+      "id": 66,
+      "label": "TEXT Data Type",
+      "group": "SQLFN"
+    },
+    {
+      "id": 67,
+      "label": "BLOB Data Type",
+      "group": "SQLFN"
+    },
+    {
+      "id": 68,
+      "label": "Aggregate Function",
+      "group": "SQLAG"
+    },
+    {
+      "id": 69,
+      "label": "COUNT Function",
+      "group": "SQLAG"
+    },
+    {
+      "id": 70,
+      "label": "SUM Function",
+      "group": "SQLAG"
+    },
+    {
+      "id": 71,
+      "label": "AVG Function",
+      "group": "SQLAG"
+    },
+    {
+      "id": 72,
+      "label": "MIN Function",
+      "group": "SQLAG"
+    },
+    {
+      "id": 73,
+      "label": "MAX Function",
+      "group": "SQLAG"
+    },
+    {
+      "id": 74,
+      "label": "GROUP BY Clause",
+      "group": "SQLAG"
+    },
+    {
+      "id": 75,
+      "label": "HAVING Clause",
+      "group": "SQLAG"
+    },
+    {
+      "id": 76,
+      "label": "INNER JOIN",
+      "group": "SQLJN"
+    },
+    {
+      "id": 77,
+      "label": "LEFT JOIN",
+      "group": "SQLJN"
+    },
+    {
+      "id": 78,
+      "label": "RIGHT JOIN",
+      "group": "SQLJN"
+    },
+    {
+      "id": 79,
+      "label": "FULL OUTER JOIN",
+      "group": "SQLJN"
+    },
+    {
+      "id": 80,
+      "label": "CROSS JOIN",
+      "group": "SQLJN"
+    },
+    {
+      "id": 81,
+      "label": "Self Join",
+      "group": "SQLJN"
+    },
+    {
+      "id": 82,
+      "label": "Natural Join",
+      "group": "SQLJN"
+    },
+    {
+      "id": 83,
+      "label": "Equijoin",
+      "group": "SQLJN"
+    },
+    {
+      "id": 84,
+      "label": "Non-Equijoin",
+      "group": "SQLJN"
+    },
+    {
+      "id": 85,
+      "label": "Theta Join",
+      "group": "SQLJN"
+    },
+    {
+      "id": 86,
+      "label": "Subquery",
+      "group": "SQLAD"
+    },
+    {
+      "id": 87,
+      "label": "Correlated Subquery",
+      "group": "SQLAD"
+    },
+    {
+      "id": 88,
+      "label": "Nested Query",
+      "group": "SQLAD"
+    },
+    {
+      "id": 89,
+      "label": "IN Operator",
+      "group": "SQLAD"
+    },
+    {
+      "id": 90,
+      "label": "EXISTS Operator",
+      "group": "SQLAD"
+    },
+    {
+      "id": 91,
+      "label": "NOT IN Operator",
+      "group": "SQLAD"
+    },
+    {
+      "id": 92,
+      "label": "ALL Operator",
+      "group": "SQLAD"
+    },
+    {
+      "id": 93,
+      "label": "ANY Operator",
+      "group": "SQLAD"
+    },
+    {
+      "id": 94,
+      "label": "UNION Operator",
+      "group": "SQLAD"
+    },
+    {
+      "id": 95,
+      "label": "UNION ALL Operator",
+      "group": "SQLAD"
+    },
+    {
+      "id": 96,
+      "label": "INTERSECT Operator",
+      "group": "SQLAD"
+    },
+    {
+      "id": 97,
+      "label": "EXCEPT Operator",
+      "group": "SQLAD"
+    },
+    {
+      "id": 98,
+      "label": "View",
+      "group": "SQLAD"
+    },
+    {
+      "id": 99,
+      "label": "Materialized View",
+      "group": "SQLAD"
+    },
+    {
+      "id": 100,
+      "label": "Index",
+      "group": "SQLAD"
+    },
+    {
+      "id": 101,
+      "label": "Clustered Index",
+      "group": "SQLAD"
+    },
+    {
+      "id": 102,
+      "label": "Non-Clustered Index",
+      "group": "SQLAD"
+    },
+    {
+      "id": 103,
+      "label": "B-Tree Index",
+      "group": "SQLAD"
+    },
+    {
+      "id": 104,
+      "label": "Common Table Expression",
+      "group": "SQLAD"
+    },
+    {
+      "id": 105,
+      "label": "CTE",
+      "group": "SQLAD"
+    },
+    {
+      "id": 106,
+      "label": "Recursive CTE",
+      "group": "SQLAD"
+    },
+    {
+      "id": 107,
+      "label": "Window Function",
+      "group": "SQLAD"
+    },
+    {
+      "id": 108,
+      "label": "ROW_NUMBER Function",
+      "group": "SQLAD"
+    },
+    {
+      "id": 109,
+      "label": "RANK Function",
+      "group": "SQLAD"
+    },
+    {
+      "id": 110,
+      "label": "DENSE_RANK Function",
+      "group": "SQLAD"
+    },
+    {
+      "id": 111,
+      "label": "PARTITION BY Clause",
+      "group": "SQLAD"
+    },
+    {
+      "id": 112,
+      "label": "OVER Clause",
+      "group": "SQLAD"
+    },
+    {
+      "id": 113,
+      "label": "LAG Function",
+      "group": "SQLAD"
+    },
+    {
+      "id": 114,
+      "label": "LEAD Function",
+      "group": "SQLAD"
+    },
+    {
+      "id": 115,
+      "label": "JSON",
+      "group": "JSNAP"
+    },
+    {
+      "id": 116,
+      "label": "JavaScript Object Notation",
+      "group": "JSNAP"
+    },
+    {
+      "id": 117,
+      "label": "JSON Data Type",
+      "group": "JSNAP"
+    },
+    {
+      "id": 118,
+      "label": "JSON Object",
+      "group": "JSNAP"
+    },
+    {
+      "id": 119,
+      "label": "JSON Array",
+      "group": "JSNAP"
+    },
+    {
+      "id": 120,
+      "label": "JSON_EXTRACT Function",
+      "group": "JSNAP"
+    },
+    {
+      "id": 121,
+      "label": "JSON_VALUE Function",
+      "group": "JSNAP"
+    },
+    {
+      "id": 122,
+      "label": "JSON_QUERY Function",
+      "group": "JSNAP"
+    },
+    {
+      "id": 123,
+      "label": "REST API",
+      "group": "JSNAP"
+    },
+    {
+      "id": 124,
+      "label": "HTTP Method",
+      "group": "JSNAP"
+    },
+    {
+      "id": 125,
+      "label": "GET Request",
+      "group": "JSNAP"
+    },
+    {
+      "id": 126,
+      "label": "POST Request",
+      "group": "JSNAP"
+    },
+    {
+      "id": 127,
+      "label": "PUT Request",
+      "group": "JSNAP"
+    },
+    {
+      "id": 128,
+      "label": "DELETE Request",
+      "group": "JSNAP"
+    },
+    {
+      "id": 129,
+      "label": "API Endpoint",
+      "group": "JSNAP"
+    },
+    {
+      "id": 130,
+      "label": "API Authentication",
+      "group": "JSNAP"
+    },
+    {
+      "id": 131,
+      "label": "API Key",
+      "group": "JSNAP"
+    },
+    {
+      "id": 132,
+      "label": "Bearer Token",
+      "group": "JSNAP"
+    },
+    {
+      "id": 133,
+      "label": "HTTP Status Code",
+      "group": "JSNAP"
+    },
+    {
+      "id": 134,
+      "label": "Request Header",
+      "group": "JSNAP"
+    },
+    {
+      "id": 135,
+      "label": "Response Body",
+      "group": "JSNAP"
+    },
+    {
+      "id": 136,
+      "label": "Entity Relationship Diagram",
+      "group": "DMDEL"
+    },
+    {
+      "id": 137,
+      "label": "ER Diagram",
+      "group": "DMDEL"
+    },
+    {
+      "id": 138,
+      "label": "ERD",
+      "group": "DMDEL"
+    },
+    {
+      "id": 139,
+      "label": "Chen Notation",
+      "group": "DMDEL"
+    },
+    {
+      "id": 140,
+      "label": "Crow's Foot Notation",
+      "group": "DMDEL"
+    },
+    {
+      "id": 141,
+      "label": "Entity Type",
+      "group": "DMDEL"
+    },
+    {
+      "id": 142,
+      "label": "Weak Entity",
+      "group": "DMDEL"
+    },
+    {
+      "id": 143,
+      "label": "Strong Entity",
+      "group": "DMDEL"
+    },
+    {
+      "id": 144,
+      "label": "Relationship",
+      "group": "DMDEL"
+    },
+    {
+      "id": 145,
+      "label": "One-to-One Relationship",
+      "group": "DMDEL"
+    },
+    {
+      "id": 146,
+      "label": "One-to-Many Relationship",
+      "group": "DMDEL"
+    },
+    {
+      "id": 147,
+      "label": "Many-to-Many Relationship",
+      "group": "DMDEL"
+    },
+    {
+      "id": 148,
+      "label": "Associative Entity",
+      "group": "DMDEL"
+    },
+    {
+      "id": 149,
+      "label": "Bridge Table",
+      "group": "DMDEL"
+    },
+    {
+      "id": 150,
+      "label": "Junction Table",
+      "group": "DMDEL"
+    },
+    {
+      "id": 151,
+      "label": "Identifying Relationship",
+      "group": "DMDEL"
+    },
+    {
+      "id": 152,
+      "label": "Non-Identifying Relationship",
+      "group": "DMDEL"
+    },
+    {
+      "id": 153,
+      "label": "Functional Dependency",
+      "group": "NORML"
+    },
+    {
+      "id": 154,
+      "label": "Partial Dependency",
+      "group": "NORML"
+    },
+    {
+      "id": 155,
+      "label": "Transitive Dependency",
+      "group": "NORML"
+    },
+    {
+      "id": 156,
+      "label": "First Normal Form",
+      "group": "NORML"
+    },
+    {
+      "id": 157,
+      "label": "1NF",
+      "group": "NORML"
+    },
+    {
+      "id": 158,
+      "label": "Second Normal Form",
+      "group": "NORML"
+    },
+    {
+      "id": 159,
+      "label": "2NF",
+      "group": "NORML"
+    },
+    {
+      "id": 160,
+      "label": "Third Normal Form",
+      "group": "NORML"
+    },
+    {
+      "id": 161,
+      "label": "3NF",
+      "group": "NORML"
+    },
+    {
+      "id": 162,
+      "label": "Boyce-Codd Normal Form",
+      "group": "NORML"
+    },
+    {
+      "id": 163,
+      "label": "BCNF",
+      "group": "NORML"
+    },
+    {
+      "id": 164,
+      "label": "Normalization",
+      "group": "NORML"
+    },
+    {
+      "id": 165,
+      "label": "Denormalization",
+      "group": "NORML"
+    },
+    {
+      "id": 166,
+      "label": "Decomposition",
+      "group": "NORML"
+    },
+    {
+      "id": 167,
+      "label": "Lossless Join Property",
+      "group": "NORML"
+    },
+    {
+      "id": 168,
+      "label": "Dependency Preservation",
+      "group": "NORML"
+    },
+    {
+      "id": 169,
+      "label": "Anomaly",
+      "group": "NORML"
+    },
+    {
+      "id": 170,
+      "label": "Update Anomaly",
+      "group": "NORML"
+    },
+    {
+      "id": 171,
+      "label": "Insertion Anomaly",
+      "group": "NORML"
+    },
+    {
+      "id": 172,
+      "label": "Deletion Anomaly",
+      "group": "NORML"
+    },
+    {
+      "id": 173,
+      "label": "Data Warehouse",
+      "group": "DWHOU"
+    },
+    {
+      "id": 174,
+      "label": "OLTP",
+      "group": "DWHOU"
+    },
+    {
+      "id": 175,
+      "label": "OLAP",
+      "group": "DWHOU"
+    },
+    {
+      "id": 176,
+      "label": "Online Transaction Processing",
+      "group": "DWHOU"
+    },
+    {
+      "id": 177,
+      "label": "Online Analytical Processing",
+      "group": "DWHOU"
+    },
+    {
+      "id": 178,
+      "label": "Star Schema",
+      "group": "DWHOU"
+    },
+    {
+      "id": 179,
+      "label": "Snowflake Schema",
+      "group": "DWHOU"
+    },
+    {
+      "id": 180,
+      "label": "Fact Table",
+      "group": "DWHOU"
+    },
+    {
+      "id": 181,
+      "label": "Dimension Table",
+      "group": "DWHOU"
+    },
+    {
+      "id": 182,
+      "label": "Measure",
+      "group": "DWHOU"
+    },
+    {
+      "id": 183,
+      "label": "Grain",
+      "group": "DWHOU"
+    },
+    {
+      "id": 184,
+      "label": "Slowly Changing Dimension",
+      "group": "DWHOU"
+    },
+    {
+      "id": 185,
+      "label": "SCD Type 1",
+      "group": "DWHOU"
+    },
+    {
+      "id": 186,
+      "label": "SCD Type 2",
+      "group": "DWHOU"
+    },
+    {
+      "id": 187,
+      "label": "SCD Type 3",
+      "group": "DWHOU"
+    },
+    {
+      "id": 188,
+      "label": "ETL",
+      "group": "ETLDI"
+    },
+    {
+      "id": 189,
+      "label": "Extract Transform Load",
+      "group": "ETLDI"
+    },
+    {
+      "id": 190,
+      "label": "Data Quality",
+      "group": "ETLDI"
+    },
+    {
+      "id": 191,
+      "label": "Data Cleansing",
+      "group": "ETLDI"
+    },
+    {
+      "id": 192,
+      "label": "Knime",
+      "group": "ETLDI"
+    },
+    {
+      "id": 193,
+      "label": "NoSQL",
+      "group": "NOSQL"
+    },
+    {
+      "id": 194,
+      "label": "Document Database",
+      "group": "NOSQL"
+    },
+    {
+      "id": 195,
+      "label": "MongoDB",
+      "group": "NOSQL"
+    },
+    {
+      "id": 196,
+      "label": "Collection",
+      "group": "NOSQL"
+    },
+    {
+      "id": 197,
+      "label": "Document",
+      "group": "NOSQL"
+    },
+    {
+      "id": 198,
+      "label": "BSON",
+      "group": "NOSQL"
+    },
+    {
+      "id": 199,
+      "label": "CAP Theorem",
+      "group": "NOSQL"
+    },
+    {
+      "id": 200,
+      "label": "BASE Properties",
+      "group": "NOSQL"
+    }
+  ],
+  "edges": [
+    {
+      "from": 2,
+      "to": 1
+    },
+    {
+      "from": 3,
+      "to": 1
+    },
+    {
+      "from": 3,
+      "to": 2
+    },
+    {
+      "from": 4,
+      "to": 1
+    },
+    {
+      "from": 4,
+      "to": 3
+    },
+    {
+      "from": 5,
+      "to": 3
+    },
+    {
+      "from": 6,
+      "to": 5
+    },
+    {
+      "from": 7,
+      "to": 3
+    },
+    {
+      "from": 8,
+      "to": 3
+    },
+    {
+      "from": 8,
+      "to": 5
+    },
+    {
+      "from": 9,
+      "to": 5
+    },
+    {
+      "from": 10,
+      "to": 3
+    },
+    {
+      "from": 10,
+      "to": 4
+    },
+    {
+      "from": 11,
+      "to": 10
+    },
+    {
+      "from": 12,
+      "to": 3
+    },
+    {
+      "from": 13,
+      "to": 12
+    },
+    {
+      "from": 14,
+      "to": 12
+    },
+    {
+      "from": 15,
+      "to": 13
+    },
+    {
+      "from": 16,
+      "to": 14
+    },
+    {
+      "from": 17,
+      "to": 14
+    },
+    {
+      "from": 18,
+      "to": 17
+    },
+    {
+      "from": 19,
+      "to": 12
+    },
+    {
+      "from": 19,
+      "to": 14
+    },
+    {
+      "from": 19,
+      "to": 17
+    },
+    {
+      "from": 20,
+      "to": 19
+    },
+    {
+      "from": 21,
+      "to": 19
+    },
+    {
+      "from": 22,
+      "to": 17
+    },
+    {
+      "from": 22,
+      "to": 19
+    },
+    {
+      "from": 23,
+      "to": 14
+    },
+    {
+      "from": 24,
+      "to": 14
+    },
+    {
+      "from": 25,
+      "to": 14
+    },
+    {
+      "from": 26,
+      "to": 20
+    },
+    {
+      "from": 27,
+      "to": 12
+    },
+    {
+      "from": 27,
+      "to": 13
+    },
+    {
+      "from": 27,
+      "to": 14
+    },
+    {
+      "from": 28,
+      "to": 27
+    },
+    {
+      "from": 29,
+      "to": 13
+    },
+    {
+      "from": 29,
+      "to": 28
+    },
+    {
+      "from": 30,
+      "to": 17
+    },
+    {
+      "from": 31,
+      "to": 12
+    },
+    {
+      "from": 32,
+      "to": 14
+    },
+    {
+      "from": 32,
+      "to": 28
+    },
+    {
+      "from": 33,
+      "to": 27
+    },
+    {
+      "from": 34,
+      "to": 33
+    },
+    {
+      "from": 35,
+      "to": 33
+    },
+    {
+      "from": 36,
+      "to": 33
+    },
+    {
+      "from": 37,
+      "to": 33
+    },
+    {
+      "from": 38,
+      "to": 33
+    },
+    {
+      "from": 39,
+      "to": 33
+    },
+    {
+      "from": 40,
+      "to": 33
+    },
+    {
+      "from": 40,
+      "to": 39
+    },
+    {
+      "from": 41,
+      "to": 5
+    },
+    {
+      "from": 41,
+      "to": 27
+    },
+    {
+      "from": 42,
+      "to": 41
+    },
+    {
+      "from": 43,
+      "to": 41
+    },
+    {
+      "from": 44,
+      "to": 41
+    },
+    {
+      "from": 45,
+      "to": 41
+    },
+    {
+      "from": 46,
+      "to": 41
+    },
+    {
+      "from": 47,
+      "to": 43
+    },
+    {
+      "from": 47,
+      "to": 12
+    },
+    {
+      "from": 48,
+      "to": 43
+    },
+    {
+      "from": 48,
+      "to": 47
+    },
+    {
+      "from": 49,
+      "to": 43
+    },
+    {
+      "from": 49,
+      "to": 47
+    },
+    {
+      "from": 50,
+      "to": 44
+    },
+    {
+      "from": 50,
+      "to": 12
+    },
+    {
+      "from": 51,
+      "to": 44
+    },
+    {
+      "from": 51,
+      "to": 12
+    },
+    {
+      "from": 52,
+      "to": 44
+    },
+    {
+      "from": 52,
+      "to": 12
+    },
+    {
+      "from": 53,
+      "to": 44
+    },
+    {
+      "from": 53,
+      "to": 12
+    },
+    {
+      "from": 54,
+      "to": 53
+    },
+    {
+      "from": 55,
+      "to": 53
+    },
+    {
+      "from": 56,
+      "to": 53
+    },
+    {
+      "from": 57,
+      "to": 53
+    },
+    {
+      "from": 58,
+      "to": 53
+    },
+    {
+      "from": 59,
+      "to": 58
+    },
+    {
+      "from": 60,
+      "to": 47
+    },
+    {
+      "from": 61,
+      "to": 47
+    },
+    {
+      "from": 62,
+      "to": 47
+    },
+    {
+      "from": 63,
+      "to": 47
+    },
+    {
+      "from": 64,
+      "to": 47
+    },
+    {
+      "from": 65,
+      "to": 47
+    },
+    {
+      "from": 66,
+      "to": 47
+    },
+    {
+      "from": 67,
+      "to": 47
+    },
+    {
+      "from": 68,
+      "to": 53
+    },
+    {
+      "from": 69,
+      "to": 68
+    },
+    {
+      "from": 70,
+      "to": 68
+    },
+    {
+      "from": 71,
+      "to": 68
+    },
+    {
+      "from": 72,
+      "to": 68
+    },
+    {
+      "from": 73,
+      "to": 68
+    },
+    {
+      "from": 74,
+      "to": 53
+    },
+    {
+      "from": 74,
+      "to": 68
+    },
+    {
+      "from": 75,
+      "to": 74
+    },
+    {
+      "from": 76,
+      "to": 53
+    },
+    {
+      "from": 76,
+      "to": 40
+    },
+    {
+      "from": 77,
+      "to": 76
+    },
+    {
+      "from": 78,
+      "to": 76
+    },
+    {
+      "from": 79,
+      "to": 77
+    },
+    {
+      "from": 79,
+      "to": 78
+    },
+    {
+      "from": 80,
+      "to": 39
+    },
+    {
+      "from": 80,
+      "to": 76
+    },
+    {
+      "from": 81,
+      "to": 76
+    },
+    {
+      "from": 82,
+      "to": 76
+    },
+    {
+      "from": 83,
+      "to": 76
+    },
+    {
+      "from": 84,
+      "to": 76
+    },
+    {
+      "from": 85,
+      "to": 76
+    },
+    {
+      "from": 86,
+      "to": 53
+    },
+    {
+      "from": 87,
+      "to": 86
+    },
+    {
+      "from": 88,
+      "to": 86
+    },
+    {
+      "from": 89,
+      "to": 54
+    },
+    {
+      "from": 89,
+      "to": 86
+    },
+    {
+      "from": 90,
+      "to": 54
+    },
+    {
+      "from": 90,
+      "to": 86
+    },
+    {
+      "from": 91,
+      "to": 89
+    },
+    {
+      "from": 92,
+      "to": 54
+    },
+    {
+      "from": 92,
+      "to": 86
+    },
+    {
+      "from": 93,
+      "to": 54
+    },
+    {
+      "from": 93,
+      "to": 86
+    },
+    {
+      "from": 94,
+      "to": 53
+    },
+    {
+      "from": 95,
+      "to": 94
+    },
+    {
+      "from": 96,
+      "to": 53
+    },
+    {
+      "from": 96,
+      "to": 37
+    },
+    {
+      "from": 97,
+      "to": 53
+    },
+    {
+      "from": 97,
+      "to": 38
+    },
+    {
+      "from": 98,
+      "to": 53
+    },
+    {
+      "from": 99,
+      "to": 98
+    },
+    {
+      "from": 100,
+      "to": 12
+    },
+    {
+      "from": 100,
+      "to": 53
+    },
+    {
+      "from": 101,
+      "to": 100
+    },
+    {
+      "from": 102,
+      "to": 100
+    },
+    {
+      "from": 103,
+      "to": 100
+    },
+    {
+      "from": 104,
+      "to": 53
+    },
+    {
+      "from": 104,
+      "to": 98
+    },
+    {
+      "from": 105,
+      "to": 104
+    },
+    {
+      "from": 106,
+      "to": 105
+    },
+    {
+      "from": 107,
+      "to": 53
+    },
+    {
+      "from": 108,
+      "to": 107
+    },
+    {
+      "from": 109,
+      "to": 107
+    },
+    {
+      "from": 110,
+      "to": 107
+    },
+    {
+      "from": 111,
+      "to": 107
+    },
+    {
+      "from": 112,
+      "to": 107
+    },
+    {
+      "from": 113,
+      "to": 107
+    },
+    {
+      "from": 114,
+      "to": 107
+    },
+    {
+      "from": 115,
+      "to": 1
+    },
+    {
+      "from": 116,
+      "to": 115
+    },
+    {
+      "from": 117,
+      "to": 47
+    },
+    {
+      "from": 117,
+      "to": 115
+    },
+    {
+      "from": 118,
+      "to": 115
+    },
+    {
+      "from": 119,
+      "to": 115
+    },
+    {
+      "from": 120,
+      "to": 53
+    },
+    {
+      "from": 120,
+      "to": 117
+    },
+    {
+      "from": 121,
+      "to": 53
+    },
+    {
+      "from": 121,
+      "to": 117
+    },
+    {
+      "from": 122,
+      "to": 53
+    },
+    {
+      "from": 122,
+      "to": 117
+    },
+    {
+      "from": 123,
+      "to": 115
+    },
+    {
+      "from": 124,
+      "to": 123
+    },
+    {
+      "from": 125,
+      "to": 124
+    },
+    {
+      "from": 126,
+      "to": 124
+    },
+    {
+      "from": 127,
+      "to": 124
+    },
+    {
+      "from": 128,
+      "to": 124
+    },
+    {
+      "from": 129,
+      "to": 123
+    },
+    {
+      "from": 130,
+      "to": 123
+    },
+    {
+      "from": 131,
+      "to": 130
+    },
+    {
+      "from": 132,
+      "to": 130
+    },
+    {
+      "from": 133,
+      "to": 123
+    },
+    {
+      "from": 134,
+      "to": 123
+    },
+    {
+      "from": 135,
+      "to": 123
+    },
+    {
+      "from": 136,
+      "to": 18
+    },
+    {
+      "from": 137,
+      "to": 136
+    },
+    {
+      "from": 138,
+      "to": 137
+    },
+    {
+      "from": 139,
+      "to": 137
+    },
+    {
+      "from": 140,
+      "to": 137
+    },
+    {
+      "from": 141,
+      "to": 18
+    },
+    {
+      "from": 142,
+      "to": 141
+    },
+    {
+      "from": 143,
+      "to": 141
+    },
+    {
+      "from": 144,
+      "to": 18
+    },
+    {
+      "from": 144,
+      "to": 141
+    },
+    {
+      "from": 145,
+      "to": 144
+    },
+    {
+      "from": 146,
+      "to": 144
+    },
+    {
+      "from": 147,
+      "to": 146
+    },
+    {
+      "from": 148,
+      "to": 147
+    },
+    {
+      "from": 149,
+      "to": 148
+    },
+    {
+      "from": 150,
+      "to": 149
+    },
+    {
+      "from": 151,
+      "to": 144
+    },
+    {
+      "from": 152,
+      "to": 144
+    },
+    {
+      "from": 153,
+      "to": 17
+    },
+    {
+      "from": 154,
+      "to": 153
+    },
+    {
+      "from": 155,
+      "to": 153
+    },
+    {
+      "from": 156,
+      "to": 27
+    },
+    {
+      "from": 156,
+      "to": 153
+    },
+    {
+      "from": 157,
+      "to": 156
+    },
+    {
+      "from": 158,
+      "to": 156
+    },
+    {
+      "from": 158,
+      "to": 154
+    },
+    {
+      "from": 159,
+      "to": 158
+    },
+    {
+      "from": 160,
+      "to": 158
+    },
+    {
+      "from": 160,
+      "to": 155
+    },
+    {
+      "from": 161,
+      "to": 160
+    },
+    {
+      "from": 162,
+      "to": 160
+    },
+    {
+      "from": 163,
+      "to": 162
+    },
+    {
+      "from": 164,
+      "to": 156
+    },
+    {
+      "from": 165,
+      "to": 164
+    },
+    {
+      "from": 166,
+      "to": 164
+    },
+    {
+      "from": 167,
+      "to": 166
+    },
+    {
+      "from": 168,
+      "to": 166
+    },
+    {
+      "from": 169,
+      "to": 27
+    },
+    {
+      "from": 170,
+      "to": 169
+    },
+    {
+      "from": 171,
+      "to": 169
+    },
+    {
+      "from": 172,
+      "to": 169
+    },
+    {
+      "from": 173,
+      "to": 3
+    },
+    {
+      "from": 174,
+      "to": 5
+    },
+    {
+      "from": 174,
+      "to": 173
+    },
+    {
+      "from": 175,
+      "to": 173
+    },
+    {
+      "from": 176,
+      "to": 174
+    },
+    {
+      "from": 177,
+      "to": 175
+    },
+    {
+      "from": 178,
+      "to": 173
+    },
+    {
+      "from": 179,
+      "to": 178
+    },
+    {
+      "from": 180,
+      "to": 178
+    },
+    {
+      "from": 181,
+      "to": 178
+    },
+    {
+      "from": 182,
+      "to": 180
+    },
+    {
+      "from": 183,
+      "to": 180
+    },
+    {
+      "from": 184,
+      "to": 181
+    },
+    {
+      "from": 185,
+      "to": 184
+    },
+    {
+      "from": 186,
+      "to": 184
+    },
+    {
+      "from": 187,
+      "to": 184
+    },
+    {
+      "from": 188,
+      "to": 173
+    },
+    {
+      "from": 189,
+      "to": 188
+    },
+    {
+      "from": 190,
+      "to": 188
+    },
+    {
+      "from": 191,
+      "to": 190
+    },
+    {
+      "from": 192,
+      "to": 188
+    },
+    {
+      "from": 193,
+      "to": 3
+    },
+    {
+      "from": 194,
+      "to": 193
+    },
+    {
+      "from": 195,
+      "to": 194
+    },
+    {
+      "from": 196,
+      "to": 195
+    },
+    {
+      "from": 197,
+      "to": 195
+    },
+    {
+      "from": 198,
+      "to": 197
+    },
+    {
+      "from": 198,
+      "to": 115
+    },
+    {
+      "from": 199,
+      "to": 193
+    },
+    {
+      "from": 200,
+      "to": 193
+    }
+  ]
+}

@@ -19,6 +19,14 @@ nav:
     - 7. Normalization: chapters/07-normalization.md
     - 8. Data Warehousing and ETL: chapters/08-data-warehousing-etl.md
     - 9. NoSQL Databases: chapters/09-nosql.md
+  - Learning Graph:
+    - Overview: learning-graph/index.md
+    - Course Description: course-description.md
+    - Course Description Assessment: learning-graph/course-description-assessment.md
+    - Concept List: learning-graph/concept-list.md
+    - Concept Taxonomy: learning-graph/concept-taxonomy.md
+    - Graph Quality Analysis: learning-graph/graph-quality-analysis.md
+    - Taxonomy Distribution: learning-graph/taxonomy-distribution-report.md
   - Labs:
     - Lab Setup: labs/setup.md
     - Lab 1 - SQL Basics: labs/lab1-sql-basics.md
