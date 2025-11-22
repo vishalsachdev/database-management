@@ -1,0 +1,236 @@
+site_name: 'Claude Skills for Intelligent Textbooks'
+site_description: 'A collection of skills and techniques for building intelligent textbooks using Claude AI.'
+site_author: 'Dan McCreary'
+repo_name: 'GitHub Repo'
+site_url: 'https://dmccreary.github.io/claude-skills/'
+repo_url: 'https://github.com/dmccreary/claude-skills'
+edit_uri: 'blob/master/docs'
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Course Description: course-description.md
+  - Getting Started: getting-started.md
+
+  - Chapters:
+    - Overview: chapters/index.md
+    - Chapter 1 - Introduction to AI and Intelligent Textbooks:
+      - Content: chapters/01-intro-ai-intelligent-textbooks/index.md
+      - Quiz: chapters/01-intro-ai-intelligent-textbooks/quiz.md
+    - Chapter 2 - Getting Started with Claude and Skills:
+      - Content: chapters/02-getting-started-claude-skills/index.md
+      - Quiz: chapters/02-getting-started-claude-skills/quiz.md
+    - Chapter 3 - Course Design and Educational Theory:
+      - Content: chapters/03-course-design-educational-theory/index.md
+      - Quiz: chapters/03-course-design-educational-theory/quiz.md
+    - Chapter 4 - Introduction to Learning Graphs:
+      - Content: chapters/04-intro-learning-graphs/index.md
+      - Quiz: chapters/04-intro-learning-graphs/quiz.md
+    - Chapter 5 - Concept Enumeration and Dependencies:
+      - Content: chapters/05-concept-enumeration-dependencies/index.md
+      - Quiz: chapters/05-concept-enumeration-dependencies/quiz.md
+    - Chapter 6 - Learning Graph Quality and Validation:
+      - Content: chapters/06-learning-graph-quality-validation/index.md
+      - Quiz: chapters/06-learning-graph-quality-validation/quiz.md
+    - Chapter 7 - Taxonomy and Data Formats:
+      - Content: chapters/07-taxonomy-data-formats/index.md
+      - Quiz: chapters/07-taxonomy-data-formats/quiz.md
+    - Chapter 8 - MkDocs Platform and Documentation:
+      - Content: chapters/08-mkdocs-platform-documentation/index.md
+      - Quiz: chapters/08-mkdocs-platform-documentation/quiz.md
+    - Chapter 9 - Claude Skills Architecture and Development:
+      - Content: chapters/09-claude-skills-architecture-development/index.md
+      - Quiz: chapters/09-claude-skills-architecture-development/quiz.md
+    - Chapter 10 - Content Creation Workflows:
+      - Content: chapters/10-content-creation-workflows/index.md
+      - Quiz: chapters/10-content-creation-workflows/quiz.md
+    - Chapter 11 - Educational Resources and Assessment:
+      - Content: chapters/11-educational-resources-assessment/index.md
+      - Quiz: chapters/11-educational-resources-assessment/quiz.md
+    - Chapter 12 - Interactive Elements and MicroSims:
+      - Content: chapters/12-interactive-elements-microsims/index.md
+      - Quiz: chapters/12-interactive-elements-microsims/quiz.md
+    - Chapter 13 - Development Tools, Version Control, and Deployment:
+      - Content: chapters/13-dev-tools-version-control-deployment/index.md
+      - Quiz: chapters/13-dev-tools-version-control-deployment/quiz.md
+
+  - Skill Descriptions:
+    - Overview of Skills: skill-descriptions/index.md
+
+    - Book Generation Skills: 
+      - Overview: skill-descriptions/book/index.md
+      - 1 Course Description Generator and Analyzer: skill-descriptions/book/course-description-analyzer.md
+      - 2 Learning Graph Generator: skill-descriptions/book/learning-graph-generator.md
+      - 3 Install Learning Graph Viewer: skill-descriptions/book/install-learning-graph-viewer.md
+      - 4 Book Chapter Structure Generator: skill-descriptions/book/book-chapter-generator.md
+      - 5 Chapter Content Generator: skill-descriptions/book/chapter-content-generator.md
+      - 6 Glossary Generator: skill-descriptions/book/glossary-generator.md
+      - 7 FAQ Generator: skill-descriptions/book/faq-generator.md
+      - 8 Quiz Generator: skill-descriptions/book/quiz-generator.md
+      - 9 Reference Generator: skill-descriptions/book/reference-generator.md
+      - 10 Add Glossary Links: skill-descriptions/book/add-glossary-links.md
+    
+    - MicroSim Generation Skills:
+      - Bubble Chart: skill-descriptions/microsims/bubble-chart-generator.md
+      - Chart Generator: skill-descriptions/microsims/chartjs-generator.md
+      - List MicroSim Skills: skill-descriptions/microsims/index.md
+      # List in the order they are selected
+      - Math Function Plotter: skill-descriptions/microsims/math-function-plotter-plotly.md
+      - Map: skill-descriptions/microsims/map-generator.md
+      - Mermaid: skill-descriptions/microsims/mermaid-generator.md
+      - MicroSims p5 Generator: skill-descriptions/microsims/microsim-p5.md
+      - Timeline: skill-descriptions/microsims/timeline-generator.md
+      - Vis Network: skill-descriptions/microsims/vis-network.md
+      - Venn Diagram: skill-descriptions/microsims/venn-diagram-generator.md
+    
+    - Specialized Skills:
+      - skill-descriptions/specialized-skills/index.md
+      - skill-descriptions/specialized-skills/moving-rainbow.md
+
+  - Outdated:
+    - skill-descriptions/intelligent-textbook-creator.md
+    - skill-descriptions/intelligent-textbook.md
+  
+  - MicroSims:
+    - List of MicroSims: sims/index.md
+    - Adding Taxonomy Workflow: sims/adding-taxonomy-workflow/index.md
+    - Average Dependencies Distribution: sims/average-dependencies-distribution/index.md
+    - Chapter Index Structure: sims/chapter-index-structure/index.md
+    - Chapter Organization Workflow: sims/chapter-organization-workflow/index.md
+    - Claude Code Timeline: sims/claude-code-timeline/index.md
+    - Concept Length Histogram: sims/concept-length-histogram/index.md
+    - Chapter Content Generation Timeline: sims/chapter-content-generation-timeline/index.md
+    - Course Description Quality Workflow: sims/course-description-quality-workflow/index.md
+    - DAG Validation Algorithm: sims/dag-validation-algorithm/index.md
+    - FAQ Pattern Analysis: sims/faq-pattern-analysis/index.md
+    - Git Workflow Skill Development: sims/git-workflow-skill-development/index.md
+    - Graph Viewer: sims/graph-viewer/index.md
+    - Learning Graph JSON Schema: sims/learning-graph-json-schema/index.md
+    - Linear Chain vs Network: sims/linear-chain-vs-network/index.md
+    - Map Test World Cities: sims/test-world-cities/index.md
+    - MicroSim File Relationship Diagram: sims/microsim-file-relationship-diagram/index.md
+    - MkDocs Build Process: sims/mkdocs-build-process/index.md
+    - MkDocs GitHub Pages Deployment: sims/mkdocs-github-pages-deployment/index.md
+    - Orphaned Nodes Identification: sims/orphaned-nodes-identification/index.md
+    - p5.js Architecture: sims/p5js-architecture/index.md
+    - Security Zones Diagram: sims/security-zones-diagram/index.md
+    - Skill Context Window: sims/skill-context-window/index.md
+    - Sine Function Plot: sims/sine-function-plot/index.md
+    - Skill Directory Structure: sims/skill-directory-structure/index.md
+    - Skill Impact Chart: sims/skill-impact-chart/index.md
+    - Skill Installation Workflow: sims/skill-installation-workflow/index.md
+    - Taxonomy Distribution Pie: sims/taxonomy-distribution-pie/index.md
+    - Terminal Workflow Textbook: sims/terminal-workflow-textbook/index.md
+
+  - Learning Graph:
+    - Introduction: learning-graph/index.md
+    - Course Description Assessment: learning-graph/course-description-assessment.md
+    - Concept Enumeration: learning-graph/concept-list.md
+    - Graph Quality Analysis: learning-graph/quality-metrics.md
+    - Concept Taxonomy: learning-graph/concept-taxonomy.md
+    - Taxonomy Distribution Report: learning-graph/taxonomy-distribution.md
+    - Glossary Quality Report: learning-graph/glossary-quality-report.md
+    - FAQ Quality Report: learning-graph/faq-quality-report.md
+    - FAQ Coverage Gaps: learning-graph/faq-coverage-gaps.md
+    - Quiz Generation Report: learning-graph/quiz-generation-report.md
+    - Progress Report: learning-graph/progress.md
+    - Usage Limits: claude-usage-limits.md
+    - Book Metrics: learning-graph/book-metrics.md
+    - Chapter Metrics: learning-graph/chapter-metrics.md
+    - Diagram Table: learning-graph/diagram-table.md
+    - Diagram Details: learning-graph/diagram-details.md
+
+
+  - Prompts:
+    - List of Prompts: prompts/index.md
+    - Run the Course Description Skill: prompts/course-description-skill.md
+    - Run the References Generator Skill: prompts/references-generator-skill.md
+    - Book Chapter Generator: prompts/book-chapter-generator-skill.md
+    - Chapter Generator: prompts/chapter-content-generator.md
+    - prompts/create-mermaid-generator-skill.md
+    - prompts/run-glossary-generator-skill.md
+    - prompts/venn-diagram-skill-generator.md
+    - prompts/chapter-content-generator.md
+    - prompts/generate-chapter-10-content.md
+    - prompts/generate-chapter-11-content-log.md
+    - prompts/generate-chapter-8-content.md
+    - prompts/generate-chapter-9-content.md
+    - prompts/generate-chapter-structure.md
+    - prompts/generate-content-for-6-7.md
+    - prompts/generate-content-for-chapters-1-5.md
+    - prompts/quiz-generation.md
+    - prompts/add-events-to-timeline.md
+    - prompts/generate-chapter-12-content-log.md
+    - prompts/generate-claude-skill-timeline.md
+    - prompts/generate-references.md
+    - prompts/generate-timeline-skill.md
+    - prompts/suggest-timeline-placement.md
+    - prompts/course-description-quality-infographic.md
+    - prompts/create-infographic-generator-pi-skill.md
+    - prompts/generate-diagram-skill-priorities.md
+    - prompts/infographic-candidates-list.md
+    - prompts/update-skill-descriptions.md
+    - prompts/create-microsim-standardization-skill.md
+    - prompts/readme-generator-skill.md
+    - prompts/book-metrics-skill-creation.md
+    - prompts/create-microsim-type-selector-skill.md
+    - prompts/microsim-matcher-skill-creation.md
+    - prompts/missing-microsim-generators.md
+    - Using Hooks to Track Activities: prompts/using-hooks-to-track-activities.md
+
+  - Workshops:
+    - List of Workshops: workshops/index.md
+    - Two Hour Workshop: workshops/intelligent-textbook-workshop-outline.md
+  
+  - Details Analysis: details-analysis.md
+  - Glossary: glossary.md
+  - FAQ: faq.md
+  - References: references.md
+  - License: license.md
+  - Contact: contact.md
+ 
+# Dan's Microsite Standards from here down
+
+theme:
+  name: material
+  extra_css:
+    - styles/custom.css
+  logo: img/logo.png
+  favicon: img/favicon.ico
+  palette:
+    # Primary color overridden in css/extra.css with Anthropic brown (RGB: 218, 120, 87)
+    primary: 'custom'
+    accent: 'orange'
+  include_sidebar: true
+  features:
+    - content.code.copy
+    - navigation.expand
+    - navigation.path
+    - navigation.prune
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+    # this adds the prev and next icons in the footer
+    - navigation.footer
+    - content.action.edit
+plugins:
+  - search
+  - social
+  - social_override
+markdown_extensions:
+  - md_in_html
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      linenums: true
+extra_css:
+   - css/extra.css
+copyright: Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+extra:
+  generator: false
+  analytics:
+    provider: google
+    # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821
+    property: G-HPLDD3D3K2

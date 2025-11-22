@@ -1,0 +1,58 @@
+site_name: Database Management
+site_description: 'An intelligent textbook built with AI-powered tools and interactive learning experiences.'
+site_author: 'vishalsachdev'
+repo_name: 'GitHub Repo'
+site_url: 'https://vishalsachdev.github.io/database-management/'
+repo_url: 'https://github.com/vishalsachdev/database-management'
+edit_uri: 'blob/main/docs'
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Glossary: glossary.md
+  - References: references.md
+  - License: license.md
+
+theme:
+  name: material
+  logo: img/logo.png
+  favicon: img/favicon.ico
+  palette:
+    primary: 'blue'
+    accent: 'orange'
+  include_sidebar: true
+  features:
+    - content.code.copy
+    - navigation.expand
+    - navigation.path
+    - navigation.prune
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+    - navigation.footer
+    - content.action.edit
+
+plugins:
+  - search
+  - social
+  - social_override
+
+markdown_extensions:
+  - admonition
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - pymdownx.highlight:
+      linenums: true
+
+extra_css:
+   - css/extra.css
+
+extra_javascript:
+    - js/extra.js
+
+copyright: Copyright &copy; 2025 vishalsachdev. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+
+extra:
+  generator: false
