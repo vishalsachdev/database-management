@@ -9,6 +9,30 @@ edit_uri: 'blob/main/docs'
 nav:
   - Home: index.md
   - About: about.md
+  - Chapters:
+    - 1. Database Environment: chapters/01-database-environment.md
+    - 2. Tables and Relational Algebra: chapters/02-tables-relational-algebra.md
+    - 3. SQL Fundamentals: chapters/03-sql-fundamentals.md
+    - 4. Advanced SQL: chapters/04-advanced-sql.md
+    - 5. JSON Data and APIs: chapters/05-json-apis.md
+    - 6. Database Design and Modeling: chapters/06-database-design.md
+    - 7. Normalization: chapters/07-normalization.md
+    - 8. Data Warehousing and ETL: chapters/08-data-warehousing-etl.md
+    - 9. NoSQL Databases: chapters/09-nosql.md
+  - Labs:
+    - Lab Setup: labs/setup.md
+    - Lab 1 - SQL Basics: labs/lab1-sql-basics.md
+    - Lab 2 - SQL Joins: labs/lab2-sql-joins.md
+    - Lab 3 - Writing Queries: labs/lab3-writing-queries.md
+    - Lab 4 - JSON and APIs: labs/lab4-json-apis.md
+    - Lab 5 - ER Modeling: labs/lab5-er-modeling.md
+    - Lab 6 - Normalization: labs/lab6-normalization.md
+    - Lab 7 - ETL with Knime: labs/lab7-etl-knime.md
+    - Lab 8 - MongoDB: labs/lab8-mongodb.md
+  - Resources:
+    - SQL Cheat Sheet: resources/sql-cheatsheet.md
+    - Tool Setup Guides: resources/tool-setup.md
+    - Practice Problems: resources/practice-problems.md
   - Glossary: glossary.md
   - References: references.md
   - License: license.md
