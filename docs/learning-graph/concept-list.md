@@ -1,8 +1,8 @@
 # Database Management - Concept List
 
-200 concepts for Database Management learning graph.
+231 concepts for Database Management learning graph.
 
-## Concept Labels (1-200)
+## Concept Labels (1-231)
 
 1. Data
 2. Information
@@ -204,3 +204,34 @@
 198. BSON
 199. CAP Theorem
 200. BASE Properties
+201. CASE Statement
+202. Simple CASE Expression
+203. Searched CASE Expression
+204. COALESCE Function
+205. NULLIF Function
+206. IFNULL Function
+207. IS NULL Predicate
+208. CONCAT Function
+209. SUBSTRING Function
+210. TRIM Function
+211. LTRIM Function
+212. RTRIM Function
+213. UPPER Function
+214. LOWER Function
+215. REPLACE Function
+216. LENGTH Function
+217. LEFT Function
+218. RIGHT Function
+219. NOW Function
+220. CURRENT_TIMESTAMP Function
+221. CURDATE Function
+222. CURRENT_DATE Function
+223. DATE_ADD Function
+224. DATE_SUB Function
+225. DATEDIFF Function
+226. EXTRACT Function
+227. DATE_FORMAT Function
+228. CAST Function
+229. CONVERT Function
+230. AUTO_INCREMENT
+231. DEFAULT Constraint

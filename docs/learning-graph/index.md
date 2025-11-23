@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Database Management learning graph is a structured knowledge representation of all 200 key concepts in the course, organized by prerequisite relationships and taxonomic categories.
+The Database Management learning graph is a structured knowledge representation of all 231 key concepts in the course, organized by prerequisite relationships and taxonomic categories.
 
 ## What is a Learning Graph?
 
@@ -21,38 +21,39 @@ The graph helps students:
 
 ## Learning Graph Statistics
 
-- **Total Concepts**: 200
-- **Taxonomy Categories**: 15
-- **Dependency Edges**: 241
+- **Total Concepts**: 231
+- **Taxonomy Categories**: 16
+- **Dependency Edges**: 272 (estimated)
 - **Foundational Concepts**: 1 (Data)
-- **Maximum Dependency Chain**: 14 levels
-- **Average Dependencies per Concept**: 1.21
+- **Maximum Dependency Chain**: 15 levels (estimated)
+- **Average Dependencies per Concept**: 1.18 (estimated)
 
 ## Taxonomy Categories
 
-The 200 concepts are organized into 15 categories:
+The 231 concepts are organized into 16 categories:
 
-1. **Database Foundations** (DBFND) - 11 concepts (5.5%)
-2. **Relational Model** (RELMD) - 13 concepts (6.5%)
-3. **Table Structure** (TBLST) - 8 concepts (4.0%)
-4. **Keys and Constraints** (KEYCT) - 8 concepts (4.0%)
-5. **SQL Fundamentals** (SQLFN) - 20 concepts (10.0%)
-6. **SQL Queries** (SQLQY) - 7 concepts (3.5%)
-7. **SQL Aggregation** (SQLAG) - 8 concepts (4.0%)
-8. **SQL Joins** (SQLJN) - 10 concepts (5.0%)
-9. **Advanced SQL** (SQLAD) - 29 concepts (14.5%)
-10. **JSON and APIs** (JSNAP) - 21 concepts (10.5%)
-11. **Data Modeling** (DMDEL) - 17 concepts (8.5%)
-12. **Normalization** (NORML) - 20 concepts (10.0%)
-13. **Data Warehousing** (DWHOU) - 15 concepts (7.5%)
-14. **ETL and Data Integration** (ETLDI) - 5 concepts (2.5%)
-15. **NoSQL Databases** (NOSQL) - 8 concepts (4.0%)
+1. **Database Foundations** (DBFND) - 11 concepts (4.8%)
+2. **Relational Model** (RELMD) - 13 concepts (5.6%)
+3. **Table Structure** (TBLST) - 8 concepts (3.5%)
+4. **Keys and Constraints** (KEYCT) - 9 concepts (3.9%)
+5. **SQL Fundamentals** (SQLFN) - 21 concepts (9.1%)
+6. **SQL Functions** (SQLFN2) - 29 concepts (12.6%) ⭐ NEW
+7. **SQL Queries** (SQLQY) - 7 concepts (3.0%)
+8. **SQL Aggregation** (SQLAG) - 8 concepts (3.5%)
+9. **SQL Joins** (SQLJN) - 10 concepts (4.3%)
+10. **Advanced SQL** (SQLAD) - 29 concepts (12.6%)
+11. **JSON and APIs** (JSNAP) - 21 concepts (9.1%)
+12. **Data Modeling** (DMDEL) - 17 concepts (7.4%)
+13. **Normalization** (NORML) - 20 concepts (8.7%)
+14. **Data Warehousing** (DWHOU) - 15 concepts (6.5%)
+15. **ETL and Data Integration** (ETLDI) - 5 concepts (2.2%)
+16. **NoSQL Databases** (NOSQL) - 8 concepts (3.5%)
 
 ## Learning Graph Files
 
 - **[Course Description](../course-description.md)** - Comprehensive course overview (Quality Score: 100/100)
 - **[Course Description Assessment](./course-description-assessment.md)** - Quality evaluation report
-- **[Concept List](./concept-list.md)** - All 200 concept labels
+- **[Concept List](./concept-list.md)** - All 231 concept labels
 - **[Concept Taxonomy](./concept-taxonomy.md)** - Taxonomy category definitions
 - **[Learning Graph CSV](./learning-graph.csv)** - Concepts with dependencies and taxonomy IDs
 - **[Learning Graph JSON](./learning-graph.json)** - Complete graph in JSON format

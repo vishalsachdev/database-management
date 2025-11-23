@@ -1,6 +1,6 @@
 # Database Management - Concept Taxonomy
 
-12 categorical groupings for organizing the 200 concepts in the Database Management learning graph.
+16 categorical groupings for organizing the 231 concepts in the Database Management learning graph.
 
 ## Taxonomy Categories
 
@@ -49,7 +49,16 @@
 
 ---
 
-### 6. SQL Queries
+### 6. SQL Functions
+**TaxonomyID**: `SQLFN2`
+
+**Description**: SQL built-in functions for data manipulation including string functions, date/time functions, NULL handling, conditional logic, and type conversion.
+
+**Typical Concepts**: CASE Statement, COALESCE, NULLIF, CONCAT, SUBSTRING, TRIM, UPPER, LOWER, NOW, DATE_ADD, DATEDIFF, EXTRACT, CAST, CONVERT
+
+---
+
+### 7. SQL Queries
 **TaxonomyID**: `SQLQY`
 
 **Description**: SQL SELECT statements and query components including filtering, sorting, limiting, and aliasing.
@@ -58,7 +67,7 @@
 
 ---
 
-### 7. SQL Aggregation
+### 8. SQL Aggregation
 **TaxonomyID**: `SQLAG`
 
 **Description**: Aggregate functions and grouping mechanisms for summarizing data.
@@ -67,7 +76,7 @@
 
 ---
 
-### 8. SQL Joins
+### 9. SQL Joins
 **TaxonomyID**: `SQLJN`
 
 **Description**: Various types of JOIN operations for combining data from multiple tables.
@@ -76,7 +85,7 @@
 
 ---
 
-### 9. Advanced SQL
+### 10. Advanced SQL
 **TaxonomyID**: `SQLAD`
 
 **Description**: Advanced SQL features including subqueries, CTEs, window functions, views, indexes, and set operations.
@@ -85,7 +94,7 @@
 
 ---
 
-### 10. JSON and APIs
+### 11. JSON and APIs
 **TaxonomyID**: `JSNAP`
 
 **Description**: JSON data structures, JSON functions in SQL, and REST API concepts for data integration.
@@ -94,7 +103,7 @@
 
 ---
 
-### 11. Data Modeling
+### 12. Data Modeling
 **TaxonomyID**: `DMDEL`
 
 **Description**: Entity-Relationship modeling including ER diagrams, notations, entity types, relationships, and cardinality patterns.
@@ -103,7 +112,7 @@
 
 ---
 
-### 12. Normalization
+### 13. Normalization
 **TaxonomyID**: `NORML`
 
 **Description**: Database normalization theory including functional dependencies, normal forms, decomposition, and anomalies.
@@ -112,7 +121,7 @@
 
 ---
 
-### 13. Data Warehousing
+### 14. Data Warehousing
 **TaxonomyID**: `DWHOU`
 
 **Description**: Data warehousing concepts including OLAP, OLTP, dimensional modeling, star schema, and slowly changing dimensions.
@@ -121,7 +130,7 @@
 
 ---
 
-### 14. ETL and Data Integration
+### 15. ETL and Data Integration
 **TaxonomyID**: `ETLDI`
 
 **Description**: Extract, Transform, Load processes, data quality, data cleansing, and ETL tools.
@@ -130,7 +139,7 @@
 
 ---
 
-### 15. NoSQL Databases
+### 16. NoSQL Databases
 **TaxonomyID**: `NOSQL`
 
 **Description**: Non-relational database concepts including document databases, MongoDB, CAP theorem, and BASE properties.
@@ -141,22 +150,24 @@
 
 ## Taxonomy Summary
 
-| ID | Category Name | Expected Concept Count |
-|----|---------------|------------------------|
-| DBFND | Database Foundations | 10-15 |
-| RELMD | Relational Model | 10-15 |
-| TBLST | Table Structure | 8-12 |
-| KEYCT | Keys and Constraints | 8-10 |
-| SQLFN | SQL Fundamentals | 20-25 |
-| SQLQY | SQL Queries | 8-10 |
-| SQLAG | SQL Aggregation | 8-10 |
-| SQLJN | SQL Joins | 10-12 |
-| SQLAD | Advanced SQL | 25-30 |
-| JSNAP | JSON and APIs | 18-22 |
-| DMDEL | Data Modeling | 15-20 |
-| NORML | Normalization | 15-18 |
-| DWHOU | Data Warehousing | 12-15 |
-| ETLDI | ETL and Data Integration | 5-8 |
-| NOSQL | NoSQL Databases | 8-10 |
+| ID | Category Name | Concept Count |
+|----|---------------|---------------|
+| DBFND | Database Foundations | 11 |
+| RELMD | Relational Model | 13 |
+| TBLST | Table Structure | 8 |
+| KEYCT | Keys and Constraints | 9 |
+| SQLFN | SQL Fundamentals | 21 |
+| SQLFN2 | SQL Functions | 29 |
+| SQLQY | SQL Queries | 7 |
+| SQLAG | SQL Aggregation | 8 |
+| SQLJN | SQL Joins | 10 |
+| SQLAD | Advanced SQL | 29 |
+| JSNAP | JSON and APIs | 21 |
+| DMDEL | Data Modeling | 17 |
+| NORML | Normalization | 20 |
+| DWHOU | Data Warehousing | 15 |
+| ETLDI | ETL and Data Integration | 5 |
+| NOSQL | NoSQL Databases | 8 |
+| **Total** | | **231** |
 
-**Note**: This taxonomy has 15 categories to ensure balanced distribution. No category exceeds 30 concepts (15% of 200), providing a well-organized learning structure.
+**Note**: This taxonomy has 16 categories to ensure balanced distribution. The new SQL Functions category contains 29 commonly-used functions for data manipulation. No category exceeds 30 concepts (13% of 231), providing a well-organized learning structure.
