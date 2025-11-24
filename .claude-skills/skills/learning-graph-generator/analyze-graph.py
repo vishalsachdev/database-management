@@ -66,10 +66,9 @@ def verify_dag(concepts: Dict[int, str],
     """Verify the graph is a DAG using topological sort. Returns (is_dag, cycles_found)."""
     indeg = {cid: 0 for cid in concepts}
 
-    # Calculate indegree
+    # Calculate indegree (number of prerequisites for each concept)
     for concept_id, prereqs in dependencies.items():
-        for prereq in prereqs:
-            indeg[prereq] += 1
+        indeg[concept_id] = len(prereqs)
 
     # Kahn's algorithm for topological sort
     queue = deque([cid for cid in concepts if indeg[cid] == 0])

@@ -1,6 +1,6 @@
-# Database Management - BADM 350
+# Database Management - BADM 554
 
-Welcome to the Database Management textbook for BADM 350 at the University of Illinois.
+Welcome to the Database Management textbook for BADM 554 at the University of Illinois.
 
 ## Course Overview
 
@@ -26,7 +26,7 @@ By the end of this course, you will be able to:
 
 ## Course Structure
 
-This textbook is organized to follow the weekly progression of BADM 350:
+This textbook is organized to follow the weekly progression of BADM 554:
 
 ### Part 1: Database Fundamentals
 - Chapter 1: Database Environment

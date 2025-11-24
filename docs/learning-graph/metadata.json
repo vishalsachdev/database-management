@@ -1,0 +1,13 @@
+{
+  "title": "BADM 554 - Database Management",
+  "description": "A comprehensive database management course covering relational databases, SQL, NoSQL, data warehousing, ETL processes, and Python integration for business applications. Designed for graduate business students seeking practical database skills.",
+  "creator": "Vishal Sachdev",
+  "institution": "University of Illinois",
+  "date": "2025-11-24",
+  "version": "1.0",
+  "format": "Learning Graph JSON v1.0",
+  "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+  "license": "CC BY-NC-SA 4.0 DEED",
+  "courseIdentifier": "badm_350_120255_247989",
+  "totalConcepts": 231
+}
