@@ -1,0 +1,2545 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An intelligent textbook built with AI-powered tools and interactive learning experiences.">
+      
+      
+        <meta name="author" content="vishalsachdev">
+      
+      
+        <link rel="canonical" href="https://vishalsachdev.github.io/database-management/chapters/02-tables-relational-algebra/">
+      
+      
+        <link rel="prev" href="../01-database-environment/">
+      
+      
+        <link rel="next" href="../03-sql-fundamentals/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>2. Tables and Relational Algebra - Database Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-2-tables-and-relational-algebra" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Database Management" class="md-header__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Database Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Tables and Relational Algebra
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Database Management" class="md-nav__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Database Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-database-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Database Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Tables and Relational Algebra
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Tables and Relational Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-the-relational-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The Relational Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 The Relational Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-relational" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why "Relational"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-tables-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Tables (Relations)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Tables (Relations)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminology
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Characteristics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-super-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Super Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-candidate-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Candidate Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-primary-key-pk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Primary Key (PK)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-foreign-key-fk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Foreign Key (FK)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-composite-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Composite Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-good-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing Good Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-integrity-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Integrity Rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Integrity Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-entity-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Entity Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-referential-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Referential Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-domain-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Domain Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-key-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Key Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-relational-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Relational Algebra
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 Relational Algebra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-select-filter-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. SELECT (σ) - Filter Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-project-choose-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PROJECT (π) - Choose Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-union-combine-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. UNION (∪) - Combine Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-intersection-common-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. INTERSECTION (∩) - Common Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-difference-remove-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. DIFFERENCE (−) - Remove Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cartesian-product-all-combinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CARTESIAN PRODUCT (×) - All Combinations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-join-combine-related-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. JOIN (⋈) - Combine Related Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-practical-example-university-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Practical Example: University Database
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.6 Practical Example: University Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-queries-using-relational-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Queries Using Relational Algebra
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#business-application-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Business Application Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Business Application Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marketing-customer-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marketing: Customer Segmentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finance-overdue-invoices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finance: Overdue Invoices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-sql-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. SQL Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-advanced-sql.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Advanced SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-json-apis.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. JSON Data and APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-database-design.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Database Design and Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-normalization.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Normalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-data-warehousing-etl.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Data Warehousing and ETL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-nosql.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. NoSQL Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../labs/setup.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../resources/sql-cheatsheet.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-the-relational-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The Relational Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 The Relational Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-relational" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why "Relational"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-tables-relations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Tables (Relations)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Tables (Relations)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terminology
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Characteristics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-super-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Super Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-candidate-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Candidate Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-primary-key-pk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Primary Key (PK)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-foreign-key-fk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Foreign Key (FK)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-composite-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Composite Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-good-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing Good Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-integrity-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Integrity Rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 Integrity Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-entity-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Entity Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-referential-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Referential Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-domain-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Domain Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-key-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Key Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-relational-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Relational Algebra
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 Relational Algebra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-select-filter-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. SELECT (σ) - Filter Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-project-choose-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PROJECT (π) - Choose Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-union-combine-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. UNION (∪) - Combine Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-intersection-common-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. INTERSECTION (∩) - Common Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-difference-remove-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. DIFFERENCE (−) - Remove Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cartesian-product-all-combinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CARTESIAN PRODUCT (×) - All Combinations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-join-combine-related-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. JOIN (⋈) - Combine Related Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-practical-example-university-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Practical Example: University Database
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.6 Practical Example: University Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-queries-using-relational-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Queries Using Relational Algebra
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#business-application-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Business Application Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Business Application Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marketing-customer-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marketing: Customer Segmentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finance-overdue-invoices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finance: Overdue Invoices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../01-database-environment/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/vishalsachdev/database-management/blob/main/docs/chapters/02-tables-relational-algebra.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="chapter-2-tables-and-relational-algebra">Chapter 2: Tables and Relational Algebra</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After completing this chapter, you will be able to:</p>
+<ul>
+<li>Understand the structure of relational database tables</li>
+<li>Identify and work with different types of keys</li>
+<li>Explain and apply integrity rules</li>
+<li>Perform relational algebra operations</li>
+<li>Understand how tables relate to each other</li>
+</ul>
+<h2 id="21-the-relational-model">2.1 The Relational Model</h2>
+<p>The <strong>relational model</strong>, developed by E.F. Codd in 1970, represents data as a collection of <strong>relations</strong> (tables). This model is the foundation of modern database systems like MySQL, PostgreSQL, Oracle, and SQL Server.</p>
+<h3 id="why-relational">Why "Relational"?</h3>
+<p>The term "relational" comes from the mathematical concept of relations, not from relationships between tables (though those exist too!). Each table represents a relation, which is a set of tuples (rows).</p>
+<h2 id="22-tables-relations">2.2 Tables (Relations)</h2>
+<p>A <strong>table</strong> (or relation) is a two-dimensional structure consisting of rows and columns.</p>
+<h3 id="table-structure">Table Structure</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>STUDENT Table
++------------+------------------+--------+------+
+| Student_ID | Name             | Major  | GPA  |
++------------+------------------+--------+------+
+| 123456789  | Alice Johnson    | MIS    | 3.8  |
+| 987654321  | Bob Smith        | FIN    | 3.5  |
+| 456789123  | Carol Martinez   | ACCY   | 3.9  |
++------------+------------------+--------+------+
+</code></pre></div></td></tr></table></div>
+<h3 id="terminology">Terminology</h3>
+<table>
+<thead>
+<tr>
+<th>Formal Term</th>
+<th>Common Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relation</td>
+<td>Table</td>
+<td>A two-dimensional structure of data</td>
+</tr>
+<tr>
+<td>Tuple</td>
+<td>Row/Record</td>
+<td>A single entry in a table</td>
+</tr>
+<tr>
+<td>Attribute</td>
+<td>Column/Field</td>
+<td>A characteristic or property</td>
+</tr>
+<tr>
+<td>Domain</td>
+<td>Data Type</td>
+<td>Set of allowable values for an attribute</td>
+</tr>
+<tr>
+<td>Cardinality</td>
+<td>Row count</td>
+<td>Number of tuples in a relation</td>
+</tr>
+<tr>
+<td>Degree</td>
+<td>Column count</td>
+<td>Number of attributes in a relation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="table-characteristics">Table Characteristics</h3>
+<p>A proper relational table must have these characteristics:</p>
+<ol>
+<li><strong>Each column has a unique name</strong></li>
+<li>
+<p>Column names cannot be repeated in the same table</p>
+</li>
+<li>
+<p><strong>All values in a column are from the same domain</strong></p>
+</li>
+<li>
+<p>All values in the GPA column must be numbers between 0.0 and 4.0</p>
+</li>
+<li>
+<p><strong>Each row is unique</strong></p>
+</li>
+<li>
+<p>No two rows can be exactly identical</p>
+</li>
+<li>
+<p><strong>The order of rows is irrelevant</strong></p>
+</li>
+<li>
+<p>Tables are sets, not lists</p>
+</li>
+<li>
+<p><strong>The order of columns is irrelevant</strong></p>
+</li>
+<li>
+<p>Columns can be rearranged without changing the table's meaning</p>
+</li>
+<li>
+<p><strong>Each cell contains a single value (atomic)</strong></p>
+</li>
+<li>No lists or multiple values in a single cell</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Table Characteristics in Practice</p>
+<p><strong>Good Table (Follows Rules):</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>PRODUCT
++------------+------------------+--------+
+| Product_ID | Product_Name     | Price  |
++------------+------------------+--------+
+| P001       | Laptop           | 999.99 |
+| P002       | Mouse            | 24.99  |
++------------+------------------+--------+
+</code></pre></div></td></tr></table></div></p>
+<p><strong>Bad Table (Violates Atomic Value Rule):</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>ORDER
++----------+------------------------+
+| Order_ID | Products               |
++----------+------------------------+
+| O001     | Laptop, Mouse, Keyboard|  ← Multiple values!
++----------+------------------------+
+</code></pre></div></td></tr></table></div></p>
+</div>
+<h2 id="23-keys">2.3 Keys</h2>
+<p><strong>Keys</strong> are attributes (or combinations of attributes) that uniquely identify rows in a table.</p>
+<h3 id="types-of-keys">Types of Keys</h3>
+<h4 id="1-super-key">1. Super Key</h4>
+<p>A <strong>super key</strong> is any attribute (or set of attributes) that uniquely identifies a tuple.</p>
+<p><strong>Example:</strong>
+In the STUDENT table:
+- <code>Student_ID</code> is a super key
+- <code>{Student_ID, Name}</code> is also a super key
+- <code>{Student_ID, Name, Major}</code> is also a super key</p>
+<h4 id="2-candidate-key">2. Candidate Key</h4>
+<p>A <strong>candidate key</strong> is a minimal super key - no subset of it can uniquely identify tuples.</p>
+<p><strong>Example:</strong>
+- <code>Student_ID</code> is a candidate key (minimal)
+- <code>{Student_ID, Name}</code> is NOT a candidate key (not minimal - we can remove Name)</p>
+<h4 id="3-primary-key-pk">3. Primary Key (PK)</h4>
+<p>A <strong>primary key</strong> is the candidate key chosen to be the main identifier for the table.</p>
+<p>Rules for primary keys:
+- Must be unique
+- Cannot be NULL
+- Should be stable (not change over time)
+- Preferably simple (single column if possible)</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>STUDENT
++------------+------------------+--------+------+
+| Student_ID | Name             | Major  | GPA  |  ← Student_ID is the PK
++------------+------------------+--------+------+
+</code></pre></div></td></tr></table></div></p>
+<h4 id="4-foreign-key-fk">4. Foreign Key (FK)</h4>
+<p>A <strong>foreign key</strong> is an attribute in one table that references the primary key of another table.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>ENROLLMENT
++---------------+------------+-------------+-------+
+| Enrollment_ID | Student_ID | Course_Code | Grade |  ← Student_ID is an FK
++---------------+------------+-------------+-------+
+
+STUDENT
++------------+------------------+--------+------+
+| Student_ID | Name             | Major  | GPA  |  ← Student_ID is the PK
++------------+------------------+--------+------+
+</code></pre></div></td></tr></table></div></p>
+<p>The <code>Student_ID</code> in ENROLLMENT references the <code>Student_ID</code> in STUDENT.</p>
+<h4 id="5-composite-key">5. Composite Key</h4>
+<p>A <strong>composite key</strong> is a primary key made up of two or more attributes.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>ENROLLMENT
++------------+-------------+-------+
+| Student_ID | Course_Code | Grade |  ← {Student_ID, Course_Code} is a composite PK
++------------+-------------+-------+
+</code></pre></div></td></tr></table></div></p>
+<p>A student can enroll in multiple courses, and a course can have multiple students, but each combination of student + course is unique.</p>
+<h3 id="choosing-good-keys">Choosing Good Keys</h3>
+<div class="admonition tip">
+<p class="admonition-title">Best Practices for Primary Keys</p>
+<p><strong>Good PK choices:</strong>
+- <code>Student_ID</code> (created for this purpose)
+- <code>Product_SKU</code> (unique identifier)
+- <code>Order_Number</code> (system-generated)</p>
+<p><strong>Poor PK choices:</strong>
+- <code>Name</code> (not unique, can change)
+- <code>Email</code> (can change)
+- <code>Phone_Number</code> (can change, may not be unique internationally)</p>
+</div>
+<h2 id="24-integrity-rules">2.4 Integrity Rules</h2>
+<p><strong>Integrity rules</strong> ensure data accuracy and consistency.</p>
+<h3 id="1-entity-integrity">1. Entity Integrity</h3>
+<p><strong>Rule:</strong> The primary key cannot be NULL.</p>
+<p><strong>Why?</strong> If the primary key is NULL, we cannot uniquely identify that row.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>STUDENT
++------------+------------------+--------+------+
+| Student_ID | Name             | Major  | GPA  |
++------------+------------------+--------+------+
+| NULL       | Alice Johnson    | MIS    | 3.8  |  ← INVALID!
+| 987654321  | Bob Smith        | FIN    | 3.5  |  ← Valid
++------------+------------------+--------+------+
+</code></pre></div></td></tr></table></div></p>
+<h3 id="2-referential-integrity">2. Referential Integrity</h3>
+<p><strong>Rule:</strong> A foreign key must either:
+- Match a primary key value in the referenced table, OR
+- Be NULL (if allowed)</p>
+<p><strong>Why?</strong> We shouldn't have references to non-existent records.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>ENROLLMENT                           STUDENT
++---------------+------------+       +------------+------+
+| Enrollment_ID | Student_ID |       | Student_ID | Name |
++---------------+------------+       +------------+------+
+| E001          | 123456789  | ✓ OK  | 123456789  | Alice|
+| E002          | 999999999  | ✗ BAD | 987654321  | Bob  |
++---------------+------------+       +------------+------+
+                     ↑
+      Student 999999999 doesn&#39;t exist!
+</code></pre></div></td></tr></table></div></p>
+<h3 id="3-domain-integrity">3. Domain Integrity</h3>
+<p><strong>Rule:</strong> All values in a column must be from the appropriate domain.</p>
+<p><strong>Examples:</strong>
+- GPA must be between 0.0 and 4.0
+- Email must contain an @ symbol
+- Date_of_Birth must be a valid date</p>
+<h3 id="4-key-integrity">4. Key Integrity</h3>
+<p><strong>Rule:</strong> Each primary key value must be unique within the table.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>STUDENT
++------------+------------------+
+| Student_ID | Name             |
++------------+------------------+
+| 123456789  | Alice Johnson    |  ✓ OK
+| 123456789  | Bob Smith        |  ✗ INVALID! Duplicate key
++------------+------------------+
+</code></pre></div></td></tr></table></div></p>
+<h2 id="25-relational-algebra">2.5 Relational Algebra</h2>
+<p><strong>Relational algebra</strong> is a formal language for querying relational databases. It provides the theoretical foundation for SQL.</p>
+<h3 id="basic-operators">Basic Operators</h3>
+<h4 id="1-select-filter-rows">1. SELECT (σ) - Filter Rows</h4>
+<p>The SELECT operator filters rows based on a condition.</p>
+<p><strong>Notation:</strong> σ<sub>condition</sub>(Table)</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>σ_{GPA &gt; 3.5}(STUDENT)
+
+Returns students with GPA greater than 3.5
+</code></pre></div></td></tr></table></div></p>
+<h4 id="2-project-choose-columns">2. PROJECT (π) - Choose Columns</h4>
+<p>The PROJECT operator selects specific columns.</p>
+<p><strong>Notation:</strong> π<sub>column1, column2, ...</sub>(Table)</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>π_{Student_ID, Name}(STUDENT)
+
+Returns only the Student_ID and Name columns
+</code></pre></div></td></tr></table></div></p>
+<h4 id="3-union-combine-rows">3. UNION (∪) - Combine Rows</h4>
+<p>The UNION operator combines rows from two tables (tables must have the same structure).</p>
+<p><strong>Notation:</strong> Table1 ∪ Table2</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>SPRING_STUDENTS ∪ FALL_STUDENTS
+
+Returns all students from both semesters (no duplicates)
+</code></pre></div></td></tr></table></div></p>
+<h4 id="4-intersection-common-rows">4. INTERSECTION (∩) - Common Rows</h4>
+<p>The INTERSECTION operator returns rows that appear in both tables.</p>
+<p><strong>Notation:</strong> Table1 ∩ Table2</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>SPRING_STUDENTS ∩ FALL_STUDENTS
+
+Returns students who enrolled in both semesters
+</code></pre></div></td></tr></table></div></p>
+<h4 id="5-difference-remove-rows">5. DIFFERENCE (−) - Remove Rows</h4>
+<p>The DIFFERENCE operator returns rows in the first table but not in the second.</p>
+<p><strong>Notation:</strong> Table1 − Table2</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>SPRING_STUDENTS − GRADUATED_STUDENTS
+
+Returns students who were enrolled in spring but haven&#39;t graduated
+</code></pre></div></td></tr></table></div></p>
+<h4 id="6-cartesian-product-all-combinations">6. CARTESIAN PRODUCT (×) - All Combinations</h4>
+<p>The CARTESIAN PRODUCT creates all possible combinations of rows from two tables.</p>
+<p><strong>Notation:</strong> Table1 × Table2</p>
+<p><strong>Example:</strong>
+If Table1 has 3 rows and Table2 has 4 rows, the result has 3 × 4 = 12 rows.</p>
+<h4 id="7-join-combine-related-rows">7. JOIN (⋈) - Combine Related Rows</h4>
+<p>The JOIN operator combines rows from two tables based on a related column.</p>
+<p><strong>Notation:</strong> Table1 ⋈<sub>condition</sub> Table2</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>STUDENT ⋈_{STUDENT.Student_ID = ENROLLMENT.Student_ID} ENROLLMENT
+
+Returns students with their enrollments
+</code></pre></div></td></tr></table></div></p>
+<h3 id="combining-operators">Combining Operators</h3>
+<p>Relational algebra operators can be combined to create complex queries:</p>
+<p><strong>Example:</strong> Find names of students with GPA &gt; 3.5
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>π_{Name}(σ_{GPA &gt; 3.5}(STUDENT))
+</code></pre></div></td></tr></table></div></p>
+<p><strong>Step-by-step:</strong>
+1. σ<sub>GPA &gt; 3.5</sub>(STUDENT) - Filter students with GPA &gt; 3.5
+2. π<sub>Name</sub>(...) - Project only the Name column</p>
+<h2 id="26-practical-example-university-database">2.6 Practical Example: University Database</h2>
+<p>Let's see how these concepts work together:</p>
+<h3 id="tables">Tables</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code>STUDENT
++------------+------------------+--------+------+
+| Student_ID | Name             | Major  | GPA  |  ← PK: Student_ID
++------------+------------------+--------+------+
+| 123456789  | Alice Johnson    | MIS    | 3.8  |
+| 987654321  | Bob Smith        | FIN    | 3.5  |
+| 456789123  | Carol Martinez   | ACCY   | 3.9  |
++------------+------------------+--------+------+
+
+COURSE
++-------------+----------------------------+---------+
+| Course_Code | Course_Title               | Credits |  ← PK: Course_Code
++-------------+----------------------------+---------+
+| BADM350     | Database Management        | 3       |
+| BADM310     | Management Information Sys | 3       |
+| FIN221      | Corporate Finance          | 3       |
++-------------+----------------------------+---------+
+
+ENROLLMENT
++---------------+------------+-------------+-------+
+| Enrollment_ID | Student_ID | Course_Code | Grade |  ← PK: Enrollment_ID
++---------------+------------+-------------+-------+  ← FK: Student_ID → STUDENT
+| E001          | 123456789  | BADM350     | A     |  ← FK: Course_Code → COURSE
+| E002          | 123456789  | BADM310     | A-    |
+| E003          | 987654321  | BADM350     | B+    |
+| E004          | 456789123  | FIN221      | A     |
++---------------+------------+-------------+-------+
+</code></pre></div></td></tr></table></div>
+<h3 id="sample-queries-using-relational-algebra">Sample Queries Using Relational Algebra</h3>
+<p><strong>Q1:</strong> Find all MIS majors
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>σ_{Major = &#39;MIS&#39;}(STUDENT)
+</code></pre></div></td></tr></table></div></p>
+<p><strong>Q2:</strong> Find student IDs and course codes for all enrollments
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>π_{Student_ID, Course_Code}(ENROLLMENT)
+</code></pre></div></td></tr></table></div></p>
+<p><strong>Q3:</strong> Find names of students enrolled in BADM350
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>π_{Name}(
+  STUDENT ⋈_{STUDENT.Student_ID = ENROLLMENT.Student_ID}
+  (σ_{Course_Code = &#39;BADM350&#39;}(ENROLLMENT))
+)
+</code></pre></div></td></tr></table></div></p>
+<h2 id="business-application-examples">Business Application Examples</h2>
+<h3 id="marketing-customer-segmentation">Marketing: Customer Segmentation</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>HIGH_VALUE_CUSTOMERS = σ_{Total_Purchases &gt; 1000}(CUSTOMER)
+
+RECENT_BUYERS = σ_{Last_Purchase_Date &gt; &#39;2024-01-01&#39;}(CUSTOMER)
+
+TARGET_LIST = HIGH_VALUE_CUSTOMERS ∩ RECENT_BUYERS
+</code></pre></div></td></tr></table></div>
+<h3 id="finance-overdue-invoices">Finance: Overdue Invoices</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>OVERDUE = σ_{Due_Date &lt; TODAY AND Status ≠ &#39;PAID&#39;}(INVOICE)
+
+π_{Customer_Name, Invoice_Number, Amount}(
+  CUSTOMER ⋈ OVERDUE
+)
+</code></pre></div></td></tr></table></div>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>Tables are the foundation</strong> of relational databases - they organize data in rows and columns</li>
+<li><strong>Keys uniquely identify rows</strong> - Primary keys identify rows within a table, foreign keys link tables</li>
+<li><strong>Integrity rules ensure data quality</strong> - Entity, referential, domain, and key integrity</li>
+<li><strong>Relational algebra provides operations</strong> - SELECT, PROJECT, JOIN, UNION, and others</li>
+<li><strong>These concepts underlie SQL</strong> - Understanding relational algebra helps you write better SQL</li>
+</ol>
+<h2 id="review-questions">Review Questions</h2>
+<ol>
+<li>What are the six characteristics that define a proper relational table?</li>
+<li>Explain the difference between a candidate key and a primary key.</li>
+<li>What is referential integrity, and why is it important?</li>
+<li>Describe a scenario where a composite key would be appropriate.</li>
+<li>Write a relational algebra expression to find all products with price less than $50.</li>
+</ol>
+<h2 id="practical-exercise">Practical Exercise</h2>
+<p>Design a simple database for a library system:</p>
+<ol>
+<li>Create three tables: BOOK, MEMBER, and LOAN</li>
+<li>Identify appropriate primary keys for each table</li>
+<li>Identify any foreign keys needed</li>
+<li>Write relational algebra expressions for:</li>
+<li>Finding all books currently on loan</li>
+<li>Finding members who have never borrowed a book</li>
+<li>Finding overdue loans</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<p>In <a href="../03-sql-fundamentals/">Chapter 3</a>, we'll learn SQL - the practical language for implementing the concepts you've learned in this chapter.</p>
+<hr />
+<p><em>Corresponds to Week 2 of BADM 350 - Chapter 3 of the textbook</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01-database-environment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Database Environment">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                1. Database Environment
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-sql-fundamentals/" class="md-footer__link md-footer__link--next" aria-label="Next: 3. SQL Fundamentals">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                3. SQL Fundamentals
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 vishalsachdev. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

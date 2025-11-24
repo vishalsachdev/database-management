@@ -1,0 +1,3350 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An intelligent textbook built with AI-powered tools and interactive learning experiences.">
+      
+      
+        <meta name="author" content="vishalsachdev">
+      
+      
+        <link rel="canonical" href="https://vishalsachdev.github.io/database-management/chapters/03-sql-fundamentals/">
+      
+      
+        <link rel="prev" href="../02-tables-relational-algebra/">
+      
+      
+        <link rel="next" href="../../glossary/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>3. SQL Fundamentals - Database Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-3-sql-fundamentals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Database Management" class="md-header__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Database Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. SQL Fundamentals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Database Management" class="md-nav__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Database Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-database-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Database Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tables-relational-algebra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Tables and Relational Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. SQL Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. SQL Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-introduction-to-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Introduction to SQL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Introduction to SQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is SQL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-sql-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why SQL Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-creating-databases-and-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Creating Databases and Tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Creating Databases and Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Data Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Data Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numeric-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numeric Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        String Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-and-time-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Date and Time Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-data-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boolean Data Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-data-types-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing Data Types: Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-the-select-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 The SELECT Statement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 The SELECT Statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting-all-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting All Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting-specific-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting Specific Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Column Aliases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculated-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calculated Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distinct-remove-duplicates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DISTINCT - Remove Duplicates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-filtering-with-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Filtering with WHERE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 Filtering with WHERE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-where-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic WHERE Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logical Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#and-both-conditions-must-be-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AND - Both conditions must be true
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or-either-condition-can-be-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OR - Either condition can be true
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-negates-a-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOT - Negates a condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining Logical Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-matching-with-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern Matching with LIKE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-conditions-with-between" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Range Conditions with BETWEEN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#membership-with-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Membership with IN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NULL Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-sorting-results-with-order-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Sorting Results with ORDER BY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 Sorting Results with ORDER BY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ascending-order-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ascending Order (Default)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descending-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descending Order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-sort-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Sort Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-by-column-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sorting by Column Position
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-limiting-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 Limiting Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 Limiting Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysqlpostgresql-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MySQL/PostgreSQL - LIMIT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-server-ms-access-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Server / MS Access - TOP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-aggregate-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 Aggregate Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.8 Aggregate Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-aggregate-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Aggregate Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-counting-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COUNT - Counting Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sum-total" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SUM - Total
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avg-average" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AVG - Average
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#min-and-max" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MIN and MAX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-aggregate-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining Aggregate Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-business-application-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 Business Application Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.9 Business Application Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marketing-customer-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marketing: Customer Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finance-transaction-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finance: Transaction Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-employee-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HR: Employee Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-advanced-sql.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Advanced SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-json-apis.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. JSON Data and APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-database-design.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Database Design and Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-normalization.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Normalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-data-warehousing-etl.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Data Warehousing and ETL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-nosql.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. NoSQL Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../labs/setup.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Labs
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../resources/sql-cheatsheet.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-introduction-to-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Introduction to SQL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Introduction to SQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is SQL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-sql-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why SQL Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-creating-databases-and-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Creating Databases and Tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Creating Databases and Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Data Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 Data Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numeric-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numeric Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        String Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-and-time-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Date and Time Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-data-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boolean Data Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-data-types-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing Data Types: Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-the-select-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 The SELECT Statement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 The SELECT Statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting-all-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting All Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting-specific-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selecting Specific Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Column Aliases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculated-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calculated Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distinct-remove-duplicates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DISTINCT - Remove Duplicates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-filtering-with-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Filtering with WHERE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 Filtering with WHERE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-where-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic WHERE Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical Operators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logical Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#and-both-conditions-must-be-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AND - Both conditions must be true
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or-either-condition-can-be-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OR - Either condition can be true
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-negates-a-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NOT - Negates a condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining Logical Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-matching-with-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern Matching with LIKE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-conditions-with-between" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Range Conditions with BETWEEN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#membership-with-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Membership with IN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NULL Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-sorting-results-with-order-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Sorting Results with ORDER BY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 Sorting Results with ORDER BY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ascending-order-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ascending Order (Default)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descending-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descending Order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-sort-columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Sort Columns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-by-column-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sorting by Column Position
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-limiting-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 Limiting Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.7 Limiting Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysqlpostgresql-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MySQL/PostgreSQL - LIMIT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-server-ms-access-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SQL Server / MS Access - TOP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-aggregate-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 Aggregate Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.8 Aggregate Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-aggregate-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Aggregate Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-counting-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COUNT - Counting Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sum-total" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SUM - Total
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avg-average" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AVG - Average
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#min-and-max" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MIN and MAX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-aggregate-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining Aggregate Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-business-application-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 Business Application Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.9 Business Application Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marketing-customer-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marketing: Customer Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finance-transaction-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finance: Transaction Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hr-employee-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HR: Employee Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../01-database-environment/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/vishalsachdev/database-management/blob/main/docs/chapters/03-sql-fundamentals.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="chapter-3-sql-fundamentals">Chapter 3: SQL Fundamentals</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After completing this chapter, you will be able to:</p>
+<ul>
+<li>Understand what SQL is and why it's important</li>
+<li>Create databases and tables using SQL</li>
+<li>Use appropriate data types for different kinds of data</li>
+<li>Write basic SELECT queries to retrieve data</li>
+<li>Filter data using WHERE clauses</li>
+<li>Sort and limit query results</li>
+<li>Use aggregate functions to summarize data</li>
+</ul>
+<h2 id="31-introduction-to-sql">3.1 Introduction to SQL</h2>
+<h3 id="what-is-sql">What is SQL?</h3>
+<p><strong>SQL (Structured Query Language)</strong> is the standard language for interacting with relational databases. It's used by all major database systems including MySQL, PostgreSQL, Oracle, SQL Server, and SQLite.</p>
+<h3 id="why-sql-matters">Why SQL Matters</h3>
+<p>SQL is one of the most valuable skills for business professionals because:</p>
+<ul>
+<li><strong>Universal</strong>: Works across all relational databases with minor variations</li>
+<li><strong>Powerful</strong>: Can retrieve and manipulate complex data with simple commands</li>
+<li><strong>In-demand</strong>: One of the top skills employers look for</li>
+<li><strong>Accessible</strong>: Easier to learn than most programming languages</li>
+</ul>
+<h3 id="sql-categories">SQL Categories</h3>
+<p>SQL commands fall into several categories:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Purpose</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DDL</strong> (Data Definition Language)</td>
+<td>Define database structure</td>
+<td>CREATE, ALTER, DROP</td>
+</tr>
+<tr>
+<td><strong>DML</strong> (Data Manipulation Language)</td>
+<td>Manipulate data</td>
+<td>SELECT, INSERT, UPDATE, DELETE</td>
+</tr>
+<tr>
+<td><strong>DCL</strong> (Data Control Language)</td>
+<td>Control access</td>
+<td>GRANT, REVOKE</td>
+</tr>
+<tr>
+<td><strong>TCL</strong> (Transaction Control Language)</td>
+<td>Manage transactions</td>
+<td>COMMIT, ROLLBACK</td>
+</tr>
+</tbody>
+</table>
+<p>In this course, we'll focus primarily on DDL and DML.</p>
+<h2 id="32-creating-databases-and-tables">3.2 Creating Databases and Tables</h2>
+<h3 id="creating-a-database">Creating a Database</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">company_db</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="using-a-database">Using a Database</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">USE</span><span class="w"> </span><span class="n">company_db</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="creating-a-table">Creating a Table</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">employee_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">first_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">last_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">hire_date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">salary</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span>
+<span class="w">    </span><span class="n">department_id</span><span class="w"> </span><span class="nb">INT</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="33-data-types">3.3 Data Types</h2>
+<p>Choosing the right data type is crucial for data integrity and performance.</p>
+<h3 id="numeric-data-types">Numeric Data Types</h3>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INT</strong></td>
+<td>Whole numbers</td>
+<td>Employee ID, Age, Quantity</td>
+</tr>
+<tr>
+<td><strong>DECIMAL(p,s)</strong></td>
+<td>Fixed-point decimal</td>
+<td>Salary (10,2), Price (8,2)</td>
+</tr>
+<tr>
+<td><strong>FLOAT</strong> / <strong>DOUBLE</strong></td>
+<td>Floating-point decimal</td>
+<td>Scientific calculations</td>
+</tr>
+<tr>
+<td><strong>TINYINT</strong></td>
+<td>Small integers (0-255)</td>
+<td>Age, Rating (1-5)</td>
+</tr>
+<tr>
+<td><strong>BIGINT</strong></td>
+<td>Large integers</td>
+<td>Large transaction IDs</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">employee_id</span><span class="w"> </span><span class="nb">INT</span><span class="w">              </span><span class="c1">-- -2,147,483,648 to 2,147,483,647</span>
+<span class="n">salary</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w">         </span><span class="c1">-- Up to 99,999,999.99</span>
+<span class="n">age</span><span class="w"> </span><span class="n">TINYINT</span><span class="w">                  </span><span class="c1">-- 0 to 255</span>
+<span class="n">product_views</span><span class="w"> </span><span class="nb">BIGINT</span><span class="w">         </span><span class="c1">-- Very large numbers</span>
+</code></pre></div></td></tr></table></div></p>
+<h3 id="string-data-types">String Data Types</h3>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CHAR(n)</strong></td>
+<td>Fixed-length string</td>
+<td>State codes (CHAR(2))</td>
+</tr>
+<tr>
+<td><strong>VARCHAR(n)</strong></td>
+<td>Variable-length string</td>
+<td>Names, emails, descriptions</td>
+</tr>
+<tr>
+<td><strong>TEXT</strong></td>
+<td>Large text</td>
+<td>Articles, reviews, comments</td>
+</tr>
+<tr>
+<td><strong>ENUM</strong></td>
+<td>Predefined values</td>
+<td>Status ('active', 'inactive')</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">state_code</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">           </span><span class="c1">-- Always exactly 2 characters: &#39;IL&#39;, &#39;CA&#39;</span>
+<span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w">           </span><span class="c1">-- Up to 100 characters</span>
+<span class="n">description</span><span class="w"> </span><span class="nb">TEXT</span><span class="w">             </span><span class="c1">-- Large amounts of text</span>
+<span class="n">status</span><span class="w"> </span><span class="n">ENUM</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;inactive&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pending&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div></p>
+<div class="admonition tip">
+<p class="admonition-title">CHAR vs VARCHAR</p>
+<ul>
+<li>Use <strong>CHAR</strong> when length is always the same (state codes, country codes)</li>
+<li>Use <strong>VARCHAR</strong> when length varies (names, emails, addresses)</li>
+<li>VARCHAR saves space but CHAR can be slightly faster</li>
+</ul>
+</div>
+<h3 id="date-and-time-data-types">Date and Time Data Types</h3>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Format</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DATE</strong></td>
+<td>YYYY-MM-DD</td>
+<td>2025-11-22</td>
+</tr>
+<tr>
+<td><strong>TIME</strong></td>
+<td>HH:MM:SS</td>
+<td>14:30:00</td>
+</tr>
+<tr>
+<td><strong>DATETIME</strong></td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>2025-11-22 14:30:00</td>
+</tr>
+<tr>
+<td><strong>TIMESTAMP</strong></td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>2025-11-22 14:30:00</td>
+</tr>
+<tr>
+<td><strong>YEAR</strong></td>
+<td>YYYY</td>
+<td>2025</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">birth_date</span><span class="w"> </span><span class="nb">DATE</span><span class="w">              </span><span class="c1">-- 1990-05-15</span>
+<span class="n">hire_datetime</span><span class="w"> </span><span class="n">DATETIME</span><span class="w">       </span><span class="c1">-- 2023-01-15 09:00:00</span>
+<span class="n">last_updated</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w">       </span><span class="c1">-- Automatically updated</span>
+</code></pre></div></td></tr></table></div></p>
+<h3 id="boolean-data-type">Boolean Data Type</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">is_active</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w">           </span><span class="c1">-- TRUE or FALSE (stored as 1 or 0)</span>
+<span class="c1">-- Often implemented as TINYINT(1) in MySQL</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="choosing-data-types-examples">Choosing Data Types: Examples</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">customer_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">first_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">last_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">phone</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w">                    </span><span class="c1">-- US phone: 2175551234</span>
+<span class="w">    </span><span class="n">birth_date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">registration_date</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">is_active</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">TRUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">loyalty_points</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">account_balance</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span>
+<span class="w">    </span><span class="n">membership_level</span><span class="w"> </span><span class="n">ENUM</span><span class="p">(</span><span class="s1">&#39;bronze&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;silver&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;gold&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;platinum&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="34-the-select-statement">3.4 The SELECT Statement</h2>
+<p>The SELECT statement is used to retrieve data from databases.</p>
+<h3 id="basic-syntax">Basic Syntax</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="selecting-all-columns">Selecting All Columns</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Use SELECT * Carefully</p>
+<p>While <code>SELECT *</code> is convenient, in production:
+- It's less efficient (retrieves unnecessary columns)
+- It's less clear what data you need
+- It can break code if table structure changes</p>
+<p><strong>Better:</strong> Explicitly list the columns you need</p>
+</div>
+<h3 id="selecting-specific-columns">Selecting Specific Columns</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="column-aliases">Column Aliases</h3>
+<p>Use aliases to rename columns in the output:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">first_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;First Name&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">last_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Last Name&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">salary</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;Annual Salary&quot;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="calculated-columns">Calculated Columns</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">first_name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">last_name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">salary</span><span class="p">,</span>
+<span class="w">    </span><span class="n">salary</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">annual_salary</span><span class="p">,</span>
+<span class="w">    </span><span class="n">salary</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">15</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">annual_tax</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="distinct-remove-duplicates">DISTINCT - Remove Duplicates</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">department_id</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find all unique cities where customers live</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">city</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div></p>
+<h2 id="35-filtering-with-where">3.5 Filtering with WHERE</h2>
+<p>The WHERE clause filters rows based on conditions.</p>
+<h3 id="basic-where-syntax">Basic WHERE Syntax</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="comparison-operators">Comparison Operators</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>Equal</td>
+<td><code>WHERE salary = 50000</code></td>
+</tr>
+<tr>
+<td>&lt;&gt; or !=</td>
+<td>Not equal</td>
+<td><code>WHERE department_id &lt;&gt; 5</code></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Greater than</td>
+<td><code>WHERE salary &gt; 50000</code></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Less than</td>
+<td><code>WHERE age &lt; 30</code></td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>Greater than or equal</td>
+<td><code>WHERE hire_date &gt;= '2020-01-01'</code></td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>Less than or equal</td>
+<td><code>WHERE price &lt;= 100</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Employees making more than $60,000</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">60000</span><span class="p">;</span>
+
+<span class="c1">-- Employees hired after January 1, 2020</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">hire_date</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">hire_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div></p>
+<h3 id="logical-operators">Logical Operators</h3>
+<h4 id="and-both-conditions-must-be-true">AND - Both conditions must be true</h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="or-either-condition-can-be-true">OR - Either condition can be true</h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="not-negates-a-condition">NOT - Negates a condition</h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="combining-logical-operators">Combining Logical Operators</h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Employees in dept 1 or 3, making more than $50k</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Use Parentheses!</p>
+<p>Always use parentheses to make the logic clear:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Unclear (probably wrong):</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span>
+
+<span class="c1">-- Clear (correct):</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span>
+</code></pre></div></td></tr></table></div></p>
+</div>
+<h3 id="pattern-matching-with-like">Pattern Matching with LIKE</h3>
+<p>LIKE is used for pattern matching in strings:</p>
+<ul>
+<li><code>%</code> matches any sequence of characters</li>
+<li><code>_</code> matches exactly one character</li>
+</ul>
+<p><strong>Examples:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Customers whose last name starts with &#39;S&#39;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;S%&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Customers whose email is from gmail</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%@gmail.com&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Customers whose first name is 4 letters starting with &#39;J&#39;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">first_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;J___&#39;</span><span class="p">;</span><span class="w">  </span><span class="c1">-- J + 3 underscores</span>
+</code></pre></div></td></tr></table></div></p>
+<h3 id="range-conditions-with-between">Range Conditions with BETWEEN</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Employees with salary between $40,000 and $60,000</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">40000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">60000</span><span class="p">;</span>
+<span class="c1">-- Equivalent to: WHERE salary &gt;= 40000 AND salary &lt;= 60000</span>
+
+<span class="c1">-- Orders placed in January 2024</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">order_id</span><span class="p">,</span><span class="w"> </span><span class="n">order_date</span><span class="p">,</span><span class="w"> </span><span class="n">total_amount</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">order_date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2024-01-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2024-01-31&#39;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="membership-with-in">Membership with IN</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Employees in departments 1, 3, or 5</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="c1">-- Equivalent to: WHERE department_id = 1 OR department_id = 3 OR department_id = 5</span>
+
+<span class="c1">-- Customers from specific cities</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">city</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">city</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Chicago&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Champaign&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Urbana&#39;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="null-values">NULL Values</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Employees with no email</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+
+<span class="c1">-- Employees with an email</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">NULL is Special</p>
+<p>You cannot use <code>= NULL</code> or <code>&lt;&gt; NULL</code>. Always use <code>IS NULL</code> or <code>IS NOT NULL</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- WRONG:</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span>
+
+<span class="c1">-- CORRECT:</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<h2 id="36-sorting-results-with-order-by">3.6 Sorting Results with ORDER BY</h2>
+<h3 id="ascending-order-default">Ascending Order (Default)</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="p">;</span>
+<span class="c1">-- or explicitly: ORDER BY salary ASC</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="descending-order">Descending Order</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="multiple-sort-columns">Multiple Sort Columns</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Sort by department, then by salary within department</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="sorting-by-column-position">Sorting by Column Position</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Sort by the 3rd column (salary), then 1st column (first_name)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Column Position Sorting</p>
+<p>While sorting by column position works, it's better to use column names for clarity:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Less clear:</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ASC</span>
+
+<span class="c1">-- More clear:</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="w"> </span><span class="k">ASC</span>
+</code></pre></div></td></tr></table></div></p>
+</div>
+<h2 id="37-limiting-results">3.7 Limiting Results</h2>
+<h3 id="mysqlpostgresql-limit">MySQL/PostgreSQL - LIMIT</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Get the top 10 highest-paid employees</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="c1">-- Get rows 11-20 (pagination)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="sql-server-ms-access-top">SQL Server / MS Access - TOP</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- SQL Server syntax (different from MySQL!)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">TOP</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="38-aggregate-functions">3.8 Aggregate Functions</h2>
+<p>Aggregate functions perform calculations on sets of rows.</p>
+<h3 id="common-aggregate-functions">Common Aggregate Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>COUNT()</strong></td>
+<td>Count rows</td>
+<td><code>COUNT(*)</code>, <code>COUNT(email)</code></td>
+</tr>
+<tr>
+<td><strong>SUM()</strong></td>
+<td>Sum values</td>
+<td><code>SUM(salary)</code></td>
+</tr>
+<tr>
+<td><strong>AVG()</strong></td>
+<td>Average value</td>
+<td><code>AVG(salary)</code></td>
+</tr>
+<tr>
+<td><strong>MIN()</strong></td>
+<td>Minimum value</td>
+<td><code>MIN(salary)</code></td>
+</tr>
+<tr>
+<td><strong>MAX()</strong></td>
+<td>Maximum value</td>
+<td><code>MAX(salary)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="count-counting-rows">COUNT - Counting Rows</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Count all employees</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">employee_count</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+
+<span class="c1">-- Count employees with email addresses</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">email</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">employees_with_email</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+
+<span class="c1">-- Count unique departments</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">department_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">department_count</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">COUNT(*) vs COUNT(column)</p>
+<ul>
+<li><code>COUNT(*)</code> counts all rows</li>
+<li><code>COUNT(column)</code> counts rows where column IS NOT NULL</li>
+<li><code>COUNT(DISTINCT column)</code> counts unique non-NULL values</li>
+</ul>
+</div>
+<h3 id="sum-total">SUM - Total</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Total salary expense</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_salary_expense</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+
+<span class="c1">-- Total sales</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_sales</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">order_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2024-01-01&#39;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="avg-average">AVG - Average</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Average salary</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">average_salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+
+<span class="c1">-- Average order value</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">total_amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">average_order_value</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="min-and-max">MIN and MAX</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Salary range</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">lowest_salary</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">highest_salary</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">salary_range</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+
+<span class="c1">-- Earliest and latest hire dates</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">hire_date</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">first_hire</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">hire_date</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">most_recent_hire</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="combining-aggregate-functions">Combining Aggregate Functions</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_employees</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_salary</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">min_salary</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">max_salary</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_payroll</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="39-business-application-examples">3.9 Business Application Examples</h2>
+<h3 id="marketing-customer-analysis">Marketing: Customer Analysis</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find all customers who joined in the last year</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">registration_date</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">registration_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">,</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">YEAR</span><span class="p">)</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">registration_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+
+<span class="c1">-- Find customers from Illinois</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">city</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;IL&#39;</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="finance-transaction-analysis">Finance: Transaction Analysis</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find all high-value transactions</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">transaction_id</span><span class="p">,</span><span class="w"> </span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span><span class="w"> </span><span class="n">transaction_date</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">transactions</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="k">DESC</span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+
+<span class="c1">-- Summary statistics</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_transactions</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_revenue</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_transaction_value</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">largest_transaction</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">transactions</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">transaction_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2024-01-01&#39;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="hr-employee-analysis">HR: Employee Analysis</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find recently hired employees</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">hire_date</span><span class="p">,</span><span class="w"> </span><span class="n">department_id</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">hire_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2024-01-01&#39;</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">hire_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+
+<span class="c1">-- Salary statistics by department</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">department_id</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">employee_count</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_salary</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">min_salary</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">max_salary</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">department_id</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>SQL is the universal language</strong> for working with relational databases</li>
+<li><strong>Choose appropriate data types</strong> to ensure data integrity and performance</li>
+<li><strong>SELECT retrieves data</strong> - be specific about which columns you need</li>
+<li><strong>WHERE filters rows</strong> - use comparison and logical operators effectively</li>
+<li><strong>ORDER BY sorts results</strong> - critical for meaningful output</li>
+<li><strong>Aggregate functions summarize data</strong> - COUNT, SUM, AVG, MIN, MAX</li>
+<li><strong>Practice is essential</strong> - the more queries you write, the more comfortable you'll become</li>
+</ol>
+<h2 id="review-questions">Review Questions</h2>
+<ol>
+<li>What's the difference between CHAR and VARCHAR data types?</li>
+<li>Write a query to find all products priced between $10 and $50, sorted by price.</li>
+<li>Explain the difference between <code>COUNT(*)</code> and <code>COUNT(column_name)</code>.</li>
+<li>Why should you avoid using <code>SELECT *</code> in production code?</li>
+<li>What's wrong with this query: <code>WHERE email = NULL</code>?</li>
+</ol>
+<h2 id="practical-exercise">Practical Exercise</h2>
+<p>Given this PRODUCT table:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>PRODUCT
++------------+-----------------+-------+----------+-----------+
+| Product_ID | Product_Name    | Price | Category | Stock_Qty |
++------------+-----------------+-------+----------+-----------+
+| P001       | Laptop          | 999   | Tech     | 15        |
+| P002       | Mouse           | 25    | Tech     | 150       |
+| P003       | Desk Chair      | 250   | Furniture| 30        |
+| P004       | Monitor         | 350   | Tech     | 45        |
+| P005       | Standing Desk   | 600   | Furniture| 12        |
++------------+-----------------+-------+----------+-----------+
+</code></pre></div></td></tr></table></div></p>
+<p>Write SQL queries for:</p>
+<ol>
+<li>Find all Tech products</li>
+<li>Find products priced over $200</li>
+<li>Find the average price of all products</li>
+<li>Find products with less than 20 items in stock</li>
+<li>Find all products with "Desk" in the name</li>
+<li>Calculate the total value of inventory (Price × Stock_Qty for all products)</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<p>In <a href="04-advanced-sql.md">Chapter 4</a>, we'll learn advanced SQL techniques including JOIN operations to combine data from multiple tables, subqueries, and window functions.</p>
+<hr />
+<p><em>Corresponds to Week 3 of BADM 350 - Chapter 7 of the textbook</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02-tables-relational-algebra/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. Tables and Relational Algebra">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2. Tables and Relational Algebra
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../glossary/" class="md-footer__link md-footer__link--next" aria-label="Next: Glossary">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Glossary
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 vishalsachdev. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>
