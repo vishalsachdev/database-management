@@ -51,3 +51,31 @@ Run these scripts to sync with upstream:
 ## Content Organization
 
 [Add specific information about how content is organized in this textbook]
+
+---
+
+## AI Assistant Guidelines
+
+### DO:
+- Help understand concepts and explain approaches
+- Review code structure and suggest improvements
+- Assist with debugging and error explanation
+- Help students understand database concepts
+- Explain MicroSim implementations and p5.js code
+
+### DON'T:
+- Provide complete solutions to assignments
+- Write code that students should write themselves
+- Share answers to graded assessments
+
+---
+
+## Current Focus
+- [ ] [Update during /session-start]
+
+## Roadmap
+- [ ] [Add planned features]
+
+## Session Log
+### 2025-12-27
+- Added AI Assistant Guidelines and roadmap sections

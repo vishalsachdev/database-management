@@ -1,7 +1,6 @@
 ---
 name: mermaid-generator
-description: This skill generates interactive workflow diagrams using the Mermaid JavaScript library
-for placement in a narrow region of a textbook using an iframe. Use this skill when users request creating flowcharts, process diagrams, workflow visualizations, or decision trees for educational textbooks. The skill creates MicroSim packages with standalone HTML files featuring colorful backgrounds, 16-point fonts, and top-down rendering by default, saved to /docs/sims/ following the MicroSim pattern.
+description: This skill generates interactive workflow diagrams using the Mermaid JavaScript library for placement in a narrow region of a textbook using an iframe. Use this skill when users request creating flowcharts, process diagrams, workflow visualizations, or decision trees for educational textbooks. The skill creates MicroSim packages with standalone HTML files featuring colorful backgrounds, 16-point fonts, and top-down rendering by default, saved to /docs/sims/ following the MicroSim pattern.
 ---
 
 # Mermaid Diagram Generator
