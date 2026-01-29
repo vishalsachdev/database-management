@@ -7,10 +7,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 1. What is the primary purpose of a learning graph in intelligent textbook creation?
 
 <div class="upper-alpha" markdown>
-1. To create visual diagrams for textbook covers
-2. To map conceptual landscape with prerequisite dependencies explicitly
-3. To track student progress through course material
-4. To organize bibliography references by topic
+
+- To create visual diagrams for textbook covers
+- To map conceptual landscape with prerequisite dependencies explicitly
+- To track student progress through course material
+- To organize bibliography references by topic
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 2. What distinguishes concept nodes from general graph vertices in a learning graph?
 
 <div class="upper-alpha" markdown>
-1. Concept nodes represent atomic knowledge units with unique identifiers
-2. Concept nodes can only contain numbers, not text labels
-3. Concept nodes are always colored red in visualizations
-4. Concept nodes must have exactly three dependencies
+
+- Concept nodes represent atomic knowledge units with unique identifiers
+- Concept nodes can only contain numbers, not text labels
+- Concept nodes are always colored red in visualizations
+- Concept nodes must have exactly three dependencies
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 3. In a learning graph, what does a directed edge from concept A to concept B indicate?
 
 <div class="upper-alpha" markdown>
-1. A and B are completely unrelated concepts
-2. A is prerequisite to B, and B depends on A
-3. B must be taught before A in all circumstances
-4. A and B should appear in the same chapter
+
+- A and B are completely unrelated concepts
+- A is prerequisite to B, and B depends on A
+- B must be taught before A in all circumstances
+- A and B should appear in the same chapter
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 4. Why must a valid learning graph be a Directed Acyclic Graph (DAG)?
 
 <div class="upper-alpha" markdown>
-1. To make the graph easier to draw on paper
-2. To reduce the number of concepts required
-3. To ensure a valid pedagogical ordering exists without circular dependencies
-4. To limit the graph to exactly 200 concepts
+
+- To make the graph easier to draw on paper
+- To reduce the number of concepts required
+- To ensure a valid pedagogical ordering exists without circular dependencies
+- To limit the graph to exactly 200 concepts
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 5. A learning graph contains concepts X, Y, and Z with dependencies X → Y → Z. What type of prerequisite relationship exists between X and Z?
 
 <div class="upper-alpha" markdown>
-1. Direct prerequisite (explicit edge required)
-2. Transitive prerequisite (implied by path)
-3. No prerequisite relationship exists
-4. Bidirectional prerequisite relationship
+
+- Direct prerequisite (explicit edge required)
+- Transitive prerequisite (implied by path)
+- No prerequisite relationship exists
+- Bidirectional prerequisite relationship
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 6. If your learning graph generation consumes 40,000 tokens, approximately how long must you wait before those tokens become available again in your Claude Pro account?
 
 <div class="upper-alpha" markdown>
-1. Immediately, tokens regenerate instantly
-2. 1 hour from the generation time
-3. 4 hours from the generation time
-4. 24 hours from the generation time
+
+- Immediately, tokens regenerate instantly
+- 1 hour from the generation time
+- 4 hours from the generation time
+- 24 hours from the generation time
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 7. What is the recommended approach for managing Claude Pro token budgets when generating a complete intelligent textbook?
 
 <div class="upper-alpha" markdown>
-1. Generate all content in a single session to maximize efficiency
-2. Front-load high-token operations, then interleave with low-token tasks
-3. Avoid using Claude Pro and rely only on free tier access
-4. Wait until all chapters are manually written before using Claude
+
+- Generate all content in a single session to maximize efficiency
+- Front-load high-token operations, then interleave with low-token tasks
+- Avoid using Claude Pro and rely only on free tier access
+- Wait until all chapters are manually written before using Claude
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 8. Given a learning graph fragment where "Programming Basics" has no incoming edges and enables both "Variables" and "Functions," which pattern does this illustrate?
 
 <div class="upper-alpha" markdown>
-1. Fan-in (convergence) pattern
-2. Fan-out (divergence) pattern
-3. Sequential chain pattern
-4. Circular dependency pattern
+
+- Fan-in (convergence) pattern
+- Fan-out (divergence) pattern
+- Sequential chain pattern
+- Circular dependency pattern
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 9. For a 13-chapter textbook with balanced concept distribution, approximately how many concepts should each chapter contain?
 
 <div class="upper-alpha" markdown>
-1. 5-8 concepts per chapter
-2. 12-18 concepts per chapter
-3. 25-30 concepts per chapter
-4. 40-50 concepts per chapter
+
+- 5-8 concepts per chapter
+- 12-18 concepts per chapter
+- 25-30 concepts per chapter
+- 40-50 concepts per chapter
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of learning graphs, concept nodes, dependency edges, and
 #### 10. Which statement best describes the relationship between concept depth and chapter placement in a well-structured textbook?
 
 <div class="upper-alpha" markdown>
-1. All concepts should have equal depth regardless of chapter
-2. Foundational concepts with zero dependencies appear in early chapters
-3. Advanced concepts with many dependencies appear in early chapters
-4. Chapter placement is random and unrelated to concept depth
+
+- All concepts should have equal depth regardless of chapter
+- Foundational concepts with zero dependencies appear in early chapters
+- Advanced concepts with many dependencies appear in early chapters
+- Chapter placement is random and unrelated to concept depth
+
 </div>
 
 ??? question "Show Answer"

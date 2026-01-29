@@ -7,10 +7,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 1. What is the primary pedagogical function of FAQs in intelligent textbooks?
 
 <div class="upper-alpha" markdown>
-1. To provide supplementary reference material like traditional appendices
-2. To anticipate and address predictable student confusion patterns before they arise
-3. To list all possible questions students might encounter in the course
-4. To replace primary instruction with question-answer pairs
+
+- To provide supplementary reference material like traditional appendices
+- To anticipate and address predictable student confusion patterns before they arise
+- To list all possible questions students might encounter in the course
+- To replace primary instruction with question-answer pairs
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 2. Which category of common student questions addresses uncertainty about required background knowledge?
 
 <div class="upper-alpha" markdown>
-1. Definitional Questions
-2. Prerequisite Questions
-3. Application Questions
-4. Comparative Questions
+
+- Definitional Questions
+- Prerequisite Questions
+- Application Questions
+- Comparative Questions
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 3. At what stage in the textbook development workflow should the FAQ generator skill be executed?
 
 <div class="upper-alpha" markdown>
-1. Immediately after course description development
-2. After the learning graph is constructed but before chapter content exists
-3. After at least 30-40% of chapter content has been drafted
-4. Only after the textbook is completely finished and deployed
+
+- Immediately after course description development
+- After the learning graph is constructed but before chapter content exists
+- After at least 30-40% of chapter content has been drafted
+- Only after the textbook is completely finished and deployed
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 4. What is the key pedagogical weakness of quiz questions that focus exclusively on the Remember level of Bloom's Taxonomy?
 
 <div class="upper-alpha" markdown>
-1. They are too difficult for most students to answer correctly
-2. They fail to assess whether students can actually use the knowledge they've memorized
-3. They require too much time for students to complete
-4. They cannot be scored objectively without human judgment
+
+- They are too difficult for most students to answer correctly
+- They fail to assess whether students can actually use the knowledge they've memorized
+- They require too much time for students to complete
+- They cannot be scored objectively without human judgment
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 5. In a well-designed multiple-choice question, what is the primary diagnostic value of distractors?
 
 <div class="upper-alpha" markdown>
-1. To make questions harder by including random incorrect options
-2. To reveal specific misconceptions or partial understanding patterns
-3. To ensure all questions have exactly four answer choices
-4. To prevent students from guessing the correct answer
+
+- To make questions harder by including random incorrect options
+- To reveal specific misconceptions or partial understanding patterns
+- To ensure all questions have exactly four answer choices
+- To prevent students from guessing the correct answer
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 6. Your intelligent textbook has a learning graph with 200 concepts. You need to create quizzes that properly assess student understanding across chapters. How should quiz questions be aligned with the learning graph?
 
 <div class="upper-alpha" markdown>
-1. Each question should test multiple concepts simultaneously to save time
-2. Questions should focus on prerequisite concepts rather than chapter concepts
-3. Each question should target one primary concept with metadata tracking concept ID
-4. Quiz questions don't need to align with the learning graph structure
+
+- Each question should test multiple concepts simultaneously to save time
+- Questions should focus on prerequisite concepts rather than chapter concepts
+- Each question should target one primary concept with metadata tracking concept ID
+- Quiz questions don't need to align with the learning graph structure
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 7. What is the recommended Bloom's Taxonomy distribution for formative quizzes embedded in intelligent textbooks?
 
 <div class="upper-alpha" markdown>
-1. 100% Remember level to ensure students have mastered basics
-2. Equal distribution across all six Bloom's levels (approximately 17% each)
-3. Broad foundation of Remember/Understand (50-60%), substantial Apply (20-30%), tapering Analyze/Evaluate/Create (10-20%)
-4. Focus exclusively on Create level to challenge advanced thinking
+
+- 100% Remember level to ensure students have mastered basics
+- Equal distribution across all six Bloom's levels (approximately 17% each)
+- Broad foundation of Remember/Understand (50-60%), substantial Apply (20-30%), tapering Analyze/Evaluate/Create (10-20%)
+- Focus exclusively on Create level to challenge advanced thinking
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 8. You notice that 60% of students consistently select the same incorrect answer on a quiz question. What does this pattern most likely indicate, and what action should you take?
 
 <div class="upper-alpha" markdown>
-1. The question is too difficult; simplify the language
-2. Students are cheating; implement proctoring
-3. The distractor reveals a systematic misconception that course materials should explicitly address
-4. The correct answer key is wrong; change it to the popular answer
+
+- The question is too difficult; simplify the language
+- Students are cheating; implement proctoring
+- The distractor reveals a systematic misconception that course materials should explicitly address
+- The correct answer key is wrong; change it to the popular answer
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 9. What is the primary purpose of the `add-taxonomy.py` script in the intelligent textbook workflow?
 
 <div class="upper-alpha" markdown>
-1. To generate new concepts for the learning graph
-2. To add taxonomy category classifications to concepts after enumeration and dependency mapping
-3. To validate that the learning graph contains no circular dependencies
-4. To convert the learning graph from CSV format to JSON format
+
+- To generate new concepts for the learning graph
+- To add taxonomy category classifications to concepts after enumeration and dependency mapping
+- To validate that the learning graph contains no circular dependencies
+- To convert the learning graph from CSV format to JSON format
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of FAQ generation, quiz creation, Bloom's Taxonomy in as
 #### 10. When using the `taxonomy-distribution.py` script, what does it indicate if a single taxonomy category contains 45% of all concepts in the learning graph?
 
 <div class="upper-alpha" markdown>
-1. The course has excellent focus on a core topic area
-2. This is normal and requires no action
-3. Problematic overemphasis indicating potential curricular imbalance
-4. The taxonomy categories are incorrectly defined
+
+- The course has excellent focus on a core topic area
+- This is normal and requires no action
+- Problematic overemphasis indicating potential curricular imbalance
+- The taxonomy categories are incorrectly defined
+
 </div>
 
 ??? question "Show Answer"

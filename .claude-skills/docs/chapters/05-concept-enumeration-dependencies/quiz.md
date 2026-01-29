@@ -7,10 +7,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 1. What is the recommended target number of concepts for a standard semester-length course learning graph?
 
 <div class="upper-alpha" markdown>
-1. 50-75 concepts
-2. 100-150 concepts
-3. 180-220 concepts
-4. 300-400 concepts
+
+- 50-75 concepts
+- 100-150 concepts
+- 180-220 concepts
+- 300-400 concepts
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 2. Which of the following concept labels correctly follows Title Case convention?
 
 <div class="upper-alpha" markdown>
-1. "learning graph generation"
-2. "Learning Graph Generation"
-3. "LEARNING GRAPH GENERATION"
-4. "Learning graph generation"
+
+- "learning graph generation"
+- "Learning Graph Generation"
+- "LEARNING GRAPH GENERATION"
+- "Learning graph generation"
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 3. What is the maximum character length permitted for a concept label, including spaces?
 
 <div class="upper-alpha" markdown>
-1. 16 characters
-2. 24 characters
-3. 32 characters
-4. 64 characters
+
+- 16 characters
+- 24 characters
+- 32 characters
+- 64 characters
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 4. A proposed concept is titled "Complete Overview of All Machine Learning Algorithms and Their Applications." What is the primary problem with this concept?
 
 <div class="upper-alpha" markdown>
-1. It violates the Title Case convention
-2. It lacks atomic granularity and is too coarse
-3. It exceeds 32 characters but is otherwise acceptable
-4. It uses technical jargon inappropriately
+
+- It violates the Title Case convention
+- It lacks atomic granularity and is too coarse
+- It exceeds 32 characters but is otherwise acceptable
+- It uses technical jargon inappropriately
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 5. In the CSV format for learning graphs, how are multiple dependencies represented in the Dependencies field?
 
 <div class="upper-alpha" markdown>
-1. Comma-separated list (e.g., "1,2,3")
-2. Pipe-delimited list (e.g., "1|2|3")
-3. Semicolon-separated list (e.g., "1;2;3")
-4. Space-separated list (e.g., "1 2 3")
+
+- Comma-separated list (e.g., "1,2,3")
+- Pipe-delimited list (e.g., "1|2|3")
+- Semicolon-separated list (e.g., "1;2;3")
+- Space-separated list (e.g., "1 2 3")
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 6. If a learning graph CSV contains the row "5,Directed Acyclic Graph,3|4,CORE", what does this indicate?
 
 <div class="upper-alpha" markdown>
-1. Concept 5 has no dependencies and is foundational
-2. Concept 5 depends on concepts 3 and 4
-3. Concepts 3 and 4 both depend on concept 5
-4. Concept 5 is invalid because it has two dependencies
+
+- Concept 5 has no dependencies and is foundational
+- Concept 5 depends on concepts 3 and 4
+- Concepts 3 and 4 both depend on concept 5
+- Concept 5 is invalid because it has two dependencies
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 7. You are creating a learning graph and want to add a new concept about "Python list comprehensions." You determine it requires understanding of both "Python lists" (concept 12) and "For loops" (concept 15). How should you represent this in the CSV?
 
 <div class="upper-alpha" markdown>
-1. Add two separate rows, one for each dependency
-2. Add one row with Dependencies field "12|15"
-3. Add one row with Dependencies field "15|12"
-4. Add two edges in a separate edges table
+
+- Add two separate rows, one for each dependency
+- Add one row with Dependencies field "12|15"
+- Add one row with Dependencies field "15|12"
+- Add two edges in a separate edges table
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 8. What percentage of concepts in a well-balanced learning graph should typically be foundational concepts with zero dependencies?
 
 <div class="upper-alpha" markdown>
-1. 1-3%
-2. 5-10%
-3. 20-30%
-4. 40-50%
+
+- 1-3%
+- 5-10%
+- 20-30%
+- 40-50%
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 9. In a 200-concept learning graph, approximately how many concepts should be advanced/integrative concepts with 4 or more dependencies?
 
 <div class="upper-alpha" markdown>
-1. 10-20 concepts (5-10%)
-2. 40-60 concepts (20-30%)
-3. 100-120 concepts (50-60%)
-4. 160-180 concepts (80-90%)
+
+- 10-20 concepts (5-10%)
+- 40-60 concepts (20-30%)
+- 100-120 concepts (50-60%)
+- 160-180 concepts (80-90%)
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of concept enumeration, dependency mapping, CSV file for
 #### 10. What is the primary purpose of the TaxonomyID field in the learning graph CSV?
 
 <div class="upper-alpha" markdown>
-1. To assign unique identifiers to each concept
-2. To categorize concepts into thematic groups for quality analysis
-3. To specify the teaching order of concepts
-4. to track which Bloom's Taxonomy level each concept addresses
+
+- To assign unique identifiers to each concept
+- To categorize concepts into thematic groups for quality analysis
+- To specify the teaching order of concepts
+- to track which Bloom's Taxonomy level each concept addresses
+
 </div>
 
 ??? question "Show Answer"

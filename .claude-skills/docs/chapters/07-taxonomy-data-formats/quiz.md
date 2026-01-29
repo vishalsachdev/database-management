@@ -7,10 +7,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 1. What is the recommended length for TaxonomyID abbreviations in learning graph CSV files?
 
 <div class="upper-alpha" markdown>
-1. 1-2 letters for brevity
-2. 3-5 letters for balance
-3. 6-10 letters for clarity
-4. 15+ letters for full descriptiveness
+
+- 1-2 letters for brevity
+- 3-5 letters for balance
+- 6-10 letters for clarity
+- 15+ letters for full descriptiveness
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 2. In the vis-network JSON format, which section defines visual styling like background color and node shape for each taxonomy category?
 
 <div class="upper-alpha" markdown>
-1. metadata section
-2. groups section
-3. nodes section
-4. edges section
+
+- metadata section
+- groups section
+- nodes section
+- edges section
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 3. What are the four primary sections of the vis-network JSON format for learning graphs?
 
 <div class="upper-alpha" markdown>
-1. header, concepts, relationships, footer
-2. metadata, groups, nodes, edges
-3. title, categories, vertices, links
-4. description, taxonomy, elements, connections
+
+- header, concepts, relationships, footer
+- metadata, groups, nodes, edges
+- title, categories, vertices, links
+- description, taxonomy, elements, connections
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 4. In the nodes section of vis-network JSON, what three required properties must each node object contain?
 
 <div class="upper-alpha" markdown>
-1. name, color, size
-2. id, label, group
-3. number, title, category
-4. key, value, type
+
+- name, color, size
+- id, label, group
+- number, title, category
+- key, value, type
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 5. You are converting a learning graph CSV row with ConceptID=10 and Dependencies="3|7|9". How many edge objects will be created in the vis-network JSON?
 
 <div class="upper-alpha" markdown>
-1. 1 edge object (one concept, one entry)
-2. 2 edge objects (pipe creates pairs)
-3. 3 edge objects (one for each dependency)
-4. 4 edge objects (including the concept itself)
+
+- 1 edge object (one concept, one entry)
+- 2 edge objects (pipe creates pairs)
+- 3 edge objects (one for each dependency)
+- 4 edge objects (including the concept itself)
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 6. Which Dublin Core metadata field should use ISO 8601 format (YYYY-MM-DD)?
 
 <div class="upper-alpha" markdown>
-1. Title
-2. Creator
-3. Date
-4. License
+
+- Title
+- Creator
+- Date
+- License
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 7. In semantic versioning for learning graphs, what does incrementing the MINOR version number indicate?
 
 <div class="upper-alpha" markdown>
-1. Incompatible changes like restructuring categories
-2. Backwards-compatible additions like new concepts
-3. Bug fixes like correcting typos
-4. Complete rewrite of the learning graph
+
+- Incompatible changes like restructuring categories
+- Backwards-compatible additions like new concepts
+- Bug fixes like correcting typos
+- Complete rewrite of the learning graph
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 8. According to WCAG accessibility guidelines, what is the minimum contrast ratio required for normal text?
 
 <div class="upper-alpha" markdown>
-1. 2:1 contrast ratio
-2. 3:1 contrast ratio
-3. 4.5:1 contrast ratio
-4. 7:1 contrast ratio
+
+- 2:1 contrast ratio
+- 3:1 contrast ratio
+- 4.5:1 contrast ratio
+- 7:1 contrast ratio
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 9. What is the recommended approach when a single taxonomy category contains 35% of all concepts in your learning graph?
 
 <div class="upper-alpha" markdown>
-1. Accept it as natural emphasis on an important topic
-2. Review for over-representation and rebalance categories
-3. Delete all concepts in the over-represented category
-4. Change all concepts to use the same category
+
+- Accept it as natural emphasis on an important topic
+- Review for over-representation and rebalance categories
+- Delete all concepts in the over-represented category
+- Change all concepts to use the same category
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of taxonomy categorization, vis-network JSON format, Dub
 #### 10. Which script should you run to analyze whether your learning graph has balanced representation across taxonomy categories?
 
 <div class="upper-alpha" markdown>
-1. analyze-graph.py
-2. csv-to-json.py
-3. taxonomy-distribution.py
-4. balance-categories.py
+
+- analyze-graph.py
+- csv-to-json.py
+- taxonomy-distribution.py
+- balance-categories.py
+
 </div>
 
 ??? question "Show Answer"

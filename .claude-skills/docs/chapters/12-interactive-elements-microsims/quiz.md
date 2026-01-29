@@ -7,10 +7,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 1. What distinguishes a MicroSim from a traditional comprehensive educational simulation?
 
 <div class="upper-alpha" markdown>
-1. MicroSims use more advanced programming languages
-2. MicroSims focus on a single concept with deliberately constrained scope
-3. MicroSims require less computational power to run
-4. MicroSims only work on desktop computers
+
+- MicroSims use more advanced programming languages
+- MicroSims focus on a single concept with deliberately constrained scope
+- MicroSims require less computational power to run
+- MicroSims only work on desktop computers
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 2. What is the primary advantage of using p5.js for educational MicroSim development?
 
 <div class="upper-alpha" markdown>
-1. It requires extensive programming knowledge to use effectively
-2. It provides an intuitive immediate-mode graphics paradigm with built-in animation loops
-3. It is the fastest graphics library available for JavaScript
-4. It only works with specific educational content management systems
+
+- It requires extensive programming knowledge to use effectively
+- It provides an intuitive immediate-mode graphics paradigm with built-in animation loops
+- It is the fastest graphics library available for JavaScript
+- It only works with specific educational content management systems
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 3. According to the table comparing content types, what learning analytics potential do MicroSims provide compared to static text or images?
 
 <div class="upper-alpha" markdown>
-1. Minimal, similar to static content
-2. Basic completion tracking only
-3. Good correctness data like quizzes
-4. Excellent interaction pattern tracking
+
+- Minimal, similar to static content
+- Basic completion tracking only
+- Good correctness data like quizzes
+- Excellent interaction pattern tracking
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 4. What are the three mandatory files in every MicroSim directory?
 
 <div class="upper-alpha" markdown>
-1. script.js, style.css, and index.html
-2. main.html, index.md, and metadata.json
-3. simulation.js, documentation.md, and config.xml
-4. canvas.html, readme.txt, and settings.json
+
+- script.js, style.css, and index.html
+- main.html, index.md, and metadata.json
+- simulation.js, documentation.md, and config.xml
+- canvas.html, readme.txt, and settings.json
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 5. Why must the main.html file be entirely self-contained except for the p5.js library?
 
 <div class="upper-alpha" markdown>
-1. To reduce file size and improve loading speed
-2. To enable embedding via iframe without external dependency issues
-3. To make the code easier for beginners to understand
-4. To comply with HTML5 validation requirements
+
+- To reduce file size and improve loading speed
+- To enable embedding via iframe without external dependency issues
+- To make the code easier for beginners to understand
+- To comply with HTML5 validation requirements
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 6. You are embedding a MicroSim that has an 800x600 canvas and a 200-pixel control panel. The simulation is in the same directory as your index.md file. Which iframe code is correct?
 
 <div class="upper-alpha" markdown>
-1. `<iframe src="main.html" width="800" height="600"></iframe>`
-2. `<iframe src="./main.html" width="1000" height="600" frameborder="0"></iframe>`
-3. `<iframe src="../main.html" width="1000" height="600"></iframe>`
-4. `<iframe href="./main.html" width="1000" height="600"></iframe>`
+
+- `<iframe src="main.html" width="800" height="600"></iframe>`
+- `<iframe src="./main.html" width="1000" height="600" frameborder="0"></iframe>`
+- `<iframe src="../main.html" width="1000" height="600"></iframe>`
+- `<iframe href="./main.html" width="1000" height="600"></iframe>`
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 7. What is the primary pedagogical benefit of implementing seeded randomness in educational MicroSims?
 
 <div class="upper-alpha" markdown>
-1. It makes simulations run faster by reducing computation
-2. It enables reproducibility while maintaining variability across different scenarios
-3. It prevents students from sharing their results with each other
-4. It eliminates the need for user controls like sliders and buttons
+
+- It makes simulations run faster by reducing computation
+- It enables reproducibility while maintaining variability across different scenarios
+- It prevents students from sharing their results with each other
+- It eliminates the need for user controls like sliders and buttons
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 8. You are creating a physics simulation where students should be able to adjust gravity continuously and observe immediate effects on falling objects. Which interactive control is most appropriate?
 
 <div class="upper-alpha" markdown>
-1. A button labeled "Change Gravity"
-2. A dropdown menu with preset gravity values
-3. A slider with range 0-20 m/s² with visible current value
-4. A text input field where students type gravity values
+
+- A button labeled "Change Gravity"
+- A dropdown menu with preset gravity values
+- A slider with range 0-20 m/s² with visible current value
+- A text input field where students type gravity values
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 9. When designing a MicroSim, you notice that adding multiple visualization modes, parameter controls, and algorithm options has made the interface complex and confusing. According to educational simulation design principles, what should you do?
 
 <div class="upper-alpha" markdown>
-1. Add a detailed tutorial to explain all the features
-2. Simplify the interface by removing less important features
-3. Consider splitting the simulation into multiple focused MicroSims
-4. Keep all features but hide them in advanced menus
+
+- Add a detailed tutorial to explain all the features
+- Simplify the interface by removing less important features
+- Consider splitting the simulation into multiple focused MicroSims
+- Keep all features but hide them in advanced menus
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of MicroSims, p5.js, interactive simulations, directory 
 #### 10. What information should be included in the educational section of a MicroSim's metadata.json file?
 
 <div class="upper-alpha" markdown>
-1. Only the file size and last modified date
-2. Programming language version and dependencies
-3. Learning objectives, Bloom's levels, prerequisites, estimated time, and difficulty
-4. Student names and completion timestamps
+
+- Only the file size and last modified date
+- Programming language version and dependencies
+- Learning objectives, Bloom's levels, prerequisites, estimated time, and difficulty
+- Student names and completion timestamps
+
 </div>
 
 ??? question "Show Answer"

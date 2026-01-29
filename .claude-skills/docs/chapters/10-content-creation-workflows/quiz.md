@@ -7,10 +7,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 1. What are the essential components that every chapter in an intelligent textbook should include?
 
 <div class="upper-alpha" markdown>
-1. Only title and body content
-2. Title, summary, concepts covered, prerequisites, body content, examples, and exercises
-3. Title, author bio, references, and body content
-4. Summary and conclusion only
+
+- Only title and body content
+- Title, summary, concepts covered, prerequisites, body content, examples, and exercises
+- Title, author bio, references, and body content
+- Summary and conclusion only
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 2. What is the primary purpose of chapter index files in the content generation workflow?
 
 <div class="upper-alpha" markdown>
-1. To store student progress data
-2. To serve as blueprints containing metadata and organizational information for content generation
-3. To create backups of chapter content
-4. To generate navigation menus
+
+- To store student progress data
+- To serve as blueprints containing metadata and organizational information for content generation
+- To create backups of chapter content
+- To generate navigation menus
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 3. How does reading level affect content generation for intelligent textbooks?
 
 <div class="upper-alpha" markdown>
-1. It only changes font size and color
-2. It affects sentence complexity, vocabulary, explanation depth, and example sophistication
-3. It determines the chapter order
-4. It has no significant impact on content
+
+- It only changes font size and color
+- It affects sentence complexity, vocabulary, explanation depth, and example sophistication
+- It determines the chapter order
+- It has no significant impact on content
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 4. What is the average sentence length for college-level educational content?
 
 <div class="upper-alpha" markdown>
-1. 8-12 words
-2. 12-18 words
-3. 18-25 words
-4. 30-40 words
+
+- 8-12 words
+- 12-18 words
+- 18-25 words
+- 30-40 words
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 5. According to cognitive load theory, why are worked examples particularly effective for novice learners?
 
 <div class="upper-alpha" markdown>
-1. They are easier to grade than other assessment methods
-2. They provide explicit models of problem-solving while reducing cognitive demands
-3. They require less instructor preparation time
-4. They eliminate the need for practice exercises
+
+- They are easier to grade than other assessment methods
+- They provide explicit models of problem-solving while reducing cognitive demands
+- They require less instructor preparation time
+- They eliminate the need for practice exercises
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 6. How many worked examples should typically be included per major concept in a chapter?
 
 <div class="upper-alpha" markdown>
-1. Zero, examples are unnecessary
-2. Exactly one per concept
-3. 2-4 distributed strategically throughout each section
-4. As many as possible, at least 10 per concept
+
+- Zero, examples are unnecessary
+- Exactly one per concept
+- 2-4 distributed strategically throughout each section
+- As many as possible, at least 10 per concept
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 7. A textbook author is creating practice exercises for a chapter on content workflows. They want to ensure exercises address different cognitive levels. Which exercise type represents Bloom's "Analyze" level?
 
 <div class="upper-alpha" markdown>
-1. List the six steps in the content generation workflow
-2. Compare two chapter structures and identify which better respects pedagogical principles
-3. Explain why concept dependencies affect section organization
-4. Design a complete content generation workflow for a new technology
+
+- List the six steps in the content generation workflow
+- Compare two chapter structures and identify which better respects pedagogical principles
+- Explain why concept dependencies affect section organization
+- Design a complete content generation workflow for a new technology
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 8. Which ISO 11179 principle is violated by the definition: "Learning Graph: A graph that we use for learning"?
 
 <div class="upper-alpha" markdown>
-1. Precise
-2. Concise
-3. Non-circular
-4. Free of business rules
+
+- Precise
+- Concise
+- Non-circular
+- Free of business rules
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 9. Why must glossary definitions be "free of business rules" according to ISO 11179 standards?
 
 <div class="upper-alpha" markdown>
-1. To make definitions shorter and easier to read
-2. To focus on what something IS rather than how it's used or implemented
-3. To eliminate all technical terminology
-4. To ensure definitions are identical across different textbooks
+
+- To make definitions shorter and easier to read
+- To focus on what something IS rather than how it's used or implemented
+- To eliminate all technical terminology
+- To ensure definitions are identical across different textbooks
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of chapter structure, content generation, reading levels
 #### 10. What is the primary function of the concept list within a chapter index file?
 
 <div class="upper-alpha" markdown>
-1. To determine chapter length limits
-2. To provide a checklist ensuring comprehensive coverage and scope boundaries
-3. To generate navigation menus automatically
-4. To calculate reading time estimates
+
+- To determine chapter length limits
+- To provide a checklist ensuring comprehensive coverage and scope boundaries
+- To generate navigation menus automatically
+- To calculate reading time estimates
+
 </div>
 
 ??? question "Show Answer"

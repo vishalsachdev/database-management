@@ -7,10 +7,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 1. What is the time complexity of the DFS-based cycle detection algorithm used to validate learning graphs?
 
 <div class="upper-alpha" markdown>
-1. O(V) where V is the number of vertices
-2. O(V + E) where V is vertices and E is edges
-3. O(V²) for all possible vertex pairs
-4. O(E log E) where E is the number of edges
+
+- O(V) where V is the number of vertices
+- O(V + E) where V is vertices and E is edges
+- O(V²) for all possible vertex pairs
+- O(E log E) where E is the number of edges
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 2. During DFS-based cycle detection, what does encountering a gray node indicate?
 
 <div class="upper-alpha" markdown>
-1. A node that has never been visited before
-2. A completed node with all descendants explored
-3. A back edge indicating a cycle has been detected
-4. A forward edge indicating valid progression
+
+- A node that has never been visited before
+- A completed node with all descendants explored
+- A back edge indicating a cycle has been detected
+- A forward edge indicating valid progression
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 3. What does an orphaned node in a learning graph represent?
 
 <div class="upper-alpha" markdown>
-1. A concept with zero dependencies (foundational concept)
-2. A concept that no other concepts depend upon (outdegree = 0)
-3. A concept in a disconnected subgraph
-4. A concept with exactly one dependency
+
+- A concept with zero dependencies (foundational concept)
+- A concept that no other concepts depend upon (outdegree = 0)
+- A concept in a disconnected subgraph
+- A concept with exactly one dependency
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 4. In a healthy learning graph, what percentage of concepts should typically be orphaned nodes?
 
 <div class="upper-alpha" markdown>
-1. 0-2% (essentially none)
-2. 5-10% (terminal concepts)
-3. 25-30% (significant portion)
-4. 50%+ (majority of concepts)
+
+- 0-2% (essentially none)
+- 5-10% (terminal concepts)
+- 25-30% (significant portion)
+- 50%+ (majority of concepts)
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 5. You run analyze-graph.py and discover your learning graph contains a cycle: A → B → C → D → A. What is the recommended approach to resolve this?
 
 <div class="upper-alpha" markdown>
-1. Remove all concepts involved in the cycle
-2. Add more dependencies to strengthen the relationships
-3. Identify pedagogical primacy and remove the weakest dependency edge
-4. Convert all dependencies to bidirectional relationships
+
+- Remove all concepts involved in the cycle
+- Add more dependencies to strengthen the relationships
+- Identify pedagogical primacy and remove the weakest dependency edge
+- Convert all dependencies to bidirectional relationships
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 6. What is the optimal range for average dependencies per concept in a learning graph?
 
 <div class="upper-alpha" markdown>
-1. 0.5-1.0 dependencies
-2. 2.0-4.5 dependencies
-3. 6.0-8.0 dependencies
-4. 10+ dependencies
+
+- 0.5-1.0 dependencies
+- 2.0-4.5 dependencies
+- 6.0-8.0 dependencies
+- 10+ dependencies
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 7. A learning graph has 200 concepts and 620 total dependency edges. What is the average dependencies per concept, and how should this be interpreted?
 
 <div class="upper-alpha" markdown>
-1. 3.1 dependencies; optimal for intermediate course
-2. 0.32 dependencies; too linear
-3. 31 dependencies; severe over-specification
-4. 620 dependencies; calculation error
+
+- 3.1 dependencies; optimal for intermediate course
+- 0.32 dependencies; too linear
+- 31 dependencies; severe over-specification
+- 620 dependencies; calculation error
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 8. Your learning graph quality report shows a score of 68. What action should you take?
 
 <div class="upper-alpha" markdown>
-1. Proceed immediately with content generation
-2. Address several issues before content generation
-3. Completely restart the learning graph from scratch
-4. Ignore the score as it's not meaningful
+
+- Proceed immediately with content generation
+- Address several issues before content generation
+- Completely restart the learning graph from scratch
+- Ignore the score as it's not meaningful
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 9. In taxonomy distribution analysis, what threshold indicates over-representation of a single category?
 
 <div class="upper-alpha" markdown>
-1. Any category exceeding 10%
-2. Any category exceeding 20%
-3. Any category exceeding 30%
-4. Any category exceeding 50%
+
+- Any category exceeding 10%
+- Any category exceeding 20%
+- Any category exceeding 30%
+- Any category exceeding 50%
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of DAG validation, quality metrics, circular dependency 
 #### 10. Which Python script converts learning graph CSV format to vis-network JSON format for visualization?
 
 <div class="upper-alpha" markdown>
-1. analyze-graph.py
-2. csv-to-json.py
-3. taxonomy-distribution.py
-4. validate-dependencies.py
+
+- analyze-graph.py
+- csv-to-json.py
+- taxonomy-distribution.py
+- validate-dependencies.py
+
 </div>
 
 ??? question "Show Answer"

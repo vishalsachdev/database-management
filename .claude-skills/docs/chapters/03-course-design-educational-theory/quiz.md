@@ -7,10 +7,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 1. What is the primary purpose of a course description in intelligent textbook development?
 
 <div class="upper-alpha" markdown>
-1. To satisfy institutional accreditation requirements
-2. To provide essential context for AI-assisted content generation
-3. To market the course to prospective students
-4. To create a table of contents for the textbook
+
+- To satisfy institutional accreditation requirements
+- To provide essential context for AI-assisted content generation
+- To market the course to prospective students
+- To create a table of contents for the textbook
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 2. What is Bloom's Taxonomy?
 
 <div class="upper-alpha" markdown>
-1. A classification system for plant and animal species
-2. A system for organizing library books by subject
-3. A framework for categorizing cognitive levels of learning objectives
-4. A method for calculating student grades
+
+- A classification system for plant and animal species
+- A system for organizing library books by subject
+- A framework for categorizing cognitive levels of learning objectives
+- A method for calculating student grades
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 3. How many cognitive levels are in the 2001 revision of Bloom's Taxonomy?
 
 <div class="upper-alpha" markdown>
-1. Three levels (Low, Medium, High)
-2. Four levels (Novice, Intermediate, Advanced, Expert)
-3. Five levels (Knowledge through Evaluation)
-4. Six levels (Remember through Create)
+
+- Three levels (Low, Medium, High)
+- Four levels (Novice, Intermediate, Advanced, Expert)
+- Five levels (Knowledge through Evaluation)
+- Six levels (Remember through Create)
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 4. Which cognitive level in Bloom's Taxonomy involves recalling facts, terms, and basic concepts?
 
 <div class="upper-alpha" markdown>
-1. Apply
-2. Analyze
-3. Remember
-4. Evaluate
+
+- Apply
+- Analyze
+- Remember
+- Evaluate
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 5. What distinguishes the "Understand" level from the "Remember" level in Bloom's Taxonomy?
 
 <div class="upper-alpha" markdown>
-1. Understand requires memorization, Remember requires comprehension
-2. Understand involves explaining concepts, Remember involves only recall
-3. Understand is easier than Remember
-4. Understand and Remember are actually the same level
+
+- Understand requires memorization, Remember requires comprehension
+- Understand involves explaining concepts, Remember involves only recall
+- Understand is easier than Remember
+- Understand and Remember are actually the same level
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 6. A learning outcome states: "Students will be able to use the Cypher query language to retrieve data from a graph database." Which Bloom's Taxonomy level does this represent?
 
 <div class="upper-alpha" markdown>
-1. Remember
-2. Understand
-3. Apply
-4. Evaluate
+
+- Remember
+- Understand
+- Apply
+- Evaluate
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 7. What is the purpose of using action verbs in learning outcomes?
 
 <div class="upper-alpha" markdown>
-1. To make learning outcomes sound more professional
-2. To specify measurable, observable behaviors students will demonstrate
-3. To confuse students about expectations
-4. To reduce the length of learning outcome statements
+
+- To make learning outcomes sound more professional
+- To specify measurable, observable behaviors students will demonstrate
+- To confuse students about expectations
+- To reduce the length of learning outcome statements
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 8. What threshold score indicates an acceptable course description quality for proceeding with learning graph generation?
 
 <div class="upper-alpha" markdown>
-1. 50 or higher
-2. 60 or higher
-3. 70 or higher
-4. 90 or higher
+
+- 50 or higher
+- 60 or higher
+- 70 or higher
+- 90 or higher
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 9. Why is defining the target audience important in a course description for intelligent textbook creation?
 
 <div class="upper-alpha" markdown>
-1. It determines the publisher's marketing strategy
-2. It helps AI determine appropriate reading level, examples, and prerequisite assumptions
-3. It fulfills a requirement for course catalog listings
-4. It limits who can enroll in the course
+
+- It determines the publisher's marketing strategy
+- It helps AI determine appropriate reading level, examples, and prerequisite assumptions
+- It fulfills a requirement for course catalog listings
+- It limits who can enroll in the course
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of course descriptions, Bloom's Taxonomy, and educationa
 #### 10. Which cognitive level in Bloom's Taxonomy involves breaking down information into component parts to understand organizational structure?
 
 <div class="upper-alpha" markdown>
-1. Remember
-2. Understand
-3. Apply
-4. Analyze
+
+- Remember
+- Understand
+- Apply
+- Analyze
+
 </div>
 
 ??? question "Show Answer"

@@ -4,6 +4,14 @@
 
 The BADM 554 Database Management learning graph is a comprehensive knowledge structure containing **231 concepts** organized into **13 taxonomic categories**. This graph represents the complete conceptual framework for the course, showing how concepts build upon each other through a **Directed Acyclic Graph (DAG)** structure.
 
+## Personalized Learning Graph Insights
+
+Curious what the adaptive agent currently knows about you? This view summarizes the learning profile that powers remediation and path recommendations. After you complete any chapter quiz, the profile is updated locally and reflected below.
+
+<div id="learning-graph-insights"></div>
+
+> **Privacy note:** all profile data is stored in your browser only. Clearing site data or using a new device will reset the insights shown here.
+
 ## Purpose
 
 The learning graph serves multiple purposes:

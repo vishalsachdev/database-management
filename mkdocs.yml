@@ -33,6 +33,7 @@ nav:
     - SQL Cheat Sheet: resources/sql-cheatsheet.md
     - Tool Setup Guides: resources/tool-setup.md
     - Practice Problems: resources/practice-problems.md
+  - Learning Graph: learning-graph/index.md
   - Glossary: glossary.md
   - References: references.md
   - License: license.md
@@ -72,9 +73,13 @@ markdown_extensions:
 
 extra_css:
    - css/extra.css
+   - css/adaptive-quiz.css
 
 extra_javascript:
     - js/extra.js
+    - js/course-module-agent.js
+    - js/adaptive-quiz.js
+    - js/learning-graph-insights.js
 
 copyright: Copyright &copy; 2025 vishalsachdev. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
 

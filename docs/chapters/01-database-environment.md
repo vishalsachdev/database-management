@@ -90,10 +90,10 @@ A **Database Management System (DBMS)** is a collection of programs that manages
 
 ### Key Components of a DBMS
 
-1. **Hardware**: The physical devices (servers, storage)
-2. **Software**: The DBMS software (MySQL, PostgreSQL, Oracle, etc.)
-3. **Data**: The actual information stored in the database
-4. **Procedures**: Instructions and rules for using the database
+A. **Hardware**: The physical devices (servers, storage)
+B. **Software**: The DBMS software (MySQL, PostgreSQL, Oracle, etc.)
+C. **Data**: The actual information stored in the database
+D. **Procedures**: Instructions and rules for using the database
 5. **People**: Database users and administrators
 
 ### DBMS Functions
@@ -259,27 +259,191 @@ Understanding how databases evolved helps explain why they work the way they do:
 
 ## Key Takeaways
 
-1. **Databases store organized data** that can be processed into useful information
-2. **DBMS software manages databases** and provides essential functions like security, backup, and multi-user access
-3. **Databases benefit businesses** by improving data sharing, security, integration, and decision-making
-4. **Database skills are valuable** across all business functions, not just IT
+A. **Databases store organized data** that can be processed into useful information
+B. **DBMS software manages databases** and provides essential functions like security, backup, and multi-user access
+C. **Databases benefit businesses** by improving data sharing, security, integration, and decision-making
+D. **Database skills are valuable** across all business functions, not just IT
 5. **Different database types exist** for different needs (relational, NoSQL, etc.)
 
 ## Review Questions
 
-1. What is the difference between data and information? Provide an example.
-2. List five key functions of a DBMS.
-3. Explain three advantages of using a database system versus file-based systems.
-4. What are the main components of a database system?
+A. What is the difference between data and information? Provide an example.
+B. List five key functions of a DBMS.
+C. Explain three advantages of using a database system versus file-based systems.
+D. What are the main components of a database system?
 5. Describe a scenario from your intended career where database skills would be valuable.
 
 ## Practical Exercise
 
 Think about a business process you're familiar with (e.g., ordering food online, enrolling in classes, shopping on Amazon):
 
-1. Identify at least 5 types of data that would need to be stored
-2. Explain how this data becomes information that helps the business
-3. Describe what could go wrong if this data was managed in separate Excel files instead of a database
+A. Identify at least 5 types of data that would need to be stored
+B. Explain how this data becomes information that helps the business
+C. Describe what could go wrong if this data was managed in separate Excel files instead of a database
+
+## Chapter Quiz
+
+Test your understanding of database environment concepts:
+
+#### 1. What is the difference between data and information?
+
+<div class="upper-alpha" markdown>
+
+- Data and information are the same thing
+- Data is processed facts, while information is raw facts
+- Data is raw facts, while information is processed data that reduces uncertainty
+- Information is always stored in databases, while data is stored in files
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. Data consists of raw facts about entities and events, while information is data that has been processed to increase knowledge and reduce uncertainty.
+
+    **Concept Tested:** Data vs Information
+
+#### 2. What is a database?
+
+<div class="upper-alpha" markdown>
+
+- A collection of Excel spreadsheets
+- A shared, integrated computer structure that stores end-user data and metadata
+- A software application for creating presentations
+- A type of computer hardware
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. A database is a shared, integrated computer structure that stores both end-user data (the actual facts) and metadata (data about data).
+
+    **Concept Tested:** Database Definition
+
+#### 3. Which of the following is NOT a key function of a Database Management System (DBMS)?
+
+<div class="upper-alpha" markdown>
+
+- Data storage management
+- Security management
+- Creating PowerPoint presentations
+- Backup and recovery
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. Creating PowerPoint presentations is not a function of a DBMS. A DBMS manages data storage, security, backup/recovery, multi-user access, and data integrity.
+
+    **Concept Tested:** DBMS Functions
+
+#### 4. What is a major advantage of using a database system over file-based systems?
+
+<div class="upper-alpha" markdown>
+
+- Databases are always faster than files
+- Databases eliminate the need for backups
+- Databases reduce data redundancy and inconsistency
+- Databases require no technical skills to manage
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. Databases reduce data redundancy because data is stored in one place rather than duplicated across multiple files, which minimizes inconsistency.
+
+    **Concept Tested:** Database Advantages
+
+#### 5. Which type of database user is responsible for ensuring database security, performance, and availability?
+
+<div class="upper-alpha" markdown>
+
+- End User
+- Application Developer
+- Database Administrator (DBA)
+- System Administrator
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. Database Administrators (DBAs) are responsible for managing the database system, ensuring security, performance, availability, and handling backups and recovery.
+
+    **Concept Tested:** Database Users
+
+#### 6. What was a major limitation of file-based systems that databases solved?
+
+<div class="upper-alpha" markdown>
+
+- Files couldn't store text data
+- High data redundancy and difficulty sharing data between applications
+- Files were too secure
+- Files couldn't be backed up
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. File-based systems suffered from high data redundancy (same data stored in multiple files) and made it difficult to share data between different applications.
+
+    **Concept Tested:** Database Evolution
+
+#### 7. In a business context, why are databases considered a strategic asset?
+
+<div class="upper-alpha" markdown>
+
+- They are expensive to implement
+- They enable informed decision-making and provide competitive advantage
+- They require specialized hardware
+- They eliminate the need for employees
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. Databases are strategic assets because they enable organizations to make informed decisions, understand customer behavior, optimize operations, and gain competitive advantage through data insights.
+
+    **Concept Tested:** Business Value of Databases
+
+#### 8. Which statement best describes metadata?
+
+<div class="upper-alpha" markdown>
+
+- Data that is stored in Excel files
+- Data about data - descriptions of data characteristics and relationships
+- Data that has been deleted from the database
+- Data that is only accessible to administrators
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. Metadata is "data about data" - it provides descriptions of data characteristics, relationships, and constraints in the database.
+
+    **Concept Tested:** Database Components
+
+#### 9. What is a potential disadvantage of implementing a database system?
+
+<div class="upper-alpha" markdown>
+
+- Improved data sharing
+- Better data security
+- Increased complexity and costs
+- Minimized data inconsistency
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. While databases provide many benefits, they also introduce increased complexity and costs, including software licenses, hardware, training, and maintenance expenses.
+
+    **Concept Tested:** Database Challenges
+
+#### 10. Which database model is currently the most popular and widely used?
+
+<div class="upper-alpha" markdown>
+
+- Hierarchical model
+- Network model
+- Relational model
+- File-based model
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. The relational model, which organizes data in tables (relations) and uses SQL for querying, is currently the most popular type of database system.
+
+    **Concept Tested:** Database Evolution
 
 ## Next Steps
 

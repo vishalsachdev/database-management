@@ -1,0 +1,34 @@
+{
+  "graph_id": "db_mgmt_v1",
+  "linear_order": [
+    { "page_number": 1, "path": "docs/index.md", "node_ids": [] },
+    { "page_number": 2, "path": "docs/chapters/01-database-environment.md", "node_ids": ["db_001_data_vs_information", "db_002_database_definition"] },
+    { "page_number": 3, "path": "docs/chapters/01-database-environment.md", "node_ids": ["db_003_dbms_roles", "db_004_advantages_challenges"] },
+    { "page_number": 10, "path": "docs/chapters/02-tables-relational-algebra.md", "node_ids": ["db_010_tables_relations"] },
+    { "page_number": 12, "path": "docs/chapters/02-tables-relational-algebra.md", "node_ids": ["db_011_keys_overview", "db_011a_primary_keys_focus", "db_011b_foreign_keys_focus", "db_011r_keys_recap"] },
+    { "page_number": 14, "path": "docs/chapters/02-tables-relational-algebra.md", "node_ids": ["db_012_integrity_rules"] },
+    { "page_number": 16, "path": "docs/chapters/02-tables-relational-algebra.md", "node_ids": ["db_013_relational_algebra"] },
+    { "page_number": 20, "path": "docs/chapters/03-sql-fundamentals.md", "node_ids": ["db_020_sql_intro"] },
+    { "page_number": 22, "path": "docs/chapters/03-sql-fundamentals.md", "node_ids": ["db_021_sql_ddl"] },
+    { "page_number": 24, "path": "docs/chapters/03-sql-fundamentals.md", "node_ids": ["db_022_sql_select_basics", "db_022r_select_recap"] },
+    { "page_number": 26, "path": "docs/chapters/03-sql-fundamentals.md", "node_ids": ["db_023_sql_aggregates_groupby"] }
+  ],
+  "node_to_page": {
+    "db_001_data_vs_information": { "page_number": 2, "path": "docs/chapters/01-database-environment.md" },
+    "db_002_database_definition": { "page_number": 2, "path": "docs/chapters/01-database-environment.md" },
+    "db_003_dbms_roles": { "page_number": 3, "path": "docs/chapters/01-database-environment.md" },
+    "db_004_advantages_challenges": { "page_number": 3, "path": "docs/chapters/01-database-environment.md" },
+    "db_010_tables_relations": { "page_number": 10, "path": "docs/chapters/02-tables-relational-algebra.md" },
+    "db_011_keys_overview": { "page_number": 12, "path": "docs/chapters/02-tables-relational-algebra.md" },
+    "db_011a_primary_keys_focus": { "page_number": 12, "path": "docs/chapters/02-tables-relational-algebra.md", "section_anchor": "#keys" },
+    "db_011b_foreign_keys_focus": { "page_number": 12, "path": "docs/chapters/02-tables-relational-algebra.md", "section_anchor": "#foreign-keys" },
+    "db_011r_keys_recap": { "page_number": 12, "path": "docs/chapters/02-tables-relational-algebra.md" },
+    "db_012_integrity_rules": { "page_number": 14, "path": "docs/chapters/02-tables-relational-algebra.md" },
+    "db_013_relational_algebra": { "page_number": 16, "path": "docs/chapters/02-tables-relational-algebra.md" },
+    "db_020_sql_intro": { "page_number": 20, "path": "docs/chapters/03-sql-fundamentals.md" },
+    "db_021_sql_ddl": { "page_number": 22, "path": "docs/chapters/03-sql-fundamentals.md" },
+    "db_022_sql_select_basics": { "page_number": 24, "path": "docs/chapters/03-sql-fundamentals.md" },
+    "db_022r_select_recap": { "page_number": 24, "path": "docs/chapters/03-sql-fundamentals.md" },
+    "db_023_sql_aggregates_groupby": { "page_number": 26, "path": "docs/chapters/03-sql-fundamentals.md" }
+  }
+}

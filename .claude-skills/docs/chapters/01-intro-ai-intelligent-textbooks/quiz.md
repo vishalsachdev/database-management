@@ -7,10 +7,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 1. What is the primary characteristic that distinguishes artificial intelligence from traditional rule-based systems?
 
 <div class="upper-alpha" markdown>
-1. Faster processing speeds for mathematical calculations
-2. Probabilistic reasoning and pattern recognition from data
-3. Ability to store larger amounts of information
-4. Use of structured programming languages
+
+- Faster processing speeds for mathematical calculations
+- Probabilistic reasoning and pattern recognition from data
+- Ability to store larger amounts of information
+- Use of structured programming languages
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 2. What is the fundamental innovation underlying Large Language Models that enables them to process long sequences effectively?
 
 <div class="upper-alpha" markdown>
-1. Recurrent neural networks with memory cells
-2. Rule-based parsing and grammar trees
-3. Self-attention mechanism in transformer architecture
-4. Sequential processing of one token at a time
+
+- Recurrent neural networks with memory cells
+- Rule-based parsing and grammar trees
+- Self-attention mechanism in transformer architecture
+- Sequential processing of one token at a time
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 3. What are the three core principles that guide Anthropic's development of Claude AI?
 
 <div class="upper-alpha" markdown>
-1. Helpfulness, harmlessness, and honesty
-2. Speed, accuracy, and efficiency
-3. Scalability, portability, and reliability
-4. Innovation, compatibility, and affordability
+
+- Helpfulness, harmlessness, and honesty
+- Speed, accuracy, and efficiency
+- Scalability, portability, and reliability
+- Innovation, compatibility, and affordability
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 4. Which statement best describes the relationship between the Five Levels of Textbook Intelligence?
 
 <div class="upper-alpha" markdown>
-1. Each level replaces the previous level's capabilities
-2. Levels are independent and can be implemented in any order
-3. Higher levels require completely different technologies
-4. Higher levels include all capabilities of lower levels
+
+- Each level replaces the previous level's capabilities
+- Levels are independent and can be implemented in any order
+- Higher levels require completely different technologies
+- Higher levels include all capabilities of lower levels
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 5. What defines a Level 2 intelligent textbook?
 
 <div class="upper-alpha" markdown>
-1. Fixed text with no digital features
-2. Hyperlinked navigation with search functionality
-3. Interactive simulations and self-grading quizzes
-4. AI-powered personalized content generation
+
+- Fixed text with no digital features
+- Hyperlinked navigation with search functionality
+- Interactive simulations and self-grading quizzes
+- AI-powered personalized content generation
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 6. Why is the Claude Code interface particularly well-suited for intelligent textbook creation compared to the general Claude.ai web interface?
 
 <div class="upper-alpha" markdown>
-1. It provides better natural language understanding
-2. It uses more advanced AI models
-3. It integrates with file systems and can execute multi-step workflows
-4. It has a simpler user interface for beginners
+
+- It provides better natural language understanding
+- It uses more advanced AI models
+- It integrates with file systems and can execute multi-step workflows
+- It has a simpler user interface for beginners
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 7. What is the primary purpose of providing comprehensive context in prompts for educational content generation?
 
 <div class="upper-alpha" markdown>
-1. To make the prompt longer and more impressive
-2. To ensure consistency and alignment with project goals
-3. To test the AI's ability to process large amounts of text
-4. To reduce the need for human review
+
+- To make the prompt longer and more impressive
+- To ensure consistency and alignment with project goals
+- To test the AI's ability to process large amounts of text
+- To reduce the need for human review
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 8. A textbook allows students to adjust sliders to see how changing parameters affects a graph visualization, and includes self-grading quizzes with immediate feedback. What level of textbook intelligence does this represent?
 
 <div class="upper-alpha" markdown>
-1. Level 3: Interactive Elements
-2. Level 2: Hyperlinked Navigation
-3. Level 4: Adaptive Content
-4. Level 5: AI Personalization
+
+- Level 3: Interactive Elements
+- Level 2: Hyperlinked Navigation
+- Level 4: Adaptive Content
+- Level 5: AI Personalization
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 9. What is the underlying reason that Large Language Models are effective for educational content creation, as opposed to just being good at text generation?
 
 <div class="upper-alpha" markdown>
-1. They can type faster than humans
-2. They have memorized all textbooks
-3. They never make mistakes in grammar
-4. They can understand and apply pedagogical frameworks consistently
+
+- They can type faster than humans
+- They have memorized all textbooks
+- They never make mistakes in grammar
+- They can understand and apply pedagogical frameworks consistently
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of artificial intelligence, large language models, Claud
 #### 10. Which of the following is a key component that should be included in educational content prompts?
 
 <div class="upper-alpha" markdown>
-1. Personal opinions about the subject matter
-2. Vague suggestions for improvement
-3. Explicit learning objectives and concept coverage lists
-4. Requests for the shortest possible output
+
+- Personal opinions about the subject matter
+- Vague suggestions for improvement
+- Explicit learning objectives and concept coverage lists
+- Requests for the shortest possible output
+
 </div>
 
 ??? question "Show Answer"

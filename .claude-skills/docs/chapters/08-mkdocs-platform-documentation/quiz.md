@@ -7,10 +7,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 1. What is MkDocs primarily designed for?
 
 <div class="upper-alpha" markdown>
-1. Building e-commerce websites
-2. Creating project documentation from markdown files
-3. Managing relational databases
-4. Developing mobile applications
+
+- Building e-commerce websites
+- Creating project documentation from markdown files
+- Managing relational databases
+- Developing mobile applications
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 2. Which file serves as the central configuration document for a MkDocs site?
 
 <div class="upper-alpha" markdown>
-1. config.json
-2. settings.ini
-3. mkdocs.yml
-4. site.xml
+
+- config.json
+- settings.ini
+- mkdocs.yml
+- site.xml
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 3. What does the Material for MkDocs theme add beyond basic MkDocs functionality?
 
 <div class="upper-alpha" markdown>
-1. Only color scheme customization
-2. Database integration capabilities
-3. Advanced features like instant loading, search highlighting, and dark mode
-4. Built-in web server functionality
+
+- Only color scheme customization
+- Database integration capabilities
+- Advanced features like instant loading, search highlighting, and dark mode
+- Built-in web server functionality
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 4. What markdown syntax is used to create an admonition in MkDocs?
 
 <div class="upper-alpha" markdown>
-1. Three exclamation points followed by the admonition type
-2. Square brackets with the word "note" inside
-3. A hash symbol followed by the admonition type
-4. Curly braces surrounding the admonition content
+
+- Three exclamation points followed by the admonition type
+- Square brackets with the word "note" inside
+- A hash symbol followed by the admonition type
+- Curly braces surrounding the admonition content
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 5. In Git version control, what is a commit?
 
 <div class="upper-alpha" markdown>
-1. A temporary backup of files
-2. A snapshot of files at a specific point in time with a descriptive message
-3. An automatic sync with the cloud
-4. A request to download code from GitHub
+
+- A temporary backup of files
+- A snapshot of files at a specific point in time with a descriptive message
+- An automatic sync with the cloud
+- A request to download code from GitHub
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 6. Which Git command uploads local commits to a remote repository like GitHub?
 
 <div class="upper-alpha" markdown>
-1. git commit
-2. git add
-3. git push
-4. git clone
+
+- git commit
+- git add
+- git push
+- git clone
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 7. A team is building documentation for a software project and needs to ensure that markdown lists render correctly. What formatting requirement must they follow?
 
 <div class="upper-alpha" markdown>
-1. Lists must use tabs instead of spaces for indentation
-2. Lists must always be numbered, never bulleted
-3. A blank line must precede markdown lists
-4. Lists cannot contain more than five items
+
+- Lists must use tabs instead of spaces for indentation
+- Lists must always be numbered, never bulleted
+- A blank line must precede markdown lists
+- Lists cannot contain more than five items
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 8. An educational project needs documentation that works offline, has no security vulnerabilities from dynamic components, and can be hosted anywhere. Which approach best meets these requirements?
 
 <div class="upper-alpha" markdown>
-1. WordPress blog with database backend
-2. Static site generation with MkDocs
-3. Dynamic web application with user authentication
-4. Cloud-based content management system
+
+- WordPress blog with database backend
+- Static site generation with MkDocs
+- Dynamic web application with user authentication
+- Cloud-based content management system
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 9. Why does the Material theme's navigation structure benefit from explicit configuration in mkdocs.yml rather than automatic generation from file structure?
 
 <div class="upper-alpha" markdown>
-1. Automatic generation is not supported by the Material theme
-2. Explicit configuration provides intentional ordering that supports pedagogical progressions
-3. File-based navigation causes security vulnerabilities
-4. Explicit configuration reduces build time significantly
+
+- Automatic generation is not supported by the Material theme
+- Explicit configuration provides intentional ordering that supports pedagogical progressions
+- File-based navigation causes security vulnerabilities
+- Explicit configuration reduces build time significantly
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of MkDocs, Material theme, configuration, navigation, ve
 #### 10. What does the `mkdocs gh-deploy` command accomplish?
 
 <div class="upper-alpha" markdown>
-1. Downloads the MkDocs theme from GitHub
-2. Creates a new GitHub repository
-3. Builds the documentation and deploys it to the gh-pages branch
-4. Configures Git credentials for authentication
+
+- Downloads the MkDocs theme from GitHub
+- Creates a new GitHub repository
+- Builds the documentation and deploys it to the gh-pages branch
+- Configures Git credentials for authentication
+
 </div>
 
 ??? question "Show Answer"

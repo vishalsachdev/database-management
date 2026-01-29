@@ -50,16 +50,16 @@ STUDENT Table
 
 A proper relational table must have these characteristics:
 
-1. **Each column has a unique name**
+A. **Each column has a unique name**
    - Column names cannot be repeated in the same table
 
-2. **All values in a column are from the same domain**
+B. **All values in a column are from the same domain**
    - All values in the GPA column must be numbers between 0.0 and 4.0
 
-3. **Each row is unique**
+C. **Each row is unique**
    - No two rows can be exactly identical
 
-4. **The order of rows is irrelevant**
+D. **The order of rows is irrelevant**
    - Tables are sets, not lists
 
 5. **The order of columns is irrelevant**
@@ -90,7 +90,7 @@ A proper relational table must have these characteristics:
     +----------+------------------------+
     ```
 
-## 2.3 Keys
+## 2.3 Keys {#keys}
 
 **Keys** are attributes (or combinations of attributes) that uniquely identify rows in a table.
 
@@ -132,7 +132,7 @@ STUDENT
 +------------+------------------+--------+------+
 ```
 
-#### 4. Foreign Key (FK)
+#### 4. Foreign Key (FK) {#foreign-keys}
 
 A **foreign key** is an attribute in one table that references the primary key of another table.
 
@@ -347,8 +347,8 @@ Relational algebra operators can be combined to create complex queries:
 ```
 
 **Step-by-step:**
-1. σ<sub>GPA > 3.5</sub>(STUDENT) - Filter students with GPA > 3.5
-2. π<sub>Name</sub>(...) - Project only the Name column
+A. σ<sub>GPA > 3.5</sub>(STUDENT) - Filter students with GPA > 3.5
+B. π<sub>Name</sub>(...) - Project only the Name column
 
 ## 2.6 Practical Example: University Database
 
@@ -430,31 +430,195 @@ OVERDUE = σ_{Due_Date < TODAY AND Status ≠ 'PAID'}(INVOICE)
 
 ## Key Takeaways
 
-1. **Tables are the foundation** of relational databases - they organize data in rows and columns
-2. **Keys uniquely identify rows** - Primary keys identify rows within a table, foreign keys link tables
-3. **Integrity rules ensure data quality** - Entity, referential, domain, and key integrity
-4. **Relational algebra provides operations** - SELECT, PROJECT, JOIN, UNION, and others
+A. **Tables are the foundation** of relational databases - they organize data in rows and columns
+B. **Keys uniquely identify rows** - Primary keys identify rows within a table, foreign keys link tables
+C. **Integrity rules ensure data quality** - Entity, referential, domain, and key integrity
+D. **Relational algebra provides operations** - SELECT, PROJECT, JOIN, UNION, and others
 5. **These concepts underlie SQL** - Understanding relational algebra helps you write better SQL
 
 ## Review Questions
 
-1. What are the six characteristics that define a proper relational table?
-2. Explain the difference between a candidate key and a primary key.
-3. What is referential integrity, and why is it important?
-4. Describe a scenario where a composite key would be appropriate.
+A. What are the six characteristics that define a proper relational table?
+B. Explain the difference between a candidate key and a primary key.
+C. What is referential integrity, and why is it important?
+D. Describe a scenario where a composite key would be appropriate.
 5. Write a relational algebra expression to find all products with price less than $50.
 
 ## Practical Exercise
 
 Design a simple database for a library system:
 
-1. Create three tables: BOOK, MEMBER, and LOAN
-2. Identify appropriate primary keys for each table
-3. Identify any foreign keys needed
-4. Write relational algebra expressions for:
+A. Create three tables: BOOK, MEMBER, and LOAN
+B. Identify appropriate primary keys for each table
+C. Identify any foreign keys needed
+D. Write relational algebra expressions for:
    - Finding all books currently on loan
    - Finding members who have never borrowed a book
    - Finding overdue loans
+
+## Chapter Quiz
+
+Test your understanding of tables, keys, and relational algebra:
+
+#### 1. What is a primary key?
+
+<div class="upper-alpha" markdown>
+
+- The first column in a table
+- A key that is colored blue in database diagrams
+- The candidate key chosen to be the main identifier for the table
+- Any column that contains unique values
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. A primary key is the candidate key chosen to be the main identifier for the table. It must be unique, non-null, stable, and preferably simple.
+
+    **Concept Tested:** Primary Keys
+
+#### 2. Which of the following violates entity integrity?
+
+<div class="upper-alpha" markdown>
+
+- A foreign key referencing a non-existent primary key
+- A primary key that is NULL
+- Two rows with the same non-key values
+- A column containing different data types
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. Entity integrity requires that the primary key cannot be NULL. If the primary key is NULL, we cannot uniquely identify that row.
+
+    **Concept Tested:** Integrity Rules
+
+#### 3. What does referential integrity ensure?
+
+<div class="upper-alpha" markdown>
+
+- All tables have the same number of columns
+- Primary keys are never duplicated
+- Foreign keys either match existing primary keys or are NULL
+- All data is stored in alphabetical order
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. Referential integrity ensures that a foreign key must either match a primary key value in the referenced table or be NULL (if allowed).
+
+    **Concept Tested:** Referential Integrity
+
+#### 4. In relational algebra, what does the SELECT operation (σ) do?
+
+<div class="upper-alpha" markdown>
+
+- Chooses specific columns from a table
+- Filters rows based on a condition
+- Combines two tables
+- Sorts data in ascending order
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. The SELECT operation (σ) filters rows based on a condition. For example, σ_{GPA > 3.5}(STUDENT) returns students with GPA greater than 3.5.
+
+    **Concept Tested:** Relational Algebra
+
+#### 5. Which characteristic is NOT required for a proper relational table?
+
+<div class="upper-alpha" markdown>
+
+- Each column has a unique name
+- All values in a column are from the same domain
+- Each row is unique
+- Rows must be stored in alphabetical order
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **D**. The order of rows is irrelevant in relational tables. Tables are sets, not lists, so row order doesn't matter.
+
+    **Concept Tested:** Table Characteristics
+
+#### 6. What is a composite key?
+
+<div class="upper-alpha" markdown>
+
+- A key made of multiple attributes
+- A key that references another table
+- A key that is automatically generated
+- A key that can be NULL
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **A**. A composite key is a primary key made up of two or more attributes. For example, {Student_ID, Course_Code} might form a composite key in an ENROLLMENT table.
+
+    **Concept Tested:** Composite Keys
+
+#### 7. In the expression π_{Name, GPA}(STUDENT), what does the PROJECT operation (π) accomplish?
+
+<div class="upper-alpha" markdown>
+
+- Filters students by GPA
+- Selects only the Name and GPA columns
+- Joins two tables together
+- Sorts students by name
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. The PROJECT operation (π) selects specific columns from a table. This expression would return only the Name and GPA columns from the STUDENT table.
+
+    **Concept Tested:** Relational Algebra Operations
+
+#### 8. What is the main difference between a candidate key and a super key?
+
+<div class="upper-alpha" markdown>
+
+- Candidate keys are faster to process
+- Super keys contain more columns
+- A candidate key is a minimal super key
+- Candidate keys must be numeric
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. A candidate key is a minimal super key - no subset of it can uniquely identify tuples. A super key can have additional unnecessary attributes.
+
+    **Concept Tested:** Key Types
+
+#### 9. Which relational algebra operation would you use to find students who are in both the SPRING_STUDENTS and FALL_STUDENTS tables?
+
+<div class="upper-alpha" markdown>
+
+- UNION (∪)
+- INTERSECTION (∩)
+- DIFFERENCE (−)
+- CARTESIAN PRODUCT (×)
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. The INTERSECTION operation (∩) returns rows that appear in both tables, which would give you students enrolled in both semesters.
+
+    **Concept Tested:** Set Operations
+
+#### 10. What is the purpose of domain integrity?
+
+<div class="upper-alpha" markdown>
+
+- To ensure each table has a primary key
+- To prevent duplicate rows in a table
+- To ensure all values in a column are from the appropriate domain
+- To link tables together with foreign keys
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. Domain integrity ensures that all values in a column must be from the appropriate domain (e.g., GPA must be between 0.0 and 4.0, email must contain an @ symbol).
+
+    **Concept Tested:** Domain Integrity
 
 ## Next Steps
 

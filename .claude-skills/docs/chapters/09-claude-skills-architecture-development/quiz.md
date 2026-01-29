@@ -7,10 +7,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 1. What is the primary skill definition file that serves as the entry point for Claude?
 
 <div class="upper-alpha" markdown>
-1. README.md
-2. SKILL.md
-3. config.json
-4. skill-definition.txt
+
+- README.md
+- SKILL.md
+- config.json
+- skill-definition.txt
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 2. Which category of supporting assets provides computational capabilities for tasks that exceed Claude's direct tool access?
 
 <div class="upper-alpha" markdown>
-1. Template files
-2. Reference documentation
-3. Python scripts
-4. Configuration files
+
+- Template files
+- Reference documentation
+- Python scripts
+- Configuration files
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 3. What is the purpose of reference documentation files in Claude Skills?
 
 <div class="upper-alpha" markdown>
-1. To execute automated data processing
-2. To provide detailed specifications and guidelines without cluttering SKILL.md
-3. To store user preferences
-4. To generate test cases
+
+- To execute automated data processing
+- To provide detailed specifications and guidelines without cluttering SKILL.md
+- To store user preferences
+- To generate test cases
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 4. Which testing strategy verifies that a skill performs correctly with missing files or malformed data?
 
 <div class="upper-alpha" markdown>
-1. Unit testing
-2. Edge case testing
-3. End-to-end testing
-4. Regression testing
+
+- Unit testing
+- Edge case testing
+- End-to-end testing
+- Regression testing
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 5. In Claude Skills security model, what is the principle behind the allowed-tools field?
 
 <div class="upper-alpha" markdown>
-1. Maximum privilege to enable all features
-2. Least privilege, granting only necessary tools
-3. Equal privilege across all skills
-4. Dynamic privilege based on user role
+
+- Maximum privilege to enable all features
+- Least privilege, granting only necessary tools
+- Equal privilege across all skills
+- Dynamic privilege based on user role
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 6. Where are globally installed skills stored to make them available across all projects?
 
 <div class="upper-alpha" markdown>
-1. /usr/local/bin/skills/
-2. .claude/skills/ in the project directory
-3. ~/.claude/skills/ in the user's home directory
-4. /opt/claude/global-skills/
+
+- /usr/local/bin/skills/
+- .claude/skills/ in the project directory
+- ~/.claude/skills/ in the user's home directory
+- /opt/claude/global-skills/
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 7. A developer needs to create a skill that will be used across multiple intelligent textbook projects with identical functionality. Should they use global or project-specific installation?
 
 <div class="upper-alpha" markdown>
-1. Project-specific, to ensure each project can customize the skill
-2. Global, to enable reusability without duplicating the skill in each project
-3. Both simultaneously, to provide redundancy
-4. Neither, skills cannot be shared across projects
+
+- Project-specific, to ensure each project can customize the skill
+- Global, to enable reusability without duplicating the skill in each project
+- Both simultaneously, to provide redundancy
+- Neither, skills cannot be shared across projects
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 8. What is the purpose of the `git status` command?
 
 <div class="upper-alpha" markdown>
-1. To create a new commit
-2. To display the current state of the working directory and staging area
-3. To upload changes to GitHub
-4. To merge two branches
+
+- To create a new commit
+- To display the current state of the working directory and staging area
+- To upload changes to GitHub
+- To merge two branches
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 9. A skill requires the Python packages pandas, networkx, and matplotlib. How should these dependencies be documented and installed?
 
 <div class="upper-alpha" markdown>
-1. List them in a README file and ask users to install manually
-2. Include them in SKILL.md frontmatter
-3. Document them in requirements.txt and install with pip install -r requirements.txt
-4. Embed installation commands directly in the skill workflow
+
+- List them in a README file and ask users to install manually
+- Include them in SKILL.md frontmatter
+- Document them in requirements.txt and install with pip install -r requirements.txt
+- Embed installation commands directly in the skill workflow
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of skill directory structure, supporting assets, testing
 #### 10. Why is distributing skills via Git repositories more flexible than packaged archives?
 
 <div class="upper-alpha" markdown>
-1. Git repositories are smaller in file size
-2. Git repositories enable version control, collaborative development, and easy updates
-3. Git repositories work offline while archives require internet
-4. Git repositories don't require documentation
+
+- Git repositories are smaller in file size
+- Git repositories enable version control, collaborative development, and easy updates
+- Git repositories work offline while archives require internet
+- Git repositories don't require documentation
+
 </div>
 
 ??? question "Show Answer"

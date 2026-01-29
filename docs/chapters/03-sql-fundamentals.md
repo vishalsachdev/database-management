@@ -609,20 +609,20 @@ GROUP BY department_id;
 
 ## Key Takeaways
 
-1. **SQL is the universal language** for working with relational databases
-2. **Choose appropriate data types** to ensure data integrity and performance
-3. **SELECT retrieves data** - be specific about which columns you need
-4. **WHERE filters rows** - use comparison and logical operators effectively
+A. **SQL is the universal language** for working with relational databases
+B. **Choose appropriate data types** to ensure data integrity and performance
+C. **SELECT retrieves data** - be specific about which columns you need
+D. **WHERE filters rows** - use comparison and logical operators effectively
 5. **ORDER BY sorts results** - critical for meaningful output
 6. **Aggregate functions summarize data** - COUNT, SUM, AVG, MIN, MAX
 7. **Practice is essential** - the more queries you write, the more comfortable you'll become
 
 ## Review Questions
 
-1. What's the difference between CHAR and VARCHAR data types?
-2. Write a query to find all products priced between $10 and $50, sorted by price.
-3. Explain the difference between `COUNT(*)` and `COUNT(column_name)`.
-4. Why should you avoid using `SELECT *` in production code?
+A. What's the difference between CHAR and VARCHAR data types?
+B. Write a query to find all products priced between $10 and $50, sorted by price.
+C. Explain the difference between `COUNT(*)` and `COUNT(column_name)`.
+D. Why should you avoid using `SELECT *` in production code?
 5. What's wrong with this query: `WHERE email = NULL`?
 
 ## Practical Exercise
@@ -643,12 +643,176 @@ PRODUCT
 
 Write SQL queries for:
 
-1. Find all Tech products
-2. Find products priced over $200
-3. Find the average price of all products
-4. Find products with less than 20 items in stock
+A. Find all Tech products
+B. Find products priced over $200
+C. Find the average price of all products
+D. Find products with less than 20 items in stock
 5. Find all products with "Desk" in the name
 6. Calculate the total value of inventory (Price × Stock_Qty for all products)
+
+## Chapter Quiz
+
+Test your understanding of SQL fundamentals:
+
+#### 1. What does SQL stand for?
+
+<div class="upper-alpha" markdown>
+
+- Simple Query Language
+- Structured Query Language
+- Standard Quality Language
+- System Query Logic
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. SQL stands for Structured Query Language, the standard language for interacting with relational databases.
+
+    **Concept Tested:** SQL Basics
+
+#### 2. Which SQL command category does SELECT belong to?
+
+<div class="upper-alpha" markdown>
+
+- DDL (Data Definition Language)
+- DML (Data Manipulation Language)
+- DCL (Data Control Language)
+- TCL (Transaction Control Language)
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. SELECT belongs to DML (Data Manipulation Language), which is used to retrieve and manipulate data in databases.
+
+    **Concept Tested:** SQL Categories
+
+#### 3. What is the main difference between CHAR and VARCHAR data types?
+
+<div class="upper-alpha" markdown>
+
+- CHAR stores numbers, VARCHAR stores text
+- CHAR is fixed-length, VARCHAR is variable-length
+- VARCHAR is faster than CHAR
+- There is no difference
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. CHAR stores fixed-length strings (always uses the specified number of characters), while VARCHAR stores variable-length strings (uses only the space needed).
+
+    **Concept Tested:** Data Types
+
+#### 4. Which operator would you use to find customers whose last name starts with 'S'?
+
+<div class="upper-alpha" markdown>
+
+- WHERE last_name = 'S'
+- WHERE last_name LIKE 'S%'
+- WHERE last_name CONTAINS 'S'
+- WHERE last_name STARTS 'S'
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. The LIKE operator with the wildcard % is used for pattern matching. 'S%' means "starts with S followed by any characters."
+
+    **Concept Tested:** Pattern Matching
+
+#### 5. What is wrong with this query: `WHERE email = NULL`?
+
+<div class="upper-alpha" markdown>
+
+- Nothing, it's correct
+- Should use 'null' instead of NULL
+- Should use IS NULL instead of = NULL
+- Should use != NULL instead
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. NULL is a special value and requires special operators. You must use `IS NULL` or `IS NOT NULL`, never `= NULL` or `!= NULL`.
+
+    **Concept Tested:** NULL Handling
+
+#### 6. Which aggregate function would you use to count the number of rows in a table?
+
+<div class="upper-alpha" markdown>
+
+- SUM()
+- TOTAL()
+- COUNT()
+- NUM()
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. COUNT() is the aggregate function used to count rows. COUNT(*) counts all rows, while COUNT(column) counts non-null values in that column.
+
+    **Concept Tested:** Aggregate Functions
+
+#### 7. What does the DISTINCT keyword do in a SELECT statement?
+
+<div class="upper-alpha" markdown>
+
+- Sorts the results in ascending order
+- Filters rows based on a condition
+- Removes duplicate rows from the result set
+- Limits the number of results returned
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. DISTINCT removes duplicate rows from the result set, ensuring each row in the output is unique.
+
+    **Concept Tested:** DISTINCT
+
+#### 8. Which SQL statement would you use to find employees with salary between $40,000 and $60,000?
+
+<div class="upper-alpha" markdown>
+
+- WHERE salary > 40000 AND < 60000
+- WHERE salary BETWEEN 40000 AND 60000
+- WHERE salary IN (40000, 60000)
+- WHERE salary LIKE '40000-60000'
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **B**. The BETWEEN operator is used for range conditions and is equivalent to `WHERE salary >= 40000 AND salary <= 60000`.
+
+    **Concept Tested:** Range Conditions
+
+#### 9. Why should you avoid using `SELECT *` in production code?
+
+<div class="upper-alpha" markdown>
+
+- It's slower than listing specific columns
+- It can break code if table structure changes
+- It retrieves unnecessary data
+- All of the above
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **D**. `SELECT *` should be avoided because it's less efficient, less clear about data needs, and can break code if the table structure changes.
+
+    **Concept Tested:** Best Practices
+
+#### 10. What is the purpose of the ORDER BY clause?
+
+<div class="upper-alpha" markdown>
+
+- To filter rows based on conditions
+- To group rows with the same values
+- To sort the result set by specified columns
+- To join multiple tables together
+
+</div>
+
+??? question "Show Answer"
+    The correct answer is **C**. The ORDER BY clause sorts the result set by one or more specified columns, either in ascending (ASC) or descending (DESC) order.
+
+    **Concept Tested:** Sorting Results
 
 ## Next Steps
 

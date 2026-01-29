@@ -7,10 +7,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 1. Why is Visual Studio Code preferred over traditional word processors like Microsoft Word for intelligent textbook development?
 
 <div class="upper-alpha" markdown>
-1. VS Code has better spell-checking capabilities
-2. VS Code is optimized for web-based markdown content with integrated terminal and Git support
-3. VS Code produces smaller file sizes than Word documents
-4. VS Code is the only editor that can open markdown files
+
+- VS Code has better spell-checking capabilities
+- VS Code is optimized for web-based markdown content with integrated terminal and Git support
+- VS Code produces smaller file sizes than Word documents
+- VS Code is the only editor that can open markdown files
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 2. What is the recommended workflow for efficient content development in VS Code?
 
 <div class="upper-alpha" markdown>
-1. Write all content first, then run mkdocs serve once at the end
-2. Open project folder, start mkdocs serve, edit in split view with preview, save frequently
-3. Edit directly in the browser at localhost:8000
-4. Write content in Word, then copy-paste into VS Code
+
+- Write all content first, then run mkdocs serve once at the end
+- Open project folder, start mkdocs serve, edit in split view with preview, save frequently
+- Edit directly in the browser at localhost:8000
+- Write content in Word, then copy-paste into VS Code
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 3. What is a key advantage of using the integrated terminal in VS Code instead of a separate terminal application?
 
 <div class="upper-alpha" markdown>
-1. The integrated terminal runs commands faster than external terminals
-2. The integrated terminal automatically opens in the project root and provides output linking to files
-3. The integrated terminal is the only way to run Python scripts
-4. The integrated terminal prevents all command-line errors
+
+- The integrated terminal runs commands faster than external terminals
+- The integrated terminal automatically opens in the project root and provides output linking to files
+- The integrated terminal is the only way to run Python scripts
+- The integrated terminal prevents all command-line errors
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 4. What is the distinction between a terminal, a shell, and Bash?
 
 <div class="upper-alpha" markdown>
-1. They are three different names for the same thing
-2. Terminal is the application, shell is the command interpreter, Bash is a specific shell implementation
-3. Bash is the newest version that replaces terminals and shells
-4. Terminal runs on Windows, shell runs on macOS, Bash runs on Linux
+
+- They are three different names for the same thing
+- Terminal is the application, shell is the command interpreter, Bash is a specific shell implementation
+- Bash is the newest version that replaces terminals and shells
+- Terminal runs on Windows, shell runs on macOS, Bash runs on Linux
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 5. You need to execute a Python script located at `docs/learning-graph/analyze-graph.py` with two arguments: `learning-graph.csv` and `quality-metrics.md`. What is the correct command structure?
 
 <div class="upper-alpha" markdown>
-1. `analyze-graph.py python learning-graph.csv quality-metrics.md`
-2. `python docs/learning-graph/analyze-graph.py learning-graph.csv quality-metrics.md`
-3. `run python --script analyze-graph.py --input learning-graph.csv --output quality-metrics.md`
-4. `execute docs/learning-graph/analyze-graph.py (learning-graph.csv, quality-metrics.md)`
+
+- `analyze-graph.py python learning-graph.csv quality-metrics.md`
+- `python docs/learning-graph/analyze-graph.py learning-graph.csv quality-metrics.md`
+- `run python --script analyze-graph.py --input learning-graph.csv --output quality-metrics.md`
+- `execute docs/learning-graph/analyze-graph.py (learning-graph.csv, quality-metrics.md)`
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 6. What does the command `cd ../..` do?
 
 <div class="upper-alpha" markdown>
-1. Navigate to the current directory twice
-2. Navigate up two levels to the grandparent directory
-3. Navigate to the user's home directory
-4. Display the contents of the parent directory
+
+- Navigate to the current directory twice
+- Navigate up two levels to the grandparent directory
+- Navigate to the user's home directory
+- Display the contents of the parent directory
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 7. You need to create a new chapter directory structure at `docs/chapters/14-future-directions/`. Which command accomplishes this most efficiently?
 
 <div class="upper-alpha" markdown>
-1. `mkdir docs; mkdir docs/chapters; mkdir docs/chapters/14-future-directions`
-2. `mkdir -p docs/chapters/14-future-directions`
-3. `touch docs/chapters/14-future-directions`
-4. `cd docs/chapters/14-future-directions`
+
+- `mkdir docs; mkdir docs/chapters; mkdir docs/chapters/14-future-directions`
+- `mkdir -p docs/chapters/14-future-directions`
+- `touch docs/chapters/14-future-directions`
+- `cd docs/chapters/14-future-directions`
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 8. Your shell script `install-claude-skills.sh` gives a "Permission denied" error when you try to run it with `./install-claude-skills.sh`. What is the most likely cause and solution?
 
 <div class="upper-alpha" markdown>
-1. The file doesn't exist; create it with `touch install-claude-skills.sh`
-2. The script lacks execute permissions; fix with `chmod +x install-claude-skills.sh`
-3. The file is corrupted; delete and recreate it
-4. The script is in the wrong directory; move it to /usr/bin
+
+- The file doesn't exist; create it with `touch install-claude-skills.sh`
+- The script lacks execute permissions; fix with `chmod +x install-claude-skills.sh`
+- The file is corrupted; delete and recreate it
+- The script is in the wrong directory; move it to /usr/bin
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 9. What is the primary advantage of using symbolic links (symlinks) for Claude skill installation rather than copying files?
 
 <div class="upper-alpha" markdown>
-1. Symlinks use significantly less disk space than copies
-2. Symlinks automatically update when original files change, avoiding manual synchronization
-3. Symlinks work on all operating systems including Windows
-4. Symlinks are more secure than file copies
+
+- Symlinks use significantly less disk space than copies
+- Symlinks automatically update when original files change, avoiding manual synchronization
+- Symlinks work on all operating systems including Windows
+- Symlinks are more secure than file copies
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of Visual Studio Code, command-line interfaces, Bash she
 #### 10. In the capstone project workflow, what is the correct sequence of major phases?
 
 <div class="upper-alpha" markdown>
-1. Deployment → Course Design → Content Creation → Integration
-2. Content Creation → Course Design → Integration → Deployment
-3. Course Design → Content Creation → Integration → Deployment
-4. Integration → Content Creation → Course Design → Deployment
+
+- Deployment → Course Design → Content Creation → Integration
+- Content Creation → Course Design → Integration → Deployment
+- Course Design → Content Creation → Integration → Deployment
+- Integration → Content Creation → Course Design → Deployment
+
 </div>
 
 ??? question "Show Answer"

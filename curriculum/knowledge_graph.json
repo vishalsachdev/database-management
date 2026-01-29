@@ -1,0 +1,165 @@
+{
+  "graph_id": "db_mgmt_v1",
+  "title": "Database Management (Ch.1-3 adaptive draft)",
+  "version": "0.1.0",
+  "schema_version": "1.0",
+  "nodes": [
+    {
+      "node_id": "db_001_data_vs_information",
+      "title": "Data vs Information",
+      "complexity": 0.1,
+      "prerequisites": [],
+      "core_content": "Differentiate raw data from processed information and why that matters for business decisions.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 3 },
+      "page_index": { "path": "docs/chapters/01-database-environment.md", "page_number": 2 }
+    },
+    {
+      "node_id": "db_002_database_definition",
+      "title": "What is a Database",
+      "complexity": 0.12,
+      "prerequisites": ["db_001_data_vs_information"],
+      "core_content": "A database is a shared, integrated structure storing end-user data and metadata.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 3 },
+      "page_index": { "path": "docs/chapters/01-database-environment.md", "page_number": 3 }
+    },
+    {
+      "node_id": "db_003_dbms_roles",
+      "title": "DBMS Roles and Functions",
+      "complexity": 0.18,
+      "prerequisites": ["db_002_database_definition"],
+      "core_content": "DBMS manages storage, security, integrity, backup/recovery, and multi-user access.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 4 },
+      "page_index": { "path": "docs/chapters/01-database-environment.md", "page_number": 5 }
+    },
+    {
+      "node_id": "db_004_advantages_challenges",
+      "title": "DB Advantages and Challenges",
+      "complexity": 0.2,
+      "prerequisites": ["db_003_dbms_roles"],
+      "core_content": "Benefits: sharing, security, integration, consistency; Challenges: cost, complexity, performance, security risk.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 3 },
+      "page_index": { "path": "docs/chapters/01-database-environment.md", "page_number": 6 }
+    },
+    {
+      "node_id": "db_010_tables_relations",
+      "title": "Tables and Relations",
+      "complexity": 0.25,
+      "prerequisites": ["db_004_advantages_challenges"],
+      "core_content": "Tables (relations) consist of rows (tuples) and columns (attributes) with domains and keys.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 4 },
+      "page_index": { "path": "docs/chapters/02-tables-relational-algebra.md", "page_number": 10 }
+    },
+    {
+      "node_id": "db_011_keys_overview",
+      "title": "Keys and Relationships",
+      "complexity": 0.3,
+      "prerequisites": ["db_010_tables_relations"],
+      "core_content": "Primary, foreign, candidate, and composite keys enforce uniqueness and relationships across tables.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 4 },
+      "page_index": { "path": "docs/chapters/02-tables-relational-algebra.md", "page_number": 12 },
+      "remediation": {
+        "subnodes": ["db_011a_primary_keys_focus", "db_011b_foreign_keys_focus"],
+        "strategy": "decompose"
+      }
+    },
+    {
+      "node_id": "db_011a_primary_keys_focus",
+      "title": "Primary Keys Focus",
+      "complexity": 0.22,
+      "prerequisites": ["db_010_tables_relations"],
+      "core_content": "Primary keys uniquely identify rows; must be stable, unique, and non-null.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 2 },
+      "page_index": { "path": "docs/chapters/02-tables-relational-algebra.md", "page_number": 12, "section_anchor": "#keys" }
+    },
+    {
+      "node_id": "db_011b_foreign_keys_focus",
+      "title": "Foreign Keys Focus",
+      "complexity": 0.24,
+      "prerequisites": ["db_011a_primary_keys_focus"],
+      "core_content": "Foreign keys reference primary keys in another table to enforce referential integrity.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 2 },
+      "page_index": { "path": "docs/chapters/02-tables-relational-algebra.md", "page_number": 12, "section_anchor": "#foreign-keys" }
+    },
+    {
+      "node_id": "db_011r_keys_recap",
+      "title": "Keys Refresher",
+      "complexity": 0.2,
+      "prerequisites": ["db_010_tables_relations"],
+      "core_content": "Concise recap of primary vs foreign keys with one mini example per type.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 2 },
+      "page_index": { "path": "docs/chapters/02-tables-relational-algebra.md", "page_number": 13 }
+    },
+    {
+      "node_id": "db_012_integrity_rules",
+      "title": "Integrity Rules",
+      "complexity": 0.32,
+      "prerequisites": ["db_011_keys_overview"],
+      "core_content": "Entity integrity (PK non-null), referential integrity (FK matches PK), domain integrity (valid values).",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 3 },
+      "page_index": { "path": "docs/chapters/02-tables-relational-algebra.md", "page_number": 14 }
+    },
+    {
+      "node_id": "db_013_relational_algebra",
+      "title": "Relational Algebra Operators",
+      "complexity": 0.35,
+      "prerequisites": ["db_012_integrity_rules"],
+      "core_content": "Select, project, union, intersection, difference, Cartesian product, and joins as formal operations.",
+      "assessment_criteria": { "type": "free_form", "rubric": "Explain operator purpose and give a table-level example." },
+      "page_index": { "path": "docs/chapters/02-tables-relational-algebra.md", "page_number": 16 }
+    },
+    {
+      "node_id": "db_020_sql_intro",
+      "title": "SQL Overview",
+      "complexity": 0.28,
+      "prerequisites": ["db_010_tables_relations"],
+      "core_content": "SQL categories: DDL, DML, DCL, TCL; why SQL is universal and valuable.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 3 },
+      "page_index": { "path": "docs/chapters/03-sql-fundamentals.md", "page_number": 20 }
+    },
+    {
+      "node_id": "db_021_sql_ddl",
+      "title": "SQL DDL Basics",
+      "complexity": 0.34,
+      "prerequisites": ["db_020_sql_intro", "db_011_keys_overview"],
+      "core_content": "CREATE DATABASE/TABLE, column types, primary/foreign keys, and NOT NULL/UNIQUE constraints.",
+      "assessment_criteria": { "type": "code_execution", "goal": "Define a table with PK and FK" },
+      "page_index": { "path": "docs/chapters/03-sql-fundamentals.md", "page_number": 22 },
+      "prerequisite_refreshers": [
+        { "prereq": "db_011_keys_overview", "refresher_node": "db_011r_keys_recap" }
+      ]
+    },
+    {
+      "node_id": "db_022_sql_select_basics",
+      "title": "SELECT, WHERE, ORDER BY",
+      "complexity": 0.36,
+      "prerequisites": ["db_020_sql_intro", "db_010_tables_relations"],
+      "core_content": "SELECT columns FROM table with filtering (WHERE) and ordering (ORDER BY); caution on SELECT *.",
+      "assessment_criteria": { "type": "code_execution", "goal": "Write a filtered, sorted SELECT" },
+      "page_index": { "path": "docs/chapters/03-sql-fundamentals.md", "page_number": 24 },
+      "prerequisite_refreshers": [
+        { "prereq": "db_010_tables_relations", "refresher_node": "db_011r_keys_recap" }
+      ]
+    },
+    {
+      "node_id": "db_023_sql_aggregates_groupby",
+      "title": "Aggregates and GROUP BY",
+      "complexity": 0.38,
+      "prerequisites": ["db_022_sql_select_basics"],
+      "core_content": "COUNT/SUM/AVG/MIN/MAX with GROUP BY; DISTINCT vs non-distinct; filter with WHERE vs HAVING.",
+      "assessment_criteria": { "type": "code_execution", "goal": "Group and aggregate with a filter" },
+      "page_index": { "path": "docs/chapters/03-sql-fundamentals.md", "page_number": 26 },
+      "prerequisite_refreshers": [
+        { "prereq": "db_022_sql_select_basics", "refresher_node": "db_022r_select_recap" }
+      ]
+    },
+    {
+      "node_id": "db_022r_select_recap",
+      "title": "SELECT Recap",
+      "complexity": 0.28,
+      "prerequisites": ["db_020_sql_intro"],
+      "core_content": "Short recap of SELECT/WHERE/ORDER BY with one worked example.",
+      "assessment_criteria": { "type": "quiz", "min_score": 0.8, "question_count": 2 },
+      "page_index": { "path": "docs/chapters/03-sql-fundamentals.md", "page_number": 25 }
+    }
+  ]
+}

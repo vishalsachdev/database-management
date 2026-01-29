@@ -7,10 +7,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 1. What is a Claude Skill?
 
 <div class="upper-alpha" markdown>
-1. A simple one-line prompt for Claude AI
-2. An autonomous agent that executes complex, multi-step workflows
-3. A keyboard shortcut for common tasks
-4. A programming language for AI systems
+
+- A simple one-line prompt for Claude AI
+- An autonomous agent that executes complex, multi-step workflows
+- A keyboard shortcut for common tasks
+- A programming language for AI systems
+
 </div>
 
 ??? question "Show Answer"
@@ -25,10 +27,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 2. Which file defines a Claude Skill?
 
 <div class="upper-alpha" markdown>
-1. README.md with configuration settings
-2. skill.json containing workflow steps
-3. SKILL.md with YAML frontmatter and markdown workflow
-4. config.yml with execution parameters
+
+- README.md with configuration settings
+- skill.json containing workflow steps
+- SKILL.md with YAML frontmatter and markdown workflow
+- config.yml with execution parameters
+
 </div>
 
 ??? question "Show Answer"
@@ -43,10 +47,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 3. What information is included in the YAML frontmatter of a skill file?
 
 <div class="upper-alpha" markdown>
-1. Step-by-step workflow instructions
-2. Code examples and templates
-3. Name, description, license, and allowed tools
-4. User feedback and quality ratings
+
+- Step-by-step workflow instructions
+- Code examples and templates
+- Name, description, license, and allowed tools
+- User feedback and quality ratings
+
 </div>
 
 ??? question "Show Answer"
@@ -61,10 +67,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 4. What is the purpose of the `allowed-tools` field in skill frontmatter?
 
 <div class="upper-alpha" markdown>
-1. To list tools the user must install before running the skill
-2. To speed up skill execution by preloading tools
-3. To improve skill documentation for beginners
-4. To limit the skill to specific Claude Code tools for security
+
+- To list tools the user must install before running the skill
+- To speed up skill execution by preloading tools
+- To improve skill documentation for beginners
+- To limit the skill to specific Claude Code tools for security
+
 </div>
 
 ??? question "Show Answer"
@@ -79,10 +87,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 5. What is the difference between a Claude Skill and a Claude Command?
 
 <div class="upper-alpha" markdown>
-1. Skills are for beginners, commands are for experts
-2. Skills execute multi-step workflows, commands expand simple text prompts
-3. Skills are free, commands require payment
-4. Skills work offline, commands require internet
+
+- Skills are for beginners, commands are for experts
+- Skills execute multi-step workflows, commands expand simple text prompts
+- Skills are free, commands require payment
+- Skills work offline, commands require internet
+
 </div>
 
 ??? question "Show Answer"
@@ -97,10 +107,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 6. Where should skills be installed for global availability across all projects?
 
 <div class="upper-alpha" markdown>
-1. In the project root directory
-2. In /usr/local/share/claude-skills/
-3. In ~/.claude/skills/ in the user's home directory
-4. In the Claude AI cloud account settings
+
+- In the project root directory
+- In /usr/local/share/claude-skills/
+- In ~/.claude/skills/ in the user's home directory
+- In the Claude AI cloud account settings
+
 </div>
 
 ??? question "Show Answer"
@@ -115,10 +127,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 7. How does Claude Code determine which workflow steps to execute when a skill is invoked?
 
 <div class="upper-alpha" markdown>
-1. By analyzing user intent from the invocation command
-2. By reading the step-by-step instructions in the markdown body of SKILL.md
-3. By executing all Python scripts in the skill directory
-4. By querying the Claude AI model for the optimal workflow
+
+- By analyzing user intent from the invocation command
+- By reading the step-by-step instructions in the markdown body of SKILL.md
+- By executing all Python scripts in the skill directory
+- By querying the Claude AI model for the optimal workflow
+
 </div>
 
 ??? question "Show Answer"
@@ -133,10 +147,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 8. A developer creates a new skill that needs to analyze existing files but should never modify them or access the internet. Which `allowed-tools` configuration is most appropriate?
 
 <div class="upper-alpha" markdown>
-1. [Read, Grep, Glob]
-2. [Write, Edit, Bash]
-3. [WebFetch, WebSearch, Read]
-4. All tools (allowed-tools field omitted)
+
+- [Read, Grep, Glob]
+- [Write, Edit, Bash]
+- [WebFetch, WebSearch, Read]
+- All tools (allowed-tools field omitted)
+
 </div>
 
 ??? question "Show Answer"
@@ -151,10 +167,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 9. Why do well-designed skill workflow instructions include verification checkpoints and error handling guidance?
 
 <div class="upper-alpha" markdown>
-1. To make the skill file longer and more impressive
-2. To test Claude's ability to handle complex logic
-3. To enable autonomous execution even when conditions vary
-4. To satisfy software licensing requirements
+
+- To make the skill file longer and more impressive
+- To test Claude's ability to handle complex logic
+- To enable autonomous execution even when conditions vary
+- To satisfy software licensing requirements
+
 </div>
 
 ??? question "Show Answer"
@@ -169,10 +187,12 @@ Test your understanding of Claude Skills, skill definition files, installation, 
 #### 10. What does invoking a skill with a slash command like `/quiz-generator` accomplish?
 
 <div class="upper-alpha" markdown>
-1. It downloads the skill from the internet
-2. It creates a new SKILL.md file in the project
-3. It compiles the skill into executable code
-4. It loads and executes the skill's workflow instructions
+
+- It downloads the skill from the internet
+- It creates a new SKILL.md file in the project
+- It compiles the skill into executable code
+- It loads and executes the skill's workflow instructions
+
 </div>
 
 ??? question "Show Answer"
