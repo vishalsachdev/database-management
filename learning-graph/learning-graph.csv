@@ -1,0 +1,232 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Data,,FOUND
+2,Information,,FOUND
+3,Database,1,FOUND
+4,File Management,1,FOUND
+5,Spreadsheets,1|4,FOUND
+6,Data vs Information,1|2,BASIC
+7,Database Management System,3,BASIC
+8,Database Users,3,BASIC
+9,Database Administrator,8,BASIC
+10,Database Designer,8,BASIC
+11,End Users,8,BASIC
+12,Database Components,3,BASIC
+13,Data Models,3,BASIC
+14,Hierarchical Model,13,BASIC
+15,Network Model,13,BASIC
+16,Relational Model,13,RELAT
+17,Object-Oriented Model,13,BASIC
+18,Tables,16,RELAT
+19,Rows,18,RELAT
+20,Columns,18,RELAT
+21,Tuples,19,RELAT
+22,Attributes,20,RELAT
+23,Primary Key,18,RELAT
+24,Foreign Key,18,RELAT
+25,Composite Key,23,RELAT
+26,Candidate Key,23,RELAT
+27,Super Key,23,RELAT
+28,One-to-One Relationship,18,RELAT
+29,One-to-Many Relationship,18,RELAT
+30,Many-to-Many Relationship,18,RELAT
+31,Relational Algebra,16,RELAT
+32,Selection Operation,31,RELAT
+33,Projection Operation,31,RELAT
+34,Union Operation,31,RELAT
+35,Intersection Operation,31,RELAT
+36,Difference Operation,31,RELAT
+37,Cartesian Product,31,RELAT
+38,SQL,16,SQL
+39,SQL Standards,38,SQL
+40,Data Definition Language,38,SQL
+41,Data Manipulation Language,38,SQL
+42,Data Control Language,38,SQL
+43,CREATE Statement,40,SQL
+44,ALTER Statement,40,SQL
+45,DROP Statement,40,SQL
+46,INSERT Statement,41,SQL
+47,UPDATE Statement,41,SQL
+48,DELETE Statement,41,SQL
+49,SELECT Statement,41,SQL
+50,WHERE Clause,49,SQL
+51,Filtering Data,50,SQL
+52,Comparison Operators,50,SQL
+53,Logical Operators,50,SQL
+54,AND Operator,53,SQL
+55,OR Operator,53,SQL
+56,NOT Operator,53,SQL
+57,ORDER BY Clause,49,SQL
+58,Sorting Data,57,SQL
+59,ASC Keyword,57,SQL
+60,DESC Keyword,57,SQL
+61,Aggregate Functions,49,SQL
+62,COUNT Function,61,SQL
+63,SUM Function,61,SQL
+64,AVG Function,61,SQL
+65,MIN Function,61,SQL
+66,MAX Function,61,SQL
+67,GROUP BY Clause,61,SQL
+68,HAVING Clause,67,SQL
+69,INNER JOIN,49,SQL
+70,LEFT JOIN,49,SQL
+71,RIGHT JOIN,49,SQL
+72,FULL OUTER JOIN,70|71,ASQL
+73,CROSS JOIN,49,ASQL
+74,Self Join,69,ASQL
+75,Subqueries,49,ASQL
+76,Scalar Subquery,75,ASQL
+77,Table Subquery,75,ASQL
+78,Correlated Subquery,75,ASQL
+79,Common Table Expression,75,ASQL
+80,Recursive CTE,79,ASQL
+81,Window Functions,61,ASQL
+82,ROW_NUMBER Function,81,ASQL
+83,RANK Function,81,ASQL
+84,DENSE_RANK Function,81,ASQL
+85,LEAD Function,81,ASQL
+86,LAG Function,81,ASQL
+87,PARTITION BY Clause,81,ASQL
+88,CASE Statement,49,ASQL
+89,Simple CASE,88,ASQL
+90,Searched CASE,88,ASQL
+91,String Functions,38,ASQL
+92,CONCAT Function,91,ASQL
+93,SUBSTRING Function,91,ASQL
+94,UPPER Function,91,ASQL
+95,LOWER Function,91,ASQL
+96,TRIM Function,91,ASQL
+97,LIKE Operator,50,ASQL
+98,Pattern Matching,97,ASQL
+99,Wildcards,97,ASQL
+100,Date Functions,38,ASQL
+101,DATE_FORMAT Function,100,ASQL
+102,DATE_ADD Function,100,ASQL
+103,DATE_SUB Function,100,ASQL
+104,DATEDIFF Function,100,ASQL
+105,NOW Function,100,ASQL
+106,NULL Values,18,ASQL
+107,IS NULL Operator,106,ASQL
+108,IS NOT NULL Operator,106,ASQL
+109,COALESCE Function,106,ASQL
+110,JSON,3,JSON
+111,JSON Structure,110,JSON
+112,JSON Data Types,110,JSON
+113,JSON Objects,111,JSON
+114,JSON Arrays,111,JSON
+115,JSON Strings,112,JSON
+116,JSON Numbers,112,JSON
+117,JSON Booleans,112,JSON
+118,JSON Null,112,JSON
+119,Nested JSON,113|114,JSON
+120,JSON Functions in SQL,38|110,JSON
+121,JSON_EXTRACT Function,120,JSON
+122,JSON_VALUE Function,120,JSON
+123,JSON_QUERY Function,120,JSON
+124,RESTful API,110,JSON
+125,API Authentication,124,JSON
+126,API Keys,125,JSON
+127,OAuth,125,JSON
+128,API Data Extraction,124,JSON
+129,Entity-Relationship Model,3,DESIGN
+130,ER Diagrams,129,DESIGN
+131,Entities,129,DESIGN
+132,Entity Attributes,131,DESIGN
+133,Entity Relationships,131,DESIGN
+134,Cardinality,133,DESIGN
+135,Participation Constraints,133,DESIGN
+136,Weak Entity,131,DESIGN
+137,Identifying Relationship,136,DESIGN
+138,Enhanced ER Model,129,DESIGN
+139,Specialization,138,DESIGN
+140,Generalization,138,DESIGN
+141,Aggregation,138,DESIGN
+142,ER to Relational Mapping,130|16,DESIGN
+143,MySQL Workbench,7,TOOLS
+144,Data Redundancy,18,NORM
+145,Update Anomaly,144,NORM
+146,Insertion Anomaly,144,NORM
+147,Deletion Anomaly,144,NORM
+148,Functional Dependency,22,NORM
+149,Full Functional Dependency,148,NORM
+150,Partial Dependency,148,NORM
+151,Transitive Dependency,148,NORM
+152,First Normal Form,18,NORM
+153,Atomic Values,152,NORM
+154,Second Normal Form,152,NORM
+155,Third Normal Form,154,NORM
+156,Boyce-Codd Normal Form,155,NORM
+157,Denormalization,155,NORM
+158,OLTP,7,DW
+159,OLAP,7,DW
+160,Data Warehouse,159,DW
+161,Data Warehouse Architecture,160,DW
+162,Star Schema,160,DW
+163,Snowflake Schema,160,DW
+164,Fact Table,162,DW
+165,Dimension Table,162,DW
+166,ETL Process,160,DW
+167,Extract Phase,166,DW
+168,Transform Phase,166,DW
+169,Load Phase,166,DW
+170,Data Quality,168,DW
+171,Data Cleansing,170,DW
+172,Data Transformation,168,DW
+173,Knime,166,TOOLS
+174,NoSQL,3,NOSQL
+175,NoSQL Motivation,174,NOSQL
+176,CAP Theorem,174,NOSQL
+177,Consistency,176,NOSQL
+178,Availability,176,NOSQL
+179,Partition Tolerance,176,NOSQL
+180,Document Database,174,NOSQL
+181,Key-Value Store,174,NOSQL
+182,Column-Family Store,174,NOSQL
+183,Graph Database,174,NOSQL
+184,MongoDB,180,NOSQL
+185,MongoDB CRUD,184,NOSQL
+186,MongoDB Insert,185,NOSQL
+187,MongoDB Find,185,NOSQL
+188,MongoDB Update,185,NOSQL
+189,MongoDB Delete,185,NOSQL
+190,MongoDB Query Language,184,NOSQL
+191,MongoDB Compass,184,TOOLS
+192,NoSQL vs SQL,174|38,NOSQL
+193,MySQL Installation,7,TOOLS
+194,MySQL Configuration,193,TOOLS
+195,PostgreSQL,7,TOOLS
+196,PostgreSQL Setup,195,TOOLS
+197,Jupyter Notebooks,195,TOOLS
+198,Google Colab,197,TOOLS
+199,SQL Clients,38,TOOLS
+200,Python Database Connectivity,197,PYTHON
+201,PyMySQL Library,200,PYTHON
+202,Psycopg2 Library,200,PYTHON
+203,PyMongo Library,200,PYTHON
+204,Executing SQL from Python,200|38,PYTHON
+205,Parameterized Queries,204,PYTHON
+206,SQL Injection Prevention,205,PYTHON
+207,Transaction Management,7,PYTHON
+208,ACID Properties,207,PYTHON
+209,BEGIN Transaction,207,PYTHON
+210,COMMIT Statement,207,PYTHON
+211,ROLLBACK Statement,207,PYTHON
+212,Error Handling in Python,200,PYTHON
+213,Try-Except Blocks,212,PYTHON
+214,Pandas Library,197,PYTHON
+215,Pandas DataFrame,214,PYTHON
+216,Reading SQL to DataFrame,214|204,PYTHON
+217,Writing DataFrame to SQL,214|204,PYTHON
+218,Data Visualization,214,PYTHON
+219,Matplotlib,218,PYTHON
+220,Seaborn,218,PYTHON
+221,Customer Segmentation,67|218,BIZ
+222,Marketing Analytics,221,BIZ
+223,RFM Analysis,222,BIZ
+224,Cohort Analysis,222,BIZ
+225,Vendor Analysis,67,BIZ
+226,Supply Chain Management,225,BIZ
+227,Financial Analysis,64|218,BIZ
+228,Macroeconomic Research,227,BIZ
+229,Fraud Detection,51|218,BIZ
+230,Business Intelligence,160|218,BIZ
+231,BI Dashboards,230,BIZ

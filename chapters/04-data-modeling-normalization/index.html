@@ -1,0 +1,2923 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An intelligent textbook built with AI-powered tools and interactive learning experiences.">
+      
+      
+        <meta name="author" content="vishalsachdev">
+      
+      
+        <link rel="canonical" href="https://vishalsachdev.github.io/database-management/chapters/04-data-modeling-normalization/">
+      
+      
+        <link rel="prev" href="../03b-advanced-sql/">
+      
+      
+        <link rel="next" href="../05-python-pandas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>4. Data Modeling & Normalization - Database Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-4-data-modeling-normalization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Database Management" class="md-header__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Database Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Data Modeling & Normalization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Database Management" class="md-nav__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Database Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-database-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. The Database Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tables-relational-algebra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Tables and Relational Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-sql-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. SQL Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03b-advanced-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b. JOINs, Subqueries & Window Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Modeling & Normalization
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Modeling & Normalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41-introduction-to-data-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Introduction to Data Modeling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Introduction to Data Modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-data-modeling-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Data Modeling Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-the-entity-relationship-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 The Entity-Relationship Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 The Entity-Relationship Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cardinality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#participation-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Participation Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-er-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 ER Diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 ER Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chen-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chen Notation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crows-foot-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Crow's Foot Notation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-weak-entities-and-enhanced-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Weak Entities and Enhanced ER
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Weak Entities and Enhanced ER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weak-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weak Entities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-er-model-specialization-and-generalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enhanced ER Model: Specialization and Generalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-er-to-relational-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 ER-to-Relational Mapping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 ER-to-Relational Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rule-1-strong-entities-become-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 1: Strong Entities Become Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-2-weak-entities-become-tables-with-composite-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 2: Weak Entities Become Tables with Composite Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-3-11-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 3: 1:1 Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-4-1m-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 4: 1:M Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-5-mn-relationships-become-junction-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 5: M:N Relationships Become Junction Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-6-multi-valued-attributes-become-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 6: Multi-Valued Attributes Become Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-data-redundancy-and-anomalies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Data Redundancy and Anomalies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 Data Redundancy and Anomalies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-badly-designed-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Badly Designed Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-normalization-first-normal-form-1nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Normalization: First Normal Form (1NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.7 Normalization: First Normal Form (1NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1nf-atomic-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1NF: Atomic Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-second-normal-form-2nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 Second Normal Form (2NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.8 Second Normal Form (2NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifying-partial-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifying Partial Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-partial-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixing Partial Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#49-third-normal-form-3nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 Third Normal Form (3NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.9 Third Normal Form (3NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifying-transitive-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifying Transitive Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-transitive-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixing Transitive Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-complete-3nf-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Complete 3NF Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410-boyce-codd-normal-form-bcnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 Boyce-Codd Normal Form (BCNF)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411-denormalization-and-trade-offs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Denormalization and Trade-offs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.11 Denormalization and Trade-offs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-denormalize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Denormalize?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-denormalize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Denormalize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-not-to-denormalize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When NOT to Denormalize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalization-trade-offs-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalization Trade-offs Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-python-pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Python & pandas for Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-etl-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. ETL Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-nosql-apis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. NoSQL & APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-cloud-databases-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Cloud Databases & Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41-introduction-to-data-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Introduction to Data Modeling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Introduction to Data Modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-data-modeling-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Data Modeling Matters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-the-entity-relationship-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 The Entity-Relationship Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 The Entity-Relationship Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cardinality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#participation-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Participation Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-er-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 ER Diagrams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 ER Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chen-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chen Notation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crows-foot-notation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Crow's Foot Notation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-weak-entities-and-enhanced-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Weak Entities and Enhanced ER
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Weak Entities and Enhanced ER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weak-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weak Entities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-er-model-specialization-and-generalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enhanced ER Model: Specialization and Generalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-er-to-relational-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 ER-to-Relational Mapping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 ER-to-Relational Mapping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rule-1-strong-entities-become-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 1: Strong Entities Become Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-2-weak-entities-become-tables-with-composite-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 2: Weak Entities Become Tables with Composite Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-3-11-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 3: 1:1 Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-4-1m-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 4: 1:M Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-5-mn-relationships-become-junction-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 5: M:N Relationships Become Junction Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-6-multi-valued-attributes-become-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule 6: Multi-Valued Attributes Become Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-data-redundancy-and-anomalies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Data Redundancy and Anomalies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 Data Redundancy and Anomalies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-badly-designed-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Badly Designed Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47-normalization-first-normal-form-1nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Normalization: First Normal Form (1NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.7 Normalization: First Normal Form (1NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1nf-atomic-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1NF: Atomic Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48-second-normal-form-2nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 Second Normal Form (2NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.8 Second Normal Form (2NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifying-partial-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifying Partial Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-partial-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixing Partial Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#49-third-normal-form-3nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 Third Normal Form (3NF)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.9 Third Normal Form (3NF)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifying-transitive-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identifying Transitive Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-transitive-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixing Transitive Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-complete-3nf-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Complete 3NF Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410-boyce-codd-normal-form-bcnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 Boyce-Codd Normal Form (BCNF)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411-denormalization-and-trade-offs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Denormalization and Trade-offs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.11 Denormalization and Trade-offs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-denormalize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Denormalize?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-denormalize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Denormalize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-not-to-denormalize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When NOT to Denormalize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalization-trade-offs-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normalization Trade-offs Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../01-database-environment/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/vishalsachdev/database-management/blob/main/docs/chapters/04-data-modeling-normalization.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="chapter-4-data-modeling-normalization">Chapter 4: Data Modeling &amp; Normalization</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After completing this chapter, you will be able to:</p>
+<ul>
+<li>Design Entity-Relationship (ER) diagrams using Chen and Crow's Foot notation</li>
+<li>Identify entities, attributes, relationships, and cardinality constraints</li>
+<li>Map ER diagrams to relational tables</li>
+<li>Recognize data redundancy and its problems</li>
+<li>Apply normalization rules (1NF, 2NF, 3NF, BCNF) to eliminate anomalies</li>
+<li>Determine functional dependencies in a relation</li>
+<li>Explain when and why denormalization is appropriate</li>
+<li>Evaluate normalization trade-offs in real business systems</li>
+</ul>
+<h2 id="41-introduction-to-data-modeling">4.1 Introduction to Data Modeling</h2>
+<p>Before writing SQL or loading data, you need a blueprint. <strong>Data modeling</strong> is the process of designing the structure of a database: what data to store, how pieces of data relate to each other, and what rules the data must follow.</p>
+<p>Think of it like an architect's floor plan. You would never start pouring concrete without a plan, and you should never start building tables without a data model.</p>
+<h3 id="why-data-modeling-matters">Why Data Modeling Matters</h3>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>What Happens Without Modeling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data redundancy</strong></td>
+<td>The same customer address stored in five tables</td>
+</tr>
+<tr>
+<td><strong>Update anomalies</strong></td>
+<td>Changing a price in one place but not another</td>
+</tr>
+<tr>
+<td><strong>Insert anomalies</strong></td>
+<td>Unable to add a new product until someone orders it</td>
+</tr>
+<tr>
+<td><strong>Delete anomalies</strong></td>
+<td>Deleting an order accidentally removes the only record of a customer</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Business Perspective</p>
+<p>Poor data models cost real money. A 2023 Gartner report estimated that poor data quality costs organizations an average of $12.9 million per year. Much of this traces back to flawed database design.</p>
+</div>
+<h2 id="42-the-entity-relationship-model">4.2 The Entity-Relationship Model</h2>
+<p>The <strong>Entity-Relationship (ER) model</strong>, introduced by Peter Chen in 1976, is a conceptual tool for describing data requirements. It focuses on <em>what</em> data the business needs, not <em>how</em> it will be stored.</p>
+<h3 id="entities">Entities</h3>
+<p>An <strong>entity</strong> is a thing or object in the real world that is distinguishable from other objects. Entities become tables in a relational database.</p>
+<p><strong>Examples:</strong> Customer, Product, Order, Employee, Department</p>
+<h3 id="attributes">Attributes</h3>
+<p>An <strong>attribute</strong> is a property or characteristic of an entity. Attributes become columns.</p>
+<p><strong>Types of attributes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Simple</strong></td>
+<td>Cannot be subdivided</td>
+<td><code>first_name</code>, <code>price</code></td>
+</tr>
+<tr>
+<td><strong>Composite</strong></td>
+<td>Can be broken into sub-parts</td>
+<td><code>address</code> (street, city, state, zip)</td>
+</tr>
+<tr>
+<td><strong>Derived</strong></td>
+<td>Computed from other attributes</td>
+<td><code>age</code> (from <code>birth_date</code>)</td>
+</tr>
+<tr>
+<td><strong>Multi-valued</strong></td>
+<td>Can hold multiple values</td>
+<td><code>phone_numbers</code> (home, work, cell)</td>
+</tr>
+<tr>
+<td><strong>Key attribute</strong></td>
+<td>Uniquely identifies the entity</td>
+<td><code>customer_id</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Multi-Valued Attributes</p>
+<p>Multi-valued attributes violate the atomic value rule from Chapter 2. During ER-to-relational mapping, they must be moved to a separate table.</p>
+</div>
+<h3 id="entity-relationships">Entity Relationships</h3>
+<p>A <strong>relationship</strong> is an association between two or more entities. In a business context, relationships represent verbs: a customer <em>places</em> an order, an employee <em>works in</em> a department, a product <em>belongs to</em> a category.</p>
+<h3 id="cardinality">Cardinality</h3>
+<p><strong>Cardinality</strong> describes the maximum number of entity instances that can participate in a relationship.</p>
+<table>
+<thead>
+<tr>
+<th>Cardinality</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1:1</strong> (one-to-one)</td>
+<td>Each A is associated with at most one B</td>
+<td>Employee <em>has</em> one Parking Spot</td>
+</tr>
+<tr>
+<td><strong>1:M</strong> (one-to-many)</td>
+<td>Each A can be associated with many Bs</td>
+<td>Department <em>employs</em> many Employees</td>
+</tr>
+<tr>
+<td><strong>M:N</strong> (many-to-many)</td>
+<td>Each A can be associated with many Bs and vice versa</td>
+<td>Student <em>enrolls in</em> many Courses; each Course <em>has</em> many Students</td>
+</tr>
+</tbody>
+</table>
+<h3 id="participation-constraints">Participation Constraints</h3>
+<p><strong>Participation</strong> describes the minimum number of instances required in a relationship.</p>
+<ul>
+<li><strong>Total participation</strong> (mandatory): Every entity instance must participate. Shown as a double line in Chen notation.</li>
+<li><strong>Partial participation</strong> (optional): Some instances may not participate. Shown as a single line.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Participation Example</p>
+<p>In an e-commerce system:</p>
+<ul>
+<li>Every ORDER <strong>must</strong> be placed by a CUSTOMER (total participation of ORDER in the "places" relationship)</li>
+<li>A CUSTOMER <strong>may or may not</strong> have placed any orders (partial participation of CUSTOMER)</li>
+</ul>
+</div>
+<h2 id="43-er-diagrams">4.3 ER Diagrams</h2>
+<p>ER diagrams are the visual representation of the ER model. Two notations are widely used.</p>
+<h3 id="chen-notation">Chen Notation</h3>
+<p>Chen notation uses distinct shapes for each component:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>  +------------+         +-----------+         +-----------+
+  |  CUSTOMER  |---&lt;places&gt;---| ORDER     |---&lt;contains&gt;---|  PRODUCT  |
+  +------------+         +-----------+         +-----------+
+       |                      |                     |
+   customer_id (PK)       order_id (PK)        product_id (PK)
+   name                   order_date           name
+   email                  total_amount         price
+</code></pre></div></td></tr></table></div>
+<p><strong>Shape legend:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Shape</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rectangle</td>
+<td>Entity</td>
+</tr>
+<tr>
+<td>Ellipse</td>
+<td>Attribute</td>
+</tr>
+<tr>
+<td>Diamond</td>
+<td>Relationship</td>
+</tr>
+<tr>
+<td>Double rectangle</td>
+<td>Weak entity</td>
+</tr>
+<tr>
+<td>Double ellipse</td>
+<td>Multi-valued attribute</td>
+</tr>
+<tr>
+<td>Dashed ellipse</td>
+<td>Derived attribute</td>
+</tr>
+</tbody>
+</table>
+<h3 id="crows-foot-notation">Crow's Foot Notation</h3>
+<p>Crow's foot notation is more common in industry tools (MySQL Workbench, Lucidchart, draw.io). It shows cardinality using symbols at the ends of relationship lines.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>CUSTOMER          ORDER             ORDER_ITEM         PRODUCT
++-------------+   +-------------+   +--------------+   +------------+
+| customer_id |   | order_id    |   | item_id      |   | product_id |
+| name        |---| customer_id |---| order_id     |---| name       |
+| email       |   | order_date  |   | product_id   |   | price      |
+| phone       |   | total       |   | quantity     |   | category   |
++-------------+   +-------------+   +--------------+   +------------+
+      1       ||---o&lt;   M             M   &gt;o---||  1
+</code></pre></div></td></tr></table></div>
+<p><strong>Crow's foot symbols:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\|\|</code> (single bar)</td>
+<td>Exactly one (mandatory)</td>
+</tr>
+<tr>
+<td><code>o</code> (circle)</td>
+<td>Zero (optional)</td>
+</tr>
+<tr>
+<td><code>&gt;</code> or crow's foot</td>
+<td>Many</td>
+</tr>
+<tr>
+<td><code>\|\|---\|\|</code></td>
+<td>One-to-one, both mandatory</td>
+</tr>
+<tr>
+<td><code>\|\|---o&lt;</code></td>
+<td>One-to-many, many side optional</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Which Notation to Use?</p>
+<ul>
+<li><strong>Chen notation</strong> is better for learning because each concept has its own visual shape.</li>
+<li><strong>Crow's foot notation</strong> is better for implementation because it maps more directly to tables and is used by most database design tools.</li>
+</ul>
+<p>In this course, we will use both. Exams may use either notation.</p>
+</div>
+<h2 id="44-weak-entities-and-enhanced-er">4.4 Weak Entities and Enhanced ER</h2>
+<h3 id="weak-entities">Weak Entities</h3>
+<p>A <strong>weak entity</strong> cannot be uniquely identified by its own attributes alone. It depends on a <strong>strong (owner) entity</strong> for identification.</p>
+<div class="admonition example">
+<p class="admonition-title">Weak Entity Example</p>
+<p>An ORDER_ITEM cannot exist without its parent ORDER. Its identity depends on the combination of <code>order_id</code> (from ORDER) and <code>line_number</code> (its own partial key).</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>ORDER (strong entity)                ORDER_ITEM (weak entity)
++-------------+                      +-------------------+
+| order_id PK |----&lt;has items&gt;----|| | order_id FK/PK    |
+| order_date  |                      | line_number PK    |
+| customer_id |                      | product_id FK     |
++-------------+                      | quantity          |
+                                     | unit_price        |
+                                     +-------------------+
+</code></pre></div></td></tr></table></div>
+<p>The primary key of ORDER_ITEM is the composite key <code>{order_id, line_number}</code>.</p>
+</div>
+<h3 id="enhanced-er-model-specialization-and-generalization">Enhanced ER Model: Specialization and Generalization</h3>
+<p>The <strong>Enhanced ER (EER) model</strong> adds inheritance-like concepts from object-oriented design.</p>
+<p><strong>Specialization</strong> (top-down): Splitting a general entity into specialized sub-entities.</p>
+<p><strong>Generalization</strong> (bottom-up): Combining similar entities into a general super-entity.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>                  +----------+
+                  | EMPLOYEE |
+                  +----------+
+                  | emp_id   |
+                  | name     |
+                  | salary   |
+                  +----+-----+
+                       |
+              +--------+--------+
+              |                 |
+       +-----------+     +------------+
+       | SALARIED  |     | HOURLY     |
+       +-----------+     +------------+
+       | annual_pay|     | hourly_rate|
+       | bonus     |     | hours/week |
+       +-----------+     +------------+
+</code></pre></div></td></tr></table></div>
+<p><strong>Constraints on specialization:</strong></p>
+<ul>
+<li><strong>Disjoint (d):</strong> An entity can belong to at most one subclass (an employee is either Salaried or Hourly, not both).</li>
+<li><strong>Overlapping (o):</strong> An entity can belong to multiple subclasses.</li>
+<li><strong>Total:</strong> Every entity in the superclass must belong to some subclass.</li>
+<li><strong>Partial:</strong> Some entities may not belong to any subclass.</li>
+</ul>
+<h2 id="45-er-to-relational-mapping">4.5 ER-to-Relational Mapping</h2>
+<p>Once your ER diagram is complete, you translate it into relational tables. Here are the mapping rules.</p>
+<h3 id="rule-1-strong-entities-become-tables">Rule 1: Strong Entities Become Tables</h3>
+<p>Each strong entity becomes a table. Each attribute becomes a column. The key attribute becomes the primary key.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>ER Entity: CUSTOMER(customer_id, name, email, phone)
+
+SQL:
+CREATE TABLE customer (
+    customer_id INT PRIMARY KEY,
+    name        VARCHAR(100) NOT NULL,
+    email       VARCHAR(100) UNIQUE,
+    phone       CHAR(10)
+);
+</code></pre></div></td></tr></table></div>
+<h3 id="rule-2-weak-entities-become-tables-with-composite-keys">Rule 2: Weak Entities Become Tables with Composite Keys</h3>
+<p>The weak entity becomes a table. Its primary key is the combination of the owner's primary key (as a foreign key) and its own partial key.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">order_item</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">order_id</span><span class="w">    </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">line_number</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">product_id</span><span class="w">  </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">quantity</span><span class="w">    </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">unit_price</span><span class="w">  </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">order_id</span><span class="p">,</span><span class="w"> </span><span class="n">line_number</span><span class="p">),</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">order_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">orders</span><span class="p">(</span><span class="n">order_id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="rule-3-11-relationships">Rule 3: 1:1 Relationships</h3>
+<p>Add the primary key of one entity as a foreign key in the other. Prefer putting the FK on the side with total participation.</p>
+<h3 id="rule-4-1m-relationships">Rule 4: 1:M Relationships</h3>
+<p>Add the primary key of the "one" side as a foreign key on the "many" side.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>DEPARTMENT (1) ---employs--- (M) EMPLOYEE
+
+Result: Add department_id as FK in EMPLOYEE table.
+</code></pre></div></td></tr></table></div>
+<h3 id="rule-5-mn-relationships-become-junction-tables">Rule 5: M:N Relationships Become Junction Tables</h3>
+<p>Create a new <strong>junction table</strong> (also called a bridge table or associative entity) with foreign keys referencing both entities. The composite of these foreign keys forms the primary key.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- M:N between STUDENT and COURSE</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">enrollment</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">student_id</span><span class="w">  </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">course_code</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">    </span><span class="n">grade</span><span class="w">       </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">course_code</span><span class="p">),</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">student</span><span class="p">(</span><span class="n">student_id</span><span class="p">),</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">course_code</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">course</span><span class="p">(</span><span class="n">course_code</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="rule-6-multi-valued-attributes-become-tables">Rule 6: Multi-Valued Attributes Become Tables</h3>
+<p>Create a separate table with the entity's PK as a FK plus the multi-valued attribute.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Multi-valued attribute: customer phone numbers</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">customer_phone</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">customer_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">phone</span><span class="w">       </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+<span class="w">    </span><span class="n">phone_type</span><span class="w">  </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p">),</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">customer</span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Mapping Summary</p>
+<table>
+<thead>
+<tr>
+<th>ER Concept</th>
+<th>Relational Mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strong entity</td>
+<td>Table</td>
+</tr>
+<tr>
+<td>Weak entity</td>
+<td>Table with composite PK (owner PK + partial key)</td>
+</tr>
+<tr>
+<td>1:1 relationship</td>
+<td>FK on either side (prefer total participation side)</td>
+</tr>
+<tr>
+<td>1:M relationship</td>
+<td>FK on the "many" side</td>
+</tr>
+<tr>
+<td>M:N relationship</td>
+<td>Junction table with two FKs</td>
+</tr>
+<tr>
+<td>Multi-valued attribute</td>
+<td>Separate table</td>
+</tr>
+<tr>
+<td>Composite attribute</td>
+<td>Flatten into simple columns</td>
+</tr>
+<tr>
+<td>Derived attribute</td>
+<td>Omit from schema (compute at query time)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="46-data-redundancy-and-anomalies">4.6 Data Redundancy and Anomalies</h2>
+<p>Now that we can build tables, we need to build them <em>well</em>. <strong>Data redundancy</strong> -- storing the same fact in multiple places -- is the root cause of most database design problems.</p>
+<h3 id="a-badly-designed-table">A Badly Designed Table</h3>
+<p>Consider this single table for an e-commerce company:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>ORDER_DETAILS (unnormalized)
++-----------+-------+---------------+-----------+--------------+--------+-----+
+| order_id  | cust_id | cust_name   | cust_city | product_name | price  | qty |
++-----------+-------+---------------+-----------+--------------+--------+-----+
+| 1001      | C01   | Alice Johnson | Chicago   | Laptop       | 999.99 | 1   |
+| 1001      | C01   | Alice Johnson | Chicago   | Mouse        |  24.99 | 2   |
+| 1002      | C02   | Bob Smith     | Urbana    | Laptop       | 999.99 | 1   |
+| 1003      | C01   | Alice Johnson | Chicago   | Keyboard     |  49.99 | 1   |
++-----------+-------+---------------+-----------+--------------+--------+-----+
+</code></pre></div></td></tr></table></div>
+<p><strong>Problems with this design:</strong></p>
+<ol>
+<li><strong>Update anomaly:</strong> If Alice moves from Chicago to Champaign, we must update every row where she appears. Miss one and the data is inconsistent.</li>
+<li><strong>Insert anomaly:</strong> We cannot add a new customer until they place an order, because <code>order_id</code> is required.</li>
+<li><strong>Delete anomaly:</strong> If we delete order 1002, we lose all information about Bob Smith entirely.</li>
+</ol>
+<h3 id="functional-dependencies">Functional Dependencies</h3>
+<p>A <strong>functional dependency</strong> (FD) exists when the value of one attribute (or set of attributes) determines the value of another.</p>
+<p><strong>Notation:</strong> <code>A -&gt; B</code> means "A determines B" or "B is functionally dependent on A."</p>
+<p><strong>Examples from the table above:</strong></p>
+<ul>
+<li><code>order_id, product_name -&gt; qty</code> (an order and product determine the quantity)</li>
+<li><code>cust_id -&gt; cust_name, cust_city</code> (customer ID determines name and city)</li>
+<li><code>product_name -&gt; price</code> (product name determines price, assuming one price per product)</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">How to Find Functional Dependencies</p>
+<p>Ask yourself: "If I know the value of X, can I determine exactly one value of Y?" If yes, then <code>X -&gt; Y</code>.</p>
+<ul>
+<li>Knowing <code>cust_id</code> tells you exactly one <code>cust_name</code>. So <code>cust_id -&gt; cust_name</code>.</li>
+<li>Knowing <code>order_id</code> does NOT tell you exactly one <code>product_name</code> (an order can have many products). So <code>order_id -&gt; product_name</code> is NOT a valid FD.</li>
+</ul>
+</div>
+<h2 id="47-normalization-first-normal-form-1nf">4.7 Normalization: First Normal Form (1NF)</h2>
+<p><strong>Normalization</strong> is the process of organizing tables to reduce redundancy and eliminate anomalies. We apply a series of "normal forms," each building on the previous one.</p>
+<h3 id="1nf-atomic-values">1NF: Atomic Values</h3>
+<p>A table is in <strong>First Normal Form (1NF)</strong> if:</p>
+<ol>
+<li>Every column contains only <strong>atomic</strong> (indivisible) values</li>
+<li>There are no repeating groups or arrays</li>
+<li>Each row is unique (has a primary key)</li>
+</ol>
+<p><strong>Violation of 1NF:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>BAD_ORDER
++----------+--------------------------+
+| order_id | products                 |
++----------+--------------------------+
+| 1001     | Laptop, Mouse, Keyboard  |  &lt;- NOT atomic!
+| 1002     | Laptop                   |
++----------+--------------------------+
+</code></pre></div></td></tr></table></div>
+<p><strong>Fixed (1NF):</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>ORDER_LINE
++----------+--------------+-----+
+| order_id | product_name | qty |
++----------+--------------+-----+
+| 1001     | Laptop       | 1   |
+| 1001     | Mouse        | 2   |
+| 1001     | Keyboard     | 1   |
+| 1002     | Laptop       | 1   |
++----------+--------------+-----+
+PK: {order_id, product_name}
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Common 1NF Mistake</p>
+<p>Storing comma-separated values in a column (like <code>"Laptop, Mouse"</code>) is a very common real-world mistake, especially in Excel-to-database migrations. It makes filtering, joining, and aggregating extremely difficult.</p>
+</div>
+<h2 id="48-second-normal-form-2nf">4.8 Second Normal Form (2NF)</h2>
+<p>A table is in <strong>Second Normal Form (2NF)</strong> if:</p>
+<ol>
+<li>It is in 1NF, AND</li>
+<li>Every non-key attribute is <strong>fully</strong> dependent on the <strong>entire</strong> primary key (no partial dependencies)</li>
+</ol>
+<p>2NF only matters when the primary key is <strong>composite</strong> (multi-column). If the PK is a single column, a 1NF table is automatically in 2NF.</p>
+<h3 id="identifying-partial-dependencies">Identifying Partial Dependencies</h3>
+<p>Return to our ORDER_DETAILS table. Suppose the primary key is <code>{order_id, product_name}</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>ORDER_DETAILS (1NF, composite PK: {order_id, product_name})
++-----------+---------+---------------+-----------+--------------+--------+-----+
+| order_id  | cust_id | cust_name     | cust_city | product_name | price  | qty |
++-----------+---------+---------------+-----------+--------------+--------+-----+
+</code></pre></div></td></tr></table></div>
+<p><strong>Partial dependencies (non-key attribute depends on only part of the PK):</strong></p>
+<ul>
+<li><code>order_id -&gt; cust_id, cust_name, cust_city</code> (depends on only <code>order_id</code>, not the full PK)</li>
+<li><code>product_name -&gt; price</code> (depends on only <code>product_name</code>, not the full PK)</li>
+</ul>
+<p><strong>Full dependency:</strong></p>
+<ul>
+<li><code>{order_id, product_name} -&gt; qty</code> (depends on the entire PK)</li>
+</ul>
+<h3 id="fixing-partial-dependencies">Fixing Partial Dependencies</h3>
+<p>Remove partially dependent attributes into their own tables:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code>ORDERS
++-----------+---------+
+| order_id  | cust_id |   PK: order_id
++-----------+---------+
+| 1001      | C01     |
+| 1002      | C02     |
+| 1003      | C01     |
++-----------+---------+
+
+PRODUCT
++--------------+--------+
+| product_name | price  |   PK: product_name
++--------------+--------+
+| Laptop       | 999.99 |
+| Mouse        |  24.99 |
+| Keyboard     |  49.99 |
++--------------+--------+
+
+ORDER_LINE
++-----------+--------------+-----+
+| order_id  | product_name | qty |   PK: {order_id, product_name}
++-----------+--------------+-----+
+| 1001      | Laptop       | 1   |
+| 1001      | Mouse        | 2   |
+| 1002      | Laptop       | 1   |
+| 1003      | Keyboard     | 1   |
++-----------+--------------+-----+
+</code></pre></div></td></tr></table></div>
+<p>Now every non-key attribute depends on the <strong>full</strong> primary key of its table. The tables are in 2NF.</p>
+<h2 id="49-third-normal-form-3nf">4.9 Third Normal Form (3NF)</h2>
+<p>A table is in <strong>Third Normal Form (3NF)</strong> if:</p>
+<ol>
+<li>It is in 2NF, AND</li>
+<li>No non-key attribute depends on another non-key attribute (no <strong>transitive dependencies</strong>)</li>
+</ol>
+<h3 id="identifying-transitive-dependencies">Identifying Transitive Dependencies</h3>
+<p>Look at the ORDERS table. We still have customer info mixed in:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>ORDERS (2NF, but has transitive dependency)
++-----------+---------+---------------+-----------+
+| order_id  | cust_id | cust_name     | cust_city |
++-----------+---------+---------------+-----------+
+</code></pre></div></td></tr></table></div>
+<p>The dependency chain is: <code>order_id -&gt; cust_id -&gt; cust_name, cust_city</code></p>
+<p>Here <code>cust_name</code> and <code>cust_city</code> depend on <code>cust_id</code>, which is not the primary key. This is a <strong>transitive dependency</strong>.</p>
+<h3 id="fixing-transitive-dependencies">Fixing Transitive Dependencies</h3>
+<p>Move the transitively dependent attributes to their own table:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>CUSTOMER
++---------+---------------+-----------+
+| cust_id | cust_name     | cust_city |   PK: cust_id
++---------+---------------+-----------+
+| C01     | Alice Johnson | Chicago   |
+| C02     | Bob Smith     | Urbana    |
++---------+---------------+-----------+
+
+ORDERS
++-----------+---------+
+| order_id  | cust_id |   PK: order_id, FK: cust_id -&gt; CUSTOMER
++-----------+---------+
+| 1001      | C01     |
+| 1002      | C02     |
+| 1003      | C01     |
++-----------+---------+
+</code></pre></div></td></tr></table></div>
+<h3 id="the-complete-3nf-design">The Complete 3NF Design</h3>
+<p>Here is our fully normalized e-commerce schema:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>CUSTOMER                   ORDERS                    ORDER_LINE
++---------+----------+     +-----------+---------+   +-----------+---------+-----+
+| cust_id | cust_name|     | order_id  | cust_id |   | order_id  | prod_name| qty|
+|   (PK)  | cust_city|     |   (PK)    |  (FK)   |   |   (PK)    |  (PK/FK)|    |
++---------+----------+     +-----------+---------+   +-----------+---------+-----+
+
+PRODUCT
++-----------+--------+
+| prod_name | price  |
+|   (PK)    |        |
++-----------+--------+
+</code></pre></div></td></tr></table></div>
+<p>Each fact is stored exactly once. Update Alice's city in one row. Delete an order without losing customer data. Add a new product without needing an order.</p>
+<div class="admonition example">
+<p class="admonition-title">Step-by-Step Normalization Summary</p>
+<p>Starting from the flat ORDER_DETAILS table:</p>
+<ol>
+<li><strong>1NF:</strong> Made all values atomic, established composite PK <code>{order_id, product_name}</code></li>
+<li><strong>2NF:</strong> Removed partial dependencies -- split out PRODUCT (depends on <code>product_name</code> only) and ORDERS (depends on <code>order_id</code> only), keeping ORDER_LINE for fully dependent attributes</li>
+<li><strong>3NF:</strong> Removed transitive dependency -- split CUSTOMER out of ORDERS because <code>cust_name</code> and <code>cust_city</code> depend on <code>cust_id</code>, not on <code>order_id</code></li>
+</ol>
+</div>
+<h2 id="410-boyce-codd-normal-form-bcnf">4.10 Boyce-Codd Normal Form (BCNF)</h2>
+<p><strong>BCNF</strong> is a stricter version of 3NF. A table is in BCNF if:</p>
+<ul>
+<li>For every functional dependency <code>X -&gt; Y</code>, X is a <strong>superkey</strong> (can uniquely identify the entire row)</li>
+</ul>
+<p>In most practical cases, 3NF and BCNF are equivalent. They differ only when a table has overlapping composite candidate keys.</p>
+<div class="admonition example">
+<p class="admonition-title">When BCNF Differs from 3NF</p>
+<p>Consider a TEACHING table where each course section is taught by one professor, and each professor teaches only one course (but a course can have many professors):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>TEACHING
++---------+---------+-----------+
+| student | course  | professor |
++---------+---------+-----------+
+</code></pre></div></td></tr></table></div>
+<p>Candidate keys: <code>{student, course}</code> and <code>{student, professor}</code></p>
+<p>FD: <code>professor -&gt; course</code> (each professor teaches one course)</p>
+<p>This is in 3NF but NOT in BCNF because <code>professor</code> is not a superkey. The fix is to decompose into two tables.</p>
+</div>
+<p>For this course, achieving <strong>3NF is sufficient</strong> for most business database designs. BCNF is worth knowing for edge cases and interviews.</p>
+<h2 id="411-denormalization-and-trade-offs">4.11 Denormalization and Trade-offs</h2>
+<h3 id="why-denormalize">Why Denormalize?</h3>
+<p>Normalization reduces redundancy but increases the number of tables. Queries that need data from many tables require <strong>JOINs</strong>, which can be slower on large datasets.</p>
+<p><strong>Denormalization</strong> is the intentional introduction of controlled redundancy to improve read performance.</p>
+<h3 id="when-to-denormalize">When to Denormalize</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reporting and analytics</strong></td>
+<td>Dashboard queries that JOIN 8 tables are too slow</td>
+</tr>
+<tr>
+<td><strong>Read-heavy workloads</strong></td>
+<td>Application reads data 100x more often than it writes</td>
+</tr>
+<tr>
+<td><strong>Caching derived values</strong></td>
+<td>Storing <code>order_total</code> instead of recomputing <code>SUM(qty * price)</code> every time</td>
+</tr>
+<tr>
+<td><strong>Data warehousing</strong></td>
+<td>Star schema designs intentionally denormalize for query speed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="when-not-to-denormalize">When NOT to Denormalize</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transactional systems</strong></td>
+<td>Order entry, banking -- data integrity is paramount</td>
+</tr>
+<tr>
+<td><strong>Write-heavy workloads</strong></td>
+<td>Redundant data means more updates to keep in sync</td>
+</tr>
+<tr>
+<td><strong>Small datasets</strong></td>
+<td>JOINs on small tables are fast; denormalization adds complexity for no gain</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Denormalize by Choice, Not by Accident</p>
+<p>Denormalization should be a deliberate design decision with documented rationale. A table that is "not normalized" because nobody thought about it is not "denormalized" -- it is poorly designed. Always normalize first, then selectively denormalize where performance data justifies it.</p>
+</div>
+<h3 id="normalization-trade-offs-summary">Normalization Trade-offs Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>More Normalized</th>
+<th>More Denormalized</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data redundancy</strong></td>
+<td>Low</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>Data integrity</strong></td>
+<td>Easier to maintain</td>
+<td>Requires extra logic</td>
+</tr>
+<tr>
+<td><strong>Write performance</strong></td>
+<td>Better (fewer updates)</td>
+<td>Worse (update multiple copies)</td>
+</tr>
+<tr>
+<td><strong>Read performance</strong></td>
+<td>May need many JOINs</td>
+<td>Faster (fewer JOINs)</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>Less</td>
+<td>More</td>
+</tr>
+<tr>
+<td><strong>Schema complexity</strong></td>
+<td>More tables</td>
+<td>Fewer tables</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>OLTP (transactions)</td>
+<td>OLAP (analytics)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>Data modeling comes before implementation</strong> -- design your ER diagram before writing CREATE TABLE statements</li>
+<li><strong>Entities are nouns, relationships are verbs</strong> -- Customer <em>places</em> Order, Employee <em>works in</em> Department</li>
+<li><strong>Cardinality (1:1, 1:M, M:N) determines how tables connect</strong> -- M:N relationships always require a junction table</li>
+<li><strong>Normalization eliminates redundancy step by step</strong> -- 1NF (atomic values), 2NF (no partial dependencies), 3NF (no transitive dependencies)</li>
+<li><strong>Functional dependencies drive normalization</strong> -- ask "does knowing X uniquely determine Y?"</li>
+<li><strong>3NF is the standard target</strong> for transactional business databases</li>
+<li><strong>Denormalization is a performance optimization</strong> -- normalize first, denormalize selectively with justification</li>
+</ol>
+<h2 id="review-questions">Review Questions</h2>
+<ol>
+<li>Explain the difference between Chen notation and Crow's Foot notation for ER diagrams. When would you use each?</li>
+<li>Given a university system with Students, Courses, and Professors, identify the entities, key attributes, and the cardinality of each relationship.</li>
+<li>What is a functional dependency? Give two examples from a typical HR database.</li>
+<li>Walk through the differences between 1NF, 2NF, and 3NF. Why must you achieve each form in order?</li>
+<li>A data warehouse team wants to store <code>customer_name</code> directly in the ORDERS table to speed up reports. Is this denormalization justified? What risks does it introduce?</li>
+</ol>
+<h2 id="practical-exercise">Practical Exercise</h2>
+<p>Starting from this unnormalized INVOICE table, normalize it to 3NF:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>INVOICE_RAW
++--------+--------+-----------+----------+-----------+---------+-----+-----------+
+| inv_id | inv_dt | cust_id   | cust_name| prod_code | prod_nm | qty | unit_price|
++--------+--------+-----------+----------+-----------+---------+-----+-----------+
+| I001   | 2026-01| C10       | Acme Corp| SKU-100   | Widget  | 50  | 4.99      |
+| I001   | 2026-01| C10       | Acme Corp| SKU-200   | Gadget  | 20  | 12.50     |
+| I002   | 2026-02| C20       | Beta LLC | SKU-100   | Widget  | 100 | 4.99      |
+| I003   | 2026-02| C10       | Acme Corp| SKU-300   | Gizmo   | 10  | 29.99     |
++--------+--------+-----------+----------+-----------+---------+-----+-----------+
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>List all functional dependencies you can identify</li>
+<li>Is this table in 1NF? Why or why not?</li>
+<li>Decompose into 2NF tables. Show the resulting tables with sample data.</li>
+<li>Decompose further into 3NF tables. Show the resulting tables with sample data.</li>
+<li>Write the <code>CREATE TABLE</code> statements (with primary and foreign keys) for your final 3NF design.</li>
+<li>Identify one scenario where you might denormalize part of this design and explain why.</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<p>In <a href="../05-python-pandas/">Chapter 5</a>, we'll shift from database design to data analysis, learning how Python and pandas connect to databases and enable powerful data manipulation beyond what SQL alone can do.</p>
+<hr />
+<p><em>Corresponds to Week 3 of BADM 554 -- Data Modeling &amp; Normalization</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../03b-advanced-sql/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3b. JOINs, Subqueries &amp; Window Functions">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3b. JOINs, Subqueries & Window Functions
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../05-python-pandas/" class="md-footer__link md-footer__link--next" aria-label="Next: 5. Python &amp; pandas for Data">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                5. Python & pandas for Data
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 vishalsachdev. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

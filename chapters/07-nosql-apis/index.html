@@ -1,0 +1,3027 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An intelligent textbook built with AI-powered tools and interactive learning experiences.">
+      
+      
+        <meta name="author" content="vishalsachdev">
+      
+      
+        <link rel="canonical" href="https://vishalsachdev.github.io/database-management/chapters/07-nosql-apis/">
+      
+      
+        <link rel="prev" href="../06-etl-pipelines/">
+      
+      
+        <link rel="next" href="../08-cloud-databases-optimization/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>7. NoSQL & APIs - Database Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-7-nosql-apis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Database Management" class="md-header__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Database Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. NoSQL & APIs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Database Management" class="md-nav__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Database Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-database-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. The Database Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tables-relational-algebra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Tables and Relational Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-sql-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. SQL Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03b-advanced-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b. JOINs, Subqueries & Window Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-data-modeling-normalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Modeling & Normalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-python-pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Python & pandas for Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-etl-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. ETL Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. NoSQL & APIs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. NoSQL & APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#71-introduction-to-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Introduction to APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 Introduction to APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is an API?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rest-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REST APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP Status Codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-json-the-language-of-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 JSON: The Language of APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 JSON: The Language of APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is JSON?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON Objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON Arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-fetching-api-data-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Fetching API Data with Python
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 Fetching API Data with Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-requests-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The requests Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-for-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking for Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-api-to-dataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From API to DataFrame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-api-authentication-and-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 API Authentication and Security
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 API Authentication and Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credential-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credential Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OAuth 2.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rate Limiting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-nosql-databases-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 NoSQL Databases: Motivation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.5 NoSQL Databases: Motivation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not-just-use-sql-for-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Not Just Use SQL for Everything?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is NoSQL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-nosql-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of NoSQL Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-the-cap-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 The CAP Theorem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#77-mongodb-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 MongoDB Fundamentals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.7 MongoDB Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why MongoDB?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-vs-sql-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB vs SQL Terminology
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-pymongo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting Up pymongo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#78-mongodb-crud-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 MongoDB CRUD Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.8 MongoDB CRUD Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-inserting-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create: Inserting Documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-querying-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read: Querying Documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-query-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB Query Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-modifying-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update: Modifying Documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-removing-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delete: Removing Documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#79-sql-vs-nosql-when-to-use-each" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.9 SQL vs NoSQL: When to Use Each
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.9 SQL vs NoSQL: When to Use Each">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decision-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#710-putting-it-together-api-to-mongodb-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.10 Putting It Together: API to MongoDB Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-cloud-databases-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Cloud Databases & Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#71-introduction-to-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Introduction to APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 Introduction to APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is an API?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rest-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REST APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-status-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP Status Codes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-json-the-language-of-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 JSON: The Language of APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 JSON: The Language of APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is JSON?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON Objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JSON Arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-fetching-api-data-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Fetching API Data with Python
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 Fetching API Data with Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-requests-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The requests Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-for-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking for Errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-api-to-dataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From API to DataFrame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-api-authentication-and-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 API Authentication and Security
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 API Authentication and Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credential-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credential Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OAuth 2.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rate Limiting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-nosql-databases-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 NoSQL Databases: Motivation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.5 NoSQL Databases: Motivation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not-just-use-sql-for-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Not Just Use SQL for Everything?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is NoSQL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-nosql-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of NoSQL Databases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76-the-cap-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 The CAP Theorem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#77-mongodb-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 MongoDB Fundamentals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.7 MongoDB Fundamentals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why MongoDB?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-vs-sql-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB vs SQL Terminology
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-pymongo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting Up pymongo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#78-mongodb-crud-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 MongoDB CRUD Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.8 MongoDB CRUD Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-inserting-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create: Inserting Documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-querying-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read: Querying Documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-query-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB Query Operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-modifying-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update: Modifying Documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-removing-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delete: Removing Documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#79-sql-vs-nosql-when-to-use-each" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.9 SQL vs NoSQL: When to Use Each
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.9 SQL vs NoSQL: When to Use Each">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decision-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#710-putting-it-together-api-to-mongodb-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.10 Putting It Together: API to MongoDB Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../01-database-environment/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/vishalsachdev/database-management/blob/main/docs/chapters/07-nosql-apis.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="chapter-7-nosql-apis">Chapter 7: NoSQL &amp; APIs</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After completing this chapter, you will be able to:</p>
+<ul>
+<li>Explain what REST APIs are and how they work</li>
+<li>Use Python's <code>requests</code> library to fetch data from web APIs</li>
+<li>Parse and navigate JSON data structures including nested objects and arrays</li>
+<li>Describe why NoSQL databases exist and when to use them instead of SQL</li>
+<li>Apply the CAP theorem to evaluate database trade-offs</li>
+<li>Perform CRUD operations in MongoDB using <code>pymongo</code></li>
+<li>Implement API security best practices including key management and rate limiting</li>
+</ul>
+<h2 id="71-introduction-to-apis">7.1 Introduction to APIs</h2>
+<h3 id="what-is-an-api">What is an API?</h3>
+<p>An <strong>API (Application Programming Interface)</strong> is a set of rules that allows one software application to communicate with another. When you check the weather on your phone, the app sends a request to a weather service's API, which returns the current conditions as structured data.</p>
+<p>For data professionals, APIs are the primary way to acquire data from external sources: social media platforms, financial markets, government databases, SaaS tools, and more.</p>
+<h3 id="rest-apis">REST APIs</h3>
+<p><strong>REST (Representational State Transfer)</strong> is the most common API architecture on the web. A REST API exposes data through <strong>endpoints</strong> --- URLs that represent resources.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base URL</strong></td>
+<td>The root address of the API</td>
+<td><code>https://api.openweathermap.org</code></td>
+</tr>
+<tr>
+<td><strong>Endpoint</strong></td>
+<td>A specific resource path</td>
+<td><code>/data/2.5/weather</code></td>
+</tr>
+<tr>
+<td><strong>Parameters</strong></td>
+<td>Filters or options for the request</td>
+<td><code>?q=Chicago&amp;units=imperial</code></td>
+</tr>
+<tr>
+<td><strong>Full URL</strong></td>
+<td>Base + Endpoint + Parameters</td>
+<td><code>https://api.openweathermap.org/data/2.5/weather?q=Chicago&amp;units=imperial</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="http-methods">HTTP Methods</h3>
+<p>REST APIs use standard HTTP methods to define the type of operation:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GET</strong></td>
+<td>Retrieve data</td>
+<td>Fetch current weather for Chicago</td>
+</tr>
+<tr>
+<td><strong>POST</strong></td>
+<td>Create new data</td>
+<td>Submit a new customer record</td>
+</tr>
+<tr>
+<td><strong>PUT</strong></td>
+<td>Update existing data (full replace)</td>
+<td>Replace a customer's entire profile</td>
+</tr>
+<tr>
+<td><strong>PATCH</strong></td>
+<td>Update existing data (partial)</td>
+<td>Change only a customer's email</td>
+</tr>
+<tr>
+<td><strong>DELETE</strong></td>
+<td>Remove data</td>
+<td>Delete a customer record</td>
+</tr>
+</tbody>
+</table>
+<p>In analytics work, you will use <strong>GET</strong> for the vast majority of API calls --- you are reading data, not writing it.</p>
+<h3 id="http-status-codes">HTTP Status Codes</h3>
+<p>Every API response includes a status code that tells you what happened:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>What to Do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK - Success</td>
+<td>Process the returned data</td>
+</tr>
+<tr>
+<td><strong>201</strong></td>
+<td>Created</td>
+<td>Resource was successfully created</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>Check your parameters</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Unauthorized</td>
+<td>Check your API key or credentials</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td>Forbidden</td>
+<td>You don't have permission</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Not Found</td>
+<td>Check the endpoint URL</td>
+</tr>
+<tr>
+<td><strong>429</strong></td>
+<td>Too Many Requests</td>
+<td>You hit the rate limit - slow down</td>
+</tr>
+<tr>
+<td><strong>500</strong></td>
+<td>Internal Server Error</td>
+<td>The server has a problem - try again later</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">The 2xx/4xx/5xx Pattern</p>
+<p>Status codes starting with <strong>2</strong> mean success. Codes starting with <strong>4</strong> mean you made an error (bad URL, missing credentials). Codes starting with <strong>5</strong> mean the server has an issue. Memorize this pattern and you can diagnose most API problems quickly.</p>
+</div>
+<h2 id="72-json-the-language-of-apis">7.2 JSON: The Language of APIs</h2>
+<h3 id="what-is-json">What is JSON?</h3>
+<p><strong>JSON (JavaScript Object Notation)</strong> is the standard data format for APIs. It is lightweight, human-readable, and maps naturally to Python dictionaries and lists.</p>
+<h3 id="json-objects">JSON Objects</h3>
+<p>A JSON object is a collection of key-value pairs enclosed in curly braces:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IL&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;population&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2697000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;is_capital&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>This maps directly to a Python dictionary:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">city</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Chicago&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;IL&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="mi">2697000</span><span class="p">,</span>
+    <span class="s2">&quot;is_capital&quot;</span><span class="p">:</span> <span class="kc">False</span>   <span class="c1"># Note: Python uses True/False, JSON uses true/false</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">city</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>       <span class="c1"># &quot;Chicago&quot;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="json-arrays">JSON Arrays</h3>
+<p>A JSON array is an ordered list enclosed in square brackets:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">[</span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Champaign&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Springfield&quot;</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>This maps to a Python list:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span> <span class="s2">&quot;Champaign&quot;</span><span class="p">,</span> <span class="s2">&quot;Springfield&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cities</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># &quot;Chicago&quot;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="nested-json">Nested JSON</h3>
+<p>Real API responses are almost always nested --- objects inside objects, arrays inside objects, and so on:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;weather&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;partly cloudy&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;wind&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;speed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;direction&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NW&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;forecast&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;day&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;high&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;low&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;day&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;high&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;low&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Navigating nested JSON in Python:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># Access nested object</span>
+<span class="n">wind_speed</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;weather&quot;</span><span class="p">][</span><span class="s2">&quot;wind&quot;</span><span class="p">][</span><span class="s2">&quot;speed&quot;</span><span class="p">]</span>       <span class="c1"># 12</span>
+
+<span class="c1"># Access item in an array</span>
+<span class="n">monday_high</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;forecast&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;high&quot;</span><span class="p">]</span>            <span class="c1"># 75</span>
+
+<span class="c1"># Loop through array</span>
+<span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;forecast&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: High </span><span class="si">{</span><span class="n">day</span><span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">°F&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">KeyError and Safe Access</p>
+<p>If a key does not exist, Python raises a <code>KeyError</code>. Use <code>.get()</code> for safe access:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Risky - crashes if &quot;humidity&quot; key is missing</span>
+<span class="n">humidity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;weather&quot;</span><span class="p">][</span><span class="s2">&quot;humidity&quot;</span><span class="p">]</span>
+
+<span class="c1"># Safe - returns None if key is missing</span>
+<span class="n">humidity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;weather&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;humidity&quot;</span><span class="p">)</span>
+
+<span class="c1"># Safe with a default value</span>
+<span class="n">humidity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;weather&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;humidity&quot;</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<h2 id="73-fetching-api-data-with-python">7.3 Fetching API Data with Python</h2>
+<h3 id="the-requests-library">The requests Library</h3>
+<p>Python's <code>requests</code> library is the standard tool for making HTTP calls:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.openweathermap.org/data/2.5/weather&quot;</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot;Champaign,IL,US&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;appid&quot;</span><span class="p">:</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;imperial&quot;</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>   <span class="c1"># 200</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>        <span class="c1"># Parse JSON into a Python dict</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;main&quot;</span><span class="p">][</span><span class="s2">&quot;temp&quot;</span><span class="p">])</span>   <span class="c1"># Current temperature</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Always Pass Parameters as a Dictionary</p>
+<p>Using the <code>params</code> argument is cleaner and safer than building the URL string yourself. The <code>requests</code> library handles URL encoding (spaces, special characters) automatically.</p>
+</div>
+<h3 id="checking-for-errors">Checking for Errors</h3>
+<p>Always check the status code before processing the response:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;main&#39;</span><span class="p">][</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">°F&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid API key. Check your credentials.&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rate limit exceeded. Wait before retrying.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="from-api-to-dataframe">From API to DataFrame</h3>
+<p>A common pattern: fetch data from an API, then load it into pandas for analysis:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Fetch a list of universities from a public API</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://universities.hipolabs.com/search&quot;</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;United States&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Illinois&quot;</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>  <span class="c1"># Returns a list of dictionaries</span>
+
+<span class="c1"># Convert to DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;web_pages&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition example">
+<p class="admonition-title">Paginated APIs</p>
+<p>Many APIs return results in pages. You need to loop through them:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">all_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">page</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">,</span> <span class="s2">&quot;per_page&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">})</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]:</span>  <span class="c1"># Empty page means we&#39;re done</span>
+        <span class="k">break</span>
+
+    <span class="n">all_results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">])</span>
+    <span class="n">page</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_results</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<h2 id="74-api-authentication-and-security">7.4 API Authentication and Security</h2>
+<h3 id="api-keys">API Keys</h3>
+<p>Most APIs require an <strong>API key</strong> --- a unique string that identifies your application. The API provider uses it to track usage and enforce limits.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Method 1: API key as a query parameter</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot;Chicago&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;appid&quot;</span><span class="p">:</span> <span class="s2">&quot;abc123def456&quot;</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># Method 2: API key in the request header (more secure)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer abc123def456&quot;</span>
+<span class="p">}</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="credential-management">Credential Management</h3>
+<div class="admonition warning">
+<p class="admonition-title">Never Hard-Code API Keys</p>
+<p>Putting API keys directly in your code is a security risk. If you push the file to GitHub, anyone can steal your key and run up charges on your account.</p>
+</div>
+<p><strong>Best practice: Use environment variables.</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;WEATHER_API_KEY&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">api_key</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Set the WEATHER_API_KEY environment variable&quot;</span><span class="p">)</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot;Chicago&quot;</span><span class="p">,</span> <span class="s2">&quot;appid&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Set the variable in your terminal before running:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">WEATHER_API_KEY</span><span class="o">=</span><span class="s2">&quot;abc123def456&quot;</span>
+python<span class="w"> </span>my_script.py
+</code></pre></div></td></tr></table></div>
+<p>Alternatively, use a <code>.env</code> file with the <code>python-dotenv</code> package:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">load_dotenv</span><span class="p">()</span>  <span class="c1"># Reads .env file in the current directory</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;WEATHER_API_KEY&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Add .env to .gitignore</p>
+<p>Always add <code>.env</code> to your <code>.gitignore</code> file so your keys are never committed to version control.</p>
+</div>
+<h3 id="oauth-20">OAuth 2.0</h3>
+<p>Some APIs (Google, Twitter/X, Spotify) use <strong>OAuth 2.0</strong>, a more complex authentication flow where:</p>
+<ol>
+<li>Your application redirects the user to the provider's login page</li>
+<li>The user grants permission</li>
+<li>The provider returns an <strong>access token</strong></li>
+<li>Your application uses the token in subsequent requests</li>
+</ol>
+<p>OAuth is common when accessing data on behalf of a user (e.g., reading someone's Spotify playlists). For this course, most of your work will use simpler API key authentication.</p>
+<h3 id="rate-limiting">Rate Limiting</h3>
+<p>APIs limit how many requests you can make in a given time window to prevent abuse and ensure fair access.</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Free Tier Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenWeatherMap</td>
+<td>60 calls/minute</td>
+</tr>
+<tr>
+<td>Yelp Fusion</td>
+<td>5,000 calls/day</td>
+</tr>
+<tr>
+<td>Twitter/X API</td>
+<td>100 reads/15 minutes</td>
+</tr>
+<tr>
+<td>Google Maps</td>
+<td>100 requests/second</td>
+</tr>
+</tbody>
+</table>
+<p>Handle rate limits gracefully:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span> <span class="s2">&quot;Champaign&quot;</span><span class="p">,</span> <span class="s2">&quot;Springfield&quot;</span><span class="p">,</span> <span class="s2">&quot;Peoria&quot;</span><span class="p">,</span> <span class="s2">&quot;Rockford&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">cities</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">city</span><span class="p">,</span> <span class="s2">&quot;appid&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rate limited. Waiting 60 seconds...&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">city</span><span class="p">,</span> <span class="s2">&quot;appid&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">})</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;main&#39;</span><span class="p">][</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">°F&quot;</span><span class="p">)</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Be polite: wait 1 second between requests</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="75-nosql-databases-motivation">7.5 NoSQL Databases: Motivation</h2>
+<h3 id="why-not-just-use-sql-for-everything">Why Not Just Use SQL for Everything?</h3>
+<p>Relational databases are excellent for structured, well-defined data. But modern applications often deal with:</p>
+<ul>
+<li><strong>Unstructured data</strong>: Social media posts, sensor readings, log files</li>
+<li><strong>Variable schemas</strong>: Each record may have different fields (e.g., product catalogs where a laptop has "RAM" but a shirt has "size")</li>
+<li><strong>Massive scale</strong>: Billions of rows that need to be distributed across many servers</li>
+<li><strong>High write throughput</strong>: Thousands of writes per second (IoT sensors, click streams)</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">When SQL Becomes Difficult</p>
+<p>Imagine storing Yelp restaurant data. Each restaurant has a different number of reviews, different attributes (some have "outdoor_seating", others don't), and photos of varying quantities. In a relational database, you would need multiple tables with complex joins. In a document database, each restaurant is a single, self-contained document.</p>
+</div>
+<h3 id="what-is-nosql">What is NoSQL?</h3>
+<p><strong>NoSQL</strong> ("Not Only SQL") refers to a broad category of databases that store data in formats other than traditional tables with rows and columns. The term does not mean "no SQL at all" --- many NoSQL databases have their own query languages.</p>
+<h3 id="types-of-nosql-databases">Types of NoSQL Databases</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>How Data is Stored</th>
+<th>Best For</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Document</strong></td>
+<td>JSON-like documents</td>
+<td>Content management, catalogs, user profiles</td>
+<td>MongoDB, CouchDB</td>
+</tr>
+<tr>
+<td><strong>Key-Value</strong></td>
+<td>Simple key-value pairs</td>
+<td>Caching, session storage, shopping carts</td>
+<td>Redis, DynamoDB</td>
+</tr>
+<tr>
+<td><strong>Column-Family</strong></td>
+<td>Columns grouped into families</td>
+<td>Time-series data, analytics at scale</td>
+<td>Cassandra, HBase</td>
+</tr>
+<tr>
+<td><strong>Graph</strong></td>
+<td>Nodes and edges (relationships)</td>
+<td>Social networks, recommendation engines</td>
+<td>Neo4j, Amazon Neptune</td>
+</tr>
+</tbody>
+</table>
+<p>In this course, we focus on <strong>document databases</strong> (MongoDB) because they are the most common NoSQL choice for business applications and pair naturally with JSON data from APIs.</p>
+<h2 id="76-the-cap-theorem">7.6 The CAP Theorem</h2>
+<p>The <strong>CAP theorem</strong> states that a distributed database can guarantee at most <strong>two</strong> of these three properties at the same time:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>Every read receives the most recent write. All nodes see the same data at the same time.</td>
+</tr>
+<tr>
+<td><strong>Availability</strong></td>
+<td>Every request gets a response (success or failure), even if some nodes are down.</td>
+</tr>
+<tr>
+<td><strong>Partition Tolerance</strong></td>
+<td>The system continues to work even if network communication between nodes is lost.</td>
+</tr>
+</tbody>
+</table>
+<p>Since network partitions are inevitable in real distributed systems, the practical choice is between <strong>CP</strong> (consistent but may be unavailable during a partition) and <strong>AP</strong> (always available but may return stale data during a partition).</p>
+<div class="admonition note">
+<p class="admonition-title">CAP in Plain English</p>
+<p>Think of a chain of coffee shops that share inventory data. A network outage between two locations means you must choose: (a) <strong>stop taking orders</strong> until the connection is restored so inventory counts stay accurate (consistency), or (b) <strong>keep taking orders</strong> at both locations and reconcile the counts later (availability). You cannot have both during the outage.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Database</th>
+<th>CAP Choice</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MySQL, PostgreSQL</td>
+<td>CP</td>
+<td>Prioritize data correctness</td>
+</tr>
+<tr>
+<td>MongoDB (default)</td>
+<td>CP</td>
+<td>Strong consistency within replica sets</td>
+</tr>
+<tr>
+<td>Cassandra</td>
+<td>AP</td>
+<td>Always writable, eventual consistency</td>
+</tr>
+<tr>
+<td>DynamoDB</td>
+<td>AP (configurable)</td>
+<td>High availability by default</td>
+</tr>
+</tbody>
+</table>
+<h2 id="77-mongodb-fundamentals">7.7 MongoDB Fundamentals</h2>
+<h3 id="why-mongodb">Why MongoDB?</h3>
+<p><strong>MongoDB</strong> is the most popular document database. It stores data as <strong>BSON</strong> (Binary JSON) documents, which look and behave like Python dictionaries.</p>
+<h3 id="mongodb-vs-sql-terminology">MongoDB vs SQL Terminology</h3>
+<table>
+<thead>
+<tr>
+<th>SQL Concept</th>
+<th>MongoDB Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Database</td>
+<td>Database</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Collection</td>
+</tr>
+<tr>
+<td>Row</td>
+<td>Document</td>
+</tr>
+<tr>
+<td>Column</td>
+<td>Field</td>
+</tr>
+<tr>
+<td>Primary Key</td>
+<td><code>_id</code> field (auto-generated)</td>
+</tr>
+<tr>
+<td>JOIN</td>
+<td>Embedded documents or <code>$lookup</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="setting-up-pymongo">Setting Up pymongo</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pymongo</span><span class="w"> </span><span class="kn">import</span> <span class="n">MongoClient</span>
+
+<span class="c1"># Connect to a local MongoDB instance</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost:27017/&quot;</span><span class="p">)</span>
+
+<span class="c1"># Access (or create) a database</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s2">&quot;badm554&quot;</span><span class="p">]</span>
+
+<span class="c1"># Access (or create) a collection</span>
+<span class="n">restaurants</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s2">&quot;restaurants&quot;</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">MongoDB Creates on First Use</p>
+<p>You do not need to create a database or collection in advance. MongoDB creates them automatically the first time you insert data.</p>
+</div>
+<h2 id="78-mongodb-crud-operations">7.8 MongoDB CRUD Operations</h2>
+<h3 id="create-inserting-documents">Create: Inserting Documents</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Insert a single document</span>
+<span class="n">restaurant</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Timpone&#39;s&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cuisine&quot;</span><span class="p">:</span> <span class="s2">&quot;Italian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Urbana&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
+    <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;pasta&quot;</span><span class="p">,</span> <span class="s2">&quot;wine&quot;</span><span class="p">,</span> <span class="s2">&quot;date night&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;street&quot;</span><span class="p">:</span> <span class="s2">&quot;710 S Goodwin Ave&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;zip&quot;</span><span class="p">:</span> <span class="s2">&quot;61801&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">restaurants</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">restaurant</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inserted document ID: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">inserted_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Insert multiple documents</span>
+<span class="n">more_restaurants</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Black Dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span><span class="p">:</span> <span class="s2">&quot;BBQ&quot;</span><span class="p">,</span> <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Urbana&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">4.3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nando Milano&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span><span class="p">:</span> <span class="s2">&quot;Italian&quot;</span><span class="p">,</span> <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Champaign&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">4.6</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Kohinoor&quot;</span><span class="p">,</span> <span class="s2">&quot;cuisine&quot;</span><span class="p">:</span> <span class="s2">&quot;Indian&quot;</span><span class="p">,</span> <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Champaign&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">4.4</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">restaurants</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="n">more_restaurants</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inserted </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">inserted_ids</span><span class="p">)</span><span class="si">}</span><span class="s2"> documents&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="read-querying-documents">Read: Querying Documents</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Find one document</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">restaurants</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Timpone&#39;s&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+<span class="c1"># Find all Italian restaurants</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">restaurants</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;cuisine&quot;</span><span class="p">:</span> <span class="s2">&quot;Italian&quot;</span><span class="p">}):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">])</span>
+
+<span class="c1"># Find restaurants with rating &gt;= 4.5</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">restaurants</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$gte&quot;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">}}):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="mongodb-query-operators">MongoDB Query Operators</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$eq</code></td>
+<td>Equal</td>
+<td><code>{"rating": {"$eq": 4.5}}</code></td>
+</tr>
+<tr>
+<td><code>$gt</code> / <code>$gte</code></td>
+<td>Greater than / greater than or equal</td>
+<td><code>{"rating": {"$gte": 4.0}}</code></td>
+</tr>
+<tr>
+<td><code>$lt</code> / <code>$lte</code></td>
+<td>Less than / less than or equal</td>
+<td><code>{"rating": {"$lt": 3.0}}</code></td>
+</tr>
+<tr>
+<td><code>$ne</code></td>
+<td>Not equal</td>
+<td><code>{"cuisine": {"$ne": "Fast Food"}}</code></td>
+</tr>
+<tr>
+<td><code>$in</code></td>
+<td>Matches any value in array</td>
+<td><code>{"city": {"$in": ["Champaign", "Urbana"]}}</code></td>
+</tr>
+<tr>
+<td><code>$and</code></td>
+<td>Logical AND</td>
+<td><code>{"$and": [{"rating": {"$gte": 4}}, {"city": "Champaign"}]}</code></td>
+</tr>
+<tr>
+<td><code>$or</code></td>
+<td>Logical OR</td>
+<td><code>{"$or": [{"city": "Champaign"}, {"city": "Urbana"}]}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="update-modifying-documents">Update: Modifying Documents</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Update one document</span>
+<span class="n">restaurants</span><span class="o">.</span><span class="n">update_one</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Black Dog&quot;</span><span class="p">},</span>                    <span class="c1"># Filter</span>
+    <span class="p">{</span><span class="s2">&quot;$set&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span> <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}}</span>  <span class="c1"># Update</span>
+<span class="p">)</span>
+
+<span class="c1"># Update many documents - add a &quot;region&quot; field to all Champaign restaurants</span>
+<span class="n">restaurants</span><span class="o">.</span><span class="n">update_many</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Champaign&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;$set&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Central IL&quot;</span><span class="p">}}</span>
+<span class="p">)</span>
+
+<span class="c1"># Increment a numeric field</span>
+<span class="n">restaurants</span><span class="o">.</span><span class="n">update_one</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Kohinoor&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;$inc&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;review_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}</span>
+<span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="delete-removing-documents">Delete: Removing Documents</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Delete one document</span>
+<span class="n">restaurants</span><span class="o">.</span><span class="n">delete_one</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Closed Restaurant&quot;</span><span class="p">})</span>
+
+<span class="c1"># Delete all restaurants with rating below 3.0</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">restaurants</span><span class="o">.</span><span class="n">delete_many</span><span class="p">({</span><span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$lt&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">}})</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deleted </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">deleted_count</span><span class="si">}</span><span class="s2"> documents&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">delete_many with an Empty Filter</p>
+<p>Calling <code>restaurants.delete_many({})</code> deletes <strong>every document</strong> in the collection. Always double-check your filter before running delete operations.</p>
+</div>
+<h2 id="79-sql-vs-nosql-when-to-use-each">7.9 SQL vs NoSQL: When to Use Each</h2>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>SQL (Relational)</th>
+<th>NoSQL (Document)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data structure</strong></td>
+<td>Fixed schema, structured data</td>
+<td>Flexible schema, semi-structured data</td>
+</tr>
+<tr>
+<td><strong>Relationships</strong></td>
+<td>Strong (foreign keys, JOINs)</td>
+<td>Weak (embedded documents or manual references)</td>
+</tr>
+<tr>
+<td><strong>Query language</strong></td>
+<td>Standardized SQL</td>
+<td>Database-specific (MQL for MongoDB)</td>
+</tr>
+<tr>
+<td><strong>Transactions</strong></td>
+<td>Full ACID support</td>
+<td>Limited (document-level in MongoDB)</td>
+</tr>
+<tr>
+<td><strong>Scaling</strong></td>
+<td>Vertical (bigger server)</td>
+<td>Horizontal (add more servers)</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>Financial data, ERP, CRM, anything requiring strict consistency</td>
+<td>Content management, IoT, real-time analytics, API data storage</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">It's Not Either/Or</p>
+<p>Most modern organizations use <strong>both</strong> SQL and NoSQL databases. A company might store transactional data in PostgreSQL and cache user sessions in Redis. Choosing the right tool depends on the specific requirements of each use case.</p>
+</div>
+<h3 id="decision-framework">Decision Framework</h3>
+<p>Choose <strong>SQL</strong> when:</p>
+<ul>
+<li>Your data has a well-defined, stable schema</li>
+<li>You need complex joins across many related tables</li>
+<li>Data integrity and ACID transactions are critical (e.g., banking)</li>
+</ul>
+<p>Choose <strong>NoSQL</strong> when:</p>
+<ul>
+<li>Your data is semi-structured or varies between records</li>
+<li>You need to store JSON from APIs without extensive transformation</li>
+<li>You need to scale horizontally across many servers</li>
+<li>Write throughput is more important than complex queries</li>
+</ul>
+<h2 id="710-putting-it-together-api-to-mongodb-pipeline">7.10 Putting It Together: API to MongoDB Pipeline</h2>
+<p>A common real-world workflow is to fetch data from an API and store it in MongoDB for later analysis:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymongo</span><span class="w"> </span><span class="kn">import</span> <span class="n">MongoClient</span>
+
+<span class="c1"># --- Configuration ---</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;YELP_API_KEY&quot;</span><span class="p">)</span>
+<span class="n">HEADERS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://api.yelp.com/v3/businesses/search&quot;</span>
+
+<span class="c1"># --- MongoDB connection ---</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost:27017/&quot;</span><span class="p">)</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s2">&quot;badm554&quot;</span><span class="p">]</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s2">&quot;yelp_restaurants&quot;</span><span class="p">]</span>
+
+<span class="c1"># --- Fetch and store ---</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Champaign, IL&quot;</span><span class="p">,</span> <span class="s2">&quot;Chicago, IL&quot;</span><span class="p">,</span> <span class="s2">&quot;Springfield, IL&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">cities</span><span class="p">:</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="n">city</span><span class="p">,</span>
+        <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="s2">&quot;restaurants&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">50</span>
+    <span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">BASE_URL</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">businesses</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;businesses&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">businesses</span><span class="p">:</span>
+            <span class="n">collection</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="n">businesses</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inserted </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">businesses</span><span class="p">)</span><span class="si">}</span><span class="s2"> restaurants from </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rate limited. Waiting...&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error for </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Respect rate limits</span>
+
+<span class="c1"># --- Query the stored data ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top-rated restaurants:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;rating&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$gte&quot;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">}})</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;city&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> stars&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition example">
+<p class="admonition-title">Why This Pattern Matters</p>
+<p>Fetching API data and storing it locally means you can:</p>
+<ul>
+<li>Analyze the data offline without making repeated API calls</li>
+<li>Combine data from multiple API sources in one database</li>
+<li>Build dashboards and reports on top of the stored data</li>
+<li>Avoid hitting rate limits during exploratory analysis</li>
+</ul>
+</div>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>REST APIs</strong> are the standard way to fetch data from external services using HTTP methods (GET, POST, PUT, DELETE) and structured URLs</li>
+<li><strong>JSON</strong> is the lingua franca of APIs and maps directly to Python dictionaries and lists --- mastering nested JSON navigation is essential</li>
+<li><strong>The <code>requests</code> library</strong> makes API calls straightforward: pass parameters as a dictionary, check the status code, and parse the response with <code>.json()</code></li>
+<li><strong>NoSQL databases</strong> solve problems that relational databases struggle with: flexible schemas, horizontal scaling, and high-volume semi-structured data</li>
+<li><strong>The CAP theorem</strong> explains the fundamental trade-off in distributed databases: you can have at most two of consistency, availability, and partition tolerance</li>
+<li><strong>MongoDB CRUD</strong> operations (<code>insert_one</code>, <code>find</code>, <code>update_one</code>, <code>delete_one</code>) use Python dictionaries for both data and queries, making them intuitive for Python developers</li>
+<li><strong>SQL and NoSQL complement each other</strong> --- the right choice depends on your data structure, query patterns, and scaling needs</li>
+</ol>
+<h2 id="review-questions">Review Questions</h2>
+<ol>
+<li>Explain the difference between a <code>GET</code> request and a <code>POST</code> request. When would you use each in a data analytics context?</li>
+<li>Given a nested JSON object representing a student record, write the Python expression to access the grade in the student's second course.</li>
+<li>Why should API keys never be hard-coded in your Python scripts? Describe two methods for managing credentials securely.</li>
+<li>A startup needs a database for a product catalog where each item has a different set of attributes. Would you recommend SQL or NoSQL? Justify your answer using the concepts from this chapter.</li>
+<li>Explain the CAP theorem in your own words. Why is partition tolerance usually considered non-negotiable in distributed systems?</li>
+</ol>
+<h2 id="practical-exercise">Practical Exercise</h2>
+<p>Build a small <strong>API-to-MongoDB pipeline</strong>:</p>
+<ol>
+<li>Sign up for a free API key at <a href="https://openweathermap.org/api">OpenWeatherMap</a></li>
+<li>Write a Python script that:<ul>
+<li>Fetches current weather for 5 cities of your choice using the <code>requests</code> library</li>
+<li>Stores each response as a document in a MongoDB collection called <code>weather_data</code></li>
+<li>Queries the collection to find the warmest and coldest cities</li>
+<li>Prints a summary table using <code>pandas</code></li>
+</ul>
+</li>
+<li>Add proper error handling:<ul>
+<li>Check status codes before processing responses</li>
+<li>Handle missing keys with <code>.get()</code></li>
+<li>Store your API key in an environment variable, not in the code</li>
+</ul>
+</li>
+<li>Include a 1-second delay between API calls to respect rate limits</li>
+</ol>
+<p><strong>Bonus</strong>: Extend the script to fetch a 5-day forecast and store each daily forecast as a separate document with a <code>city</code> field, so you can later query forecasts across all cities.</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>In <a href="../08-cloud-databases-optimization/">Chapter 8</a>, we'll explore cloud-hosted databases and performance optimization techniques including indexing, query tuning, and scaling strategies.</p>
+<hr />
+<p><em>Corresponds to Week 6 of BADM 554 — NoSQL &amp; APIs</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../06-etl-pipelines/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6. ETL Pipelines">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                6. ETL Pipelines
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../08-cloud-databases-optimization/" class="md-footer__link md-footer__link--next" aria-label="Next: 8. Cloud Databases &amp; Optimization">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                8. Cloud Databases & Optimization
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 vishalsachdev. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

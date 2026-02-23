@@ -1,0 +1,2293 @@
+{
+  "metadata": {
+    "title": "BADM 554 - Database Management",
+    "description": "A comprehensive database management course covering relational databases, SQL, NoSQL, data warehousing, ETL processes, and Python integration for business applications. Designed for graduate business students seeking practical database skills.",
+    "creator": "Vishal Sachdev",
+    "date": "2025-11-24",
+    "version": "1.0",
+    "format": "Learning Graph JSON v1.0",
+    "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+    "license": "CC BY-NC-SA 4.0 DEED",
+    "institution": "University of Illinois",
+    "courseIdentifier": "badm_350_120255_247989",
+    "totalConcepts": 231
+  },
+  "groups": {
+    "FOUND": {
+      "classifierName": "Foundation Concepts",
+      "color": {
+        "color": "#FF0000",
+        "classifierName": "Foundation Concepts",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "BASIC": {
+      "classifierName": "BASIC",
+      "color": {
+        "color": "#FF6600",
+        "classifierName": "Basic Concepts",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "RELAT": {
+      "classifierName": "RELAT",
+      "color": {
+        "color": "#FFD700",
+        "classifierName": "Relational Model",
+        "fontColor": "black"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "SQL": {
+      "classifierName": "SQL",
+      "color": {
+        "color": "#32CD32",
+        "classifierName": "SQL Fundamentals",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "ASQL": {
+      "classifierName": "ASQL",
+      "color": {
+        "color": "#1E90FF",
+        "classifierName": "Advanced SQL",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "JSON": {
+      "classifierName": "JSON",
+      "color": {
+        "color": "#9370DB",
+        "classifierName": "JSON & APIs",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "DESIGN": {
+      "classifierName": "DESIGN",
+      "color": {
+        "color": "#FF69B4",
+        "classifierName": "Database Design",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "NORM": {
+      "classifierName": "NORM",
+      "color": {
+        "color": "#00CED1",
+        "classifierName": "Normalization",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "DW": {
+      "classifierName": "DW",
+      "color": {
+        "color": "#FF8C00",
+        "classifierName": "Data Warehousing",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "NOSQL": {
+      "classifierName": "NOSQL",
+      "color": {
+        "color": "#8B4513",
+        "classifierName": "NoSQL Databases",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "TOOLS": {
+      "classifierName": "Development Tools",
+      "color": {
+        "color": "#708090",
+        "classifierName": "Tools & Environment",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "PYTHON": {
+      "classifierName": "PYTHON",
+      "color": {
+        "color": "#4169E1",
+        "classifierName": "Python Integration",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    },
+    "BIZ": {
+      "classifierName": "BIZ",
+      "color": {
+        "color": "#DC143C",
+        "classifierName": "Business Applications",
+        "fontColor": "white"
+      },
+      "font": {
+        "color": "black"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Data",
+      "group": "FOUND",
+      "shape": "box"
+    },
+    {
+      "id": 2,
+      "label": "Information",
+      "group": "FOUND",
+      "shape": "box"
+    },
+    {
+      "id": 3,
+      "label": "Database",
+      "group": "FOUND"
+    },
+    {
+      "id": 4,
+      "label": "File Management",
+      "group": "FOUND"
+    },
+    {
+      "id": 5,
+      "label": "Spreadsheets",
+      "group": "FOUND"
+    },
+    {
+      "id": 6,
+      "label": "Data vs Information",
+      "group": "BASIC"
+    },
+    {
+      "id": 7,
+      "label": "Database Management System",
+      "group": "BASIC"
+    },
+    {
+      "id": 8,
+      "label": "Database Users",
+      "group": "BASIC"
+    },
+    {
+      "id": 9,
+      "label": "Database Administrator",
+      "group": "BASIC"
+    },
+    {
+      "id": 10,
+      "label": "Database Designer",
+      "group": "BASIC"
+    },
+    {
+      "id": 11,
+      "label": "End Users",
+      "group": "BASIC"
+    },
+    {
+      "id": 12,
+      "label": "Database Components",
+      "group": "BASIC"
+    },
+    {
+      "id": 13,
+      "label": "Data Models",
+      "group": "BASIC"
+    },
+    {
+      "id": 14,
+      "label": "Hierarchical Model",
+      "group": "BASIC"
+    },
+    {
+      "id": 15,
+      "label": "Network Model",
+      "group": "BASIC"
+    },
+    {
+      "id": 16,
+      "label": "Relational Model",
+      "group": "RELAT"
+    },
+    {
+      "id": 17,
+      "label": "Object-Oriented Model",
+      "group": "BASIC"
+    },
+    {
+      "id": 18,
+      "label": "Tables",
+      "group": "RELAT"
+    },
+    {
+      "id": 19,
+      "label": "Rows",
+      "group": "RELAT"
+    },
+    {
+      "id": 20,
+      "label": "Columns",
+      "group": "RELAT"
+    },
+    {
+      "id": 21,
+      "label": "Tuples",
+      "group": "RELAT"
+    },
+    {
+      "id": 22,
+      "label": "Attributes",
+      "group": "RELAT"
+    },
+    {
+      "id": 23,
+      "label": "Primary Key",
+      "group": "RELAT"
+    },
+    {
+      "id": 24,
+      "label": "Foreign Key",
+      "group": "RELAT"
+    },
+    {
+      "id": 25,
+      "label": "Composite Key",
+      "group": "RELAT"
+    },
+    {
+      "id": 26,
+      "label": "Candidate Key",
+      "group": "RELAT"
+    },
+    {
+      "id": 27,
+      "label": "Super Key",
+      "group": "RELAT"
+    },
+    {
+      "id": 28,
+      "label": "One-to-One Relationship",
+      "group": "RELAT"
+    },
+    {
+      "id": 29,
+      "label": "One-to-Many Relationship",
+      "group": "RELAT"
+    },
+    {
+      "id": 30,
+      "label": "Many-to-Many Relationship",
+      "group": "RELAT"
+    },
+    {
+      "id": 31,
+      "label": "Relational Algebra",
+      "group": "RELAT"
+    },
+    {
+      "id": 32,
+      "label": "Selection Operation",
+      "group": "RELAT"
+    },
+    {
+      "id": 33,
+      "label": "Projection Operation",
+      "group": "RELAT"
+    },
+    {
+      "id": 34,
+      "label": "Union Operation",
+      "group": "RELAT"
+    },
+    {
+      "id": 35,
+      "label": "Intersection Operation",
+      "group": "RELAT"
+    },
+    {
+      "id": 36,
+      "label": "Difference Operation",
+      "group": "RELAT"
+    },
+    {
+      "id": 37,
+      "label": "Cartesian Product",
+      "group": "RELAT"
+    },
+    {
+      "id": 38,
+      "label": "SQL",
+      "group": "SQL"
+    },
+    {
+      "id": 39,
+      "label": "SQL Standards",
+      "group": "SQL"
+    },
+    {
+      "id": 40,
+      "label": "Data Definition Language",
+      "group": "SQL"
+    },
+    {
+      "id": 41,
+      "label": "Data Manipulation Language",
+      "group": "SQL"
+    },
+    {
+      "id": 42,
+      "label": "Data Control Language",
+      "group": "SQL"
+    },
+    {
+      "id": 43,
+      "label": "CREATE Statement",
+      "group": "SQL"
+    },
+    {
+      "id": 44,
+      "label": "ALTER Statement",
+      "group": "SQL"
+    },
+    {
+      "id": 45,
+      "label": "DROP Statement",
+      "group": "SQL"
+    },
+    {
+      "id": 46,
+      "label": "INSERT Statement",
+      "group": "SQL"
+    },
+    {
+      "id": 47,
+      "label": "UPDATE Statement",
+      "group": "SQL"
+    },
+    {
+      "id": 48,
+      "label": "DELETE Statement",
+      "group": "SQL"
+    },
+    {
+      "id": 49,
+      "label": "SELECT Statement",
+      "group": "SQL"
+    },
+    {
+      "id": 50,
+      "label": "WHERE Clause",
+      "group": "SQL"
+    },
+    {
+      "id": 51,
+      "label": "Filtering Data",
+      "group": "SQL"
+    },
+    {
+      "id": 52,
+      "label": "Comparison Operators",
+      "group": "SQL"
+    },
+    {
+      "id": 53,
+      "label": "Logical Operators",
+      "group": "SQL"
+    },
+    {
+      "id": 54,
+      "label": "AND Operator",
+      "group": "SQL"
+    },
+    {
+      "id": 55,
+      "label": "OR Operator",
+      "group": "SQL"
+    },
+    {
+      "id": 56,
+      "label": "NOT Operator",
+      "group": "SQL"
+    },
+    {
+      "id": 57,
+      "label": "ORDER BY Clause",
+      "group": "SQL"
+    },
+    {
+      "id": 58,
+      "label": "Sorting Data",
+      "group": "SQL"
+    },
+    {
+      "id": 59,
+      "label": "ASC Keyword",
+      "group": "SQL"
+    },
+    {
+      "id": 60,
+      "label": "DESC Keyword",
+      "group": "SQL"
+    },
+    {
+      "id": 61,
+      "label": "Aggregate Functions",
+      "group": "SQL"
+    },
+    {
+      "id": 62,
+      "label": "COUNT Function",
+      "group": "SQL"
+    },
+    {
+      "id": 63,
+      "label": "SUM Function",
+      "group": "SQL"
+    },
+    {
+      "id": 64,
+      "label": "AVG Function",
+      "group": "SQL"
+    },
+    {
+      "id": 65,
+      "label": "MIN Function",
+      "group": "SQL"
+    },
+    {
+      "id": 66,
+      "label": "MAX Function",
+      "group": "SQL"
+    },
+    {
+      "id": 67,
+      "label": "GROUP BY Clause",
+      "group": "SQL"
+    },
+    {
+      "id": 68,
+      "label": "HAVING Clause",
+      "group": "SQL"
+    },
+    {
+      "id": 69,
+      "label": "INNER JOIN",
+      "group": "SQL"
+    },
+    {
+      "id": 70,
+      "label": "LEFT JOIN",
+      "group": "SQL"
+    },
+    {
+      "id": 71,
+      "label": "RIGHT JOIN",
+      "group": "SQL"
+    },
+    {
+      "id": 72,
+      "label": "FULL OUTER JOIN",
+      "group": "ASQL"
+    },
+    {
+      "id": 73,
+      "label": "CROSS JOIN",
+      "group": "ASQL"
+    },
+    {
+      "id": 74,
+      "label": "Self Join",
+      "group": "ASQL"
+    },
+    {
+      "id": 75,
+      "label": "Subqueries",
+      "group": "ASQL"
+    },
+    {
+      "id": 76,
+      "label": "Scalar Subquery",
+      "group": "ASQL"
+    },
+    {
+      "id": 77,
+      "label": "Table Subquery",
+      "group": "ASQL"
+    },
+    {
+      "id": 78,
+      "label": "Correlated Subquery",
+      "group": "ASQL"
+    },
+    {
+      "id": 79,
+      "label": "Common Table Expression",
+      "group": "ASQL"
+    },
+    {
+      "id": 80,
+      "label": "Recursive CTE",
+      "group": "ASQL"
+    },
+    {
+      "id": 81,
+      "label": "Window Functions",
+      "group": "ASQL"
+    },
+    {
+      "id": 82,
+      "label": "ROW_NUMBER Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 83,
+      "label": "RANK Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 84,
+      "label": "DENSE_RANK Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 85,
+      "label": "LEAD Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 86,
+      "label": "LAG Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 87,
+      "label": "PARTITION BY Clause",
+      "group": "ASQL"
+    },
+    {
+      "id": 88,
+      "label": "CASE Statement",
+      "group": "ASQL"
+    },
+    {
+      "id": 89,
+      "label": "Simple CASE",
+      "group": "ASQL"
+    },
+    {
+      "id": 90,
+      "label": "Searched CASE",
+      "group": "ASQL"
+    },
+    {
+      "id": 91,
+      "label": "String Functions",
+      "group": "ASQL"
+    },
+    {
+      "id": 92,
+      "label": "CONCAT Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 93,
+      "label": "SUBSTRING Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 94,
+      "label": "UPPER Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 95,
+      "label": "LOWER Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 96,
+      "label": "TRIM Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 97,
+      "label": "LIKE Operator",
+      "group": "ASQL"
+    },
+    {
+      "id": 98,
+      "label": "Pattern Matching",
+      "group": "ASQL"
+    },
+    {
+      "id": 99,
+      "label": "Wildcards",
+      "group": "ASQL"
+    },
+    {
+      "id": 100,
+      "label": "Date Functions",
+      "group": "ASQL"
+    },
+    {
+      "id": 101,
+      "label": "DATE_FORMAT Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 102,
+      "label": "DATE_ADD Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 103,
+      "label": "DATE_SUB Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 104,
+      "label": "DATEDIFF Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 105,
+      "label": "NOW Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 106,
+      "label": "NULL Values",
+      "group": "ASQL"
+    },
+    {
+      "id": 107,
+      "label": "IS NULL Operator",
+      "group": "ASQL"
+    },
+    {
+      "id": 108,
+      "label": "IS NOT NULL Operator",
+      "group": "ASQL"
+    },
+    {
+      "id": 109,
+      "label": "COALESCE Function",
+      "group": "ASQL"
+    },
+    {
+      "id": 110,
+      "label": "JSON",
+      "group": "JSON"
+    },
+    {
+      "id": 111,
+      "label": "JSON Structure",
+      "group": "JSON"
+    },
+    {
+      "id": 112,
+      "label": "JSON Data Types",
+      "group": "JSON"
+    },
+    {
+      "id": 113,
+      "label": "JSON Objects",
+      "group": "JSON"
+    },
+    {
+      "id": 114,
+      "label": "JSON Arrays",
+      "group": "JSON"
+    },
+    {
+      "id": 115,
+      "label": "JSON Strings",
+      "group": "JSON"
+    },
+    {
+      "id": 116,
+      "label": "JSON Numbers",
+      "group": "JSON"
+    },
+    {
+      "id": 117,
+      "label": "JSON Booleans",
+      "group": "JSON"
+    },
+    {
+      "id": 118,
+      "label": "JSON Null",
+      "group": "JSON"
+    },
+    {
+      "id": 119,
+      "label": "Nested JSON",
+      "group": "JSON"
+    },
+    {
+      "id": 120,
+      "label": "JSON Functions in SQL",
+      "group": "JSON"
+    },
+    {
+      "id": 121,
+      "label": "JSON_EXTRACT Function",
+      "group": "JSON"
+    },
+    {
+      "id": 122,
+      "label": "JSON_VALUE Function",
+      "group": "JSON"
+    },
+    {
+      "id": 123,
+      "label": "JSON_QUERY Function",
+      "group": "JSON"
+    },
+    {
+      "id": 124,
+      "label": "RESTful API",
+      "group": "JSON"
+    },
+    {
+      "id": 125,
+      "label": "API Authentication",
+      "group": "JSON"
+    },
+    {
+      "id": 126,
+      "label": "API Keys",
+      "group": "JSON"
+    },
+    {
+      "id": 127,
+      "label": "OAuth",
+      "group": "JSON"
+    },
+    {
+      "id": 128,
+      "label": "API Data Extraction",
+      "group": "JSON"
+    },
+    {
+      "id": 129,
+      "label": "Entity-Relationship Model",
+      "group": "DESIGN"
+    },
+    {
+      "id": 130,
+      "label": "ER Diagrams",
+      "group": "DESIGN"
+    },
+    {
+      "id": 131,
+      "label": "Entities",
+      "group": "DESIGN"
+    },
+    {
+      "id": 132,
+      "label": "Entity Attributes",
+      "group": "DESIGN"
+    },
+    {
+      "id": 133,
+      "label": "Entity Relationships",
+      "group": "DESIGN"
+    },
+    {
+      "id": 134,
+      "label": "Cardinality",
+      "group": "DESIGN"
+    },
+    {
+      "id": 135,
+      "label": "Participation Constraints",
+      "group": "DESIGN"
+    },
+    {
+      "id": 136,
+      "label": "Weak Entity",
+      "group": "DESIGN"
+    },
+    {
+      "id": 137,
+      "label": "Identifying Relationship",
+      "group": "DESIGN"
+    },
+    {
+      "id": 138,
+      "label": "Enhanced ER Model",
+      "group": "DESIGN"
+    },
+    {
+      "id": 139,
+      "label": "Specialization",
+      "group": "DESIGN"
+    },
+    {
+      "id": 140,
+      "label": "Generalization",
+      "group": "DESIGN"
+    },
+    {
+      "id": 141,
+      "label": "Aggregation",
+      "group": "DESIGN"
+    },
+    {
+      "id": 142,
+      "label": "ER to Relational Mapping",
+      "group": "DESIGN"
+    },
+    {
+      "id": 143,
+      "label": "MySQL Workbench",
+      "group": "TOOLS"
+    },
+    {
+      "id": 144,
+      "label": "Data Redundancy",
+      "group": "NORM"
+    },
+    {
+      "id": 145,
+      "label": "Update Anomaly",
+      "group": "NORM"
+    },
+    {
+      "id": 146,
+      "label": "Insertion Anomaly",
+      "group": "NORM"
+    },
+    {
+      "id": 147,
+      "label": "Deletion Anomaly",
+      "group": "NORM"
+    },
+    {
+      "id": 148,
+      "label": "Functional Dependency",
+      "group": "NORM"
+    },
+    {
+      "id": 149,
+      "label": "Full Functional Dependency",
+      "group": "NORM"
+    },
+    {
+      "id": 150,
+      "label": "Partial Dependency",
+      "group": "NORM"
+    },
+    {
+      "id": 151,
+      "label": "Transitive Dependency",
+      "group": "NORM"
+    },
+    {
+      "id": 152,
+      "label": "First Normal Form",
+      "group": "NORM"
+    },
+    {
+      "id": 153,
+      "label": "Atomic Values",
+      "group": "NORM"
+    },
+    {
+      "id": 154,
+      "label": "Second Normal Form",
+      "group": "NORM"
+    },
+    {
+      "id": 155,
+      "label": "Third Normal Form",
+      "group": "NORM"
+    },
+    {
+      "id": 156,
+      "label": "Boyce-Codd Normal Form",
+      "group": "NORM"
+    },
+    {
+      "id": 157,
+      "label": "Denormalization",
+      "group": "NORM"
+    },
+    {
+      "id": 158,
+      "label": "OLTP",
+      "group": "DW"
+    },
+    {
+      "id": 159,
+      "label": "OLAP",
+      "group": "DW"
+    },
+    {
+      "id": 160,
+      "label": "Data Warehouse",
+      "group": "DW"
+    },
+    {
+      "id": 161,
+      "label": "Data Warehouse Architecture",
+      "group": "DW"
+    },
+    {
+      "id": 162,
+      "label": "Star Schema",
+      "group": "DW"
+    },
+    {
+      "id": 163,
+      "label": "Snowflake Schema",
+      "group": "DW"
+    },
+    {
+      "id": 164,
+      "label": "Fact Table",
+      "group": "DW"
+    },
+    {
+      "id": 165,
+      "label": "Dimension Table",
+      "group": "DW"
+    },
+    {
+      "id": 166,
+      "label": "ETL Process",
+      "group": "DW"
+    },
+    {
+      "id": 167,
+      "label": "Extract Phase",
+      "group": "DW"
+    },
+    {
+      "id": 168,
+      "label": "Transform Phase",
+      "group": "DW"
+    },
+    {
+      "id": 169,
+      "label": "Load Phase",
+      "group": "DW"
+    },
+    {
+      "id": 170,
+      "label": "Data Quality",
+      "group": "DW"
+    },
+    {
+      "id": 171,
+      "label": "Data Cleansing",
+      "group": "DW"
+    },
+    {
+      "id": 172,
+      "label": "Data Transformation",
+      "group": "DW"
+    },
+    {
+      "id": 173,
+      "label": "Knime",
+      "group": "TOOLS"
+    },
+    {
+      "id": 174,
+      "label": "NoSQL",
+      "group": "NOSQL"
+    },
+    {
+      "id": 175,
+      "label": "NoSQL Motivation",
+      "group": "NOSQL"
+    },
+    {
+      "id": 176,
+      "label": "CAP Theorem",
+      "group": "NOSQL"
+    },
+    {
+      "id": 177,
+      "label": "Consistency",
+      "group": "NOSQL"
+    },
+    {
+      "id": 178,
+      "label": "Availability",
+      "group": "NOSQL"
+    },
+    {
+      "id": 179,
+      "label": "Partition Tolerance",
+      "group": "NOSQL"
+    },
+    {
+      "id": 180,
+      "label": "Document Database",
+      "group": "NOSQL"
+    },
+    {
+      "id": 181,
+      "label": "Key-Value Store",
+      "group": "NOSQL"
+    },
+    {
+      "id": 182,
+      "label": "Column-Family Store",
+      "group": "NOSQL"
+    },
+    {
+      "id": 183,
+      "label": "Graph Database",
+      "group": "NOSQL"
+    },
+    {
+      "id": 184,
+      "label": "MongoDB",
+      "group": "NOSQL"
+    },
+    {
+      "id": 185,
+      "label": "MongoDB CRUD",
+      "group": "NOSQL"
+    },
+    {
+      "id": 186,
+      "label": "MongoDB Insert",
+      "group": "NOSQL"
+    },
+    {
+      "id": 187,
+      "label": "MongoDB Find",
+      "group": "NOSQL"
+    },
+    {
+      "id": 188,
+      "label": "MongoDB Update",
+      "group": "NOSQL"
+    },
+    {
+      "id": 189,
+      "label": "MongoDB Delete",
+      "group": "NOSQL"
+    },
+    {
+      "id": 190,
+      "label": "MongoDB Query Language",
+      "group": "NOSQL"
+    },
+    {
+      "id": 191,
+      "label": "MongoDB Compass",
+      "group": "TOOLS"
+    },
+    {
+      "id": 192,
+      "label": "NoSQL vs SQL",
+      "group": "NOSQL"
+    },
+    {
+      "id": 193,
+      "label": "MySQL Installation",
+      "group": "TOOLS"
+    },
+    {
+      "id": 194,
+      "label": "MySQL Configuration",
+      "group": "TOOLS"
+    },
+    {
+      "id": 195,
+      "label": "PostgreSQL",
+      "group": "TOOLS"
+    },
+    {
+      "id": 196,
+      "label": "PostgreSQL Setup",
+      "group": "TOOLS"
+    },
+    {
+      "id": 197,
+      "label": "Jupyter Notebooks",
+      "group": "TOOLS"
+    },
+    {
+      "id": 198,
+      "label": "Google Colab",
+      "group": "TOOLS"
+    },
+    {
+      "id": 199,
+      "label": "SQL Clients",
+      "group": "TOOLS"
+    },
+    {
+      "id": 200,
+      "label": "Python Database Connectivity",
+      "group": "PYTHON"
+    },
+    {
+      "id": 201,
+      "label": "PyMySQL Library",
+      "group": "PYTHON"
+    },
+    {
+      "id": 202,
+      "label": "Psycopg2 Library",
+      "group": "PYTHON"
+    },
+    {
+      "id": 203,
+      "label": "PyMongo Library",
+      "group": "PYTHON"
+    },
+    {
+      "id": 204,
+      "label": "Executing SQL from Python",
+      "group": "PYTHON"
+    },
+    {
+      "id": 205,
+      "label": "Parameterized Queries",
+      "group": "PYTHON"
+    },
+    {
+      "id": 206,
+      "label": "SQL Injection Prevention",
+      "group": "PYTHON"
+    },
+    {
+      "id": 207,
+      "label": "Transaction Management",
+      "group": "PYTHON"
+    },
+    {
+      "id": 208,
+      "label": "ACID Properties",
+      "group": "PYTHON"
+    },
+    {
+      "id": 209,
+      "label": "BEGIN Transaction",
+      "group": "PYTHON"
+    },
+    {
+      "id": 210,
+      "label": "COMMIT Statement",
+      "group": "PYTHON"
+    },
+    {
+      "id": 211,
+      "label": "ROLLBACK Statement",
+      "group": "PYTHON"
+    },
+    {
+      "id": 212,
+      "label": "Error Handling in Python",
+      "group": "PYTHON"
+    },
+    {
+      "id": 213,
+      "label": "Try-Except Blocks",
+      "group": "PYTHON"
+    },
+    {
+      "id": 214,
+      "label": "Pandas Library",
+      "group": "PYTHON"
+    },
+    {
+      "id": 215,
+      "label": "Pandas DataFrame",
+      "group": "PYTHON"
+    },
+    {
+      "id": 216,
+      "label": "Reading SQL to DataFrame",
+      "group": "PYTHON"
+    },
+    {
+      "id": 217,
+      "label": "Writing DataFrame to SQL",
+      "group": "PYTHON"
+    },
+    {
+      "id": 218,
+      "label": "Data Visualization",
+      "group": "PYTHON"
+    },
+    {
+      "id": 219,
+      "label": "Matplotlib",
+      "group": "PYTHON"
+    },
+    {
+      "id": 220,
+      "label": "Seaborn",
+      "group": "PYTHON"
+    },
+    {
+      "id": 221,
+      "label": "Customer Segmentation",
+      "group": "BIZ"
+    },
+    {
+      "id": 222,
+      "label": "Marketing Analytics",
+      "group": "BIZ"
+    },
+    {
+      "id": 223,
+      "label": "RFM Analysis",
+      "group": "BIZ"
+    },
+    {
+      "id": 224,
+      "label": "Cohort Analysis",
+      "group": "BIZ"
+    },
+    {
+      "id": 225,
+      "label": "Vendor Analysis",
+      "group": "BIZ"
+    },
+    {
+      "id": 226,
+      "label": "Supply Chain Management",
+      "group": "BIZ"
+    },
+    {
+      "id": 227,
+      "label": "Financial Analysis",
+      "group": "BIZ"
+    },
+    {
+      "id": 228,
+      "label": "Macroeconomic Research",
+      "group": "BIZ"
+    },
+    {
+      "id": 229,
+      "label": "Fraud Detection",
+      "group": "BIZ"
+    },
+    {
+      "id": 230,
+      "label": "Business Intelligence",
+      "group": "BIZ"
+    },
+    {
+      "id": 231,
+      "label": "BI Dashboards",
+      "group": "BIZ"
+    }
+  ],
+  "edges": [
+    {
+      "from": 3,
+      "to": 1
+    },
+    {
+      "from": 4,
+      "to": 1
+    },
+    {
+      "from": 5,
+      "to": 1
+    },
+    {
+      "from": 5,
+      "to": 4
+    },
+    {
+      "from": 6,
+      "to": 1
+    },
+    {
+      "from": 6,
+      "to": 2
+    },
+    {
+      "from": 7,
+      "to": 3
+    },
+    {
+      "from": 8,
+      "to": 3
+    },
+    {
+      "from": 9,
+      "to": 8
+    },
+    {
+      "from": 10,
+      "to": 8
+    },
+    {
+      "from": 11,
+      "to": 8
+    },
+    {
+      "from": 12,
+      "to": 3
+    },
+    {
+      "from": 13,
+      "to": 3
+    },
+    {
+      "from": 14,
+      "to": 13
+    },
+    {
+      "from": 15,
+      "to": 13
+    },
+    {
+      "from": 16,
+      "to": 13
+    },
+    {
+      "from": 17,
+      "to": 13
+    },
+    {
+      "from": 18,
+      "to": 16
+    },
+    {
+      "from": 19,
+      "to": 18
+    },
+    {
+      "from": 20,
+      "to": 18
+    },
+    {
+      "from": 21,
+      "to": 19
+    },
+    {
+      "from": 22,
+      "to": 20
+    },
+    {
+      "from": 23,
+      "to": 18
+    },
+    {
+      "from": 24,
+      "to": 18
+    },
+    {
+      "from": 25,
+      "to": 23
+    },
+    {
+      "from": 26,
+      "to": 23
+    },
+    {
+      "from": 27,
+      "to": 23
+    },
+    {
+      "from": 28,
+      "to": 18
+    },
+    {
+      "from": 29,
+      "to": 18
+    },
+    {
+      "from": 30,
+      "to": 18
+    },
+    {
+      "from": 31,
+      "to": 16
+    },
+    {
+      "from": 32,
+      "to": 31
+    },
+    {
+      "from": 33,
+      "to": 31
+    },
+    {
+      "from": 34,
+      "to": 31
+    },
+    {
+      "from": 35,
+      "to": 31
+    },
+    {
+      "from": 36,
+      "to": 31
+    },
+    {
+      "from": 37,
+      "to": 31
+    },
+    {
+      "from": 38,
+      "to": 16
+    },
+    {
+      "from": 39,
+      "to": 38
+    },
+    {
+      "from": 40,
+      "to": 38
+    },
+    {
+      "from": 41,
+      "to": 38
+    },
+    {
+      "from": 42,
+      "to": 38
+    },
+    {
+      "from": 43,
+      "to": 40
+    },
+    {
+      "from": 44,
+      "to": 40
+    },
+    {
+      "from": 45,
+      "to": 40
+    },
+    {
+      "from": 46,
+      "to": 41
+    },
+    {
+      "from": 47,
+      "to": 41
+    },
+    {
+      "from": 48,
+      "to": 41
+    },
+    {
+      "from": 49,
+      "to": 41
+    },
+    {
+      "from": 50,
+      "to": 49
+    },
+    {
+      "from": 51,
+      "to": 50
+    },
+    {
+      "from": 52,
+      "to": 50
+    },
+    {
+      "from": 53,
+      "to": 50
+    },
+    {
+      "from": 54,
+      "to": 53
+    },
+    {
+      "from": 55,
+      "to": 53
+    },
+    {
+      "from": 56,
+      "to": 53
+    },
+    {
+      "from": 57,
+      "to": 49
+    },
+    {
+      "from": 58,
+      "to": 57
+    },
+    {
+      "from": 59,
+      "to": 57
+    },
+    {
+      "from": 60,
+      "to": 57
+    },
+    {
+      "from": 61,
+      "to": 49
+    },
+    {
+      "from": 62,
+      "to": 61
+    },
+    {
+      "from": 63,
+      "to": 61
+    },
+    {
+      "from": 64,
+      "to": 61
+    },
+    {
+      "from": 65,
+      "to": 61
+    },
+    {
+      "from": 66,
+      "to": 61
+    },
+    {
+      "from": 67,
+      "to": 61
+    },
+    {
+      "from": 68,
+      "to": 67
+    },
+    {
+      "from": 69,
+      "to": 49
+    },
+    {
+      "from": 70,
+      "to": 49
+    },
+    {
+      "from": 71,
+      "to": 49
+    },
+    {
+      "from": 72,
+      "to": 70
+    },
+    {
+      "from": 72,
+      "to": 71
+    },
+    {
+      "from": 73,
+      "to": 49
+    },
+    {
+      "from": 74,
+      "to": 69
+    },
+    {
+      "from": 75,
+      "to": 49
+    },
+    {
+      "from": 76,
+      "to": 75
+    },
+    {
+      "from": 77,
+      "to": 75
+    },
+    {
+      "from": 78,
+      "to": 75
+    },
+    {
+      "from": 79,
+      "to": 75
+    },
+    {
+      "from": 80,
+      "to": 79
+    },
+    {
+      "from": 81,
+      "to": 61
+    },
+    {
+      "from": 82,
+      "to": 81
+    },
+    {
+      "from": 83,
+      "to": 81
+    },
+    {
+      "from": 84,
+      "to": 81
+    },
+    {
+      "from": 85,
+      "to": 81
+    },
+    {
+      "from": 86,
+      "to": 81
+    },
+    {
+      "from": 87,
+      "to": 81
+    },
+    {
+      "from": 88,
+      "to": 49
+    },
+    {
+      "from": 89,
+      "to": 88
+    },
+    {
+      "from": 90,
+      "to": 88
+    },
+    {
+      "from": 91,
+      "to": 38
+    },
+    {
+      "from": 92,
+      "to": 91
+    },
+    {
+      "from": 93,
+      "to": 91
+    },
+    {
+      "from": 94,
+      "to": 91
+    },
+    {
+      "from": 95,
+      "to": 91
+    },
+    {
+      "from": 96,
+      "to": 91
+    },
+    {
+      "from": 97,
+      "to": 50
+    },
+    {
+      "from": 98,
+      "to": 97
+    },
+    {
+      "from": 99,
+      "to": 97
+    },
+    {
+      "from": 100,
+      "to": 38
+    },
+    {
+      "from": 101,
+      "to": 100
+    },
+    {
+      "from": 102,
+      "to": 100
+    },
+    {
+      "from": 103,
+      "to": 100
+    },
+    {
+      "from": 104,
+      "to": 100
+    },
+    {
+      "from": 105,
+      "to": 100
+    },
+    {
+      "from": 106,
+      "to": 18
+    },
+    {
+      "from": 107,
+      "to": 106
+    },
+    {
+      "from": 108,
+      "to": 106
+    },
+    {
+      "from": 109,
+      "to": 106
+    },
+    {
+      "from": 110,
+      "to": 3
+    },
+    {
+      "from": 111,
+      "to": 110
+    },
+    {
+      "from": 112,
+      "to": 110
+    },
+    {
+      "from": 113,
+      "to": 111
+    },
+    {
+      "from": 114,
+      "to": 111
+    },
+    {
+      "from": 115,
+      "to": 112
+    },
+    {
+      "from": 116,
+      "to": 112
+    },
+    {
+      "from": 117,
+      "to": 112
+    },
+    {
+      "from": 118,
+      "to": 112
+    },
+    {
+      "from": 119,
+      "to": 113
+    },
+    {
+      "from": 119,
+      "to": 114
+    },
+    {
+      "from": 120,
+      "to": 38
+    },
+    {
+      "from": 120,
+      "to": 110
+    },
+    {
+      "from": 121,
+      "to": 120
+    },
+    {
+      "from": 122,
+      "to": 120
+    },
+    {
+      "from": 123,
+      "to": 120
+    },
+    {
+      "from": 124,
+      "to": 110
+    },
+    {
+      "from": 125,
+      "to": 124
+    },
+    {
+      "from": 126,
+      "to": 125
+    },
+    {
+      "from": 127,
+      "to": 125
+    },
+    {
+      "from": 128,
+      "to": 124
+    },
+    {
+      "from": 129,
+      "to": 3
+    },
+    {
+      "from": 130,
+      "to": 129
+    },
+    {
+      "from": 131,
+      "to": 129
+    },
+    {
+      "from": 132,
+      "to": 131
+    },
+    {
+      "from": 133,
+      "to": 131
+    },
+    {
+      "from": 134,
+      "to": 133
+    },
+    {
+      "from": 135,
+      "to": 133
+    },
+    {
+      "from": 136,
+      "to": 131
+    },
+    {
+      "from": 137,
+      "to": 136
+    },
+    {
+      "from": 138,
+      "to": 129
+    },
+    {
+      "from": 139,
+      "to": 138
+    },
+    {
+      "from": 140,
+      "to": 138
+    },
+    {
+      "from": 141,
+      "to": 138
+    },
+    {
+      "from": 142,
+      "to": 130
+    },
+    {
+      "from": 142,
+      "to": 16
+    },
+    {
+      "from": 143,
+      "to": 7
+    },
+    {
+      "from": 144,
+      "to": 18
+    },
+    {
+      "from": 145,
+      "to": 144
+    },
+    {
+      "from": 146,
+      "to": 144
+    },
+    {
+      "from": 147,
+      "to": 144
+    },
+    {
+      "from": 148,
+      "to": 22
+    },
+    {
+      "from": 149,
+      "to": 148
+    },
+    {
+      "from": 150,
+      "to": 148
+    },
+    {
+      "from": 151,
+      "to": 148
+    },
+    {
+      "from": 152,
+      "to": 18
+    },
+    {
+      "from": 153,
+      "to": 152
+    },
+    {
+      "from": 154,
+      "to": 152
+    },
+    {
+      "from": 155,
+      "to": 154
+    },
+    {
+      "from": 156,
+      "to": 155
+    },
+    {
+      "from": 157,
+      "to": 155
+    },
+    {
+      "from": 158,
+      "to": 7
+    },
+    {
+      "from": 159,
+      "to": 7
+    },
+    {
+      "from": 160,
+      "to": 159
+    },
+    {
+      "from": 161,
+      "to": 160
+    },
+    {
+      "from": 162,
+      "to": 160
+    },
+    {
+      "from": 163,
+      "to": 160
+    },
+    {
+      "from": 164,
+      "to": 162
+    },
+    {
+      "from": 165,
+      "to": 162
+    },
+    {
+      "from": 166,
+      "to": 160
+    },
+    {
+      "from": 167,
+      "to": 166
+    },
+    {
+      "from": 168,
+      "to": 166
+    },
+    {
+      "from": 169,
+      "to": 166
+    },
+    {
+      "from": 170,
+      "to": 168
+    },
+    {
+      "from": 171,
+      "to": 170
+    },
+    {
+      "from": 172,
+      "to": 168
+    },
+    {
+      "from": 173,
+      "to": 166
+    },
+    {
+      "from": 174,
+      "to": 3
+    },
+    {
+      "from": 175,
+      "to": 174
+    },
+    {
+      "from": 176,
+      "to": 174
+    },
+    {
+      "from": 177,
+      "to": 176
+    },
+    {
+      "from": 178,
+      "to": 176
+    },
+    {
+      "from": 179,
+      "to": 176
+    },
+    {
+      "from": 180,
+      "to": 174
+    },
+    {
+      "from": 181,
+      "to": 174
+    },
+    {
+      "from": 182,
+      "to": 174
+    },
+    {
+      "from": 183,
+      "to": 174
+    },
+    {
+      "from": 184,
+      "to": 180
+    },
+    {
+      "from": 185,
+      "to": 184
+    },
+    {
+      "from": 186,
+      "to": 185
+    },
+    {
+      "from": 187,
+      "to": 185
+    },
+    {
+      "from": 188,
+      "to": 185
+    },
+    {
+      "from": 189,
+      "to": 185
+    },
+    {
+      "from": 190,
+      "to": 184
+    },
+    {
+      "from": 191,
+      "to": 184
+    },
+    {
+      "from": 192,
+      "to": 174
+    },
+    {
+      "from": 192,
+      "to": 38
+    },
+    {
+      "from": 193,
+      "to": 7
+    },
+    {
+      "from": 194,
+      "to": 193
+    },
+    {
+      "from": 195,
+      "to": 7
+    },
+    {
+      "from": 196,
+      "to": 195
+    },
+    {
+      "from": 197,
+      "to": 195
+    },
+    {
+      "from": 198,
+      "to": 197
+    },
+    {
+      "from": 199,
+      "to": 38
+    },
+    {
+      "from": 200,
+      "to": 197
+    },
+    {
+      "from": 201,
+      "to": 200
+    },
+    {
+      "from": 202,
+      "to": 200
+    },
+    {
+      "from": 203,
+      "to": 200
+    },
+    {
+      "from": 204,
+      "to": 200
+    },
+    {
+      "from": 204,
+      "to": 38
+    },
+    {
+      "from": 205,
+      "to": 204
+    },
+    {
+      "from": 206,
+      "to": 205
+    },
+    {
+      "from": 207,
+      "to": 7
+    },
+    {
+      "from": 208,
+      "to": 207
+    },
+    {
+      "from": 209,
+      "to": 207
+    },
+    {
+      "from": 210,
+      "to": 207
+    },
+    {
+      "from": 211,
+      "to": 207
+    },
+    {
+      "from": 212,
+      "to": 200
+    },
+    {
+      "from": 213,
+      "to": 212
+    },
+    {
+      "from": 214,
+      "to": 197
+    },
+    {
+      "from": 215,
+      "to": 214
+    },
+    {
+      "from": 216,
+      "to": 214
+    },
+    {
+      "from": 216,
+      "to": 204
+    },
+    {
+      "from": 217,
+      "to": 214
+    },
+    {
+      "from": 217,
+      "to": 204
+    },
+    {
+      "from": 218,
+      "to": 214
+    },
+    {
+      "from": 219,
+      "to": 218
+    },
+    {
+      "from": 220,
+      "to": 218
+    },
+    {
+      "from": 221,
+      "to": 67
+    },
+    {
+      "from": 221,
+      "to": 218
+    },
+    {
+      "from": 222,
+      "to": 221
+    },
+    {
+      "from": 223,
+      "to": 222
+    },
+    {
+      "from": 224,
+      "to": 222
+    },
+    {
+      "from": 225,
+      "to": 67
+    },
+    {
+      "from": 226,
+      "to": 225
+    },
+    {
+      "from": 227,
+      "to": 64
+    },
+    {
+      "from": 227,
+      "to": 218
+    },
+    {
+      "from": 228,
+      "to": 227
+    },
+    {
+      "from": 229,
+      "to": 51
+    },
+    {
+      "from": 229,
+      "to": 218
+    },
+    {
+      "from": 230,
+      "to": 160
+    },
+    {
+      "from": 230,
+      "to": 218
+    },
+    {
+      "from": 231,
+      "to": 230
+    }
+  ]
+}

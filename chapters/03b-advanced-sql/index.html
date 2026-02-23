@@ -1,0 +1,3251 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An intelligent textbook built with AI-powered tools and interactive learning experiences.">
+      
+      
+        <meta name="author" content="vishalsachdev">
+      
+      
+        <link rel="canonical" href="https://vishalsachdev.github.io/database-management/chapters/03b-advanced-sql/">
+      
+      
+        <link rel="prev" href="../03-sql-fundamentals/">
+      
+      
+        <link rel="next" href="../04-data-modeling-normalization/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>3b. JOINs, Subqueries & Window Functions - Database Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-3b-joins-subqueries-window-functions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Database Management" class="md-header__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Database Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3b. JOINs, Subqueries & Window Functions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Database Management" class="md-nav__button md-logo" aria-label="Database Management" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Database Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vishalsachdev/database-management" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-database-environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. The Database Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-tables-relational-algebra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Tables and Relational Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-sql-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. SQL Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b. JOINs, Subqueries & Window Functions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3b. JOINs, Subqueries & Window Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#our-example-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Our Example Database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b1-dml-write-operations-insert-update-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.1 DML Write Operations: INSERT, UPDATE, DELETE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.1 DML Write Operations: INSERT, UPDATE, DELETE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insert-adding-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INSERT -- Adding Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-modifying-existing-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UPDATE -- Modifying Existing Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-removing-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE -- Removing Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b2-alter-table-changing-table-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.2 ALTER TABLE -- Changing Table Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b3-group-by-and-having" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.3 GROUP BY and HAVING
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.3 GROUP BY and HAVING">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#group-by-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GROUP BY Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-aggregations-in-one-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Aggregations in One Query
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#having-filtering-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HAVING -- Filtering Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-vs-having" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WHERE vs HAVING
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b4-joins-combining-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.4 JOINs -- Combining Tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.4 JOINs -- Combining Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inner-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INNER JOIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join-left-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LEFT JOIN (LEFT OUTER JOIN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-join-right-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RIGHT JOIN (RIGHT OUTER JOIN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JOIN Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joining-multiple-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Joining Multiple Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b5-self-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.5 Self Joins
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.5 Self Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-classic-example-employee-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Classic Example: Employee-Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b6-subqueries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.6 Subqueries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.6 Subqueries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scalar-subqueries-return-one-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scalar Subqueries (Return One Value)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-subqueries-return-a-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Column Subqueries (Return a List)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-subqueries-return-a-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Subqueries (Return a Table)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlated-subqueries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correlated Subqueries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exists-testing-for-existence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EXISTS -- Testing for Existence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b7-common-table-expressions-ctes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.7 Common Table Expressions (CTEs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.7 Common Table Expressions (CTEs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-cte-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic CTE Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-ctes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple CTEs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b8-window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.8 Window Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.8 Window Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#window-functions-vs-group-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Window Functions vs GROUP BY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-over-clause" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The OVER Clause
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-by-windows-within-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PARTITION BY -- Windows Within Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#row_number-sequential-numbering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROW_NUMBER -- Sequential Numbering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rank-and-dense_rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RANK and DENSE_RANK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lead-and-lag-accessing-adjacent-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LEAD and LAG -- Accessing Adjacent Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-function-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Window Function Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b9-putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.9 Putting It All Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-data-modeling-normalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Data Modeling & Normalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-python-pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Python & pandas for Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-etl-pipelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. ETL Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-nosql-apis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. NoSQL & APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-cloud-databases-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Cloud Databases & Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#our-example-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Our Example Database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b1-dml-write-operations-insert-update-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.1 DML Write Operations: INSERT, UPDATE, DELETE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.1 DML Write Operations: INSERT, UPDATE, DELETE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insert-adding-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INSERT -- Adding Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-modifying-existing-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UPDATE -- Modifying Existing Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-removing-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE -- Removing Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b2-alter-table-changing-table-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.2 ALTER TABLE -- Changing Table Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b3-group-by-and-having" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.3 GROUP BY and HAVING
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.3 GROUP BY and HAVING">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#group-by-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GROUP BY Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-aggregations-in-one-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Aggregations in One Query
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#having-filtering-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HAVING -- Filtering Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-vs-having" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WHERE vs HAVING
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b4-joins-combining-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.4 JOINs -- Combining Tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.4 JOINs -- Combining Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inner-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INNER JOIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join-left-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LEFT JOIN (LEFT OUTER JOIN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-join-right-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RIGHT JOIN (RIGHT OUTER JOIN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JOIN Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joining-multiple-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Joining Multiple Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b5-self-joins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.5 Self Joins
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.5 Self Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-classic-example-employee-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Classic Example: Employee-Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b6-subqueries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.6 Subqueries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.6 Subqueries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scalar-subqueries-return-one-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scalar Subqueries (Return One Value)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-subqueries-return-a-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Column Subqueries (Return a List)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-subqueries-return-a-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Subqueries (Return a Table)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlated-subqueries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correlated Subqueries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exists-testing-for-existence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EXISTS -- Testing for Existence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b7-common-table-expressions-ctes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.7 Common Table Expressions (CTEs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.7 Common Table Expressions (CTEs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-cte-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic CTE Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-ctes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple CTEs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b8-window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.8 Window Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3b.8 Window Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#window-functions-vs-group-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Window Functions vs GROUP BY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-over-clause" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The OVER Clause
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-by-windows-within-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PARTITION BY -- Windows Within Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#row_number-sequential-numbering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROW_NUMBER -- Sequential Numbering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rank-and-dense_rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RANK and DENSE_RANK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lead-and-lag-accessing-adjacent-rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LEAD and LAG -- Accessing Adjacent Rows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-function-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Window Function Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3b9-putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3b.9 Putting It All Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Exercise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../01-database-environment/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/vishalsachdev/database-management/blob/main/docs/chapters/03b-advanced-sql.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="chapter-3b-joins-subqueries-window-functions">Chapter 3b: JOINs, Subqueries &amp; Window Functions</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After completing this chapter, you will be able to:</p>
+<ul>
+<li>Insert, update, and delete data using DML write operations</li>
+<li>Modify table structures with ALTER TABLE</li>
+<li>Group and filter aggregated data using GROUP BY and HAVING</li>
+<li>Combine data from multiple tables using INNER, LEFT, RIGHT, and Self JOINs</li>
+<li>Write subqueries (scalar, correlated, and EXISTS) to solve multi-step problems</li>
+<li>Simplify complex queries with Common Table Expressions (CTEs)</li>
+<li>Apply window functions (ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG) for analytics</li>
+<li>Combine JOINs, CTEs, and window functions to answer sophisticated business questions</li>
+</ul>
+<h2 id="our-example-database">Our Example Database</h2>
+<p>Every example in this chapter uses the same four-table e-commerce schema. If you completed the normalization exercise in Chapter 4, these tables will look familiar -- they are the end result of normalizing a flat order spreadsheet into 3NF.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code>CUSTOMER                          PRODUCT
++-------------+----------------+  +------------+------------------+--------+----------+
+| customer_id | name           |  | product_id | product_name     | price  | category |
++-------------+----------------+  +------------+------------------+--------+----------+
+| C01         | Alice Johnson  |  | P01        | Laptop           | 999.99 | Tech     |
+| C02         | Bob Smith      |  | P02        | Mouse            |  24.99 | Tech     |
+| C03         | Carol Martinez |  | P03        | Desk Chair       | 249.99 | Office   |
+| C04         | David Lee      |  | P04        | Monitor          | 349.99 | Tech     |
+| C05         | Eva Chen       |  | P05        | Standing Desk    | 599.99 | Office   |
++-------------+----------------+  +------------+------------------+--------+----------+
+
+ORDERS                                          ORDER_LINE
++----------+-------------+------------+-------+ +----------+------------+-----+------------+
+| order_id | customer_id | order_date | status| | order_id | product_id | qty | unit_price |
++----------+-------------+------------+-------+ +----------+------------+-----+------------+
+| 1001     | C01         | 2026-01-15 | shipped| | 1001     | P01        | 1   | 999.99     |
+| 1002     | C01         | 2026-02-20 | shipped| | 1001     | P02        | 2   |  24.99     |
+| 1003     | C02         | 2026-02-25 | pending| | 1002     | P03        | 1   | 249.99     |
+| 1004     | C03         | 2026-03-01 | shipped| | 1003     | P04        | 1   | 349.99     |
+| 1005     | C03         | 2026-03-10 | pending| | 1003     | P02        | 3   |  24.99     |
+| 1006     | C04         | 2026-03-15 | shipped| | 1004     | P01        | 1   | 999.99     |
++----------+-------------+------------+-------+ | 1004     | P05        | 1   | 599.99     |
+                                                 | 1005     | P03        | 2   | 249.99     |
+                                                 | 1006     | P02        | 5   |  24.99     |
+                                                 | 1006     | P04        | 1   | 349.99     |
+                                                 +----------+------------+-----+------------+
+</code></pre></div></td></tr></table></div>
+<p>Notice that customer C05 (Eva Chen) has never placed an order. This is intentional -- it will matter when we discuss LEFT JOINs.</p>
+<h2 id="3b1-dml-write-operations-insert-update-delete">3b.1 DML Write Operations: INSERT, UPDATE, DELETE</h2>
+<p>Chapter 3 covered reading data with SELECT. Real databases also need to <em>write</em> data. The three DML write statements are INSERT, UPDATE, and DELETE.</p>
+<h3 id="insert-adding-rows">INSERT -- Adding Rows</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Insert a single row</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="p">(</span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;C06&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Frank Nguyen&#39;</span><span class="p">);</span>
+
+<span class="c1">-- Insert multiple rows at once</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="p">(</span><span class="n">product_id</span><span class="p">,</span><span class="w"> </span><span class="n">product_name</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;P06&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Webcam&#39;</span><span class="p">,</span><span class="w">     </span><span class="mi">79</span><span class="p">.</span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Tech&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;P07&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Headphones&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">59</span><span class="p">.</span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Tech&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="s1">&#39;P08&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Footrest&#39;</span><span class="p">,</span><span class="w">   </span><span class="mi">34</span><span class="p">.</span><span class="mi">99</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Office&#39;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Column List Best Practice</p>
+<p>Always list the columns explicitly in your INSERT statement. Writing <code>INSERT INTO customer VALUES (...)</code> works but breaks if the table structure ever changes.</p>
+</div>
+<h3 id="update-modifying-existing-rows">UPDATE -- Modifying Existing Rows</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Give the Mouse a price increase</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">product</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">29</span><span class="p">.</span><span class="mi">99</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">product_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;P02&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Update multiple columns at once</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">orders</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;delivered&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">order_date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2026-01-16&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">order_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1001</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Always Include a WHERE Clause</p>
+<p>Running <code>UPDATE product SET price = 0</code> without a WHERE clause sets <strong>every</strong> product's price to zero. This is one of the most common and costly SQL mistakes. Always double-check your WHERE clause before executing an UPDATE.</p>
+</div>
+<h3 id="delete-removing-rows">DELETE -- Removing Rows</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Delete a specific order line</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">order_line</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">order_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1006</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">product_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;P04&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Delete all pending orders</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;pending&#39;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">DELETE is Permanent</p>
+<p>Unlike a spreadsheet, there is no "undo" for DELETE in SQL. In production, many teams use "soft deletes" -- setting an <code>is_deleted</code> flag instead of removing rows -- so data can be recovered.</p>
+</div>
+<h2 id="3b2-alter-table-changing-table-structure">3b.2 ALTER TABLE -- Changing Table Structure</h2>
+<p>After a table is created, you can modify its structure with ALTER TABLE.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Add a new column</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+
+<span class="c1">-- Change a column&#39;s data type</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">product</span>
+<span class="k">MODIFY</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">-- Rename a column</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">orders</span>
+<span class="k">RENAME</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">order_status</span><span class="p">;</span>
+
+<span class="c1">-- Drop a column</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Syntax</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add column</td>
+<td><code>ADD COLUMN name type</code></td>
+<td>New business requirement</td>
+</tr>
+<tr>
+<td>Modify column</td>
+<td><code>MODIFY COLUMN name new_type</code></td>
+<td>Change data type or size</td>
+</tr>
+<tr>
+<td>Rename column</td>
+<td><code>RENAME COLUMN old TO new</code></td>
+<td>Clarify naming</td>
+</tr>
+<tr>
+<td>Drop column</td>
+<td><code>DROP COLUMN name</code></td>
+<td>Remove unused field</td>
+</tr>
+<tr>
+<td>Add constraint</td>
+<td><code>ADD CONSTRAINT name ...</code></td>
+<td>Enforce new rule</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">DDL vs DML</p>
+<p>ALTER TABLE is a <strong>DDL</strong> (Data Definition Language) command -- it changes the table's <em>structure</em>. INSERT, UPDATE, and DELETE are <strong>DML</strong> (Data Manipulation Language) commands -- they change the table's <em>data</em>. This distinction matters for transactions and permissions.</p>
+</div>
+<h2 id="3b3-group-by-and-having">3b.3 GROUP BY and HAVING</h2>
+<p>Chapter 3 introduced aggregate functions (COUNT, SUM, AVG, MIN, MAX). GROUP BY lets you apply those functions <em>per group</em> rather than across the entire table.</p>
+<h3 id="group-by-basics">GROUP BY Basics</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Count orders per customer</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">order_count</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">customer_id</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>+-------------+-------------+
+| customer_id | order_count |
++-------------+-------------+
+| C01         | 2           |
+| C02         | 1           |
+| C03         | 2           |
+| C04         | 1           |
++-------------+-------------+
+</code></pre></div></td></tr></table></div></p>
+<h3 id="multiple-aggregations-in-one-query">Multiple Aggregations in One Query</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Revenue summary per product category</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">category</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">order_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">orders_with_category</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">qty</span><span class="p">)</span><span class="w">                 </span><span class="k">AS</span><span class="w"> </span><span class="n">total_units_sold</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">qty</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_revenue</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="p">)</span><span class="w">          </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_unit_price</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="p">)</span><span class="w">          </span><span class="k">AS</span><span class="w"> </span><span class="n">min_price</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="p">)</span><span class="w">          </span><span class="k">AS</span><span class="w"> </span><span class="n">max_price</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">order_line</span><span class="w"> </span><span class="n">ol</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">product_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_id</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">category</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">The GROUP BY Rule</p>
+<p>Every column in your SELECT must either appear in the GROUP BY clause or be inside an aggregate function. If you SELECT <code>customer_id</code> and <code>COUNT(*)</code>, you must GROUP BY <code>customer_id</code>. Violating this rule produces an error in most databases (MySQL in strict mode, PostgreSQL, SQL Server).</p>
+</div>
+<h3 id="having-filtering-groups">HAVING -- Filtering Groups</h3>
+<p>WHERE filters individual rows <em>before</em> grouping. HAVING filters groups <em>after</em> aggregation.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find customers who have placed more than one order</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">order_count</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">customer_id</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>+-------------+-------------+
+| customer_id | order_count |
++-------------+-------------+
+| C01         | 2           |
+| C03         | 2           |
++-------------+-------------+
+</code></pre></div></td></tr></table></div></p>
+<h3 id="where-vs-having">WHERE vs HAVING</h3>
+<table>
+<thead>
+<tr>
+<th>Clause</th>
+<th>Filters</th>
+<th>Runs</th>
+<th>Can Use Aggregates?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WHERE</td>
+<td>Individual rows</td>
+<td>Before GROUP BY</td>
+<td>No</td>
+</tr>
+<tr>
+<td>HAVING</td>
+<td>Groups</td>
+<td>After GROUP BY</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Combine WHERE and HAVING</span>
+<span class="c1">-- Among shipped orders, find customers with total spending over $500</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">customer_id</span><span class="p">,</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">qty</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_spent</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">order_line</span><span class="w"> </span><span class="n">ol</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">order_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;shipped&#39;</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">customer_id</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">qty</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition example">
+<p class="admonition-title">Execution Order</p>
+<p>SQL does not execute in the order you write it. The actual execution order is:</p>
+<ol>
+<li><strong>FROM</strong> -- identify the tables</li>
+<li><strong>WHERE</strong> -- filter individual rows</li>
+<li><strong>GROUP BY</strong> -- form groups</li>
+<li><strong>HAVING</strong> -- filter groups</li>
+<li><strong>SELECT</strong> -- compute output columns</li>
+<li><strong>ORDER BY</strong> -- sort results</li>
+<li><strong>LIMIT</strong> -- restrict row count</li>
+</ol>
+<p>This is why you cannot use a column alias from SELECT inside a WHERE clause -- SELECT has not run yet.</p>
+</div>
+<h2 id="3b4-joins-combining-tables">3b.4 JOINs -- Combining Tables</h2>
+<p>JOINs are what make relational databases relational. They let you combine rows from two or more tables based on a related column (typically a foreign key relationship).</p>
+<h3 id="inner-join">INNER JOIN</h3>
+<p>An INNER JOIN returns only rows where the join condition matches in <strong>both</strong> tables.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Get each order with the customer&#39;s name</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">status</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>How it works:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>CUSTOMER                    ORDERS
++-----+----------------+   +------+-----+------------+
+| C01 | Alice Johnson  | --| 1001 | C01 | 2026-01-15 |  &lt;- match
+| C02 | Bob Smith      | --| 1002 | C01 | 2026-02-20 |  &lt;- match
+| C03 | Carol Martinez | --| 1003 | C02 | 2026-02-25 |  &lt;- match
+| C04 | David Lee      | --| 1004 | C03 | 2026-03-01 |  &lt;- match
+| C05 | Eva Chen       |   | 1005 | C03 | 2026-03-10 |  &lt;- match
++-----+----------------+   | 1006 | C04 | 2026-03-15 |  &lt;- match
+       ^                    +------+-----+------------+
+       |
+  C05 has no orders -&gt; excluded from INNER JOIN result
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>+----------+----------------+------------+---------+
+| order_id | name           | order_date | status  |
++----------+----------------+------------+---------+
+| 1001     | Alice Johnson  | 2026-01-15 | shipped |
+| 1002     | Alice Johnson  | 2026-02-20 | shipped |
+| 1003     | Bob Smith      | 2026-02-25 | pending |
+| 1004     | Carol Martinez | 2026-03-01 | shipped |
+| 1005     | Carol Martinez | 2026-03-10 | pending |
+| 1006     | David Lee      | 2026-03-15 | shipped |
++----------+----------------+------------+---------+
+</code></pre></div></td></tr></table></div></p>
+<h3 id="left-join-left-outer-join">LEFT JOIN (LEFT OUTER JOIN)</h3>
+<p>A LEFT JOIN returns <strong>all</strong> rows from the left table, plus matching rows from the right table. If there is no match, the right side columns are NULL.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- All customers, including those who have never ordered</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>+-------------+----------------+----------+------------+
+| customer_id | name           | order_id | order_date |
++-------------+----------------+----------+------------+
+| C01         | Alice Johnson  | 1001     | 2026-01-15 |
+| C01         | Alice Johnson  | 1002     | 2026-02-20 |
+| C02         | Bob Smith      | 1003     | 2026-02-25 |
+| C03         | Carol Martinez | 1004     | 2026-03-01 |
+| C03         | Carol Martinez | 1005     | 2026-03-10 |
+| C04         | David Lee      | 1006     | 2026-03-15 |
+| C05         | Eva Chen       | NULL     | NULL       |  &lt;- no orders
++-------------+----------------+----------+------------+
+</code></pre></div></td></tr></table></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Finding Missing Data with LEFT JOIN</p>
+<p>A common pattern is LEFT JOIN + WHERE ... IS NULL to find records with <em>no</em> match:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Customers who have NEVER placed an order</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>Result: Eva Chen (C05).</p>
+</div>
+<h3 id="right-join-right-outer-join">RIGHT JOIN (RIGHT OUTER JOIN)</h3>
+<p>A RIGHT JOIN is the mirror image of LEFT JOIN: it returns <strong>all</strong> rows from the right table, plus matching rows from the left.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- All orders, including any without a valid customer (data quality check)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span>
+<span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">LEFT JOIN vs RIGHT JOIN</p>
+<p>In practice, most SQL developers use LEFT JOIN almost exclusively. Any RIGHT JOIN can be rewritten as a LEFT JOIN by swapping the table order:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- These two queries produce the same result:</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>Pick one convention and stick with it. LEFT JOIN is the industry standard.</p>
+</div>
+<h3 id="join-summary">JOIN Summary</h3>
+<table>
+<thead>
+<tr>
+<th>JOIN Type</th>
+<th>Left Table Rows</th>
+<th>Right Table Rows</th>
+<th>NULL Fills</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INNER JOIN</strong></td>
+<td>Only matching</td>
+<td>Only matching</td>
+<td>Never</td>
+</tr>
+<tr>
+<td><strong>LEFT JOIN</strong></td>
+<td>All</td>
+<td>Only matching</td>
+<td>Right side</td>
+</tr>
+<tr>
+<td><strong>RIGHT JOIN</strong></td>
+<td>Only matching</td>
+<td>All</td>
+<td>Left side</td>
+</tr>
+<tr>
+<td><strong>FULL OUTER JOIN</strong></td>
+<td>All</td>
+<td>All</td>
+<td>Both sides</td>
+</tr>
+</tbody>
+</table>
+<h3 id="joining-multiple-tables">Joining Multiple Tables</h3>
+<p>Real queries often join three or more tables. Read them left to right, one JOIN at a time.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Full order details: customer name, order date, product name, quantity, line total</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w">           </span><span class="k">AS</span><span class="w"> </span><span class="n">customer_name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="p">,</span>
+<span class="w">    </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">,</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">product_name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ol</span><span class="p">.</span><span class="n">qty</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ol</span><span class="p">.</span><span class="n">qty</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">line_total</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">order_line</span><span class="w"> </span><span class="n">ol</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">order_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="n">p</span><span class="w">     </span><span class="k">ON</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">product_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_id</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_name</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Table Aliases</p>
+<p>Use short aliases (<code>o</code> for orders, <code>c</code> for customer) to keep multi-table queries readable. Without aliases, you would write <code>orders.order_id</code> and <code>customer.name</code> everywhere, which gets verbose quickly.</p>
+</div>
+<h2 id="3b5-self-joins">3b.5 Self Joins</h2>
+<p>A <strong>self join</strong> joins a table to itself. This is useful when a table contains a hierarchical or reflexive relationship -- where a row references another row in the same table.</p>
+<h3 id="the-classic-example-employee-manager">The Classic Example: Employee-Manager</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Add a manager_id column that references another employee</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">emp_id</span><span class="w">     </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">emp_name</span><span class="w">   </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">manager_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">manager_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">employee</span><span class="p">(</span><span class="n">emp_id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>EMPLOYEE
++--------+-----------+------------+
+| emp_id | emp_name  | manager_id |
++--------+-----------+------------+
+| 1      | Diana     | NULL       |  &lt;- CEO, no manager
+| 2      | Erik      | 1          |
+| 3      | Fiona     | 1          |
+| 4      | George    | 2          |
+| 5      | Hannah    | 2          |
++--------+-----------+------------+
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Show each employee alongside their manager&#39;s name</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="n">emp_name</span><span class="w">  </span><span class="k">AS</span><span class="w"> </span><span class="n">employee</span><span class="p">,</span>
+<span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">emp_name</span><span class="w">  </span><span class="k">AS</span><span class="w"> </span><span class="n">manager</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="n">e</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">employee</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">manager_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">emp_id</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>+----------+---------+
+| employee | manager |
++----------+---------+
+| Diana    | NULL    |  &lt;- CEO has no manager
+| Erik     | Diana   |
+| Fiona    | Diana   |
+| George   | Erik    |
+| Hannah   | Erik    |
++----------+---------+
+</code></pre></div></td></tr></table></div></p>
+<p>The key insight: we use the <strong>same table twice</strong> with different aliases (<code>e</code> for the employee role, <code>m</code> for the manager role). The LEFT JOIN ensures the CEO (who has no manager) still appears in the results.</p>
+<h2 id="3b6-subqueries">3b.6 Subqueries</h2>
+<p>A <strong>subquery</strong> is a query nested inside another query. Subqueries let you break complex problems into steps.</p>
+<h3 id="scalar-subqueries-return-one-value">Scalar Subqueries (Return One Value)</h3>
+<p>A scalar subquery returns a single value and can be used anywhere a single value is expected.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find products priced above the average</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">product_name</span><span class="p">,</span><span class="w"> </span><span class="n">price</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">product</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>How it executes:</strong></p>
+<ol>
+<li>Inner query runs first: <code>SELECT AVG(price) FROM product</code> returns 444.99</li>
+<li>Outer query becomes: <code>WHERE price &gt; 444.99</code></li>
+</ol>
+<h3 id="column-subqueries-return-a-list">Column Subqueries (Return a List)</h3>
+<p>A column subquery returns a set of values, used with IN, ANY, or ALL.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find customers who have placed at least one order</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">customer_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">customer_id</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="table-subqueries-return-a-table">Table Subqueries (Return a Table)</h3>
+<p>A table subquery appears in the FROM clause and acts as a temporary table.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find each customer&#39;s total spending, then get those above $500</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">customer_name</span><span class="p">,</span><span class="w"> </span><span class="n">total_spent</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">customer_name</span><span class="p">,</span>
+<span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">qty</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_spent</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">order_line</span><span class="w"> </span><span class="n">ol</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">order_id</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span>
+<span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">customer_totals</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">total_spent</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Derived Table Alias</p>
+<p>MySQL requires that every subquery in the FROM clause has an alias (the <code>AS customer_totals</code> above). Forgetting this alias is a common syntax error.</p>
+</div>
+<h3 id="correlated-subqueries">Correlated Subqueries</h3>
+<p>A <strong>correlated subquery</strong> references a column from the outer query. It re-executes for every row of the outer query.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- For each product, show its price and how it compares to the category average</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">product_name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">price</span><span class="p">,</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">category</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="n">price</span><span class="p">)</span>
+<span class="w">     </span><span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="n">p2</span>
+<span class="w">     </span><span class="k">WHERE</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">category</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">category_avg</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>The inner query references <code>p.category</code> from the outer query, so it runs once per product, computing the average for that product's specific category.</p>
+<h3 id="exists-testing-for-existence">EXISTS -- Testing for Existence</h3>
+<p>EXISTS returns TRUE if the subquery returns <strong>any</strong> rows. It is often faster than IN for large datasets.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find customers who have placed at least one shipped order</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="w">      </span><span class="k">AND</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;shipped&#39;</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Find customers who have NEVER ordered (NOT EXISTS)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">EXISTS vs IN</p>
+<ul>
+<li><strong>EXISTS</strong> stops as soon as it finds one matching row. Efficient when the subquery table is large.</li>
+<li><strong>IN</strong> collects all values from the subquery into a list, then checks membership. Can be simpler for small lists.</li>
+</ul>
+<p>Rule of thumb: use EXISTS for correlated checks against large tables; use IN for short, known lists.</p>
+</div>
+<h2 id="3b7-common-table-expressions-ctes">3b.7 Common Table Expressions (CTEs)</h2>
+<p>A <strong>Common Table Expression (CTE)</strong> is a named temporary result set defined with the <code>WITH</code> keyword. CTEs make complex queries readable by breaking them into logical steps.</p>
+<h3 id="basic-cte-syntax">Basic CTE Syntax</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">customer_spending</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">,</span>
+<span class="w">        </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">qty</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_spent</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">order_line</span><span class="w"> </span><span class="n">ol</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">order_id</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span>
+<span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">total_spent</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">customer_spending</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">total_spent</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_spent</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>Compare this to the table subquery version in Section 3b.6. The CTE version reads top-to-bottom like a recipe: "First, calculate customer spending. Then, filter to big spenders."</p>
+<h3 id="multiple-ctes">Multiple CTEs</h3>
+<p>You can chain multiple CTEs separated by commas:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">order_totals</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="c1">-- Step 1: Calculate total for each order</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="n">order_id</span><span class="p">,</span>
+<span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="n">qty</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">unit_price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">order_total</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">order_line</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">order_id</span>
+<span class="p">),</span>
+<span class="n">order_details</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="c1">-- Step 2: Attach customer and date info</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="p">,</span>
+<span class="w">        </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">customer_name</span><span class="p">,</span>
+<span class="w">        </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ot</span><span class="p">.</span><span class="n">order_total</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span><span class="w">     </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">order_totals</span><span class="w"> </span><span class="n">ot</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">ot</span><span class="p">.</span><span class="n">order_id</span>
+<span class="p">)</span>
+<span class="c1">-- Step 3: Final output</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">customer_name</span><span class="p">,</span><span class="w"> </span><span class="n">order_id</span><span class="p">,</span><span class="w"> </span><span class="n">order_date</span><span class="p">,</span><span class="w"> </span><span class="n">order_total</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">order_details</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">order_total</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">CTEs vs Subqueries</p>
+<p>CTEs and subqueries produce the same results. The advantages of CTEs:</p>
+<ul>
+<li><strong>Readability</strong>: Named steps are easier to follow than deeply nested parentheses</li>
+<li><strong>Reuse</strong>: You can reference a CTE multiple times in the same query</li>
+<li><strong>Debugging</strong>: You can test each CTE independently by selecting from it</li>
+</ul>
+<p>Use CTEs as your default for any query that would require more than one level of nesting.</p>
+</div>
+<h2 id="3b8-window-functions">3b.8 Window Functions</h2>
+<p>Window functions perform calculations across a <em>set of rows related to the current row</em> -- without collapsing those rows into a single group the way GROUP BY does.</p>
+<h3 id="window-functions-vs-group-by">Window Functions vs GROUP BY</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>GROUP BY + Aggregate</th>
+<th>Window Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rows in result</td>
+<td>One row per group</td>
+<td>Every original row preserved</td>
+</tr>
+<tr>
+<td>Syntax</td>
+<td><code>GROUP BY col</code></td>
+<td><code>OVER (PARTITION BY col)</code></td>
+</tr>
+<tr>
+<td>Use case</td>
+<td>Summary tables</td>
+<td>Rankings, running totals, comparisons</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-over-clause">The OVER Clause</h3>
+<p>Every window function includes an <code>OVER()</code> clause that defines the "window" (the set of rows the function operates on).</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Add a column showing overall average price alongside each product</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">product_name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">price</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">overall_avg</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>+------------------+--------+-------------+
+| product_name     | price  | overall_avg |
++------------------+--------+-------------+
+| Laptop           | 999.99 | 444.99      |
+| Mouse            |  24.99 | 444.99      |
+| Desk Chair       | 249.99 | 444.99      |
+| Monitor          | 349.99 | 444.99      |
+| Standing Desk    | 599.99 | 444.99      |
++------------------+--------+-------------+
+</code></pre></div></td></tr></table></div></p>
+<p>All five rows are preserved. The <code>OVER ()</code> with empty parentheses means "the window is the entire table."</p>
+<h3 id="partition-by-windows-within-groups">PARTITION BY -- Windows Within Groups</h3>
+<p>PARTITION BY divides rows into groups (partitions) for the window function, like GROUP BY but without collapsing rows.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Show each product&#39;s price alongside its category average</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">product_name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">category</span><span class="p">,</span>
+<span class="w">    </span><span class="n">price</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">category</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">category_avg</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>+------------------+----------+--------+--------------+
+| product_name     | category | price  | category_avg |
++------------------+----------+--------+--------------+
+| Laptop           | Tech     | 999.99 | 458.32       |
+| Mouse            | Tech     |  24.99 | 458.32       |
+| Monitor          | Tech     | 349.99 | 458.32       |
+| Desk Chair       | Office   | 249.99 | 424.99       |
+| Standing Desk    | Office   | 599.99 | 424.99       |
++------------------+----------+--------+--------------+
+</code></pre></div></td></tr></table></div></p>
+<h3 id="row_number-sequential-numbering">ROW_NUMBER -- Sequential Numbering</h3>
+<p>ROW_NUMBER assigns a unique sequential integer to each row within a partition.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Number each order per customer by date</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="p">,</span>
+<span class="w">    </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="w">        </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">order_sequence</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>+----------------+----------+------------+----------------+
+| name           | order_id | order_date | order_sequence |
++----------------+----------+------------+----------------+
+| Alice Johnson  | 1001     | 2026-01-15 | 1              |
+| Alice Johnson  | 1002     | 2026-02-20 | 2              |
+| Bob Smith      | 1003     | 2026-02-25 | 1              |
+| Carol Martinez | 1004     | 2026-03-01 | 1              |
+| Carol Martinez | 1005     | 2026-03-10 | 2              |
+| David Lee      | 1006     | 2026-03-15 | 1              |
++----------------+----------+------------+----------------+
+</code></pre></div></td></tr></table></div></p>
+<h3 id="rank-and-dense_rank">RANK and DENSE_RANK</h3>
+<p>RANK and DENSE_RANK assign rankings based on the ORDER BY expression. They differ in how they handle ties.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">product_name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">price</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RANK</span><span class="p">()</span><span class="w">       </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">price_rank</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DENSE_RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">price_dense_rank</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>To illustrate the difference, assume two products share the same price:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>+------------------+--------+------------+------------------+
+| product_name     | price  | price_rank | price_dense_rank |
++------------------+--------+------------+------------------+
+| Laptop           | 999.99 | 1          | 1                |
+| Standing Desk    | 599.99 | 2          | 2                |
+| Monitor          | 349.99 | 3          | 3                |
+| Desk Chair       | 249.99 | 4          | 4                |
+| Mouse            |  24.99 | 5          | 5                |
++------------------+--------+------------+------------------+
+</code></pre></div></td></tr></table></div>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Ties</th>
+<th>Next Rank After Tie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ROW_NUMBER</strong></td>
+<td>No ties (arbitrary tiebreak)</td>
+<td>Always increments by 1</td>
+</tr>
+<tr>
+<td><strong>RANK</strong></td>
+<td>Same rank for ties</td>
+<td>Skips numbers (1, 1, 3)</td>
+</tr>
+<tr>
+<td><strong>DENSE_RANK</strong></td>
+<td>Same rank for ties</td>
+<td>No gaps (1, 1, 2)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">When Ties Matter</p>
+<p>Imagine three students tied for 2nd place in a competition:</p>
+<ul>
+<li><strong>RANK</strong>: 1st, 2nd, 2nd, 2nd, 5th (skips 3rd and 4th)</li>
+<li><strong>DENSE_RANK</strong>: 1st, 2nd, 2nd, 2nd, 3rd (no gap)</li>
+<li><strong>ROW_NUMBER</strong>: 1st, 2nd, 3rd, 4th, 5th (no ties -- arbitrary among the tied students)</li>
+</ul>
+</div>
+<h3 id="lead-and-lag-accessing-adjacent-rows">LEAD and LAG -- Accessing Adjacent Rows</h3>
+<p>LEAD looks at the <em>next</em> row; LAG looks at the <em>previous</em> row. These are invaluable for time-series analysis.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- For each of Alice&#39;s orders, show the previous and next order dates</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="p">,</span>
+<span class="w">    </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">,</span>
+<span class="w">    </span><span class="n">LAG</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">)</span><span class="w">  </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">prev_order_date</span><span class="p">,</span>
+<span class="w">    </span><span class="n">LEAD</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">next_order_date</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;C01&#39;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>+----------+------------+-----------------+-----------------+
+| order_id | order_date | prev_order_date | next_order_date |
++----------+------------+-----------------+-----------------+
+| 1001     | 2026-01-15 | NULL            | 2026-02-20      |
+| 1002     | 2026-02-20 | 2026-01-15      | NULL            |
++----------+------------+-----------------+-----------------+
+</code></pre></div></td></tr></table></div></p>
+<p>A practical application -- calculating days between consecutive orders:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Days between consecutive orders for each customer</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="p">,</span>
+<span class="w">    </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">,</span>
+<span class="w">    </span><span class="n">LAG</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="w">        </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">prev_order_date</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DATEDIFF</span><span class="p">(</span>
+<span class="w">        </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">,</span>
+<span class="w">        </span><span class="n">LAG</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span>
+<span class="w">            </span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="w">            </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_date</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">days_since_last_order</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="window-function-summary">Window Function Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+<th>Example Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ROW_NUMBER()</strong></td>
+<td>Sequential numbering</td>
+<td>Pagination, deduplication</td>
+</tr>
+<tr>
+<td><strong>RANK()</strong></td>
+<td>Ranking with gaps</td>
+<td>Competition rankings</td>
+</tr>
+<tr>
+<td><strong>DENSE_RANK()</strong></td>
+<td>Ranking without gaps</td>
+<td>Top-N without skipping</td>
+</tr>
+<tr>
+<td><strong>LEAD(col, n)</strong></td>
+<td>Value from next row</td>
+<td>Forecasting, trend analysis</td>
+</tr>
+<tr>
+<td><strong>LAG(col, n)</strong></td>
+<td>Value from previous row</td>
+<td>Period-over-period comparison</td>
+</tr>
+<tr>
+<td><strong>SUM() OVER</strong></td>
+<td>Running total</td>
+<td>Cumulative revenue</td>
+</tr>
+<tr>
+<td><strong>AVG() OVER</strong></td>
+<td>Moving average</td>
+<td>Smoothing time-series data</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3b9-putting-it-all-together">3b.9 Putting It All Together</h2>
+<p>Real business questions rarely require just one technique. This section combines JOINs, CTEs, and window functions in a single query.</p>
+<p><strong>Business question:</strong> "Rank our customers by total spending and show each customer's percentage of overall revenue."</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">customer_revenue</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="c1">-- Step 1: Total revenue per customer</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">,</span>
+<span class="w">        </span><span class="k">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">        </span><span class="k">SUM</span><span class="p">(</span><span class="n">ol</span><span class="p">.</span><span class="n">qty</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">unit_price</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_spent</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="k">c</span><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">order_line</span><span class="w"> </span><span class="n">ol</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">ol</span><span class="p">.</span><span class="n">order_id</span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">name</span>
+<span class="p">),</span>
+<span class="n">ranked</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="c1">-- Step 2: Rank customers and calculate percentage</span>
+<span class="w">    </span><span class="k">SELECT</span>
+<span class="w">        </span><span class="n">name</span><span class="p">,</span>
+<span class="w">        </span><span class="n">total_spent</span><span class="p">,</span>
+<span class="w">        </span><span class="n">RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_spent</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">spending_rank</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ROUND</span><span class="p">(</span>
+<span class="w">            </span><span class="n">total_spent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">total_spent</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pct_of_total</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">customer_revenue</span>
+<span class="p">)</span>
+<span class="c1">-- Step 3: Final output</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">spending_rank</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">total_spent</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pct_of_total</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">ranked</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">spending_rank</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Result:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>+---------------+----------------+-------------+--------------+
+| spending_rank | name           | total_spent | pct_of_total |
++---------------+----------------+-------------+--------------+
+| 1             | Carol Martinez | 2099.96     | 41.1         |
+| 2             | Alice Johnson  | 1299.96     | 25.5         |
+| 3             | David Lee      | 474.94      | 9.3          |
+| 4             | Bob Smith      | 424.96      | 8.3          |
++---------------+----------------+-------------+--------------+
+</code></pre></div></td></tr></table></div></p>
+<div class="admonition example">
+<p class="admonition-title">Reading the Query</p>
+<p>This query uses four techniques from this chapter:</p>
+<ol>
+<li><strong>JOINs</strong> (three tables: orders, customer, order_line) to bring the data together</li>
+<li><strong>GROUP BY</strong> with SUM to calculate total spending per customer</li>
+<li><strong>CTE</strong> (<code>customer_revenue</code>) to name and reuse the intermediate result</li>
+<li><strong>Window functions</strong> (RANK and SUM OVER) to rank customers and compute percentages</li>
+</ol>
+<p>When building complex queries like this, develop and test each CTE independently before combining them. Start with Step 1, verify it produces correct numbers, then add Step 2, and so on.</p>
+</div>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>INSERT, UPDATE, DELETE</strong> complete the SQL data manipulation toolkit -- always include a WHERE clause with UPDATE and DELETE</li>
+<li><strong>GROUP BY transforms rows into groups</strong> for aggregation; HAVING filters those groups after aggregation</li>
+<li><strong>JOINs connect tables</strong> through foreign key relationships -- INNER JOIN keeps only matches, LEFT JOIN preserves all rows from the left table</li>
+<li><strong>Subqueries nest queries inside queries</strong> -- use scalar subqueries for single values, correlated subqueries when the inner query depends on the outer</li>
+<li><strong>CTEs (WITH clause) are named subqueries</strong> that make complex SQL readable and debuggable -- prefer them over deeply nested subqueries</li>
+<li><strong>Window functions analyze rows without collapsing them</strong> -- ROW_NUMBER for sequencing, RANK for ordering, LEAD/LAG for comparing adjacent rows</li>
+<li><strong>Real business queries combine all these tools</strong> -- build incrementally, test each piece, then assemble</li>
+</ol>
+<h2 id="review-questions">Review Questions</h2>
+<ol>
+<li>What is the difference between WHERE and HAVING? Write a query that uses both to find product categories with more than 2 products where the average price exceeds $100.</li>
+<li>Explain when you would use a LEFT JOIN instead of an INNER JOIN. Give a business scenario where using INNER JOIN would produce incorrect results.</li>
+<li>What is a correlated subquery? How does it differ from a regular subquery in terms of execution?</li>
+<li>Rewrite the following subquery as a CTE. Which version is more readable?
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">customer</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">customer_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">customer_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">order_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2026-03-01&#39;</span>
+<span class="p">);</span>
+</code></pre></div></td></tr></table></div></li>
+<li>Explain the difference between RANK() and DENSE_RANK(). In what business scenario would the distinction matter?</li>
+</ol>
+<h2 id="practical-exercise">Practical Exercise</h2>
+<p>Using the four-table e-commerce database from this chapter, write SQL queries for each task:</p>
+<ol>
+<li>
+<p><strong>INSERT</strong>: Add a new customer (C06, 'Frank Nguyen') and a new order (1007) for that customer with two products of your choice.</p>
+</li>
+<li>
+<p><strong>GROUP BY + HAVING</strong>: Find all products that have been ordered more than twice (across all orders). Show the product name and total quantity ordered.</p>
+</li>
+<li>
+<p><strong>LEFT JOIN</strong>: Produce a list of ALL customers showing their name and total amount spent. Customers who have never ordered should show $0.00. (Hint: use COALESCE to replace NULL with 0.)</p>
+</li>
+<li>
+<p><strong>CTE + Window Function</strong>: Write a query that shows each order with its total value, and includes a column ranking orders from most to least expensive. Use a CTE to calculate order totals, then apply RANK() in the final SELECT.</p>
+</li>
+<li>
+<p><strong>LEAD/LAG</strong>: For customers who have placed more than one order, show each order date alongside the number of days since their previous order.</p>
+</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<p>In <a href="../04-data-modeling-normalization/">Chapter 4</a>, we'll learn how to design databases using ER diagrams and normalization -- the principles that produce well-structured schemas like the e-commerce database used throughout this chapter.</p>
+<hr />
+<p><em>Corresponds to Week 2 of BADM 554 -- JOINs, Subqueries &amp; Window Functions</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../03-sql-fundamentals/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3. SQL Fundamentals">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                3. SQL Fundamentals
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04-data-modeling-normalization/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Data Modeling &amp; Normalization">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4. Data Modeling & Normalization
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 vishalsachdev. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

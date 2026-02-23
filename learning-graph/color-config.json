@@ -1,0 +1,67 @@
+{
+  "FOUND": {
+    "color": "#FF0000",
+    "classifierName": "Foundation Concepts",
+    "fontColor": "white"
+  },
+  "BASIC": {
+    "color": "#FF6600",
+    "classifierName": "Basic Concepts",
+    "fontColor": "white"
+  },
+  "RELAT": {
+    "color": "#FFD700",
+    "classifierName": "Relational Model",
+    "fontColor": "black"
+  },
+  "SQL": {
+    "color": "#32CD32",
+    "classifierName": "SQL Fundamentals",
+    "fontColor": "white"
+  },
+  "ASQL": {
+    "color": "#1E90FF",
+    "classifierName": "Advanced SQL",
+    "fontColor": "white"
+  },
+  "JSON": {
+    "color": "#9370DB",
+    "classifierName": "JSON & APIs",
+    "fontColor": "white"
+  },
+  "DESIGN": {
+    "color": "#FF69B4",
+    "classifierName": "Database Design",
+    "fontColor": "white"
+  },
+  "NORM": {
+    "color": "#00CED1",
+    "classifierName": "Normalization",
+    "fontColor": "white"
+  },
+  "DW": {
+    "color": "#FF8C00",
+    "classifierName": "Data Warehousing",
+    "fontColor": "white"
+  },
+  "NOSQL": {
+    "color": "#8B4513",
+    "classifierName": "NoSQL Databases",
+    "fontColor": "white"
+  },
+  "TOOLS": {
+    "color": "#708090",
+    "classifierName": "Tools & Environment",
+    "fontColor": "white"
+  },
+  "PYTHON": {
+    "color": "#4169E1",
+    "classifierName": "Python Integration",
+    "fontColor": "white"
+  },
+  "BIZ": {
+    "color": "#DC143C",
+    "classifierName": "Business Applications",
+    "fontColor": "white"
+  }
+}
