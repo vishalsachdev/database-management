@@ -652,8 +652,8 @@ Write SQL queries for:
 
 ## Next Steps
 
-In [Chapter 4](04-advanced-sql.md), we'll learn advanced SQL techniques including JOIN operations to combine data from multiple tables, subqueries, and window functions.
+In [Chapter 3b](03b-advanced-sql.md), we'll unlock the power tools of SQL — JOINs for combining tables, subqueries for nested logic, CTEs for readable complex queries, and window functions for analytics.
 
 ---
 
-*Corresponds to Week 3 of BADM 350 - Chapter 7 of the textbook*
+*Corresponds to Weeks 1-2 of BADM 554 — SQL Fundamentals*

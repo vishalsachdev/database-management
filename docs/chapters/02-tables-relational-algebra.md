@@ -462,4 +462,4 @@ In [Chapter 3](03-sql-fundamentals.md), we'll learn SQL - the practical language
 
 ---
 
-*Corresponds to Week 2 of BADM 350 - Chapter 3 of the textbook*
+*Corresponds to Weeks 1-2 of BADM 554 — Tables & Relational Algebra*
